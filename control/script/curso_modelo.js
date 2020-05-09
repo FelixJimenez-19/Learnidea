@@ -89,24 +89,24 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.curso_modelo_id}</td>
-<td>${register.curso_modelo_nombre}</td>
-<td>${register.curso_modelo_hora_teorica}</td>
-<td>${register.curso_modelo_hora_practica}</td>
-<td>${register.area_id}</td>
-<td>${register.especificacion_id}</td>
-<td>${register.alineacion_id}</td>
-<td>${register.participante_tipo_id}</td>
-<td>${register.modalidad_id}</td>
-<td>${register.duracion_id}</td>
-<td>${register.usuario_id}</td>
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_modelo.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.curso_modelo_id}</td>
+                    <td>${register.curso_modelo_nombre}</td>
+                    <td>${register.curso_modelo_hora_teorica}</td>
+                    <td>${register.curso_modelo_hora_practica}</td>
+                    <td>${register.area_id}</td>
+                    <td>${register.especificacion_id}</td>
+                    <td>${register.alineacion_id}</td>
+                    <td>${register.participante_tipo_id}</td>
+                    <td>${register.modalidad_id}</td>
+                    <td>${register.duracion_id}</td>
+                    <td>${register.usuario_id}</td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_modelo.index = ${index}); "></button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {
