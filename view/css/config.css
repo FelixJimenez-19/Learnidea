@@ -1,0 +1,38 @@
+:root {
+  /*HEADER - FORM - SCROLL*/
+  --primary: #29AAE2;
+  /*HEADER - FORM - SCROLL*/
+  --primary_hover: #218ab8;
+  /*PANEL - TABLE*/
+  --secondary: #222D32;
+  /*PANEL - TABLE*/
+  --secondary_hover: #1d262a;
+  /*LETRAS*/
+  --tertiary: #FFFFFF;
+  /*LETRAS*/
+  --tertiary_hover: #9c9c9c;
+  /*FONDO*/
+  --quaternary: #FFF;
+  /*FONDO*/
+  --quaternary_hover: #c2c2c2;
+  /*OTROS*/
+  --success: #19A15F;
+  --info: #427ad5;
+  --warning: #FFCD42;
+  --error: #DD5145;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+  user-select: none;
+  outline: none;
+  border-style: none;
+}
+
+img {
+  pointer-events: none;
+}

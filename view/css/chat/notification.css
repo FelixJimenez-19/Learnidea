@@ -1,0 +1,167 @@
+/*NOTIFICACION DE MENSAJES*/
+.idea_header #checkbox-msg-container,
+.idea_header #checkbox-new-msg {
+  display: none;
+}
+
+.idea_header #checkbox-msg-container:checked ~ .notification-msg-container .div-container {
+  padding: 4px;
+  min-height: 210px;
+  max-height: 280px;
+  animation: open_profile_options 0.3s;
+}
+
+.idea_header #checkbox-msg-container:checked ~ .notification-msg-container:before {
+  display: flex;
+}
+
+.idea_header #checkbox-new-msg:checked ~ .notification-msg-container .label-button-container label:before {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  content: '';
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background-image: url(../../src/icon/new-msg.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+}
+
+.idea_header .notification-msg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 100%;
+}
+
+.idea_header .notification-msg-container .label-button-container {
+  display: flex;
+  width: 25px;
+  height: 25px;
+}
+
+.idea_header .notification-msg-container .label-button-container label {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.idea_header .notification-msg-container .label-button-container label:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.idea_header .notification-msg-container .label-button-container label img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+  padding: 5px;
+}
+
+
+
+.idea_header .notification-msg-container:before {
+  position: absolute;
+  bottom: -7px;
+  right: 7px;
+  content: '';
+  display: none;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  background: var(--secondary);
+}
+
+.idea_header .notification-msg-container .div-container {
+  position: absolute;
+  top: 100%;
+  left: -50px;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  max-width: 240px;
+  height: auto;
+  min-height: 0;
+  max-height: 0;
+  padding: 0;
+  background: var(--secondary);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3), -2px 4px 6px 0 rgba(0, 0, 0, 0.3), 2px 4px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 1px 1px 3px 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.idea_header .notification-msg-container .div-container .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 4px;
+  margin: 2px 0;
+  border-radius: 3px;
+  background: #FFF;
+}
+
+.idea_header .notification-msg-container .div-container .item:hover {
+  background: #ececec;
+}
+
+.idea_header .notification-msg-container .div-container .item img {
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 35px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+  margin: 0 3px 0 0;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.idea_header .notification-msg-container .div-container .item .col1 {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  max-width: 130px;
+}
+
+.idea_header .notification-msg-container .div-container .item .col1 .msg-user,
+.idea_header .notification-msg-container .div-container .item .col1 .msg-text {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.idea_header .notification-msg-container .div-container .item .col1 .msg-user {
+  font-size: 0.8em;
+  color: #000000;
+}
+
+.idea_header .notification-msg-container .div-container .item .col1 .msg-text {
+  font-size: 0.7em;
+  color: #7a7a7a;
+}
+
+.idea_header .notification-msg-container .div-container .item .col2 {
+  display: flex;
+  width: 59px;
+  margin: 0 0 0 auto;
+}
+
+.idea_header .notification-msg-container .div-container .item .col2 .msg-date {
+  text-align: end;
+  width: 100%;
+  height: 100%;
+  font-size: 0.65em;
+  color: #7a7a7a;
+}
+
+/*NOTIFICACION DE MENSAJES*/

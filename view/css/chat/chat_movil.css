@@ -1,0 +1,244 @@
+@media (max-width: 700px) {
+  
+  .chat-container {
+  }
+  
+  .chat-container .item-container-contact .item .head-contact .label-contact-sound,
+  .chat-container .item-container-contact .item .head-contact .label-title-name .title-name,
+  .chat-container .item-container-contact .item .head-contact .label-title-name .connect {
+    display: none;
+  }
+
+  .chat-container .item-container-contact {
+    width: auto;
+    min-width: 40px;
+  }
+
+  .chat-container .item-container-contact .item-contact {
+    border-radius: 25% 25% 0 0;
+    width: 40px;
+    right: 0;
+  }
+
+  .chat-container .item-container-contact .item-contact .head-contact {
+    border-radius: 25% 25% 0 0;
+  }
+
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name {}
+
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .icon_contact {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 6px 8px;
+    filter: invert(1);
+  }
+
+
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact {
+    width: 200px;
+    right: 0;
+    border-radius: 5px 5px 0 0;
+  }
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact .head-contact {
+    border-radius: 5px 5px 0 0;
+  }
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact .head-contact .label-title-name .icon_contact {
+    display: none;
+  }
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact .head-contact .label-contact-sound,
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact .head-contact .label-title-name .title-name,
+  .chat-container .item-container-contact input[type="checkbox"]:checked ~ .item-contact .head-contact .label-title-name .connect {
+    display: flex;
+  }
+
+
+
+
+  /*  MASTER CONTAINER*/
+  /*
+  .chat-container {
+    top: 0;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    padding: 40px 0 0 0;
+    background: var(--quaternary_hover);
+    height: 50vh;
+    border: solid 5px green;
+    overflow: hidden;
+  }
+*/
+
+
+  /*  CHATS*/
+
+  /*
+  #chat-container {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+*/
+
+  /*
+  .chat-container .item-container-chat {
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    height: 100%;
+    max-height: auto;
+    min-height: auto;
+    margin: 0px;
+    background: red;
+  }
+  .chat-container .item-container-chat input[type="checkbox"] {}
+  
+  .chat-container .item-container-chat input[type="checkbox"]:checked ~ .item-chat {
+    height: 100% !important;
+    max-height: inherit;
+    min-height: inherit;
+  }
+  
+  .chat-container .item-container-chat input[type="checkbox"]:checked ~ .item-chat .chat {
+    height: 100%;
+    padding: 10px;
+    border: none;
+  }
+  
+  .chat-container .item-container-chat input[type="checkbox"]:checked ~ .item-chat .write {
+    height: 40px;
+    overflow: inherit;
+  }
+  
+  .chat-container .item-container-chat .item-chat {
+    position: static;
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    max-height: auto;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .chat-container .item-container-chat .item-chat .head-chat {
+    height: 50px;
+    border-radius: 0px;
+    border-bottom:  solid 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-container .item-container-chat .item-chat .head-chat .label-title-name {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-title-name input[type="checkbox"] {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-title-name .connect {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-title-name .disconnect {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-title-name .title-name {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-chat-button {}
+  .chat-container .item-container-chat .item-chat .head-chat .label-chat-button .close {}
+  
+  .chat-container .item-container-chat .item-chat .chat {
+    padding: 0px;
+    height: 0px;
+    max-height: none;
+    border: none;
+  }
+  
+  .chat-container .item-container-chat .item-chat .write {
+    height: 0px;
+    overflow: hidden;
+  }
+  
+  .chat-container .item-container-chat .item-chat .write textarea {
+  }
+  .chat-container .item-container-chat .item-chat .write input[type="file"] {}
+*/
+
+
+
+
+
+
+
+
+
+
+  /*  CONTACT*/
+  /*
+  .chat-container .item-container-contact {
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border: solid 5px orange;
+  }
+  
+  .chat-container .item-container-contact #checkbox-chat-item-c1 {
+    display: none;
+  }
+  
+  .chat-container .item-container-contact #checkbox-chat-item-c1:checked ~ .item-contact  {
+    height: 100%;
+    min-height: auto;
+    max-height: auto;
+  }
+  
+  .chat-container .item-container-contact #checkbox-chat-item-c1:checked ~ .item-contact .contact-container {
+    height: 100%;
+    max-height: auto;
+    min-height: auto;
+    padding: 10px;
+    border: none;
+  }
+  
+  .chat-container .item-container-contact #checkbox-chat-item-c1:checked ~ .item-contact .search {
+    height: 40px;
+  }
+  
+  .chat-container .item-container-contact .item-contact {
+    position: static;
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    max-height: auto;
+    border-radius: none;
+    box-shadow: none;
+  }
+  
+  .chat-container .item-container-contact .item-contact .head-contact {
+    height: 50px;
+    border-radius: 0px;
+  }
+  
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .icon_contact {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .connect {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .disconnect {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .title-name {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-title-name .title-name span {}
+  .chat-container .item-container-contact .item-contact .head-contact #checkbox-contact-sound {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-contact-sound {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-contact-sound img {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-contact-sound img:first-child {}
+  .chat-container .item-container-contact .item-contact .head-contact .label-contact-sound img:last-child {}
+  
+  .chat-container .item-container-contact .item-contact .contact-container {
+    height: 0px;
+    max-height: none;
+    min-height: none;
+    padding: 0px;
+    border: none;
+  }
+  .chat-container .item-container-contact .item-contact .search {
+    height: 0px;
+  }
+  .chat-container .item-container-contact .item-contact .search input[type="search"] {
+    height: 100%;
+    max-height: none;
+    padding: 5px 10px;
+  }
+*/
+}
