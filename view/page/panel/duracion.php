@@ -16,8 +16,8 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>DURACION_ID</td>
-                    <td>DURACION_DESCRIPCION</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -33,8 +33,8 @@ if (isset($viewPage)) {
                 <input type="hidden" name="duracion_id">
 
                 <div class="row">
-                    <span>DURACION_DESCRIPCION: </span>
-                    <input type="text" name="duracion_descripcion" placeholder="DURACION_DESCRIPCION">
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="duracion_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

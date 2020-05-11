@@ -77,7 +77,7 @@ const entity = {
                     <td><img src="${register.video_respuesta_foto !== null ? "view/src/files/video_respuesta_foto/" + register.video_respuesta_foto : "view/src/img/avatar.png"}"/></td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.video_respuesta.index = ${index})">
                             <img src="view/src/icon/delete.png">
                         </button>
                     </td>

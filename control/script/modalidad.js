@@ -69,7 +69,7 @@ const entity = {
                     <td>${register.modalidad_descripcion}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.modalidad.index = ${index})">
                             <img src="view/src/icon/delete.png">
                         </button>
                     </td>

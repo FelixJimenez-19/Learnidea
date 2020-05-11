@@ -77,7 +77,7 @@ const entity = {
                     <td><img src="${register.publicacion_comentario_foto !== null ? "view/src/files/publicacion_comentario_foto/" + register.publicacion_comentario_foto : "view/src/img/avatar.png"}"/></td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.publicacion_comentario.index = ${index})">
                             <img src="view/src/icon/delete.png">
                         </button>
                     </td>

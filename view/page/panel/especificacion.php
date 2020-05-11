@@ -16,9 +16,9 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>ESPECIFICACION_ID</td>
-                    <td>ESPECIFICACION_CODIGO</td>
-                    <td>ESPECIFICACION_DESCRIPCION</td>
+                    <td>ID</td>
+                    <td>CODIGO</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -34,13 +34,13 @@ if (isset($viewPage)) {
                 <input type="hidden" name="especificacion_id">
 
                 <div class="row">
-                    <span>ESPECIFICACION_CODIGO: </span>
-                    <input type="text" name="especificacion_codigo" placeholder="ESPECIFICACION_CODIGO">
+                    <span>CODIGO: </span>
+                    <input type="text" name="especificacion_codigo" placeholder="CODIGO">
                 </div>
 
                 <div class="row">
-                    <span>ESPECIFICACION_DESCRIPCION: </span>
-                    <input type="text" name="especificacion_descripcion" placeholder="ESPECIFICACION_DESCRIPCION">
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="especificacion_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

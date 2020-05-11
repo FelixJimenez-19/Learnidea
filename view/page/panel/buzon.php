@@ -20,7 +20,6 @@ if (isset($viewPage)) {
                     <td>BUZON_EMAIL</td>
                     <td>BUZON_DESCRIPCION</td>
                     <td>BUZON_FOTO</td>
-
                     <td>ACCION</td>
                 </tr>
             </thead>

@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>PARTICIPANTE_TIPO</span>
+        <span>PARTICIPANTE</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,8 +16,8 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>PARTICIPANTE_TIPO_ID</td>
-                    <td>PARTICIPANTE_TIPO_DESCRIPCION</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -33,8 +33,8 @@ if (isset($viewPage)) {
                 <input type="hidden" name="participante_tipo_id">
 
                 <div class="row">
-                    <span>PARTICIPANTE_TIPO_DESCRIPCION: </span>
-                    <input type="text" name="participante_tipo_descripcion" placeholder="PARTICIPANTE_TIPO_DESCRIPCION">
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="participante_tipo_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

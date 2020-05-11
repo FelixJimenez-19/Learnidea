@@ -88,7 +88,7 @@ const entity = {
                     <td><a target="_blank" ${register.deber_entrega_pdf !== null ? 'href="view/src/files/deber_entrega_pdf/' + register.deber_entrega_pdf + '"' : ""}"><img src='view/src/icon/link.png' /></a></td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.deber_entrega.index = ${index})">
                             <img src="view/src/icon/delete.png">
                         </button>
                     </td>
