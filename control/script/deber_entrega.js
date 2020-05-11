@@ -76,24 +76,24 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.deber_entrega_id}</td>
-<td>${register.deber_entrega_descripcion}</td>
-<td>${register.deber_entrega_link}</td>
-<td>${register.deber_entrega_fecha_inicio}</td>
-<td>${register.deber_entrega_fecha_fin}</td>
-<td>${register.curso_deber_id}</td>
-<td>${register.inscripcion_id}</td>
-<td><img src="${register.deber_entrega_foto !== null ? "view/src/files/deber_entrega_foto/" + register.deber_entrega_foto : "view/src/img/avatar.png"}"/></td>
-
-<td><a target="_blank" ${register.deber_entrega_pdf !== null ? 'href="view/src/files/deber_entrega_pdf/' + register.deber_entrega_pdf + '"' : ""}"><img src='view/src/icon/link.png' /></a></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.deber_entrega.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.deber_entrega_id}</td>
+                    <td>${register.deber_entrega_descripcion}</td>
+                    <td>${register.deber_entrega_link}</td>
+                    <td>${register.deber_entrega_fecha_inicio}</td>
+                    <td>${register.deber_entrega_fecha_fin}</td>
+                    <td>${register.curso_deber_id}</td>
+                    <td>${register.inscripcion_id}</td>
+                    <td><img src="${register.deber_entrega_foto !== null ? "view/src/files/deber_entrega_foto/" + register.deber_entrega_foto : "view/src/img/avatar.png"}"/></td>
+                    <td><a target="_blank" ${register.deber_entrega_pdf !== null ? 'href="view/src/files/deber_entrega_pdf/' + register.deber_entrega_pdf + '"' : ""}"><img src='view/src/icon/link.png' /></a></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

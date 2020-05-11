@@ -103,7 +103,6 @@ const entity = {
                     <td>
                         <img src="${register.informacion_empresa_logo !== null ? "view/src/files/informacion_empresa_logo/" + register.informacion_empresa_logo : "view/src/img/avatar.png"}"/>
                     </td>
-                    
                     <td>${register.informacion_pagina_nombre}</td>
                     <td><div class="long-text">${register.informacion_pagina_mision}</div></td>
                     <td><div class="long-text">${register.informacion_pagina_vision}</div></td>
@@ -111,18 +110,16 @@ const entity = {
                     <td>
                         <img src="${register.informacion_pagina_logo !== null ? "view/src/files/informacion_pagina_logo/" + register.informacion_pagina_logo : "view/src/img/avatar.png"}"/>
                     </td>
-
                     <td>${register.informacion_gerente_nombre}</td>
                     <td>${register.informacion_gerente_celular}</td>
                     <td>${register.informacion_gerente_nivel_nombre}</td>
                     <td>${register.informacion_gerente_nivel_siglas}</td>
-
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})">
                             <img src="view/src/icon/edit.png">
                         </button>
-                        <button>
-                            <img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.informacion.index = ${index}); ">
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
                         </button>
                     </td>
                 </tr>

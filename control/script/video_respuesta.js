@@ -69,19 +69,20 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.video_respuesta_id}</td>
-<td>${register.video_respuesta_descripcion}</td>
-<td>${register.video_respuesta_fecha}</td>
-<td>${register.video_comentario_id}</td>
-<td><img src="${register.video_respuesta_foto !== null ? "view/src/files/video_respuesta_foto/" + register.video_respuesta_foto : "view/src/img/avatar.png"}"/></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.video_respuesta.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.video_respuesta_id}</td>
+                    <td>${register.video_respuesta_descripcion}</td>
+                    <td>${register.video_respuesta_fecha}</td>
+                    <td>${register.video_comentario_id}</td>
+                    <td><img src="${register.video_respuesta_foto !== null ? "view/src/files/video_respuesta_foto/" + register.video_respuesta_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

@@ -102,33 +102,35 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.inscripcion_id}</td>
-<td>${register.inscripcion_estado}</td>
-<td>${register.inscripcion_certificado_participante_nombre}</td>
-<td>${register.inscripcion_certificado_participante_cedula}</td>
-<td>${register.inscripcion_certificado_empresa_nombre}</td>
-<td>${register.inscripcion_certificado_empresa_ciudad}</td>
-<td>${register.inscripcion_certificado_empresa_gerente}</td>
-<td>${register.inscripcion_certificado_empresa_docente}</td>
-<td>${register.inscripcion_certificado_curso_nombre}</td>
-<td>${register.inscripcion_certificado_curso_fecha_inicio}</td>
-<td>${register.inscripcion_certificado_curso_fecha_fin}</td>
-<td>${register.inscripcion_certificado_curso_horas}</td>
-<td>${register.inscripcion_certificado_emision}</td>
-<td>${register.inscripcion_certificado_codigo}</td>
-<td>${register.inscripcion_curso_calificacion}</td>
-<td>${register.inscripcion_curso_opinion}</td>
-<td>${register.inscripcion_pago_live}</td>
-<td>${register.inscripcion_pago_record}</td>
-<td>${register.usuario_id}</td>
-<td>${register.curso_id}</td>
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.inscripcion.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.inscripcion_id}</td>
+                    <td>${register.inscripcion_estado}</td>
+                    <td>${register.inscripcion_certificado_participante_nombre}</td>
+                    <td>${register.inscripcion_certificado_participante_cedula}</td>
+                    <td>${register.inscripcion_certificado_empresa_nombre}</td>
+                    <td>${register.inscripcion_certificado_empresa_ciudad}</td>
+                    <td>${register.inscripcion_certificado_empresa_gerente}</td>
+                    <td>${register.inscripcion_certificado_empresa_docente}</td>
+                    <td>${register.inscripcion_certificado_curso_nombre}</td>
+                    <td>${register.inscripcion_certificado_curso_fecha_inicio}</td>
+                    <td>${register.inscripcion_certificado_curso_fecha_fin}</td>
+                    <td>${register.inscripcion_certificado_curso_horas}</td>
+                    <td>${register.inscripcion_certificado_emision}</td>
+                    <td>${register.inscripcion_certificado_codigo}</td>
+                    <td>${register.inscripcion_curso_calificacion}</td>
+                    <td>${register.inscripcion_curso_opinion}</td>
+                    <td>${register.inscripcion_pago_live}</td>
+                    <td>${register.inscripcion_pago_record}</td>
+                    <td>${register.usuario_id}</td>
+                    <td>${register.curso_id}</td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

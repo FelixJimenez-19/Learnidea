@@ -203,6 +203,7 @@ if (isset($viewPage)) {
             <button onclick="entity.fun.hideModalMessage()">ACEPTAR</button>
         </div>
     </div>
+    
     <div class="idea_confirm" id="idea_modal_confirm">
         <div class="confirm">
             <span id="idea_confirm"></span>

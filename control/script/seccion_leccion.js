@@ -71,18 +71,20 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.seccion_leccion_id}</td>
-<td>${register.seccion_leccion_descripcion}</td>
-<td>${register.seccion_leccion_puntaje}</td>
-<td>${register.seccion_leccion_intentos}</td>
-<td>${register.curso_seccion_id}</td>
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.seccion_leccion.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.seccion_leccion_id}</td>
+                    <td>${register.seccion_leccion_descripcion}</td>
+                    <td>${register.seccion_leccion_puntaje}</td>
+                    <td>${register.seccion_leccion_intentos}</td>
+                    <td>${register.curso_seccion_id}</td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

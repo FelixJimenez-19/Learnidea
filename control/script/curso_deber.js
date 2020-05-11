@@ -73,21 +73,22 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.curso_deber_id}</td>
-<td>${register.curso_deber_descripcion}</td>
-<td>${register.curso_deber_link}</td>
-<td>${register.curso_deber_fecha_inicio}</td>
-<td>${register.curso_deber_fecha_fin}</td>
-<td>${register.curso_id}</td>
-<td><img src="${register.curso_deber_foto !== null ? "view/src/files/curso_deber_foto/" + register.curso_deber_foto : "view/src/img/avatar.png"}"/></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_deber.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.curso_deber_id}</td>
+                    <td>${register.curso_deber_descripcion}</td>
+                    <td>${register.curso_deber_link}</td>
+                    <td>${register.curso_deber_fecha_inicio}</td>
+                    <td>${register.curso_deber_fecha_fin}</td>
+                    <td>${register.curso_id}</td>
+                    <td><img src="${register.curso_deber_foto !== null ? "view/src/files/curso_deber_foto/" + register.curso_deber_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

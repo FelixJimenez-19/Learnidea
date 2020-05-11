@@ -91,30 +91,31 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.curso_id}</td>
-<td>${register.curso_nombre}</td>
-<td>${register.curso_fecha_inicio}</td>
-<td>${register.curso_fecha_fin}</td>
-<td>${register.curso_cupos}</td>
-<td>${register.curso_whatsapp}</td>
-<td>${register.curso_calificacion}</td>
-<td>${register.curso_proximo}</td>
-<td>${register.curso_visible}</td>
-<td>${register.curso_precio_live}</td>
-<td>${register.curso_precio_record}</td>
-<td>${register.curso_certificado_live}</td>
-<td>${register.curso_certificado_record}</td>
-<td>${register.curso_certificacion_live}</td>
-<td>${register.curso_modelo_id}</td>
-<td><img src="${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}"/></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.curso_id}</td>
+                    <td>${register.curso_nombre}</td>
+                    <td>${register.curso_fecha_inicio}</td>
+                    <td>${register.curso_fecha_fin}</td>
+                    <td>${register.curso_cupos}</td>
+                    <td>${register.curso_whatsapp}</td>
+                    <td>${register.curso_calificacion}</td>
+                    <td>${register.curso_proximo}</td>
+                    <td>${register.curso_visible}</td>
+                    <td>${register.curso_precio_live}</td>
+                    <td>${register.curso_precio_record}</td>
+                    <td>${register.curso_certificado_live}</td>
+                    <td>${register.curso_certificado_record}</td>
+                    <td>${register.curso_certificacion_live}</td>
+                    <td>${register.curso_modelo_id}</td>
+                    <td><img src="${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

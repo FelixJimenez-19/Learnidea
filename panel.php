@@ -32,6 +32,7 @@ if (isset($_SESSION['usuario_email'])) {
   <!-- THEME | END -->
 
   <body>
+
     <input type="checkbox" id="idea_input_check_header_tool">
     <div class="idea_header">
       <div class="idea_title">
@@ -60,26 +61,10 @@ if (isset($_SESSION['usuario_email'])) {
         </div>
       </label>
     </div>
+
     <div class="idea_tool">
       <img src="view/src/img/logo.png" class="logo">
       <div class="idea_options">
-        <!--
-<div class="idea_option">
-<input type="checkbox" id="idea_check_option_1">
-<a href="panel.php?page=">
-<label for="idea_check_option_1">
-<span>inicio</span>
-<img src="view/src/icon/in.png">
-</label>
-</a>
-<div class="idea_sub_options">
-<a href="panel.php?page=">
-<span>Sub Option 1</span>
-<img src="view/src/icon/in.png">
-</a>
-</div>
-</div>
--->
         <div class="idea_option">
           <a href="panel.php?page=inicio">
             <label>

@@ -66,18 +66,19 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.buzon_id}</td>
-<td>${register.buzon_email}</td>
-<td>${register.buzon_descripcion}</td>
-<td><img src="${register.buzon_foto !== null ? "view/src/files/buzon_foto/" + register.buzon_foto : "view/src/img/avatar.png"}"/></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.buzon.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.buzon_id}</td>
+                    <td>${register.buzon_email}</td>
+                    <td>${register.buzon_descripcion}</td>
+                    <td><img src="${register.buzon_foto !== null ? "view/src/files/buzon_foto/" + register.buzon_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {

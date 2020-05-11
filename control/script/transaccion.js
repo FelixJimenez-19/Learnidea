@@ -71,20 +71,21 @@ const entity = {
 
         getHtmlTr: (register, index) => {
             return `
-<tr>
-<td>${register.transaccion_id}</td>
-<td>${register.transaccion_descripcion}</td>
-<td>${register.transaccion_valor}</td>
-<td>${register.transaccion_fecha}</td>
-<td>${register.transaccion_tipo_id}</td>
-<td><img src="${register.transaccion_foto !== null ? "view/src/files/transaccion_foto/" + register.transaccion_foto : "view/src/img/avatar.png"}"/></td>
-
-<td>
-<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
-<button><img src="view/src/icon/delete.png" onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.transaccion.index = ${index}); "></button>
-</td>
-</tr>
-`;
+                <tr>
+                    <td>${register.transaccion_id}</td>
+                    <td>${register.transaccion_descripcion}</td>
+                    <td>${register.transaccion_valor}</td>
+                    <td>${register.transaccion_fecha}</td>
+                    <td>${register.transaccion_tipo_id}</td>
+                    <td><img src="${register.transaccion_foto !== null ? "view/src/files/transaccion_foto/" + register.transaccion_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                        <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario_tipo.index = ${index})">
+                            <img src="view/src/icon/delete.png">
+                        </button>
+                    </td>
+                </tr>
+            `;
         },
 
         search: (evt) => {
