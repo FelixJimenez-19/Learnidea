@@ -73,6 +73,7 @@ const entity = {
             entity.view.form.usuario_tema_mode_dark.value = "";
             entity.view.form.usuario_tipo_id.value = "";
             entity.view.form.usuario_tema_id.value = "";
+            entity.view.form.usuario_foto.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
