@@ -18,6 +18,10 @@ class Contenido_transversalDao
     {
         return $this->conn->query("SELECT * FROM contenido_transversal WHERE contenido_transversal_id = $contenido_transversal_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM contenido_transversal WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($contenido_transversal_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO contenido_transversal SET contenido_transversal_descripcion='$contenido_transversal_descripcion', curso_modelo_id=$curso_modelo_id ");

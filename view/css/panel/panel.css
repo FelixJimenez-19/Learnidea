@@ -797,10 +797,29 @@ border-style: inset;
   background: rgba(0, 0, 0, 0);
   border: 2px solid var(--primary);
   border-radius: 0 7px 7px 0;
+  text-decoration: none;
 }
 
+.idea_content .idea_form form .inputs .row .inline-3-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--quaternary);
+}
+
+.idea_content .idea_form form .inputs .row .inline-3-button:hover {
+  background: var(--quaternary_hover);
+}
+
+.idea_content .idea_form form .inputs .row .inline-3-button img,
 .idea_content .idea_form form .inputs .row .button_pick img {
   height: 100%;
+}
+
+.idea_content .idea_form form .inputs .row .inline-3-button img {
+  width: 100%;
+  max-width: 25px;
+  padding: 3px;
 }
 
 .idea_content .idea_form form .inputs .row .inline-3-button span {
@@ -810,7 +829,7 @@ border-style: inset;
   width: 100%;
   max-width: inherit;
   height: 100%;
-  font-size: 3em;
+  font-size: 30px;
   font-weight: bold;
   background: rgba(0,0,0,0);
   color: var(--primary);

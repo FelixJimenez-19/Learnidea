@@ -124,7 +124,7 @@ if (isset($_SESSION['usuario_email'])) {
 
                 <div class="idea_option">
                     <input type="checkbox" id="idea_check_option_3">
-                    <a href="panel.php?page=">
+                    <a>
                         <label for="idea_check_option_3">
                             <span>Utilidades</span>
                             <img src="view/src/icon/in.png">
@@ -160,7 +160,7 @@ if (isset($_SESSION['usuario_email'])) {
 
                 <div class="idea_option">
                     <input type="checkbox" id="idea_check_option_4">
-                    <a href="panel.php?page=">
+                    <a>
                         <label for="idea_check_option_4">
                             <span>Educacion</span>
                             <img src="view/src/icon/in.png">

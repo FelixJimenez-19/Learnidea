@@ -8,10 +8,10 @@ Evaluacion_formativaDao = {
         let formData = new FormData();
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/evaluacion_formativa/select.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -21,10 +21,23 @@ Evaluacion_formativaDao = {
     selectById: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/evaluacion_formativa/selectById.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+
+    selectByCurso_modelo_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/evaluacion_formativa/selectByCurso_modelo_id.php", {
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -34,10 +47,10 @@ Evaluacion_formativaDao = {
     insert: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/evaluacion_formativa/insert.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -47,10 +60,10 @@ Evaluacion_formativaDao = {
     update: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/evaluacion_formativa/update.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -60,10 +73,10 @@ Evaluacion_formativaDao = {
     delete: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/evaluacion_formativa/delete.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;

@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.requisito.crud.select();
-    await entity.selects.curso_modelo();
+    // await entity.selects.curso_modelo();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -35,10 +35,9 @@ const entity = {
             entity.requisito.index = null;
             entity.view.form.requisito_id.value = "";
             entity.view.form.requisito_descripcion.value = "";
-            entity.view.form.curso_modelo_id.value = "";
+            // entity.view.form.curso_modelo_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
-
         showModalMessage: (msg) => {
             entity.view.modalMessage.style.top = "0%";
             entity.view.message.innerHTML = msg;
@@ -70,7 +69,6 @@ const entity = {
                 <tr>
                     <td>${register.requisito_id}</td>
                     <td>${register.requisito_descripcion}</td>
-                    <td>${register.curso_modelo_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.requisito.index = ${index})">
@@ -111,9 +109,8 @@ const entity = {
                 }
                 entity.view.table.innerHTML = html;
             },
-
             insertOrUpdate: () => {
-                if (entity.view.form.requisito_descripcion.value !== "" && entity.view.form.curso_modelo_id.value !== "") {
+                if (entity.view.form.requisito_descripcion.value !== "" && entity.view.form.curso_modelo_id.value !== 0) {
                     if (entity.requisito.index === null) {
                         entity.requisito.crud.insert();
                     } else {
@@ -126,7 +123,9 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await RequisitoDao.select()
+                let formData = new FormData();
+                formData.append("curso_modelo_id", curso_modelo_id);
+                await RequisitoDao.selectByCurso_modelo_id(formData)
                     .then((res) => {
                         entity.requisito.database = res;
                         entity.requisito.fun.select();
@@ -177,8 +176,8 @@ const entity = {
                 let html = `<option value="">CURSO_MODELO_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
-`;
+                        <option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
+                    `;
                 }
                 entity.view.form.curso_modelo_id.innerHTML = html;
             });

@@ -8,10 +8,10 @@ Contenido_transversalDao = {
         let formData = new FormData();
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_transversal/select.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -21,10 +21,23 @@ Contenido_transversalDao = {
     selectById: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_transversal/selectById.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+
+    selectByCurso_modelo_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/contenido_transversal/selectByCurso_modelo_id.php", {
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -34,10 +47,10 @@ Contenido_transversalDao = {
     insert: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_transversal/insert.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -47,10 +60,10 @@ Contenido_transversalDao = {
     update: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_transversal/update.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -60,10 +73,10 @@ Contenido_transversalDao = {
     delete: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_transversal/delete.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;

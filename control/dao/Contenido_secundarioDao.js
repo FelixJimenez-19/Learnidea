@@ -8,10 +8,10 @@ Contenido_secundarioDao = {
         let formData = new FormData();
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_secundario/select.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -21,10 +21,23 @@ Contenido_secundarioDao = {
     selectById: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_secundario/selectById.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+
+    selectByCurso_modelo_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/contenido_secundario/selectByCurso_modelo_id.php", {
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -34,10 +47,10 @@ Contenido_secundarioDao = {
     insert: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_secundario/insert.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -47,10 +60,10 @@ Contenido_secundarioDao = {
     update: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_secundario/update.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;
@@ -60,10 +73,10 @@ Contenido_secundarioDao = {
     delete: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/contenido_secundario/delete.php", {
-            method: "POST",
-            headers: new Headers().append("Accept", "application/json"),
-            body: formData,
-        })
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
             .then((res) => res.json())
             .then((res) => {
                 return res;

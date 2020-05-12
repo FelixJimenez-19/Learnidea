@@ -16,9 +16,8 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>ESTRATEGIA_ID</td>
-                    <td>ESTRATEGIA_DESCRIPCION</td>
-                    <td>CURSO_MODELO_ID</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -32,15 +31,11 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="estrategia_id">
+                <input type="hidden" name="curso_modelo_id" value="<?php echo $curso_modelo_id ?>">
 
                 <div class="row">
-                    <span>ESTRATEGIA_DESCRIPCION: </span>
-                    <input type="text" name="estrategia_descripcion" placeholder="ESTRATEGIA_DESCRIPCION">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
-                    <select name="curso_modelo_id"></select>
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="estrategia_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>ENTORNO_APRENDIZAJE</span>
+        <span>ENTORNO APRENDIZAJE</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,11 +16,10 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>ENTORNO_APRENDIZAJE_ID</td>
-                    <td>ENTORNO_APRENDIZAJE_INSTALACIONES</td>
-                    <td>ENTORNO_APRENDIZAJE_TEORICA</td>
-                    <td>ENTORNO_APRENDIZAJE_PRACTICA</td>
-                    <td>CURSO_MODELO_ID</td>
+                    <td>ID</td>
+                    <td>INSTALACIONES</td>
+                    <td>TEORICA</td>
+                    <td>PRACTICA</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -34,25 +33,21 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="entorno_aprendizaje_id">
+                <input type="hidden" name="curso_modelo_id" value="<?php echo $curso_modelo_id ?>">
 
                 <div class="row">
-                    <span>ENTORNO_APRENDIZAJE_INSTALACIONES: </span>
-                    <input type="text" name="entorno_aprendizaje_instalaciones" placeholder="ENTORNO_APRENDIZAJE_INSTALACIONES">
+                    <span>INSTALACIONES: </span>
+                    <input type="text" name="entorno_aprendizaje_instalaciones" placeholder="INSTALACIONES">
                 </div>
 
                 <div class="row">
-                    <span>ENTORNO_APRENDIZAJE_TEORICA: </span>
-                    <input type="text" name="entorno_aprendizaje_teorica" placeholder="ENTORNO_APRENDIZAJE_TEORICA">
+                    <span>TEORICA: </span>
+                    <input type="text" name="entorno_aprendizaje_teorica" placeholder="TEORICA">
                 </div>
 
                 <div class="row">
-                    <span>ENTORNO_APRENDIZAJE_PRACTICA: </span>
-                    <input type="text" name="entorno_aprendizaje_practica" placeholder="ENTORNO_APRENDIZAJE_PRACTICA">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
-                    <select name="curso_modelo_id"></select>
+                    <span>PRACTICA: </span>
+                    <input type="text" name="entorno_aprendizaje_practica" placeholder="PRACTICA">
                 </div>
 
             </div>

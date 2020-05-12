@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>OBJETIVO</span>
+        <span>OBJETIVOS</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,9 +16,8 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>OBJETIVO_ID</td>
-                    <td>OBJETIVO_DESCRIPCION</td>
-                    <td>CURSO_MODELO_ID</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -32,15 +31,11 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="objetivo_id">
+                <input type="hidden" name="curso_modelo_id" value="<?php echo $curso_modelo_id ?>">
 
                 <div class="row">
-                    <span>OBJETIVO_DESCRIPCION: </span>
-                    <input type="text" name="objetivo_descripcion" placeholder="OBJETIVO_DESCRIPCION">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
-                    <select name="curso_modelo_id"></select>
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="objetivo_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

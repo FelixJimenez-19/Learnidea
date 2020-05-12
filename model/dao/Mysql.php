@@ -15,7 +15,8 @@ class Mysql
     }
     public function conectar()
     {
-        $this->conn = mysqli_connect("192.168.0.2", "root", "", "learnidea");
+        $this->conn = mysqli_connect("localhost", "root", "", "learnidea");
+        // $this->conn = mysqli_connect("192.168.0.2", "root", "", "learnidea");
         // $this->conn = mysqli_connect("26.133.63.149", "root", "", "learnidea");
         return $this->conn;
     }

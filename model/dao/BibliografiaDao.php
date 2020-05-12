@@ -18,6 +18,10 @@ class BibliografiaDao
     {
         return $this->conn->query("SELECT * FROM bibliografia WHERE bibliografia_id = $bibliografia_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM bibliografia WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($bibliografia_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO bibliografia SET bibliografia_descripcion='$bibliografia_descripcion', curso_modelo_id=$curso_modelo_id ");

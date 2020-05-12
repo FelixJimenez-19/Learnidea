@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>EVALUACION_DIAGNOSTICA</span>
+        <span>EVALUACION DIAGNOSTICA</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,11 +16,10 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>EVALUACION_DIAGNOSTICA_ID</td>
-                    <td>EVALUACION_DIAGNOSTICA_TECNICA</td>
-                    <td>EVALUACION_DIAGNOSTICA_INSTRUMENTO</td>
-                    <td>EVALUACION_DIAGNOSTICA_DESCRIPCION</td>
-                    <td>CURSO_MODELO_ID</td>
+                    <td>ID</td>
+                    <td>TECNICA</td>
+                    <td>INSTRUMENTO</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -34,25 +33,21 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="evaluacion_diagnostica_id">
+                <input type="hidden" name="curso_modelo_id" value="<?php echo $curso_modelo_id ?>">
 
                 <div class="row">
-                    <span>EVALUACION_DIAGNOSTICA_TECNICA: </span>
-                    <input type="text" name="evaluacion_diagnostica_tecnica" placeholder="EVALUACION_DIAGNOSTICA_TECNICA">
+                    <span>TECNICA: </span>
+                    <input type="text" name="evaluacion_diagnostica_tecnica" placeholder="TECNICA">
                 </div>
 
                 <div class="row">
-                    <span>EVALUACION_DIAGNOSTICA_INSTRUMENTO: </span>
-                    <input type="text" name="evaluacion_diagnostica_instrumento" placeholder="EVALUACION_DIAGNOSTICA_INSTRUMENTO">
+                    <span>INSTRUMENTO: </span>
+                    <input type="text" name="evaluacion_diagnostica_instrumento" placeholder="INSTRUMENTO">
                 </div>
 
                 <div class="row">
-                    <span>EVALUACION_DIAGNOSTICA_DESCRIPCION: </span>
-                    <input type="text" name="evaluacion_diagnostica_descripcion" placeholder="EVALUACION_DIAGNOSTICA_DESCRIPCION">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
-                    <select name="curso_modelo_id"></select>
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="evaluacion_diagnostica_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

@@ -18,6 +18,10 @@ class EstrategiaDao
     {
         return $this->conn->query("SELECT * FROM estrategia WHERE estrategia_id = $estrategia_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM estrategia WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($estrategia_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO estrategia SET estrategia_descripcion='$estrategia_descripcion', curso_modelo_id=$curso_modelo_id ");

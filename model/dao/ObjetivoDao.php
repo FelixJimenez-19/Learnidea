@@ -18,6 +18,10 @@ class ObjetivoDao
     {
         return $this->conn->query("SELECT * FROM objetivo WHERE objetivo_id = $objetivo_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM objetivo WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($objetivo_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO objetivo SET objetivo_descripcion='$objetivo_descripcion', curso_modelo_id=$curso_modelo_id ");

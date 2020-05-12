@@ -18,6 +18,10 @@ class Entorno_aprendizajeDao
     {
         return $this->conn->query("SELECT * FROM entorno_aprendizaje WHERE entorno_aprendizaje_id = $entorno_aprendizaje_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM entorno_aprendizaje WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($entorno_aprendizaje_instalaciones, $entorno_aprendizaje_teorica, $entorno_aprendizaje_practica, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO entorno_aprendizaje SET entorno_aprendizaje_instalaciones='$entorno_aprendizaje_instalaciones', entorno_aprendizaje_teorica='$entorno_aprendizaje_teorica', entorno_aprendizaje_practica='$entorno_aprendizaje_practica', curso_modelo_id=$curso_modelo_id ");

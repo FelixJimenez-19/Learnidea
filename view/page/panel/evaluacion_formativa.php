@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>EVALUACION_FORMATIVA</span>
+        <span>EVALUACION FORMATIVA</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,11 +16,10 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>EVALUACION_FORMATIVA_ID</td>
-                    <td>EVALUACION_FORMATIVA_TECNICA</td>
-                    <td>EVALUACION_FORMATIVA_INSTRUMENTO</td>
-                    <td>EVALUACION_FORMATIVA_DESCRIPCION</td>
-                    <td>CURSO_MODELO_ID</td>
+                    <td>ID</td>
+                    <td>TECNICA</td>
+                    <td>INSTRUMENTO</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -34,25 +33,21 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="evaluacion_formativa_id">
+                <input type="hidden" name="curso_modelo_id" value="<?php echo $curso_modelo_id ?>">
 
                 <div class="row">
-                    <span>EVALUACION_FORMATIVA_TECNICA: </span>
-                    <input type="text" name="evaluacion_formativa_tecnica" placeholder="EVALUACION_FORMATIVA_TECNICA">
+                    <span>TECNICA: </span>
+                    <input type="text" name="evaluacion_formativa_tecnica" placeholder="TECNICA">
                 </div>
 
                 <div class="row">
-                    <span>EVALUACION_FORMATIVA_INSTRUMENTO: </span>
-                    <input type="text" name="evaluacion_formativa_instrumento" placeholder="EVALUACION_FORMATIVA_INSTRUMENTO">
+                    <span>INSTRUMENTO: </span>
+                    <input type="text" name="evaluacion_formativa_instrumento" placeholder="INSTRUMENTO">
                 </div>
 
                 <div class="row">
-                    <span>EVALUACION_FORMATIVA_DESCRIPCION: </span>
-                    <input type="text" name="evaluacion_formativa_descripcion" placeholder="EVALUACION_FORMATIVA_DESCRIPCION">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
-                    <select name="curso_modelo_id"></select>
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="evaluacion_formativa_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

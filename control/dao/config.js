@@ -7,9 +7,11 @@ config = {
     key: `#tXCGuR8.UEy""p`,
     protocol: "http",
     host: "192.168.0.2",
+    // host: "192.168.0.2",
     // host: "26.133.63.149",
     proyect: "learnidea",
     getUrl: () => {
-        return `${config.protocol}://${config.host}/${config.proyect}/`;
+        // return `${config.protocol}://${config.host}/${config.proyect}/`;
+        return `./`;
     },
 };

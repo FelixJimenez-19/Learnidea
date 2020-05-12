@@ -18,6 +18,10 @@ class Evaluacion_diagnosticaDao
     {
         return $this->conn->query("SELECT * FROM evaluacion_diagnostica WHERE evaluacion_diagnostica_id = $evaluacion_diagnostica_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM evaluacion_diagnostica WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($evaluacion_diagnostica_tecnica, $evaluacion_diagnostica_instrumento, $evaluacion_diagnostica_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO evaluacion_diagnostica SET evaluacion_diagnostica_tecnica='$evaluacion_diagnostica_tecnica', evaluacion_diagnostica_instrumento='$evaluacion_diagnostica_instrumento', evaluacion_diagnostica_descripcion='$evaluacion_diagnostica_descripcion', curso_modelo_id=$curso_modelo_id ");

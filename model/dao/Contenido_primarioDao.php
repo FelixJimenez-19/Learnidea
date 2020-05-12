@@ -18,6 +18,10 @@ class Contenido_primarioDao
     {
         return $this->conn->query("SELECT * FROM contenido_primario WHERE contenido_primario_id = $contenido_primario_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM contenido_primario WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($contenido_primario_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO contenido_primario SET contenido_primario_descripcion='$contenido_primario_descripcion', curso_modelo_id=$curso_modelo_id ");

@@ -18,6 +18,10 @@ class Evaluacion_formativaDao
     {
         return $this->conn->query("SELECT * FROM evaluacion_formativa WHERE evaluacion_formativa_id = $evaluacion_formativa_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM evaluacion_formativa WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($evaluacion_formativa_tecnica, $evaluacion_formativa_instrumento, $evaluacion_formativa_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO evaluacion_formativa SET evaluacion_formativa_tecnica='$evaluacion_formativa_tecnica', evaluacion_formativa_instrumento='$evaluacion_formativa_instrumento', evaluacion_formativa_descripcion='$evaluacion_formativa_descripcion', curso_modelo_id=$curso_modelo_id ");

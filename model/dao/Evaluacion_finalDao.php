@@ -18,6 +18,10 @@ class Evaluacion_finalDao
     {
         return $this->conn->query("SELECT * FROM evaluacion_final WHERE evaluacion_final_id = $evaluacion_final_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM evaluacion_final WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($evaluacion_final_tecnica, $evaluacion_final_instrumento, $evaluacion_final_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO evaluacion_final SET evaluacion_final_tecnica='$evaluacion_final_tecnica', evaluacion_final_instrumento='$evaluacion_final_instrumento', evaluacion_final_descripcion='$evaluacion_final_descripcion', curso_modelo_id=$curso_modelo_id ");

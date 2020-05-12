@@ -43,8 +43,8 @@ const entity = {
                 entity.view.form.usuario_id.value = entity.curso_modelo.database[index].usuario_id;
             }
             entity.view.modalForm.style.top = "0%";
+            entity.fun.closeBrowserIframe();
         },
-
         hideModalForm: () => {
             entity.curso_modelo.index = null;
             entity.view.form.curso_modelo_id.value = "";
@@ -60,7 +60,6 @@ const entity = {
             entity.view.form.usuario_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
-
         showModalMessage: (msg) => {
             entity.view.modalMessage.style.top = "0%";
             entity.view.message.innerHTML = msg;
@@ -86,7 +85,6 @@ const entity = {
         submitForm: (evt) => {
             evt.preventDefault();
         },
-
         getHtmlTr: (register, index) => {
             return `
                 <tr>
@@ -94,13 +92,13 @@ const entity = {
                     <td>${register.curso_modelo_nombre}</td>
                     <td>${register.curso_modelo_hora_teorica}</td>
                     <td>${register.curso_modelo_hora_practica}</td>
-                    <td>${register.area_id}</td>
-                    <td>${register.especificacion_id}</td>
-                    <td>${register.alineacion_id}</td>
-                    <td>${register.participante_tipo_id}</td>
-                    <td>${register.modalidad_id}</td>
-                    <td>${register.duracion_id}</td>
-                    <td>${register.usuario_id}</td>
+                    <td>${register.area_codigo}</td>
+                    <td>${register.especificacion_codigo}</td>
+                    <td>${register.alineacion_descripcion}</td>
+                    <td>${register.participante_tipo_descripcion}</td>
+                    <td>${register.modalidad_descripcion}</td>
+                    <td>${register.duracion_descripcion}</td>
+                    <td>${register.usuario_nombre}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_modelo.index = ${index})">
@@ -110,7 +108,6 @@ const entity = {
                 </tr>
             `;
         },
-
         search: (evt) => {
             let textSearch = evt.srcElement.value.toLowerCase();
             if (textSearch !== "") {
@@ -137,8 +134,49 @@ const entity = {
                 entity.curso_modelo.fun.select();
             }
         },
+        loadBrowserIframe: (page, iframe_id) => {
+            const URL = "browser.php?url=view/page/panel/";
+            let iframe = document.getElementById(iframe_id);
+            let curso_modelo_id = entity.view.form.curso_modelo_id.value;
+            if (iframe.src === "") {
+                iframe.src = URL + page + ".php&curso_modelo_id=" + curso_modelo_id;
+            }
+        },
+        closeBrowserIframe: () => {
+            let iframes = document.querySelectorAll(".iframe-container .sub-iframe-container .iframe");
+            let radios = document.querySelectorAll(".content-form input[name='radio-option']");
+            let curso_modelo_id = entity.view.form.curso_modelo_id.value;
+            if(entity.curso_modelo.curso_modelo_id != curso_modelo_id && (curso_modelo_id != 0 || curso_modelo_id === '')) {
+                entity.curso_modelo.curso_modelo_id = curso_modelo_id;
+                for(let i of iframes) {
+                    i.removeAttribute("src");
+                }
+                for(let i of radios) {
+                    i.checked = false;
+                }
+            }
+            if(curso_modelo_id === '') {
+                document.getElementById("idea_iframes-container").style.display = "none";
+                document.getElementById("idea_iframes-msg").style.display = "flex";
+                document.getElementById("idea_form-btn-submit").innerText = "CREAR";
+            } else {
+                document.getElementById("idea_iframes-container").style.display = "flex";
+                document.getElementById("idea_iframes-msg").style.display = "none";
+                document.getElementById("idea_form-btn-submit").innerText = "GUARDAR";
+            }
+        },
+        // 0 || false = left, 1 || true = right
+        scrollHorizontal: (direction, element_id, increment) => {
+            let element = document.getElementById(element_id);
+            if (direction == 0) {
+                element.scrollLeft -= increment;
+            } else {
+                element.scrollLeft += increment;
+            }
+        },
     },
     curso_modelo: {
+        curso_modelo_id: 0,
         database: [],
         index: null,
         fun: {

@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.contenido_transversal.crud.select();
-    await entity.selects.curso_modelo();
+    // await entity.selects.curso_modelo();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -35,7 +35,7 @@ const entity = {
             entity.contenido_transversal.index = null;
             entity.view.form.contenido_transversal_id.value = "";
             entity.view.form.contenido_transversal_descripcion.value = "";
-            entity.view.form.curso_modelo_id.value = "";
+            // entity.view.form.curso_modelo_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -70,7 +70,6 @@ const entity = {
                 <tr>
                     <td>${register.contenido_transversal_id}</td>
                     <td>${register.contenido_transversal_descripcion}</td>
-                    <td>${register.curso_modelo_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.contenido_transversal.index = ${index})">
@@ -126,7 +125,9 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Contenido_transversalDao.select()
+                let formData = new FormData();
+                formData.append("curso_modelo_id", curso_modelo_id);
+                await Contenido_transversalDao.selectByCurso_modelo_id(formData)
                     .then((res) => {
                         entity.contenido_transversal.database = res;
                         entity.contenido_transversal.fun.select();
@@ -177,8 +178,8 @@ const entity = {
                 let html = `<option value="">CURSO_MODELO_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
-`;
+                        <option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
+                    `;
                 }
                 entity.view.form.curso_modelo_id.innerHTML = html;
             });

@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.evaluacion_diagnostica.crud.select();
-    await entity.selects.curso_modelo();
+    // await entity.selects.curso_modelo();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -39,7 +39,7 @@ const entity = {
             entity.view.form.evaluacion_diagnostica_tecnica.value = "";
             entity.view.form.evaluacion_diagnostica_instrumento.value = "";
             entity.view.form.evaluacion_diagnostica_descripcion.value = "";
-            entity.view.form.curso_modelo_id.value = "";
+            // entity.view.form.curso_modelo_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -76,7 +76,6 @@ const entity = {
                     <td>${register.evaluacion_diagnostica_tecnica}</td>
                     <td>${register.evaluacion_diagnostica_instrumento}</td>
                     <td>${register.evaluacion_diagnostica_descripcion}</td>
-                    <td>${register.curso_modelo_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.evaluacion_diagnostica.index = ${index})">
@@ -139,7 +138,9 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Evaluacion_diagnosticaDao.select()
+                let formData = new FormData();
+                formData.append("curso_modelo_id", curso_modelo_id);
+                await Evaluacion_diagnosticaDao.selectByCurso_modelo_id(formData)
                     .then((res) => {
                         entity.evaluacion_diagnostica.database = res;
                         entity.evaluacion_diagnostica.fun.select();
@@ -190,8 +191,8 @@ const entity = {
                 let html = `<option value="">CURSO_MODELO_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
-`;
+                        <option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
+                    `;
                 }
                 entity.view.form.curso_modelo_id.innerHTML = html;
             });

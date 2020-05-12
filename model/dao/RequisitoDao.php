@@ -18,6 +18,10 @@ class RequisitoDao
     {
         return $this->conn->query("SELECT * FROM requisito WHERE requisito_id = $requisito_id");
     }
+    public function selectByCurso_modelo_id($curso_modelo_id)
+    {
+        return $this->conn->query("SELECT * FROM requisito WHERE curso_modelo_id = $curso_modelo_id");
+    }
     public function insert($requisito_descripcion, $curso_modelo_id)
     {
         return $this->conn->query("INSERT INTO requisito SET requisito_descripcion='$requisito_descripcion', curso_modelo_id=$curso_modelo_id ");
