@@ -145,6 +145,7 @@ body {
   left: 0;
   z-index: 1000;
   display: flex;
+  align-items: center;
   width: 100%;
   height: 40px;
   background: var(--primary);
@@ -209,7 +210,7 @@ body {
   height: 100%;
   justify-content: center;
   align-items: center;
-/*  margin: 0 0 0 auto;*/
+  /*  margin: 0 0 0 auto;*/
   padding: 0 10px;
 }
 
@@ -256,7 +257,7 @@ body {
   height: 0;
   min-height: 0;
   padding: 0;
-  box-shadow: 0 4px 6px 0 rgba(0,0,0,0.3), -2px 4px 6px 0 rgba(0,0,0,0.3), 2px 4px 6px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3), -2px 4px 6px 0 rgba(0, 0, 0, 0.3), 2px 4px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 .idea_header .idea_profile .idea_profile_options img {
@@ -683,7 +684,7 @@ border-style: inset;
   max-width: 500px;
   height: 100%;
   max-height: 600px;
-  background: var(--tertiary);
+  background: var(--quaternary);
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #000;
   overflow: auto;
@@ -707,7 +708,7 @@ border-style: inset;
   width: 100%;
   height: 100%;
   padding: 10px;
-  background: var(--tertiary);
+  background: var(--quaternary);
   overflow: auto;
 }
 
@@ -831,7 +832,7 @@ border-style: inset;
   height: 100%;
   font-size: 30px;
   font-weight: bold;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   color: var(--primary);
   border-radius: 0px;
 }
@@ -844,7 +845,7 @@ border-style: inset;
   width: 100%;
   height: 35px;
   min-height: 35px;
-  border-top: 3px solid var(--tertiary);
+  border-top: 3px solid var(--quaternary);
 }
 
 .idea_content .idea_form form .buttons button {
@@ -997,16 +998,91 @@ border-style: inset;
 }
 
 @media (max-width: 500px) {
-  #idea_input_check_header_tool:not(:checked) ~ .idea_header .idea_profile {
-    width: 30px;
+  .idea_header .idea_profile:before {
+    position: absolute;
+    top: 28px;
+    right: 7px;
+    content: '';
+    display: none;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: var(--secondary);
   }
-  
-  #idea_input_check_header_tool:not(:checked) ~ .idea_header .idea_profile span {
+
+  #idea_input_check_profile:checked ~ .idea_profile:before {
+    display: block;
+  }
+
+  .idea_header .idea_profile .idea_profile_options {
+    top: 35px;
+  }
+
+  .idea_header .idea_profile {
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    border-radius: 4px;
+    margin: 0 0 0 5px;
+  }
+
+  .idea_header .idea_profile span {
     width: 0px;
   }
-  
-  #idea_input_check_header_tool:not(:checked) ~ .idea_header .idea_profile img {
+
+  .idea_header .idea_profile img {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    min-width: inherit;
     margin: 0px;
+  }
+
+
+  /*  TOOL*/
+  .idea_tool {
+    left: 0;
+  }
+  
+  .idea_content {
+    padding: 40px 0 0 0;
+  }
+  
+  .idea_header .idea_title {
+    width: 150px;
+    
+  }
+  
+  .idea_header .idea_menu {
+    background: var(--primary_hover);
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 2px -1px 3px 0 rgba(0,0,0,0.2);
+  }
+  .idea_header .idea_menu:hover {
+    border-left: none;
+  }
+
+  #idea_input_check_header_tool:checked ~ .idea_header .idea_menu {
+    background: var(--primary);
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+  
+  #idea_input_check_header_tool:checked ~ .idea_tool,
+  #idea_input_check_header_tool:checked ~ .idea_header .idea_title {
+    width: 0px;
+  }
+
+  #idea_input_check_header_tool:checked ~ .idea_tool {
+    overflow: visible;
+    width: 200px;
+    left: -100%;
+  }
+  
+  #idea_input_check_header_tool:checked ~ .idea_content {
+    padding: 40px 0 0 0;
   }
 }
 

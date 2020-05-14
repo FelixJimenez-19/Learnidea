@@ -67,7 +67,7 @@
 
 .idea_header .notification-msg-container:before {
   position: absolute;
-  bottom: -7px;
+  top: 25px;
   right: 7px;
   content: '';
   display: none;
@@ -79,8 +79,8 @@
 
 .idea_header .notification-msg-container .div-container {
   position: absolute;
-  top: 100%;
-  left: -50px;
+  top: 32px;
+  right: -35px;
   display: flex;
   flex-direction: column;
   width: 240px;

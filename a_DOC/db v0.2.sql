@@ -1,4 +1,4 @@
-#﻿-- //SPEEDSOFT VA A SER EL GENERADOR DE CODIGO PARA CONFIGURACIONES GENERALES DEL PANEL DE ADMINISTRACION, 
+#-- //SPEEDSOFT VA A SER EL GENERADOR DE CODIGO PARA CONFIGURACIONES GENERALES DEL PANEL DE ADMINISTRACION, 
 -- //POR LO QUE EL SISTEMA DEBERA SER MODIFICADO DRASTICAMENTE PARA OPCIONES DE PRESENTACION O VIEW PUBLICO..
 -- //LAS TABLAS INFORMACION, USUARIO[ADMIN||PARTICIPANTE], VA A SER CARGADA EN LA $_SESSION[]
 -- //------------ NOTAS: // -------------
@@ -212,42 +212,42 @@ CREATE TABLE requisito (
     requisito_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     requisito_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE objetivo (
     objetivo_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     objetivo_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE contenido_primario (
     contenido_primario_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     contenido_primario_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE contenido_secundario (
     contenido_secundario_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     contenido_secundario_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE contenido_transversal (
     contenido_transversal_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     contenido_transversal_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE estrategia (
     estrategia_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     estrategia_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE evaluacion_diagnostica (
@@ -256,7 +256,7 @@ CREATE TABLE evaluacion_diagnostica (
     evaluacion_diagnostica_instrumento VARCHAR(100),
     evaluacion_diagnostica_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE evaluacion_formativa (
@@ -265,7 +265,7 @@ CREATE TABLE evaluacion_formativa (
     evaluacion_formativa_instrumento VARCHAR(100),
     evaluacion_formativa_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE evaluacion_final (
@@ -274,7 +274,7 @@ CREATE TABLE evaluacion_final (
     evaluacion_final_instrumento VARCHAR(100),
     evaluacion_final_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 
 CREATE TABLE entorno_aprendizaje (
@@ -283,14 +283,14 @@ CREATE TABLE entorno_aprendizaje (
     entorno_aprendizaje_teorica VARCHAR(100),
     entorno_aprendizaje_practica VARCHAR(100),
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE bibliografia (
     bibliografia_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     bibliografia_descripcion TEXT,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 -- //DEPENDIENTES - FIN
 -- //CURSO_MODELO - FIN
