@@ -131,21 +131,19 @@ if (isset($viewPage)) {
 
                 <div class="row">
                     <span>SEXO: </span>
-                    <select name="usuario_sexo">
-                        <option value="">SEXO</option>
-                        <option value="masculino">MASCULINO</option>
-                        <option value="femenino">FEMENINO</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_sexo" class="input-radio-si-no" value="masculino" placeholder="MASCULINO">
+                        <input type="radio" name="usuario_sexo" class="input-radio-si-no" value="femenino" placeholder="FEMENINO">
+                    </div>
                 </div>
 
                 <div class="row">
                     <span>NIVEL: </span>
-                    <select name="usuario_nivel">
-                        <option value="">USUARIO_NIVEL</option>
-                        <option value="primario">PRIMARIO</option>
-                        <option value="secundario">SECUNDARIO</option>
-                        <option value="superior">SUPERIOR</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_nivel" class="input-radio-si-no" value="primario" placeholder="PRIMARIO">
+                        <input type="radio" name="usuario_nivel" class="input-radio-si-no" value="secundario" placeholder="SECUNDARIO">
+                        <input type="radio" name="usuario_nivel" class="input-radio-si-no" value="superior" placeholder="SUPERIOR">
+                    </div>
                 </div>
 
                 <div class="row">
@@ -160,11 +158,10 @@ if (isset($viewPage)) {
 
                 <div class="row">
                     <span>MODO: </span>
-                    <select name="usuario_tema_mode_dark">
-                        <option value="">MODO</option>
-                        <option value="0">CLEAR</option>
-                        <option value="1">DARK</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_tema_mode_dark" class="input-radio-si-no" value="0" placeholder="CLEAR">
+                        <input type="radio" name="usuario_tema_mode_dark" class="input-radio-si-no" value="1" placeholder="DARK">
+                    </div>
                 </div>
 
                 <div class="row"><span class="section">INFORMACION LABORAL</span></div>

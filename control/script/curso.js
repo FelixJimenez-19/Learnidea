@@ -7,6 +7,7 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.curso.crud.select();
     await entity.selects.curso_modelo();
+    await entity.selects.usuario();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -39,6 +40,7 @@ const entity = {
                 entity.view.form.curso_certificado_record.value = entity.curso.database[index].curso_certificado_record;
                 entity.view.form.curso_certificacion_live.value = entity.curso.database[index].curso_certificacion_live;
                 entity.view.form.curso_modelo_id.value = entity.curso.database[index].curso_modelo_id;
+                entity.view.form.usuario_id.value = entity.curso.database[index].usuario_id;
             }
             entity.view.modalForm.style.top = "0%";
         },
@@ -51,7 +53,7 @@ const entity = {
             entity.view.form.curso_fecha_fin.value = "";
             entity.view.form.curso_cupos.value = "";
             entity.view.form.curso_whatsapp.value = "";
-            entity.view.form.curso_calificacion.value = "";
+            entity.view.form.curso_calificacion.value = "0";
             entity.view.form.curso_proximo.value = "";
             entity.view.form.curso_visible.value = "";
             entity.view.form.curso_precio_live.value = "";
@@ -60,6 +62,7 @@ const entity = {
             entity.view.form.curso_certificado_record.value = "";
             entity.view.form.curso_certificacion_live.value = "";
             entity.view.form.curso_modelo_id.value = "";
+            entity.view.form.usuario_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -98,14 +101,16 @@ const entity = {
                     <td>${register.curso_fecha_fin}</td>
                     <td>${register.curso_cupos}</td>
                     <td>${register.curso_whatsapp}</td>
-                    <td>${register.curso_calificacion}</td>
-                    <td>${register.curso_proximo}</td>
-                    <td>${register.curso_visible}</td>
-                    <td>${register.curso_precio_live}</td>
-                    <td>${register.curso_precio_record}</td>
-                    <td>${register.curso_certificado_live}</td>
-                    <td>${register.curso_certificado_record}</td>
-                    <td>${register.curso_certificacion_live}</td>
+                    <td>
+                        <img src='view/src/icon/star_${register.curso_calificacion}.png' class="stars" />
+                    </td>
+                    <td>$${register.curso_precio_live}</td>
+                    <td>$${register.curso_precio_record}</td>
+                    <td>${register.curso_proximo == 1 ? 'SI' : 'NO' }</td>
+                    <td>${register.curso_visible == 1 ? 'SI' : 'NO' }</td>
+                    <td>${register.curso_certificado_live == 1 ? 'SI' : 'NO' }</td>
+                    <td>${register.curso_certificado_record == 1 ? 'SI' : 'NO' }</td>
+                    <td>${register.curso_certificacion_live == 1 ? 'SI' : 'NO' }</td>
                     <td>${register.curso_modelo_id}</td>
                     <td><img src="${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}"/></td>
                     <td>
@@ -168,7 +173,6 @@ const entity = {
                     entity.view.form.curso_fecha_fin.value !== "" &&
                     entity.view.form.curso_cupos.value !== "" &&
                     entity.view.form.curso_whatsapp.value !== "" &&
-                    entity.view.form.curso_calificacion.value !== "" &&
                     entity.view.form.curso_proximo.value !== "" &&
                     entity.view.form.curso_visible.value !== "" &&
                     entity.view.form.curso_precio_live.value !== "" &&
@@ -238,13 +242,24 @@ const entity = {
     selects: {
         curso_modelo: async () => {
             await Curso_modeloDao.select().then((res) => {
-                let html = `<option value="">CURSO_MODELO_ID</option>`;
+                let html = `<option value="">MODELO</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_id}</option>
-`;
+                        <option value="${res[i].curso_modelo_id}">${res[i].curso_modelo_nombre}</option>
+                    `;
                 }
                 entity.view.form.curso_modelo_id.innerHTML = html;
+            });
+        },
+        usuario: async () => {
+            await UsuarioDao.select().then((res) => {
+                let html = `<option value="">USUARIO</option>`;
+                for (let i = 0; i < res.length; i++) {
+                    html += `
+                        <option value="${res[i].usuario_id}">${res[i].usuario_nombre}</option>
+                    `;
+                }
+                entity.view.form.usuario_id.innerHTML = html;
             });
         },
     },

@@ -10,7 +10,7 @@ include './../../dao/Mysql.php';
 include './../../dao/CursoDao.php';
 include './../../function/validation.php';
 $_entity = new CursoDao();
-if (isset($_POST['curso_nombre']) and isset($_POST['curso_fecha_inicio']) and isset($_POST['curso_fecha_fin']) and isset($_POST['curso_cupos']) and isset($_POST['curso_whatsapp']) and isset($_POST['curso_calificacion']) and isset($_POST['curso_proximo']) and isset($_POST['curso_visible']) and isset($_POST['curso_precio_live']) and isset($_POST['curso_precio_record']) and isset($_POST['curso_certificado_live']) and isset($_POST['curso_certificado_record']) and isset($_POST['curso_certificacion_live']) and isset($_POST['curso_modelo_id']) and isset($_POST['key'])) {
+if (isset($_POST['curso_nombre']) and isset($_POST['curso_fecha_inicio']) and isset($_POST['curso_fecha_fin']) and isset($_POST['curso_cupos']) and isset($_POST['curso_whatsapp']) and isset($_POST['curso_calificacion']) and isset($_POST['curso_proximo']) and isset($_POST['curso_visible']) and isset($_POST['curso_precio_live']) and isset($_POST['curso_precio_record']) and isset($_POST['curso_certificado_live']) and isset($_POST['curso_certificado_record']) and isset($_POST['curso_certificacion_live']) and isset($_POST['curso_modelo_id']) and isset($_POST['usuario_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $curso_nombre = $_POST['curso_nombre'];
         $curso_fecha_inicio = $_POST['curso_fecha_inicio'];
@@ -26,7 +26,8 @@ if (isset($_POST['curso_nombre']) and isset($_POST['curso_fecha_inicio']) and is
         $curso_certificado_record = $_POST['curso_certificado_record'];
         $curso_certificacion_live = $_POST['curso_certificacion_live'];
         $curso_modelo_id = $_POST['curso_modelo_id'];
-        $_entity->insert($curso_nombre, $curso_fecha_inicio, $curso_fecha_fin, $curso_cupos, $curso_whatsapp, $curso_calificacion, $curso_proximo, $curso_visible, $curso_precio_live, $curso_precio_record, $curso_certificado_live, $curso_certificado_record, $curso_certificacion_live, $curso_modelo_id);
+        $usuario_id = $_POST['usuario_id'];
+        $_entity->insert($curso_nombre, $curso_fecha_inicio, $curso_fecha_fin, $curso_cupos, $curso_whatsapp, $curso_calificacion, $curso_proximo, $curso_visible, $curso_precio_live, $curso_precio_record, $curso_certificado_live, $curso_certificado_record, $curso_certificacion_live, $curso_modelo_id, $usuario_id);
 
         if (isset($_FILES['curso_foto'])) {
             $curso_foto = $_FILES['curso_foto'];
@@ -35,7 +36,7 @@ if (isset($_POST['curso_nombre']) and isset($_POST['curso_fecha_inicio']) and is
                     mkdir("../../../view/src/files/curso_foto", 0700);
                 }
 
-                $curso_id = mysqli_fetch_assoc($_entity->selectByAll($curso_nombre, $curso_fecha_inicio, $curso_fecha_fin, $curso_cupos, $curso_whatsapp, $curso_calificacion, $curso_proximo, $curso_visible, $curso_precio_live, $curso_precio_record, $curso_certificado_live, $curso_certificado_record, $curso_certificacion_live, $curso_modelo_id))['curso_id'];
+                $curso_id = mysqli_fetch_assoc($_entity->selectByAll($curso_nombre, $curso_fecha_inicio, $curso_fecha_fin, $curso_cupos, $curso_whatsapp, $curso_calificacion, $curso_proximo, $curso_visible, $curso_precio_live, $curso_precio_record, $curso_certificado_live, $curso_certificado_record, $curso_certificacion_live, $curso_modelo_id, $usuario_id))['curso_id'];
 
                 $desde = $curso_foto['tmp_name'];
                 $hasta = "../../../view/src/files/curso_foto/" . $curso_id . ".png";

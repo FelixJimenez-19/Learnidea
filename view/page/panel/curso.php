@@ -16,23 +16,22 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>CURSO_ID</td>
-                    <td>CURSO_NOMBRE</td>
-                    <td>CURSO_FECHA_INICIO</td>
-                    <td>CURSO_FECHA_FIN</td>
-                    <td>CURSO_CUPOS</td>
-                    <td>CURSO_WHATSAPP</td>
-                    <td>CURSO_CALIFICACION</td>
-                    <td>CURSO_PROXIMO</td>
-                    <td>CURSO_VISIBLE</td>
-                    <td>CURSO_PRECIO_LIVE</td>
-                    <td>CURSO_PRECIO_RECORD</td>
-                    <td>CURSO_CERTIFICADO_LIVE</td>
-                    <td>CURSO_CERTIFICADO_RECORD</td>
-                    <td>CURSO_CERTIFICACION_LIVE</td>
-                    <td>CURSO_MODELO_ID</td>
-                    <td>CURSO_FOTO</td>
-
+                    <td>ID</td>
+                    <td>NOMBRE</td>
+                    <td>INICIO</td>
+                    <td>FIN</td>
+                    <td>CUPOS</td>
+                    <td>WHATSAPP</td>
+                    <td>CALIFICACION</td>
+                    <td>PRECIO LIVE</td>
+                    <td>PRECIO RECORD</td>
+                    <td>PROXIMO</td>
+                    <td>VISIBLE</td>
+                    <td>CERTIFICADO LIVE</td>
+                    <td>CERTIFICADO RECORD</td>
+                    <td>CERTIFICACION LIVE</td>
+                    <td>MODELO</td>
+                    <td>FOTO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -46,80 +45,96 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="curso_id">
+                <input type="hidden" name="curso_calificacion">
 
                 <div class="row">
-                    <span>CURSO_NOMBRE: </span>
-                    <input type="text" name="curso_nombre" placeholder="CURSO_NOMBRE">
+                    <span>NOMBRE: </span>
+                    <input type="text" name="curso_nombre" placeholder="NOMBRE">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_FECHA_INICIO: </span>
-                    <input type="text" name="curso_fecha_inicio" placeholder="CURSO_FECHA_INICIO">
+                    <span>INICIO: </span>
+                    <input type="date" name="curso_fecha_inicio" placeholder="INICIO">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_FECHA_FIN: </span>
-                    <input type="text" name="curso_fecha_fin" placeholder="CURSO_FECHA_FIN">
+                    <span>FIN: </span>
+                    <input type="date" name="curso_fecha_fin" placeholder="FIN">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_CUPOS: </span>
-                    <input type="number" name="curso_cupos" placeholder="CURSO_CUPOS">
+                    <span>CUPOS: </span>
+                    <input type="number" name="curso_cupos" placeholder="CUPOS">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_WHATSAPP: </span>
-                    <input type="text" name="curso_whatsapp" placeholder="CURSO_WHATSAPP">
+                    <span>GRUPO WHATSAPP: </span>
+                    <input type="text" name="curso_whatsapp" placeholder="WHATSAPP LINK">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_CALIFICACION: </span>
-                    <input type="number" name="curso_calificacion" placeholder="CURSO_CALIFICACION">
+                    <span>PRECIO LIVE: </span>
+                    <input type="number" name="curso_precio_live" placeholder="PRECIO LIVE">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_PROXIMO: </span>
-                    <input type="number" name="curso_proximo" placeholder="CURSO_PROXIMO">
+                    <span>PRECIO RECORD: </span>
+                    <input type="number" name="curso_precio_record" placeholder="PRECIO RECORD">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_VISIBLE: </span>
-                    <input type="number" name="curso_visible" placeholder="CURSO_VISIBLE">
+                    <span>ANUNCIAR: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="curso_proximo" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="curso_proximo" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_PRECIO_LIVE: </span>
-                    <input type="number" name="curso_precio_live" placeholder="CURSO_PRECIO_LIVE">
+                    <span>VISIBLE: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="curso_visible" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="curso_visible" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_PRECIO_RECORD: </span>
-                    <input type="number" name="curso_precio_record" placeholder="CURSO_PRECIO_RECORD">
+                    <span>CERTIFICADO LIVE: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="curso_certificado_live" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="curso_certificado_live" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_CERTIFICADO_LIVE: </span>
-                    <input type="number" name="curso_certificado_live" placeholder="CURSO_CERTIFICADO_LIVE">
+                    <span>CERTIFICADO RECORD: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="curso_certificado_record" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="curso_certificado_record" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_CERTIFICADO_RECORD: </span>
-                    <input type="number" name="curso_certificado_record" placeholder="CURSO_CERTIFICADO_RECORD">
+                    <span>CERTIFICACION LIVE: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="curso_certificacion_live" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="curso_certificacion_live" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_CERTIFICACION_LIVE: </span>
-                    <input type="number" name="curso_certificacion_live" placeholder="CURSO_CERTIFICACION_LIVE">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_MODELO_ID: </span>
+                    <span>MODELO: </span>
                     <select name="curso_modelo_id"></select>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_FOTO: </span>
-                    <input type="file" name="curso_foto" placeholder="CURSO_FOTO">
+                    <span>USUARIO: </span>
+                    <select name="usuario_id"></select>
+                </div>
+
+                <div class="row">
+                    <span>FOTO: </span>
+                    <input type="file" name="curso_foto" placeholder="FOTO">
                 </div>
 
             </div>

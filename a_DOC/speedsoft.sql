@@ -274,7 +274,9 @@ CREATE TABLE curso (
     curso_certificado_record BOOLEAN,
     curso_certificacion_live BOOLEAN,
     curso_modelo_id INT,
-    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id)
+    usuario_id INT,
+    FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"curso_deber_foto"}] }

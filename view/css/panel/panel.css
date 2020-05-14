@@ -750,6 +750,7 @@ border-style: inset;
   border-radius: 5px;
 }
 
+.idea_content .idea_form form .inputs .row .input-radio-container,
 .idea_content .idea_form form .inputs .row select,
 .idea_content .idea_form form .inputs .row input {
   width: 61%;
@@ -783,6 +784,87 @@ border-style: inset;
   padding: 0 0 0 5px;
   color: var(--primary);
 }
+
+
+
+
+
+/*INPUT RADIO SI/NO*/
+.idea_content .idea_form form .inputs .row .input-radio-container {
+  display: flex;
+  padding: 0px;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no {
+  position: relative;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:after, 
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+  
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:before {
+  background: var(--primary_hover);
+  z-index: 100;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:first-child:before {
+  left: 100%;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:last-child:before {
+  left: -100%;
+}
+
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:hover:after{
+  background: #cdcdcd;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:checked:before {
+  left: 0;
+}
+  
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:after {
+  left: 0;
+  content: attr(placeholder);
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  background: #FFFFFF;
+  font-size: 0.85em;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:last-child:before,
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:last-child:after {
+  border-radius: 0 5px 5px 0;
+}
+
+.idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:checked:after {
+  color: var(--tertiary);
+  font-weight: bold;
+  background: none;
+}
+/*INPUT RADIO SI/NO*/
+
+
+
+
+
+
+
 
 /*Picker - Select with button - inline-3*/
 .idea_content .idea_form form .inputs .row .inline-3,

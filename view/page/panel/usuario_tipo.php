@@ -44,38 +44,34 @@ if (isset($viewPage)) {
 
                 <div class="row">
                     <span>SUPER: </span>
-                    <select name="usuario_tipo_super">
-                        <option value="">SUPER</option>
-                        <option value="1">SI</option>
-                        <option value="0">NO</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_tipo_super" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="usuario_tipo_super" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
                     <span>ADMIN: </span>
-                    <select name="usuario_tipo_admin">
-                        <option value="">ADMIN</option>
-                        <option value="1">SI</option>
-                        <option value="0">NO</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_tipo_admin" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="usuario_tipo_admin" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
                     <span>COACH: </span>
-                    <select name="usuario_tipo_coach">
-                        <option value="">COACH</option>
-                        <option value="1">SI</option>
-                        <option value="0">NO</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_tipo_coach" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="usuario_tipo_coach" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">
                     <span>USER: </span>
-                    <select name="usuario_tipo_user">
-                        <option value="">USER</option>
-                        <option value="1">SI</option>
-                        <option value="0">NO</option>
-                    </select>
+                    <div class="input-radio-container">
+                        <input type="radio" name="usuario_tipo_user" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="usuario_tipo_user" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
                 <div class="row">

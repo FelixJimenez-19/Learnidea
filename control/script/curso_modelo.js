@@ -1,3 +1,4 @@
+console.log(Session.getSession());
 /*
 _____________________________________________________________________________________________
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.

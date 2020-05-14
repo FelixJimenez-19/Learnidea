@@ -38,7 +38,7 @@ Thread.thread2_fun.push(() => chat.notificacion.crud.select());
 chat.view.contactSearch.onkeyup = (evt) => chat.fun.search(evt);
 Thread.thread1(600000);
 // Thread.thread2(60000);
-Thread.thread2(6000);
+Thread.thread2(10000);
 chat.conversacion.fun.loadOpenChat();
 // Thread.thread2(360000);
 // INITIALIZE THREADS - FIN
