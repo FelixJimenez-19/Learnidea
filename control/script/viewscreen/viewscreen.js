@@ -1,6 +1,7 @@
 let viewscreen = {
     CONTAINER: document.getElementById("viewscreen-container"),
     IMAGE: document.getElementById("viewscreen-img"),
+    LEVEL: document.getElementById("viewscreen-zoom-level"),
     ZOOM: false,
     show: (url) => {
         viewscreen.CONTAINER.style.display = "flex";
@@ -9,34 +10,52 @@ let viewscreen = {
     hide: () => {
         viewscreen.CONTAINER.style.display = "none";
         viewscreen.IMAGE.style.backgroundImage = "";
-        viewscreen.ZOOM = false;
-        viewscreen.IMAGE.style.cursor = "zoom-in";
-        viewscreen.IMAGE.style.backgroundSize = "contain";
-        viewscreen.IMAGE.style.backgroundPosition = "center";
     },
-    inzoom: (zoom) => {
+    // true->plus || false->less || null->nothing
+    zoom: (bool, value) => {
+        let zoom = viewscreen.LEVEL;
+        value = value === null ? 10 : value;
+        (bool === true) ? zoom.value = parseInt(zoom.value) + value: '';
+        (bool === false) ? zoom.value = parseInt(zoom.value) - value: '';
+        (zoom.value > 100) ? zoom.value = 100: '';
+        if (zoom.value <= 0) {
+            viewscreen.zoomout();
+        } else {
+            viewscreen.zoomin();
+            let zoomVal = parseInt(zoom.value) + 100;
+            viewscreen.IMAGE.style.backgroundSize = zoomVal + "%";
+        }
+    },
+    zoomin: () => {
         viewscreen.ZOOM = true;
         viewscreen.IMAGE.style.cursor = "zoom-out";
-        viewscreen.IMAGE.style.backgroundSize = zoom + "%";
     },
-    outzoom: () => {
+    zoomout: () => {
         viewscreen.ZOOM = false;
-        viewscreen.IMAGE.style.cursor = "zoom-in";
-        viewscreen.IMAGE.style.backgroundSize = "contain";
+        viewscreen.LEVEL.value = "0";
         viewscreen.IMAGE.style.backgroundPosition = "center";
+        viewscreen.IMAGE.style.backgroundSize = "contain";
+        viewscreen.IMAGE.style.cursor = "zoom-in";
     },
     move: (evt) => {
-        if (viewscreen.ZOOM) {
-            let posX = (evt.offsetX / viewscreen.IMAGE.clientWidth) * 100;
-            let posY = (evt.offsetY / viewscreen.IMAGE.clientHeight) * 100;
+        if (viewscreen.ZOOM && viewscreen.LEVEL.value > 0) {
+            let posX = ((evt.offsetX / viewscreen.IMAGE.clientWidth) * 100);
+            let posY = ((evt.offsetY / viewscreen.IMAGE.clientHeight) * 100);
             viewscreen.IMAGE.style.backgroundPositionX = posX + "%";
             viewscreen.IMAGE.style.backgroundPositionY = posY + "%";
         }
     }
 }
 
-viewscreen.IMAGE.onmousemove = (evt) => viewscreen.move(evt);
-
 viewscreen.IMAGE.onclick = (evt) => {
-    (viewscreen.ZOOM) ? viewscreen.outzoom() : viewscreen.inzoom(150);
+    if (viewscreen.ZOOM) {
+        viewscreen.zoomout();
+    } else {
+        viewscreen.zoomin();
+        viewscreen.zoom(true, 50);
+        viewscreen.move(evt);
+    }
 }
+
+viewscreen.LEVEL.onkeyup = () => viewscreen.zoom(null, null);
+viewscreen.IMAGE.onmousemove = (evt) => viewscreen.move(evt);

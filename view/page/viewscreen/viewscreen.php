@@ -8,14 +8,14 @@
     </button>
     <div id="viewscreen-img"></div>
     <div class="zoom-level">
-      <button class="plus">
+      <button class="plus" onclick="viewscreen.zoom(true, null)">
         <img src="view/src/icon/plus.png">
       </button>
       <div class="level">
-        <input type="number" value="0">
+        <input type="number" value="0" id="viewscreen-zoom-level">
         <span>%</span>
       </div>
-      <button class="less">
+      <button class="less" onclick="viewscreen.zoom(false, null)">
         <img src="view/src/icon/less.png">
       </button>
     </div>

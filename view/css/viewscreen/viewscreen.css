@@ -53,7 +53,7 @@
   height: 100%;
   max-height: 600px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.89);
+  background-color: #000000;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -73,8 +73,9 @@
   right: 0;
   margin: 0 auto;
   display: flex;
-  width: 200px;
-  height: 50px;
+  width: 150px;
+  height: 30px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
 }
 
 #viewscreen-container .zoom-level button {
@@ -86,7 +87,7 @@
 
 #viewscreen-container .zoom-level button img {
   height: 100%;
-  padding: 10px;
+  padding: 5px;
   filter: invert(1);
 }
 
@@ -102,7 +103,7 @@
 #viewscreen-container .zoom-level .level input {
   flex: 2;
   width: 100%;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: end;
 }
 
@@ -115,5 +116,25 @@
 #viewscreen-container .zoom-level .level span {
   flex: 1;
   width: 100%;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+
+@media (max-width: 600px) {
+  #viewscreen-container #viewscreen-img {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  #viewscreen-container #viewscreen-img {
+    margin: 5px;
+    max-height: inherit;
+  }
+}
+
+@media (max-width: 550px) {
+  #viewscreen-container #viewscreen-img {
+    margin: 0px;
+  }
 }
