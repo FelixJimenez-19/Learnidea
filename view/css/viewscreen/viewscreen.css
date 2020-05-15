@@ -1,0 +1,119 @@
+#viewscreen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  display: none;
+/*  display: flex;*/
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+
+#viewscreen-container .close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 10px 10px 0 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  transition: all 0.1s ease;
+}
+
+#viewscreen-container .close img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+  padding: 8px;
+  transition: all 0.1s ease;
+}
+
+#viewscreen-container .close:hover {
+  background: #FFFFFF;
+  box-shadow: 0 0 5px 1px #FFFFFF;
+  transition: all 0.1s ease;
+}
+
+#viewscreen-container .close:hover img {
+  filter: invert(0);
+  transition: all 0.1s ease;
+}
+
+#viewscreen-container #viewscreen-img {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 600px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.89);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 20px;
+  cursor: zoom-in;
+}
+
+
+
+
+
+
+#viewscreen-container .zoom-level {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  width: 200px;
+  height: 50px;
+}
+
+#viewscreen-container .zoom-level button {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#viewscreen-container .zoom-level button img {
+  height: 100%;
+  padding: 10px;
+  filter: invert(1);
+}
+
+#viewscreen-container .zoom-level .level {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+#viewscreen-container .zoom-level .level input {
+  flex: 2;
+  width: 100%;
+  font-size: 2em;
+  text-align: end;
+}
+
+#viewscreen-container .zoom-level .level input::-webkit-inner-spin-button, 
+#viewscreen-container .zoom-level .level input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#viewscreen-container .zoom-level .level span {
+  flex: 1;
+  width: 100%;
+  font-size: 2em;
+}

@@ -215,12 +215,21 @@
   margin: 0 5px 0 0;
 }
 
-.chat-container .item-container .item .chat .contact .connect {
-  box-shadow: 0 0 0px 2px #008846;
+.chat-container .item-container .item .chat .connect {
+  position: relative;
 }
 
-.chat-container .item-container .item .chat .contact .disconnect {
-  box-shadow: 0 0 0 2px gray;
+.chat-container .item-container .item .chat .connect:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  display: flex;
+  width: 7px;
+  height: 7px;
+  background: #42B72A;
+  border-radius: 50%;
+  border: solid 2px #FFFFFF;
 }
 
 .chat-container .item-container .item .chat .contact .user {

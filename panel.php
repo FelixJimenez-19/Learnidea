@@ -181,114 +181,6 @@ if (isset($_SESSION['usuario_email'])) {
                 <!-- POR COMPLETAR - START -->
                 <!-- 
           <div class="idea_option">
-            <a href="panel.php?page=curso_modelo">
-              <label>
-                <span>Curso_modelo</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=requisito">
-              <label>
-                <span>Requisito</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=objetivo">
-              <label>
-                <span>Objetivo</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=contenido_primario">
-              <label>
-                <span>Contenido_primario</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=contenido_secundario">
-              <label>
-                <span>Contenido_secundario</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=contenido_transversal">
-              <label>
-                <span>Contenido_transversal</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=estrategia">
-              <label>
-                <span>Estrategia</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=evaluacion_diagnostica">
-              <label>
-                <span>Evaluacion_diagnostica</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=evaluacion_formativa">
-              <label>
-                <span>Evaluacion_formativa</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=evaluacion_final">
-              <label>
-                <span>Evaluacion_final</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=entorno_aprendizaje">
-              <label>
-                <span>Entorno_aprendizaje</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel.php?page=bibliografia">
-              <label>
-                <span>Bibliografia</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
             <a href="panel.php?page=curso">
               <label>
                 <span>Curso</span>
@@ -567,6 +459,15 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/script/chat/chat.js"></script>
         <script src="control/script/chat/ChatThread.js"></script>
         <!--    Implement Chat - end        -->
+
+        <!--    Implement ViewScreen - start      -->
+        <!-- CSS -->
+        <link rel="stylesheet" href="view/css/viewscreen/viewscreen.css">
+        <!-- PHP -->
+        <?php include 'view/page/viewscreen/viewscreen.php' ?>
+        <!-- JS -->
+        <script src="control/script/viewscreen/viewscreen.js"></script>
+        <!--    Implement ViewScreen - end        -->
 
     </body>
 

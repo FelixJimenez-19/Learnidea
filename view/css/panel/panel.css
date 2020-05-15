@@ -548,6 +548,7 @@ body {
 .idea_content .idea_table tbody tr td img {
   /*  width: 30px;*/
   height: 30px;
+  pointer-events: inherit;
 }
 
 .idea_content .idea_table tbody tr td .stars {

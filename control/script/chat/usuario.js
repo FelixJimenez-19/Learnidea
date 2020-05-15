@@ -7,11 +7,8 @@ const usuario = {
             let connected = usuario.fun.isConnected(index);
             if (connected === queryConnected) {
                 return `
-                    <div class="contact" onclick="chat.open(${index})">
-                        <img 
-                            src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}" 
-                            class="${ connected ? 'connect' : 'disconnect' }"
-                        >
+                    <div class="contact ${ connected ? 'connect' : '' }" onclick="chat.open(${index})">
+                        <img src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}">
                         <div class="user">
                             <div class="name">
                                 <span>${register.usuario_nombre}</span>

@@ -109,10 +109,16 @@ const entity = {
                     <td>${register.usuario_id}</td>
                     <td>${register.usuario_nombre}</td>
                     <td>
-                        <img src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}"/>
+                        <img 
+                            src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}"
+                            onclick="viewscreen.show('${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}')"    
+                        />
                     </td>
                     <td>
-                        <img src="${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}"/>
+                        <img 
+                            src="${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}"
+                            onclick="viewscreen.show('${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}')"    
+                        />
                     </td>
                     <td>
                         <a target="_blank" ${register.usuario_curriculum !== null ? 'href="view/src/files/usuario_curriculum/' + register.usuario_curriculum + '"' : ""}">

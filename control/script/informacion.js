@@ -101,14 +101,20 @@ const entity = {
                     <td><div class="long-text">${register.informacion_empresa_vision}</div></td>
                     <td>${register.informacion_ubicacion}</td>
                     <td>
-                        <img src="${register.informacion_empresa_logo !== null ? "view/src/files/informacion_empresa_logo/" + register.informacion_empresa_logo : "view/src/img/avatar.png"}"/>
+                        <img 
+                        onclick="viewscreen.show('${register.informacion_empresa_logo !== null ? "view/src/files/informacion_empresa_logo/" + register.informacion_empresa_logo : "view/src/img/avatar.png"}')" 
+                            src="${register.informacion_empresa_logo !== null ? "view/src/files/informacion_empresa_logo/" + register.informacion_empresa_logo : "view/src/img/avatar.png"}"
+                        />
                     </td>
                     <td>${register.informacion_pagina_nombre}</td>
                     <td><div class="long-text">${register.informacion_pagina_mision}</div></td>
                     <td><div class="long-text">${register.informacion_pagina_vision}</div></td>
                     <td><div class="long-text">${register.informacion_pagina_copyright}</div></td>
                     <td>
-                        <img src="${register.informacion_pagina_logo !== null ? "view/src/files/informacion_pagina_logo/" + register.informacion_pagina_logo : "view/src/img/avatar.png"}"/>
+                        <img 
+                        onclick="viewscreen.show('${register.informacion_pagina_logo !== null ? "view/src/files/informacion_pagina_logo/" + register.informacion_pagina_logo : "view/src/img/avatar.png"}')" 
+                            src="${register.informacion_pagina_logo !== null ? "view/src/files/informacion_pagina_logo/" + register.informacion_pagina_logo : "view/src/img/avatar.png"}"
+                        />
                     </td>
                     <td>${register.informacion_gerente_nombre}</td>
                     <td>${register.informacion_gerente_celular}</td>

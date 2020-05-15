@@ -112,7 +112,12 @@ const entity = {
                     <td>${register.curso_certificado_record == 1 ? 'SI' : 'NO' }</td>
                     <td>${register.curso_certificacion_live == 1 ? 'SI' : 'NO' }</td>
                     <td>${register.curso_modelo_id}</td>
-                    <td><img src="${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <img 
+                            onclick="viewscreen.show('${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}')" 
+                            src="${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/avatar.png"}"
+                        />
+                    </td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso.index = ${index})">

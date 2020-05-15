@@ -70,7 +70,12 @@ const entity = {
                     <td>${register.contacto_id}</td>
                     <td>${register.contacto_nombre}</td>
                     <td>${register.contacto_url}</td>
-                    <td><img src="${register.contacto_icon !== null ? "view/src/files/contacto_icon/" + register.contacto_icon : "view/src/img/avatar.png"}"/></td>
+                    <td>
+                        <img 
+                        onclick="viewscreen.show('${register.contacto_icon !== null ? "view/src/files/contacto_icon/" + register.contacto_icon : "view/src/img/avatar.png"}')" 
+                            src="${register.contacto_icon !== null ? "view/src/files/contacto_icon/" + register.contacto_icon : "view/src/img/avatar.png"}"
+                        />
+                    </td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.contacto.index = ${index})">
