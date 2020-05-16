@@ -713,6 +713,7 @@ border-style: inset;
   overflow: auto;
 }
 
+.idea_content .idea_form form .inputs .row-editor,
 .idea_content .idea_form form .inputs .row {
   display: flex;
   align-items: center;
@@ -723,6 +724,12 @@ border-style: inset;
   border-radius: 7px;
 }
 
+.idea_content .idea_form form .inputs .row-editor {
+  flex-direction: column;
+  height: auto;
+}
+
+.idea_content .idea_form form .inputs .row-editor .row-editor-title,
 .idea_content .idea_form form .inputs .row span {
   display: flex;
   justify-content: flex-end;
@@ -735,6 +742,29 @@ border-style: inset;
   background: var(--primary);
   font-size: 0.85em;
   border-radius: 5px 0 0 5px;
+}
+
+.idea_content .idea_form form .inputs .row-editor .row-editor-title {
+  justify-content: center;
+  width: 100%;
+  max-width: inherit;
+  height: 30px;
+  min-height: 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+.idea_content .idea_form form .inputs .row-editor .note-editor {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0px;
+  border-radius: 0 0 7px 7px;
+  border-style: none;
+  border: 2px solid var(--primary);
+}
+
+.idea_content .idea_form form .inputs .row-editor .note-editable {
+  padding: 10px 0 0 35px;
 }
 
 .idea_content .idea_form form .inputs .row .section {
@@ -785,6 +815,8 @@ border-style: inset;
   padding: 0 0 0 5px;
   color: var(--primary);
 }
+
+
 
 
 
@@ -1180,6 +1212,7 @@ border-style: inset;
 
 
 /* _____________ SCROLL _ STYLES ________________ */
+.idea_content .idea_form form .inputs .row-editor .note-editable::-webkit-scrollbar,
 .idea_header .notification-msg-container .div-container::-webkit-scrollbar,
 .idea_content .idea_content_table::-webkit-scrollbar,
 .idea_content .idea_form form .inputs::-webkit-scrollbar,
@@ -1189,6 +1222,7 @@ border-style: inset;
   height: 5px;
 }
 
+.idea_content .idea_form form .inputs .row-editor .note-editable::-webkit-scrollbar-thumb,
 .idea_header .notification-msg-container .div-container::-webkit-scrollbar-thumb,
 .idea_content .idea_content_table::-webkit-scrollbar-thumb,
 .idea_content .idea_form form .inputs::-webkit-scrollbar-thumb,
@@ -1198,6 +1232,7 @@ border-style: inset;
   border-radius: 7px;
 }
 
+.idea_content .idea_form form .inputs .row-editor .note-editable::-webkit-scrollbar-thumb:hover,
 .idea_header .notification-msg-container .div-container::-webkit-scrollbar-thumb:hover,
 .idea_content .idea_content_table::-webkit-scrollbar-thumb:hover,
 .idea_content .idea_form form .inputs::-webkit-scrollbar-thumb:hover,
@@ -1207,6 +1242,7 @@ border-style: inset;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.idea_content .idea_form form .inputs .row-editor .note-editable::-webkit-scrollbar-track,
 .idea_header .notification-msg-container .div-container::-webkit-scrollbar-track,
 .idea_content .idea_content_table::-webkit-scrollbar-track,
 .idea_content .idea_form form .inputs::-webkit-scrollbar-track,

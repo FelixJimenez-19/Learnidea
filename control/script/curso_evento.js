@@ -7,6 +7,10 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.curso_evento.crud.select();
     await entity.selects.curso();
+    $('#curso_evento-editor').summernote({
+        minHeight: 100,
+        maxHeight: 250,
+    });
 }
 // MASTER OBJECT INI
 const entity = {
