@@ -10,6 +10,7 @@ let viewscreen = {
     hide: () => {
         viewscreen.CONTAINER.style.display = "none";
         viewscreen.IMAGE.style.backgroundImage = "";
+        viewscreen.zoomout();
     },
     // true->plus || false->less || null->nothing
     zoom: (bool, value) => {

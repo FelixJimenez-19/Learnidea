@@ -349,6 +349,7 @@
   border-radius: 2px 2px 5px 5px;
   margin: 1px;
   background-color: #FFFFFF;
+  pointer-events: inherit;
 }
 
 .chat-container .item-container .item .chat .me .texto-imagen-container .mensaje_foto {

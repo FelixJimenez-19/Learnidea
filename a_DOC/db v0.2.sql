@@ -322,6 +322,15 @@ CREATE TABLE curso (
     FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
 ) ENGINE INNODB;
 
+CREATE TABLE curso_evento (
+    curso_evento_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    curso_evento_nombre VARCHAR(50),
+    curso_evento_fecha VARCHAR(50),
+    curso_evento_descripcion TEXT,
+    curso_id INT,
+    FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+) ENGINE INNODB;
+
 -- @@@@options:{ "files": [{"type":"png", "name":"curso_deber_foto"}] }
 CREATE TABLE curso_deber (
     curso_deber_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

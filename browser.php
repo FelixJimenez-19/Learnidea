@@ -66,6 +66,7 @@ if (isset($_SESSION['usuario_email']) && isset($_GET['url'])) {
         <script src="control/dao/Entorno_aprendizajeDao.js"></script>
         <script src="control/dao/BibliografiaDao.js"></script>
         <script src="control/dao/CursoDao.js"></script>
+        <script src="control/dao/Curso_eventoDao.js"></script>
         <script src="control/dao/Curso_deberDao.js"></script>
         <script src="control/dao/Curso_seccionDao.js"></script>
         <script src="control/dao/Seccion_videoDao.js"></script>

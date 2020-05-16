@@ -14,7 +14,13 @@ const mensaje = {
                     ${ me ? '' : msg.usuario1_foto !== null ? `<img src="view/src/files/usuario_foto/${ msg.usuario1_foto }"/>`: `<img src="view/src/img/avatar.png"/>`}
                     <span class="texto-imagen-container">
                         <p>${ mensaje.fun.prepareMsg(msg.mensaje_texto) }</p>
-                        ${ msg.mensaje_foto !== null ? `<img class="mensaje_foto" src="view/src/files/mensaje_foto/${ msg.mensaje_foto}" />` : ""}
+                        ${ msg.mensaje_foto !== null ? `
+                            <img 
+                                class="mensaje_foto" 
+                                onclick="viewscreen.show('view/src/files/mensaje_foto/${ msg.mensaje_foto}')" 
+                                src="view/src/files/mensaje_foto/${ msg.mensaje_foto}" 
+                            />
+                        ` : ""}
                     </span>
                 </div>
                 ${ last && msg.mensaje_visto == 1 && me ? 
