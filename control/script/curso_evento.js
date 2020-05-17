@@ -7,10 +7,7 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.curso_evento.crud.select();
     await entity.selects.curso();
-    $('#curso_evento-editor').summernote({
-        minHeight: 100,
-        maxHeight: 250,
-    });
+    entity.view.editor.summernote()
 }
 // MASTER OBJECT INI
 const entity = {
@@ -22,7 +19,8 @@ const entity = {
         message: document.getElementById("idea_message"),
         modalConfirm: document.getElementById("idea_modal_confirm"),
         confirm: document.getElementById("idea_confirm"),
-        search: document.getElementById("idea_search")
+        search: document.getElementById("idea_search"),
+        editor: $('#curso_evento-editor')
     },
     fun: {
 
@@ -32,7 +30,8 @@ const entity = {
                 entity.view.form.curso_evento_id.value = entity.curso_evento.database[index].curso_evento_id;
                 entity.view.form.curso_evento_nombre.value = entity.curso_evento.database[index].curso_evento_nombre;
                 entity.view.form.curso_evento_fecha.value = entity.curso_evento.database[index].curso_evento_fecha;
-                entity.view.form.curso_evento_descripcion.value = entity.curso_evento.database[index].curso_evento_descripcion;
+                entity.view.editor.summernote('code', entity.curso_evento.database[index].curso_evento_descripcion);
+                
                 entity.view.form.curso_id.value = entity.curso_evento.database[index].curso_id;
             }
             entity.view.modalForm.style.top = '0%';
@@ -45,6 +44,7 @@ const entity = {
             entity.view.form.curso_evento_nombre.value = "";
             entity.view.form.curso_evento_fecha.value = "";
             entity.view.form.curso_evento_descripcion.value = "";
+            entity.view.editor.summernote('code', "");
             entity.view.form.curso_id.value = "";
             entity.view.modalForm.style.top = '-100%';
         },
@@ -81,7 +81,7 @@ const entity = {
                     <td>${ register.curso_evento_id }</td>
                     <td>${ register.curso_evento_nombre }</td>
                     <td>${ register.curso_evento_fecha }</td>
-                    <td>${ register.curso_evento_descripcion }</td>
+                    <td class="table-td-editor">${ register.curso_evento_descripcion }</td>
                     <td>${ register.curso_id }</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${ index })"><img src="view/src/icon/edit.png"></button>

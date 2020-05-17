@@ -546,9 +546,15 @@ body {
 
 .idea_content .idea_table tbody tr td a,
 .idea_content .idea_table tbody tr td img {
-  /*  width: 30px;*/
   height: 30px;
   pointer-events: inherit;
+}
+
+.idea_content .idea_table tbody tr .table-td-editor img {
+  width: auto;
+  max-width: 100px;
+  height: auto;
+  max-height: 100px;
 }
 
 .idea_content .idea_table tbody tr td .stars {
@@ -764,6 +770,7 @@ border-style: inset;
 }
 
 .idea_content .idea_form form .inputs .row-editor .note-editable {
+  min-height: 150px;
   padding: 10px 0 0 35px;
 }
 

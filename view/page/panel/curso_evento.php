@@ -6,7 +6,6 @@ ________________________________________________________________________________
 */
 if (isset($viewPage)) {
 ?>
-    <link rel="stylesheet" href="view/css/curso_evento/curso_evento.css">
     <link rel="stylesheet" href="view/css/bootstrap.css">
     <link rel="stylesheet" href="control/lib/summernote/summernote.min.css">
     <div class="header">
