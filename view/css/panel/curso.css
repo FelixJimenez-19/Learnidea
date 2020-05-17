@@ -106,7 +106,7 @@
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
   display: flex;
   width: 100%;
-  height: 105px;
+  height: 40px;
   box-shadow: 0 3px 5px 0 #000;
 }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .options-container {
@@ -155,7 +155,7 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  min-width: 1000px;
+  min-width: 100px;
   max-width: inherit;
   background: var(--secondary_hover);
   color: var(--tertiary_hover);
@@ -185,7 +185,7 @@
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 label span {
   display: block;
-  transform: rotate(-90deg);
+/*  transform: rotate(-90deg);*/
   margin: 0px;
   width: 100%;
   transition: all 0.15s ease;
@@ -208,7 +208,7 @@
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container {
   display: flex;
-  width: 1200%;
+  width: 400%;
   height: 100%;
   margin-left: 0;
 }
@@ -258,59 +258,27 @@
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .options label[for="radio-option-1"],
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .options label[for="radio-option-2"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-4:checked ~ .options label[for="radio-option-4"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-5:checked ~ .options label[for="radio-option-5"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-6:checked ~ .options label[for="radio-option-6"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-7:checked ~ .options label[for="radio-option-7"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-8:checked ~ .options label[for="radio-option-8"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-9:checked ~ .options label[for="radio-option-9"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-10:checked ~ .options label[for="radio-option-10"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-11:checked ~ .options label[for="radio-option-11"] {
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"] {
   flex-grow: 2;
   background: var(--secondary_hover);
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .options label[for="radio-option-1"],
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .options label[for="radio-option-2"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-4:checked ~ .options label[for="radio-option-4"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-5:checked ~ .options label[for="radio-option-5"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-6:checked ~ .options label[for="radio-option-6"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-7:checked ~ .options label[for="radio-option-7"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-8:checked ~ .options label[for="radio-option-8"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-9:checked ~ .options label[for="radio-option-9"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-10:checked ~ .options label[for="radio-option-10"],
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-11:checked ~ .options label[for="radio-option-11"] {
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"] {
   color: var(--tertiary);
 }
 
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .options label[for="radio-option-1"] span,
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .options label[for="radio-option-2"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-4:checked ~ .options label[for="radio-option-4"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-5:checked ~ .options label[for="radio-option-5"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-6:checked ~ .options label[for="radio-option-6"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-7:checked ~ .options label[for="radio-option-7"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-8:checked ~ .options label[for="radio-option-8"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-9:checked ~ .options label[for="radio-option-9"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-10:checked ~ .options label[for="radio-option-10"] span,
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-11:checked ~ .options label[for="radio-option-11"] span {
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .options label[for="radio-option-3"] span {
   transform: rotate(0deg);
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .iframe-container .sub-iframe-container { margin-left: -100%; }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .iframe-container .sub-iframe-container { margin-left: -200%; }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .iframe-container .sub-iframe-container { margin-left: -300%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-4:checked ~ .iframe-container .sub-iframe-container { margin-left: -400%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-5:checked ~ .iframe-container .sub-iframe-container { margin-left: -500%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-6:checked ~ .iframe-container .sub-iframe-container { margin-left: -600%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-7:checked ~ .iframe-container .sub-iframe-container { margin-left: -700%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-8:checked ~ .iframe-container .sub-iframe-container { margin-left: -800%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-9:checked ~ .iframe-container .sub-iframe-container { margin-left: -900%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-10:checked ~ .iframe-container .sub-iframe-container { margin-left: -1000%; }
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-11:checked ~ .iframe-container .sub-iframe-container { margin-left: -1100%; }
 
 /*   CHECKED RADIO SELECTED   -  END   */
 
@@ -320,44 +288,13 @@
 
 
 
-
-
-
-
-
-
-
-
-@media (max-width: 1250px) {
-  .idea_content .idea_form .content-forms .sub-content-forms {
-    position: relative;
-  }
-  
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form {
-    padding: 100px 0 0 0;
-  }
-  
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 {}
-  
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-  
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .iframe-msg,
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-msg {
-    min-height: 70vh;
-  }
-}
-
 @media (max-width: 900px) {
   .idea_content .idea_form .content-forms {
     height: 100%;
     max-height: inherit;
   }
   .idea_content .idea_form .content-forms .sub-content-forms {
+    position: relative;
     display: block;
     height: 100%;
     max-height: none;
@@ -376,11 +313,11 @@
   
   .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
     max-width: inherit;
-    min-height: 500px;
-    max-height: 500px;
-    padding: 70px 0 0 0;
+    min-height: 630px;
+    max-height: 630px;
     border-right: none;
   }
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 {
     height: auto;
     max-height: inherit;
@@ -389,7 +326,7 @@
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2,
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container,
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
-    min-height: 70vh;
+    min-height: 90vh;
   }
   
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
@@ -397,14 +334,23 @@
   }
   
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
-/*    position: static;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     overflow-x: auto;
     display: flex;
   }
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options label {
     display: inline-flex;
     width: 100px;
     height: auto;
+  }
+  
+  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .iframe-msg,
+  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-msg {
+    min-height: 70vh;
   }
 }
 

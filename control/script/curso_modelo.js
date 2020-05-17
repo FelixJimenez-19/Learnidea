@@ -146,16 +146,16 @@ const entity = {
             let iframes = document.querySelectorAll(".iframe-container .sub-iframe-container .iframe");
             let radios = document.querySelectorAll(".content-form input[name='radio-option']");
             let curso_modelo_id = entity.view.form.curso_modelo_id.value;
-            if(entity.curso_modelo.curso_modelo_id != curso_modelo_id && (curso_modelo_id != 0 || curso_modelo_id === '')) {
+            if (entity.curso_modelo.curso_modelo_id != curso_modelo_id && (curso_modelo_id != 0 || curso_modelo_id === '')) {
                 entity.curso_modelo.curso_modelo_id = curso_modelo_id;
-                for(let i of iframes) {
+                for (let i of iframes) {
                     i.removeAttribute("src");
                 }
-                for(let i of radios) {
+                for (let i of radios) {
                     i.checked = false;
                 }
             }
-            if(curso_modelo_id === '') {
+            if (curso_modelo_id === '') {
                 document.getElementById("idea_iframes-container").style.display = "none";
                 document.getElementById("idea_iframes-msg").style.display = "flex";
                 document.getElementById("idea_form-btn-submit").innerText = "CREAR";
@@ -174,9 +174,18 @@ const entity = {
                 element.scrollLeft += increment;
             }
         },
+        existByName: (nombre) => {
+            for (let i in entity.curso_modelo.database) {
+                if (entity.curso_modelo.database[i].curso_modelo_nombre.toLowerCase() == nombre.toLowerCase() && entity.curso_modelo.index != i) {
+                    return true;
+                }
+            }
+            return false;
+        }
     },
     curso_modelo: {
         curso_modelo_id: 0,
+        curso_modelo_nombre: 0,
         database: [],
         index: null,
         fun: {
@@ -201,10 +210,14 @@ const entity = {
                     entity.view.form.duracion_id.value !== "" &&
                     entity.view.form.usuario_id.value !== ""
                 ) {
-                    if (entity.curso_modelo.index === null) {
-                        entity.curso_modelo.crud.insert();
+                    if (!entity.fun.existByName(entity.view.form.curso_modelo_nombre.value)) {
+                        if (entity.curso_modelo.index === null) {
+                            entity.curso_modelo.crud.insert();
+                        } else {
+                            entity.curso_modelo.crud.update();
+                        }
                     } else {
-                        entity.curso_modelo.crud.update();
+                        entity.fun.showModalMessage("Ya existe un modelo con este nombre!");
                     }
                 } else {
                     entity.fun.showModalMessage("Debe llenar todos los campos!");
@@ -225,9 +238,12 @@ const entity = {
             },
             insert: () => {
                 Curso_modeloDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.curso_modelo.crud.select();
+                    .then(async (res) => {
+                        entity.curso_modelo.curso_modelo_nombre = entity.view.form.curso_modelo_nombre.value;
+                        await entity.curso_modelo.crud.select();
                         entity.fun.hideModalForm();
+                        let index = entity.curso_modelo.database.findIndex(element => element.curso_modelo_nombre === entity.curso_modelo.curso_modelo_nombre);
+                        index > 0 ? entity.fun.showModalForm(index) : '';
                     })
                     .catch((res) => {
                         entity.fun.showModalMessage("Problemas al conectar con el servidor");

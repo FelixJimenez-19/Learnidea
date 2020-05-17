@@ -43,6 +43,7 @@ const entity = {
                 entity.view.form.usuario_id.value = entity.curso.database[index].usuario_id;
             }
             entity.view.modalForm.style.top = "0%";
+            entity.fun.closeBrowserIframe();
         },
 
         hideModalForm: () => {
@@ -158,8 +159,58 @@ const entity = {
                 entity.curso.fun.select();
             }
         },
+        loadBrowserIframe: (page, iframe_id) => {
+            const URL = "browser.php?url=view/page/panel/";
+            let iframe = document.getElementById(iframe_id);
+            let curso_id = entity.view.form.curso_id.value;
+            if (iframe.src === "") {
+                iframe.src = URL + page + ".php&curso_id=" + curso_id;
+            }
+        },
+        closeBrowserIframe: () => {
+            let iframes = document.querySelectorAll(".iframe-container .sub-iframe-container .iframe");
+            let radios = document.querySelectorAll(".content-form input[name='radio-option']");
+            let curso_id = entity.view.form.curso_id.value;
+            if (entity.curso.curso_id != curso_id && (curso_id != 0 || curso_id === '')) {
+                entity.curso.curso_id = curso_id;
+                for (let i of iframes) {
+                    i.removeAttribute("src");
+                }
+                for (let i of radios) {
+                    i.checked = false;
+                }
+            }
+            if (curso_id === '') {
+                document.getElementById("idea_iframes-container").style.display = "none";
+                document.getElementById("idea_iframes-msg").style.display = "flex";
+                document.getElementById("idea_form-btn-submit").innerText = "CREAR";
+            } else {
+                document.getElementById("idea_iframes-container").style.display = "flex";
+                document.getElementById("idea_iframes-msg").style.display = "none";
+                document.getElementById("idea_form-btn-submit").innerText = "GUARDAR";
+            }
+        },
+        // 0 || false = left, 1 || true = right
+        scrollHorizontal: (direction, element_id, increment) => {
+            let element = document.getElementById(element_id);
+            if (direction == 0) {
+                element.scrollLeft -= increment;
+            } else {
+                element.scrollLeft += increment;
+            }
+        },
+        existByName: (nombre) => {
+            for (let i in entity.curso.database) {
+                if (entity.curso.database[i].curso_nombre.toLowerCase() == nombre.toLowerCase() && entity.curso.index != i) {
+                    return true;
+                }
+            }
+            return false;
+        }
     },
     curso: {
+        curso_id: 0,
+        curso_nombre: 0,
         database: [],
         index: null,
         fun: {
@@ -187,10 +238,14 @@ const entity = {
                     entity.view.form.curso_certificacion_live.value !== "" &&
                     entity.view.form.curso_modelo_id.value !== ""
                 ) {
-                    if (entity.curso.index === null) {
-                        entity.curso.crud.insert();
+                    if (!entity.fun.existByName(entity.view.form.curso_nombre.value)) {
+                        if (entity.curso.index === null) {
+                            entity.curso.crud.insert();
+                        } else {
+                            entity.curso.crud.update();
+                        }
                     } else {
-                        entity.curso.crud.update();
+                        entity.fun.showModalMessage("Ya existe un curso con este nombre!");
                     }
                 } else {
                     entity.fun.showModalMessage("Debe llenar todos los campos!");
@@ -211,9 +266,12 @@ const entity = {
             },
             insert: () => {
                 CursoDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.curso.crud.select();
+                    .then(async (res) => {
+                        entity.curso.curso_nombre = entity.view.form.curso_nombre.value;
+                        await entity.curso.crud.select();
                         entity.fun.hideModalForm();
+                        let index = entity.curso.database.findIndex(element => element.curso_nombre === entity.curso.curso_nombre);
+                        index > 0 ? entity.fun.showModalForm(index) : '';
                     })
                     .catch((res) => {
                         entity.fun.showModalMessage("Problemas al conectar con el servidor");

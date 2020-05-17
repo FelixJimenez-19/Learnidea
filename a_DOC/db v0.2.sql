@@ -197,6 +197,7 @@ CREATE TABLE curso_modelo (
     modalidad_id INT,
     duracion_id INT,
     usuario_id INT,
+    UNIQUE(curso_modelo_nombre),
     FOREIGN KEY (area_id) REFERENCES area (area_id),
     FOREIGN KEY (especificacion_id) REFERENCES especificacion (especificacion_id),
     FOREIGN KEY (alineacion_id) REFERENCES alineacion (alineacion_id),
