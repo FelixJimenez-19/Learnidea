@@ -7,6 +7,7 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.curso_deber.crud.select();
     await entity.selects.curso();
+    entity.view.editor.summernote();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -19,13 +20,15 @@ const entity = {
         modalConfirm: document.getElementById("idea_modal_confirm"),
         confirm: document.getElementById("idea_confirm"),
         search: document.getElementById("idea_search"),
+        editor: $('#curso_evento-editor')
     },
     fun: {
         showModalForm: (index) => {
             entity.curso_deber.index = index;
             if (index !== null) {
                 entity.view.form.curso_deber_id.value = entity.curso_deber.database[index].curso_deber_id;
-                entity.view.form.curso_deber_descripcion.value = entity.curso_deber.database[index].curso_deber_descripcion;
+                // entity.view.form.curso_deber_descripcion.value = entity.curso_deber.database[index].curso_deber_descripcion;
+                entity.view.editor.summernote('code', entity.curso_deber.database[index].curso_deber_descripcion);
                 entity.view.form.curso_deber_link.value = entity.curso_deber.database[index].curso_deber_link;
                 entity.view.form.curso_deber_fecha_inicio.value = entity.curso_deber.database[index].curso_deber_fecha_inicio;
                 entity.view.form.curso_deber_fecha_fin.value = entity.curso_deber.database[index].curso_deber_fecha_fin;
@@ -37,7 +40,8 @@ const entity = {
         hideModalForm: () => {
             entity.curso_deber.index = null;
             entity.view.form.curso_deber_id.value = "";
-            entity.view.form.curso_deber_descripcion.value = "";
+            // entity.view.form.curso_deber_descripcion.value = "";
+            entity.view.editor.summernote('code', '');
             entity.view.form.curso_deber_link.value = "";
             entity.view.form.curso_deber_fecha_inicio.value = "";
             entity.view.form.curso_deber_fecha_fin.value = "";
@@ -75,12 +79,12 @@ const entity = {
             return `
                 <tr>
                     <td>${register.curso_deber_id}</td>
-                    <td>${register.curso_deber_descripcion}</td>
                     <td>${register.curso_deber_link}</td>
                     <td>${register.curso_deber_fecha_inicio}</td>
                     <td>${register.curso_deber_fecha_fin}</td>
-                    <td>${register.curso_id}</td>
                     <td><img src="${register.curso_deber_foto !== null ? "view/src/files/curso_deber_foto/" + register.curso_deber_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>${register.curso_deber_descripcion}</td>
+                    <td>${register.curso_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_deber.index = ${index})">

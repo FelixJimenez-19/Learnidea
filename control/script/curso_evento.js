@@ -7,7 +7,7 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.curso_evento.crud.select();
     await entity.selects.curso();
-    entity.view.editor.summernote()
+    entity.view.editor.summernote();
 }
 // MASTER OBJECT INI
 const entity = {
@@ -31,7 +31,6 @@ const entity = {
                 entity.view.form.curso_evento_nombre.value = entity.curso_evento.database[index].curso_evento_nombre;
                 entity.view.form.curso_evento_fecha.value = entity.curso_evento.database[index].curso_evento_fecha;
                 entity.view.editor.summernote('code', entity.curso_evento.database[index].curso_evento_descripcion);
-                
                 entity.view.form.curso_id.value = entity.curso_evento.database[index].curso_id;
             }
             entity.view.modalForm.style.top = '0%';
@@ -81,7 +80,7 @@ const entity = {
                     <td>${ register.curso_evento_id }</td>
                     <td>${ register.curso_evento_nombre }</td>
                     <td>${ register.curso_evento_fecha }</td>
-                    <td class="table-td-editor">${ register.curso_evento_descripcion }</td>
+                    <td>${ register.curso_evento_descripcion }</td>
                     <td>${ register.curso_id }</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${ index })"><img src="view/src/icon/edit.png"></button>

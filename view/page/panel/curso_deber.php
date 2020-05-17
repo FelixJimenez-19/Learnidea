@@ -6,6 +6,8 @@ ________________________________________________________________________________
 */
 if (isset($viewPage)) {
 ?>
+    <link rel="stylesheet" href="view/css/bootstrap.css">
+    <link rel="stylesheet" href="control/lib/summernote/summernote.min.css">
     <div class="header">
         <span>CURSO_DEBER</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
@@ -16,14 +18,13 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>CURSO_DEBER_ID</td>
-                    <td>CURSO_DEBER_DESCRIPCION</td>
-                    <td>CURSO_DEBER_LINK</td>
-                    <td>CURSO_DEBER_FECHA_INICIO</td>
-                    <td>CURSO_DEBER_FECHA_FIN</td>
-                    <td>CURSO_ID</td>
-                    <td>CURSO_DEBER_FOTO</td>
-
+                    <td>ID</td>
+                    <td>LINK</td>
+                    <td>INICIO</td>
+                    <td>FIN</td>
+                    <td>FOTO</td>
+                    <td>DESCRIPCION</td>
+                    <td>CURSO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -39,33 +40,33 @@ if (isset($viewPage)) {
                 <input type="hidden" name="curso_deber_id">
 
                 <div class="row">
-                    <span>CURSO_DEBER_DESCRIPCION: </span>
-                    <input type="text" name="curso_deber_descripcion" placeholder="CURSO_DEBER_DESCRIPCION">
+                    <span>LINK: </span>
+                    <input type="text" name="curso_deber_link" placeholder="LINK">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_DEBER_LINK: </span>
-                    <input type="text" name="curso_deber_link" placeholder="CURSO_DEBER_LINK">
+                    <span>INICIO: </span>
+                    <input type="datetime-local" name="curso_deber_fecha_inicio" placeholder="INICIO">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_DEBER_FECHA_INICIO: </span>
-                    <input type="text" name="curso_deber_fecha_inicio" placeholder="CURSO_DEBER_FECHA_INICIO">
+                    <span>FIN: </span>
+                    <input type="datetime-local" name="curso_deber_fecha_fin" placeholder="FIN">
                 </div>
 
                 <div class="row">
-                    <span>CURSO_DEBER_FECHA_FIN: </span>
-                    <input type="text" name="curso_deber_fecha_fin" placeholder="CURSO_DEBER_FECHA_FIN">
+                    <span>FOTO: </span>
+                    <input type="file" name="curso_deber_foto" placeholder="FOTO">
+                </div>
+
+                <div class="row-editor">
+                    <span class="row-editor-title">DESCRIPCION</span>
+                    <textarea class="row-editor-textarea" name="curso_deber_descripcion" id="curso_evento-editor"></textarea>
                 </div>
 
                 <div class="row">
-                    <span>CURSO_ID: </span>
+                    <span>CURSO: </span>
                     <select name="curso_id"></select>
-                </div>
-
-                <div class="row">
-                    <span>CURSO_DEBER_FOTO: </span>
-                    <input type="file" name="curso_deber_foto" placeholder="CURSO_DEBER_FOTO">
                 </div>
 
             </div>
@@ -91,6 +92,9 @@ if (isset($viewPage)) {
             </div>
         </div>
     </div>
+    <script src="control/lib/jquery.js"></script>
+    <script src="control/lib/bootstrap.js"></script>
+    <script src="control/lib/summernote/summernote.min.js"></script>
     <script src="control/script/curso_deber.js"></script>
 <?php
 } else {
