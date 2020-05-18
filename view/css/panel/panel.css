@@ -563,6 +563,25 @@ body {
 
 
 
+.idea_content .idea_table tbody tr .iframe-container {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.idea_content .idea_table tbody tr .iframe-container iframe {
+  width: 100%;
+  height: 110px;
+}
+
+.idea_content .idea_table tbody tr .iframe-container span {
+  color: var(--error);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+
+
 
 /*NUEVO RESPOSIVE TABLE - INICIO*/
 /*
@@ -823,6 +842,16 @@ border-style: inset;
   color: var(--primary);
 }
 
+
+.idea_content .idea_form form .inputs .row-iframe {
+  height: auto;
+}
+
+.idea_content .idea_form form .inputs .row-iframe iframe {
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+}
 
 
 

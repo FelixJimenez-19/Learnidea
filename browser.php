@@ -11,6 +11,20 @@ if (isset($_SESSION['usuario_email']) && isset($_GET['url'])) {
                 $curso_modelo_id = 0;
             }
         }
+        $curso_id = 0;
+        if (isset($_GET['curso_id'])) {
+            $curso_id = $_GET['curso_id'];
+            if($curso_id == 0 or $curso_id == "" or $curso_id == null) {
+                $curso_id = 0;
+            }
+        }
+        $curso_seccion_id = 0;
+        if (isset($_GET['curso_seccion_id'])) {
+            $curso_seccion_id = $_GET['curso_seccion_id'];
+            if($curso_seccion_id == 0 or $curso_seccion_id == "" or $curso_seccion_id == null) {
+                $curso_seccion_id = 0;
+            }
+        }
 ?>
         <!DOCTYPE html>
         <html lang="es">
@@ -33,6 +47,8 @@ if (isset($_SESSION['usuario_email']) && isset($_GET['url'])) {
         <script>
             Session.setSession('<?php echo json_encode($_SESSION) ?>');
             let curso_modelo_id = <?php echo $curso_modelo_id ?>;
+            let curso_id = <?php echo $curso_id ?>;
+            let curso_seccion_id = <?php echo $curso_seccion_id ?>;
         </script>
         <!-- SESSION JS | END -->
         <!-- THEME | START -->

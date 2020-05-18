@@ -18,13 +18,17 @@ class Seccion_videoDao
     {
         return $this->conn->query("SELECT * FROM seccion_video WHERE seccion_video_id = $seccion_video_id");
     }
-    public function insert($seccion_video_nombre, $seccion_video_material, $seccion_video_iframe, $seccion_video_descripcion, $curso_seccion_id)
+    public function selectByCurso_seccion_id($curso_seccion_id)
     {
-        return $this->conn->query("INSERT INTO seccion_video SET seccion_video_nombre='$seccion_video_nombre', seccion_video_material='$seccion_video_material', seccion_video_iframe='$seccion_video_iframe', seccion_video_descripcion='$seccion_video_descripcion', curso_seccion_id=$curso_seccion_id ");
+        return $this->conn->query("SELECT * FROM seccion_video WHERE curso_seccion_id = $curso_seccion_id");
     }
-    public function update($seccion_video_nombre, $seccion_video_material, $seccion_video_iframe, $seccion_video_descripcion, $curso_seccion_id, $seccion_video_id)
+    public function insert($seccion_video_nombre, $seccion_video_iframe, $seccion_video_descripcion, $curso_seccion_id)
     {
-        return $this->conn->query("UPDATE seccion_video SET seccion_video_nombre='$seccion_video_nombre', seccion_video_material='$seccion_video_material', seccion_video_iframe='$seccion_video_iframe', seccion_video_descripcion='$seccion_video_descripcion', curso_seccion_id=$curso_seccion_id WHERE seccion_video_id = $seccion_video_id ");
+        return $this->conn->query("INSERT INTO seccion_video SET seccion_video_nombre='$seccion_video_nombre', seccion_video_iframe='$seccion_video_iframe', seccion_video_descripcion='$seccion_video_descripcion', curso_seccion_id=$curso_seccion_id ");
+    }
+    public function update($seccion_video_nombre, $seccion_video_iframe, $seccion_video_descripcion, $curso_seccion_id, $seccion_video_id)
+    {
+        return $this->conn->query("UPDATE seccion_video SET seccion_video_nombre='$seccion_video_nombre', seccion_video_iframe='$seccion_video_iframe', seccion_video_descripcion='$seccion_video_descripcion', curso_seccion_id=$curso_seccion_id WHERE seccion_video_id = $seccion_video_id ");
     }
     public function delete($seccion_video_id)
     {

@@ -311,7 +311,6 @@ CREATE TABLE curso_seccion (
 CREATE TABLE seccion_video (
     seccion_video_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_video_nombre VARCHAR(50),
-    seccion_video_material VARCHAR(50),
     seccion_video_iframe TEXT,
     seccion_video_descripcion TEXT,
     curso_seccion_id INT,

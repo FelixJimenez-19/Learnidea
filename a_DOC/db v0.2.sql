@@ -319,6 +319,7 @@ CREATE TABLE curso (
     curso_certificacion_live BOOLEAN,   -- //Certificacion de parte de un instituto
     curso_modelo_id INT,
     usuario_id INT,
+    UNIQUE(curso_nombre),
     FOREIGN KEY (curso_modelo_id) REFERENCES curso_modelo (curso_modelo_id),
     FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
 ) ENGINE INNODB;
@@ -349,13 +350,13 @@ CREATE TABLE curso_seccion (
     curso_seccion_nombre VARCHAR(50),
     curso_seccion_descripcion TEXT,
     curso_id INT,
+    UNIQUE(curso_seccion_nombre, curso_id),
     FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
 ) ENGINE INNODB;
 
 CREATE TABLE seccion_video (
     seccion_video_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_video_nombre VARCHAR(50),
-    seccion_video_material VARCHAR(50),
     seccion_video_iframe TEXT,
     seccion_video_descripcion TEXT,
     curso_seccion_id INT,

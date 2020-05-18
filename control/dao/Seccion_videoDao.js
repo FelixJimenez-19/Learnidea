@@ -31,6 +31,19 @@ Seccion_videoDao = {
             });
     },
 
+    selectByCurso_seccion_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/seccion_video/selectByCurso_seccion_id.php", {
+            method: "POST",
+            headers: new Headers().append("Accept", "application/json"),
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+
     insert: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/seccion_video/insert.php", {

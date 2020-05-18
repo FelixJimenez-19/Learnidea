@@ -23,7 +23,20 @@ Curso_deberDao = {
         return fetch(config.getUrl() + "model/script/curso_deber/selectById.php", {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
-            c
+            body: formData
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+    
+    selectByCurso_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/curso_deber/selectByCurso_id.php", {
+            method: "POST",
+            headers: new Headers().append("Accept", "application/json"),
+            body: formData
         })
             .then((res) => res.json())
             .then((res) => {

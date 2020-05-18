@@ -108,6 +108,7 @@
   width: 100%;
   height: 105px;
   box-shadow: 0 3px 5px 0 #000;
+  border-bottom: solid 5px var(--secondary_hover);
 }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .options-container {
   display: flex;

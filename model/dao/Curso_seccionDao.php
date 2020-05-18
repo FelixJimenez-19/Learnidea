@@ -18,6 +18,10 @@ class Curso_seccionDao
     {
         return $this->conn->query("SELECT * FROM curso_seccion WHERE curso_seccion_id = $curso_seccion_id");
     }
+    public function selectByCurso_id($curso_id)
+    {
+        return $this->conn->query("SELECT * FROM curso_seccion WHERE curso_id = $curso_id");
+    }
     public function insert($curso_seccion_nombre, $curso_seccion_descripcion, $curso_id)
     {
         return $this->conn->query("INSERT INTO curso_seccion SET curso_seccion_nombre='$curso_seccion_nombre', curso_seccion_descripcion='$curso_seccion_descripcion', curso_id=$curso_id ");

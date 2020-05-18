@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.curso_evento.crud.select();
-    await entity.selects.curso();
+    // await entity.selects.curso();
     entity.view.editor.summernote();
 }
 // MASTER OBJECT INI
@@ -44,7 +44,7 @@ const entity = {
             entity.view.form.curso_evento_fecha.value = "";
             entity.view.form.curso_evento_descripcion.value = "";
             entity.view.editor.summernote('code', "");
-            entity.view.form.curso_id.value = "";
+            // entity.view.form.curso_id.value = "";
             entity.view.modalForm.style.top = '-100%';
         },
 
@@ -81,7 +81,6 @@ const entity = {
                     <td>${ register.curso_evento_nombre }</td>
                     <td>${ register.curso_evento_fecha }</td>
                     <td>${ register.curso_evento_descripcion }</td>
-                    <td>${ register.curso_id }</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${ index })"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_evento.index = ${ index })">
@@ -149,7 +148,9 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Curso_eventoDao.select().then(res => {
+                let formData = new FormData();
+                formData.append("curso_id", curso_id);
+                await Curso_eventoDao.selectByCurso_id(formData).then(res => {
                     entity.curso_evento.database = res;
                     entity.curso_evento.fun.select();
                     entity.fun.hideModalForm();

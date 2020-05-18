@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>SECCION_VIDEO</span>
+        <span>VIDEOS</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,12 +16,10 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>SECCION_VIDEO_ID</td>
-                    <td>SECCION_VIDEO_NOMBRE</td>
-                    <td>SECCION_VIDEO_MATERIAL</td>
-                    <td>SECCION_VIDEO_IFRAME</td>
-                    <td>SECCION_VIDEO_DESCRIPCION</td>
-                    <td>CURSO_SECCION_ID</td>
+                    <td>ID</td>
+                    <td>NOMBRE</td>
+                    <td>IFRAME</td>
+                    <td>DESCRIPCION</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -35,30 +33,26 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="seccion_video_id">
+                <input type="hidden" name="curso_seccion_id" value="<?php echo $curso_seccion_id ?>">
 
                 <div class="row">
-                    <span>SECCION_VIDEO_NOMBRE: </span>
-                    <input type="text" name="seccion_video_nombre" placeholder="SECCION_VIDEO_NOMBRE">
+                    <span>NOMBRE: </span>
+                    <input type="text" name="seccion_video_nombre" placeholder="NOMBRE">
                 </div>
 
                 <div class="row">
-                    <span>SECCION_VIDEO_MATERIAL: </span>
-                    <input type="text" name="seccion_video_material" placeholder="SECCION_VIDEO_MATERIAL">
+                    <span>IFRAME: </span>
+                    <input class="inline-3" type="text" name="seccion_video_iframe" placeholder="IFRAME" onkeypress="entity.fun.loadFormIframe('form-iframe', this.value)">
+                    <a class="inline-3-button" onclick="entity.fun.loadFormIframe('form-iframe', entity.view.form.seccion_video_iframe.value)">
+                        <img src="view/src/icon/load.png">
+                    </a>
                 </div>
 
-                <div class="row">
-                    <span>SECCION_VIDEO_IFRAME: </span>
-                    <input type="text" name="seccion_video_iframe" placeholder="SECCION_VIDEO_IFRAME">
-                </div>
+                <div class="row row-iframe" id="form-iframe"></div>
 
                 <div class="row">
-                    <span>SECCION_VIDEO_DESCRIPCION: </span>
-                    <input type="text" name="seccion_video_descripcion" placeholder="SECCION_VIDEO_DESCRIPCION">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_SECCION_ID: </span>
-                    <select name="curso_seccion_id"></select>
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="seccion_video_descripcion" placeholder="DESCRIPCION">
                 </div>
 
             </div>

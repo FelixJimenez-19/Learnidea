@@ -22,7 +22,6 @@ if (isset($viewPage)) {
                     <td>NOMBRE</td>
                     <td>FECHA</td>
                     <td>DESCRIPCION</td>
-                    <td>CURSO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -36,6 +35,7 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="curso_evento_id">
+                <input type="hidden" name="curso_id" value="<?php echo $curso_id ?>">
 
                 <div class="row">
                     <span>NOMBRE: </span>
@@ -50,11 +50,6 @@ if (isset($viewPage)) {
                 <div class="row-editor">
                     <span class="row-editor-title">DESCRIPCION</span>
                     <textarea class="row-editor-textarea" name="curso_evento_descripcion" id="curso_evento-editor"></textarea>
-                </div>
-
-                <div class="row">
-                    <span>CURSO: </span>
-                    <select name="curso_id"></select>
                 </div>
 
             </div>

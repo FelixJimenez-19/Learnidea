@@ -254,38 +254,27 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await CursoDao.select()
-                    .then((res) => {
-                        entity.curso.database = res;
-                        entity.curso.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                await CursoDao.select().then((res) => {
+                    entity.curso.database = res;
+                    entity.curso.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                CursoDao.insert(new FormData(entity.view.form))
-                    .then(async (res) => {
-                        entity.curso.curso_nombre = entity.view.form.curso_nombre.value;
-                        await entity.curso.crud.select();
-                        entity.fun.hideModalForm();
-                        let index = entity.curso.database.findIndex(element => element.curso_nombre === entity.curso.curso_nombre);
-                        index > 0 ? entity.fun.showModalForm(index) : '';
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                CursoDao.insert(new FormData(entity.view.form)).then(async (res) => {
+                    entity.curso.curso_nombre = entity.view.form.curso_nombre.value;
+                    await entity.curso.crud.select();
+                    entity.fun.hideModalForm();
+                    let index = entity.curso.database.findIndex(element => element.curso_nombre === entity.curso.curso_nombre);
+                    index > 0 ? entity.fun.showModalForm(index) : '';
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
                 CursoDao.update(new FormData(entity.view.form))
                     .then((res) => {
                         entity.curso.crud.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
@@ -294,10 +283,7 @@ const entity = {
                     .then((res) => {
                         entity.curso.crud.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },

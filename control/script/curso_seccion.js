@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.curso_seccion.crud.select();
-    await entity.selects.curso();
+    // await entity.selects.curso();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -30,6 +30,7 @@ const entity = {
                 entity.view.form.curso_id.value = entity.curso_seccion.database[index].curso_id;
             }
             entity.view.modalForm.style.top = "0%";
+            entity.fun.closeBrowserIframe();
         },
 
         hideModalForm: () => {
@@ -37,7 +38,7 @@ const entity = {
             entity.view.form.curso_seccion_id.value = "";
             entity.view.form.curso_seccion_nombre.value = "";
             entity.view.form.curso_seccion_descripcion.value = "";
-            entity.view.form.curso_id.value = "";
+            // entity.view.form.curso_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -73,7 +74,6 @@ const entity = {
                     <td>${register.curso_seccion_id}</td>
                     <td>${register.curso_seccion_nombre}</td>
                     <td>${register.curso_seccion_descripcion}</td>
-                    <td>${register.curso_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_seccion.index = ${index})">
@@ -103,8 +103,60 @@ const entity = {
                 entity.curso_seccion.fun.select();
             }
         },
+        loadBrowserIframe: (page, iframe_id) => {
+            const URL = "browser.php?url=view/page/panel/";
+            let iframe = document.getElementById(iframe_id);
+            let curso_seccion_id = entity.view.form.curso_seccion_id.value;
+            if (entity.fun.closeBrowserIframe()) {
+                document.getElementById("idea_iframes-msg").style.display = "none";
+                document.getElementById("idea_iframes-container").style.display = "flex";
+                if (iframe.src === "") {
+                    iframe.src = URL + page + ".php&curso_seccion_id=" + curso_seccion_id;
+                }
+            } else {
+                document.getElementById("idea_iframes-container").style.display = "none";
+                document.getElementById("idea_iframes-msg").style.display = "flex";
+            }
+        },
+        loadForm: () => {
+            document.getElementById("idea_iframes-msg").style.display = "none";
+            document.getElementById("idea_iframes-container").style.display = "flex";
+        },
+        closeBrowserIframe: () => {
+            let iframes = document.querySelectorAll(".iframe-container .sub-iframe-container .iframe");
+            let radios = document.querySelectorAll(".content-form input[name='radio-option']");
+            let curso_seccion_id = entity.view.form.curso_seccion_id.value;
+            if (entity.curso_seccion.curso_seccion_id != curso_seccion_id && (curso_seccion_id != 0 || curso_seccion_id === '')) {
+                entity.curso_seccion.curso_seccion_id = curso_seccion_id;
+                for (let i of iframes) {
+                    i.removeAttribute("src");
+                }
+                for (let i of radios) {
+                    i.checked = false;
+                }
+                document.getElementById("radio-option-1").checked = true;
+            }
+            if (curso_seccion_id === '') {
+                document.getElementById("idea_form-btn-submit").innerText = "CREAR";
+                return false;
+            } else {
+                document.getElementById("idea_form-btn-submit").innerText = "GUARDAR";
+                return true;
+            }
+        },
+        existByName: (nombre) => {
+            for (let i in entity.curso_seccion.database) {
+                if (entity.curso_seccion.database[i].curso_seccion_nombre.toLowerCase() == nombre.toLowerCase() && entity.curso_seccion.index != i) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     },
     curso_seccion: {
+        curso_seccion_id: 0,
+        curso_seccion_nombre: 0,
         database: [],
         index: null,
         fun: {
@@ -118,10 +170,14 @@ const entity = {
 
             insertOrUpdate: () => {
                 if (entity.view.form.curso_seccion_nombre.value !== "" && entity.view.form.curso_seccion_descripcion.value !== "" && entity.view.form.curso_id.value !== "") {
-                    if (entity.curso_seccion.index === null) {
-                        entity.curso_seccion.crud.insert();
+                    if (!entity.fun.existByName(entity.view.form.curso_seccion_nombre.value)) {
+                        if (entity.curso_seccion.index === null) {
+                            entity.curso_seccion.crud.insert();
+                        } else {
+                            entity.curso_seccion.crud.update();
+                        }
                     } else {
-                        entity.curso_seccion.crud.update();
+                        entity.fun.showModalMessage("Ya existe una seccion con este nombre!");
                     }
                 } else {
                     entity.fun.showModalMessage("Debe llenar todos los campos!");
@@ -130,47 +186,38 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Curso_seccionDao.select()
-                    .then((res) => {
-                        entity.curso_seccion.database = res;
-                        entity.curso_seccion.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                let formData = new FormData();
+                formData.append("curso_id", curso_id);
+                await Curso_seccionDao.selectByCurso_id(formData).then((res) => {
+                    entity.curso_seccion.database = res;
+                    entity.curso_seccion.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                Curso_seccionDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.curso_seccion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Curso_seccionDao.insert(new FormData(entity.view.form)).then(async (res) => {
+                    entity.curso_seccion.curso_seccion_nombre = entity.view.form.curso_seccion_nombre.value;
+                    await entity.curso_seccion.crud.select();
+                    entity.fun.hideModalForm();
+                    let index = entity.curso_seccion.database.findIndex(element => element.curso_seccion_nombre === entity.curso_seccion.curso_seccion_nombre);
+                    index > 0 ? entity.fun.showModalForm(index) : '';
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                Curso_seccionDao.update(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.curso_seccion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Curso_seccionDao.update(new FormData(entity.view.form)).then((res) => {
+                    entity.curso_seccion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("curso_seccion_id", entity.curso_seccion.database[entity.curso_seccion.index].curso_seccion_id);
-                Curso_seccionDao.delete(formData)
-                    .then((res) => {
-                        entity.curso_seccion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Curso_seccionDao.delete(formData).then((res) => {
+                    entity.curso_seccion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => {
+                    entity.fun.showModalMessage("Problemas al conectar con el servidor");
+                });
             },
         },
     },
@@ -181,8 +228,8 @@ const entity = {
                 let html = `<option value="">CURSO_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_id}">${res[i].curso_id}</option>
-`;
+                        <option value="${res[i].curso_id}">${res[i].curso_id}</option>
+                    `;
                 }
                 entity.view.form.curso_id.innerHTML = html;
             });

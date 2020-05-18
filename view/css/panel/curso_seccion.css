@@ -9,16 +9,16 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  /*  border: solid 5px orange;*/
+/*  border: solid 5px orange;*/
 }
 
 .idea_content .idea_form .content-forms {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1400px;
+  max-width: inherit;
   height: 100%;
-  max-height: 600px;
+  max-height: inherit;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #000;
 }
@@ -90,48 +90,12 @@
 .idea_content .idea_form .content-forms .buttons button:hover {
   background: var(--primary_hover);
 }
-
 .idea_content .idea_form .content-forms .buttons button:first-child {
   border-radius: 0 0 0 5px;
 }
-
 .idea_content .idea_form .content-forms .buttons button:last-child {
   border-radius: 0 0 5px 0;
 }
-
-
-
-
-/*SHOW HIDE FORM 1 - START*/
-.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1 {
-  display: none;
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15px;
-  background: var(--secondary);
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
-  width: 100%;
-  height: 15px;
-  filter: invert(1);
-  transform: rotate(180deg);
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form1 {
-  flex: 0;
-  width: 0px;
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
-  transform: rotate(0);
-}
-
-/*SHOW HIDE FORM 1 - END*/
 
 
 
@@ -144,9 +108,9 @@
   width: 100%;
   height: 40px;
   box-shadow: 0 3px 5px 0 #000;
+  border-top: solid 5px var(--secondary);
   border-bottom: solid 5px var(--secondary_hover);
 }
-
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .options-container {
   display: flex;
   width: 100%;
@@ -166,17 +130,16 @@
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .nav img {
-  /*  width: 100%;*/
+/*  width: 100%;*/
   filter: invert(1);
   width: 20px;
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .nav-previous {
-  border-right: solid 1px rgba(0, 0, 0, 0.4);
+  border-right: solid 1px rgba(0,0,0,0.4);
 }
-
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .nav-next {
-  border-left: solid 1px rgba(0, 0, 0, 0.4);
+  border-left: solid 1px rgba(0,0,0,0.4);
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .nav-previous img {
@@ -224,7 +187,7 @@
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 label span {
   display: block;
-  /*  transform: rotate(-90deg);*/
+/*  transform: rotate(-90deg);*/
   margin: 0px;
   width: 100%;
   transition: all 0.15s ease;
@@ -247,7 +210,7 @@
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container {
   display: flex;
-  width: 400%;
+  width: 300%;
   height: 100%;
   margin-left: 0;
 }
@@ -271,16 +234,21 @@
   color: #FFF;
   font-size: 1.2em;
   text-shadow: 1px 1px 1px #000,
-    1px -1px 1px #000,
-    -1px 1px 1px #000,
-    -1px -1px 1px #000;
+               1px -1px 1px #000,
+               -1px 1px 1px #000,
+               -1px -1px 1px #000;
   background-image: url(../../src/files/informacion_pagina_logo/1.png);
   background-size: 100px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .form {
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+  max-height: inherit;
+}
 
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe1 {}
@@ -315,17 +283,9 @@
   transform: rotate(0deg);
 }
 
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .iframe-container .sub-iframe-container {
-  margin-left: -100%;
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .iframe-container .sub-iframe-container {
-  margin-left: -200%;
-}
-
-.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .iframe-container .sub-iframe-container {
-  margin-left: -300%;
-}
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-1:checked ~ .iframe-container .sub-iframe-container { margin-left: 0%; }
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-2:checked ~ .iframe-container .sub-iframe-container { margin-left: -100%; }
+.idea_content .idea_form .content-forms .sub-content-forms .content-form2 #radio-option-3:checked ~ .iframe-container .sub-iframe-container { margin-left: -200%; }
 
 /*   CHECKED RADIO SELECTED   -  END   */
 
@@ -335,12 +295,13 @@
 
 
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+  
+  
   .idea_content .idea_form .content-forms {
     height: 100%;
     max-height: inherit;
   }
-
   .idea_content .idea_form .content-forms .sub-content-forms {
     position: relative;
     display: block;
@@ -349,36 +310,40 @@
     position: static;
     overflow-y: auto;
   }
-
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form {
     padding: 0;
     height: 100%;
   }
-
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form1 .inputs {
-    /*    background: var(--secondary);*/
+/*    background: var(--secondary);*/
   }
-
+  
+/*
   .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
     max-width: inherit;
     min-height: 630px;
     max-height: 630px;
     border-right: none;
   }
-
+*/
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 {
-    height: auto;
+    height: 100%;
     max-height: inherit;
   }
-
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2,
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container,
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
-    min-height: 70vh;
+/*    min-height: 90vh;*/
   }
-
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {}
-
+  
+  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
+    
+  }
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
     position: absolute;
     top: 0;
@@ -387,58 +352,16 @@
     overflow-x: auto;
     display: flex;
   }
-
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options label {
     display: inline-flex;
     width: 100px;
     height: auto;
   }
-
+  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .iframe-msg,
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-msg {
     min-height: 70vh;
-  }
-
-
-  /*SHOW HIDE FORM 1 - START*/
-  .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 {
-    width: 100%;
-    height: 15px;
-  }
-
-  .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
-    width: 15px;
-    height: 100%;
-    transform: rotate(-90deg);
-  }
-
-  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form1 {
-    min-height: 0px;
-    max-height: 0px;
-    height: 0px;
-  }
-  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 {
-    height: 40px;
-  }
-
-  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
-    width: 36px;
-    padding: 10px;
-    transform: rotate(90deg);
-  }
-  
-  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form2 {
-    height: 100%;
-  }
-
-  /*SHOW HIDE FORM 1 - END*/
-
-
-}
-
-@media (max-height: 500px) {
-  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form2 {
-    height: 92%;
   }
 }
 

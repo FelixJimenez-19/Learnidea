@@ -7,7 +7,7 @@ ________________________________________________________________________________
 if (isset($viewPage)) {
 ?>
     <div class="header">
-        <span>SECCION_LECCION</span>
+        <span>LECCION</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,11 +16,10 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>SECCION_LECCION_ID</td>
-                    <td>SECCION_LECCION_DESCRIPCION</td>
-                    <td>SECCION_LECCION_PUNTAJE</td>
-                    <td>SECCION_LECCION_INTENTOS</td>
-                    <td>CURSO_SECCION_ID</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
+                    <td>PUNTAJE</td>
+                    <td>INTENTOS</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -34,25 +33,21 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="seccion_leccion_id">
+                <input type="hidden" name="curso_seccion_id" value="<?php echo $curso_seccion_id ?>">
 
                 <div class="row">
-                    <span>SECCION_LECCION_DESCRIPCION: </span>
-                    <input type="text" name="seccion_leccion_descripcion" placeholder="SECCION_LECCION_DESCRIPCION">
+                    <span>DESCRIPCION: </span>
+                    <input type="text" name="seccion_leccion_descripcion" placeholder="DESCRIPCION">
                 </div>
 
                 <div class="row">
-                    <span>SECCION_LECCION_PUNTAJE: </span>
-                    <input type="number" name="seccion_leccion_puntaje" placeholder="SECCION_LECCION_PUNTAJE">
+                    <span>PUNTAJE: </span>
+                    <input type="number" name="seccion_leccion_puntaje" placeholder="PUNTAJE">
                 </div>
 
                 <div class="row">
-                    <span>SECCION_LECCION_INTENTOS: </span>
-                    <input type="number" name="seccion_leccion_intentos" placeholder="SECCION_LECCION_INTENTOS">
-                </div>
-
-                <div class="row">
-                    <span>CURSO_SECCION_ID: </span>
-                    <select name="curso_seccion_id"></select>
+                    <span>INTENTOS: </span>
+                    <input type="number" name="seccion_leccion_intentos" placeholder="INTENTOS">
                 </div>
 
             </div>

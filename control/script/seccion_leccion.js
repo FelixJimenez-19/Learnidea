@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.seccion_leccion.crud.select();
-    await entity.selects.curso_seccion();
+    // await entity.selects.curso_seccion();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -39,7 +39,7 @@ const entity = {
             entity.view.form.seccion_leccion_descripcion.value = "";
             entity.view.form.seccion_leccion_puntaje.value = "";
             entity.view.form.seccion_leccion_intentos.value = "";
-            entity.view.form.curso_seccion_id.value = "";
+            // entity.view.form.curso_seccion_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -76,7 +76,6 @@ const entity = {
                     <td>${register.seccion_leccion_descripcion}</td>
                     <td>${register.seccion_leccion_puntaje}</td>
                     <td>${register.seccion_leccion_intentos}</td>
-                    <td>${register.curso_seccion_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.seccion_leccion.index = ${index})">
@@ -139,47 +138,33 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Seccion_leccionDao.select()
-                    .then((res) => {
+                let formData = new FormData();
+                formData.append("curso_seccion_id", curso_seccion_id);
+                await Seccion_leccionDao.selectByCurso_seccion_id(formData).then((res) => {
                         entity.seccion_leccion.database = res;
                         entity.seccion_leccion.fun.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                Seccion_leccionDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
+                Seccion_leccionDao.insert(new FormData(entity.view.form)).then((res) => {
                         entity.seccion_leccion.crud.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                Seccion_leccionDao.update(new FormData(entity.view.form))
-                    .then((res) => {
+                Seccion_leccionDao.update(new FormData(entity.view.form)).then((res) => {
                         entity.seccion_leccion.crud.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("seccion_leccion_id", entity.seccion_leccion.database[entity.seccion_leccion.index].seccion_leccion_id);
-                Seccion_leccionDao.delete(formData)
-                    .then((res) => {
+                Seccion_leccionDao.delete(formData).then((res) => {
                         entity.seccion_leccion.crud.select();
                         entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },

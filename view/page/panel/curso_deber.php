@@ -9,7 +9,7 @@ if (isset($viewPage)) {
     <link rel="stylesheet" href="view/css/bootstrap.css">
     <link rel="stylesheet" href="control/lib/summernote/summernote.min.css">
     <div class="header">
-        <span>CURSO_DEBER</span>
+        <span>DEBER</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -24,7 +24,6 @@ if (isset($viewPage)) {
                     <td>FIN</td>
                     <td>FOTO</td>
                     <td>DESCRIPCION</td>
-                    <td>CURSO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -38,6 +37,7 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="curso_deber_id">
+                <input type="hidden" name="curso_id" value="<?php echo $curso_id ?>">
 
                 <div class="row">
                     <span>LINK: </span>
@@ -62,11 +62,6 @@ if (isset($viewPage)) {
                 <div class="row-editor">
                     <span class="row-editor-title">DESCRIPCION</span>
                     <textarea class="row-editor-textarea" name="curso_deber_descripcion" id="curso_evento-editor"></textarea>
-                </div>
-
-                <div class="row">
-                    <span>CURSO: </span>
-                    <select name="curso_id"></select>
                 </div>
 
             </div>

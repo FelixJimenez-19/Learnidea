@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.seccion_video.crud.select();
-    await entity.selects.curso_seccion();
+    // await entity.selects.curso_seccion();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -26,7 +26,6 @@ const entity = {
             if (index !== null) {
                 entity.view.form.seccion_video_id.value = entity.seccion_video.database[index].seccion_video_id;
                 entity.view.form.seccion_video_nombre.value = entity.seccion_video.database[index].seccion_video_nombre;
-                entity.view.form.seccion_video_material.value = entity.seccion_video.database[index].seccion_video_material;
                 entity.view.form.seccion_video_iframe.value = entity.seccion_video.database[index].seccion_video_iframe;
                 entity.view.form.seccion_video_descripcion.value = entity.seccion_video.database[index].seccion_video_descripcion;
                 entity.view.form.curso_seccion_id.value = entity.seccion_video.database[index].curso_seccion_id;
@@ -38,10 +37,12 @@ const entity = {
             entity.seccion_video.index = null;
             entity.view.form.seccion_video_id.value = "";
             entity.view.form.seccion_video_nombre.value = "";
-            entity.view.form.seccion_video_material.value = "";
             entity.view.form.seccion_video_iframe.value = "";
             entity.view.form.seccion_video_descripcion.value = "";
-            entity.view.form.curso_seccion_id.value = "";
+            // entity.view.form.curso_seccion_id.value = "";
+
+            document.getElementById("form-iframe").innerHTML = "";
+
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -76,10 +77,10 @@ const entity = {
                 <tr>
                     <td>${register.seccion_video_id}</td>
                     <td>${register.seccion_video_nombre}</td>
-                    <td>${register.seccion_video_material}</td>
-                    <td>${register.seccion_video_iframe}</td>
+                    <td class="iframe-container">
+                        ${ entity.fun.existText(register.seccion_video_iframe, 'iframe') ? register.seccion_video_iframe : '<span>INSERTA UN VIDEO IFRAME</span>'}
+                    </td>
                     <td>${register.seccion_video_descripcion}</td>
-                    <td>${register.curso_seccion_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.seccion_video.index = ${index})">
@@ -98,7 +99,6 @@ const entity = {
                     if (
                         textSearch === entity.seccion_video.database[i].seccion_video_id.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_video.database[i].seccion_video_nombre.substring(0, textSearch.length).toLowerCase() ||
-                        textSearch === entity.seccion_video.database[i].seccion_video_material.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_video.database[i].seccion_video_iframe.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_video.database[i].seccion_video_descripcion.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_video.database[i].curso_seccion_id.substring(0, textSearch.length).toLowerCase()
@@ -111,6 +111,12 @@ const entity = {
                 entity.seccion_video.fun.select();
             }
         },
+        existText: (content, text) => {
+            return content.toLowerCase().indexOf(text.toLowerCase()) !== -1 ? true : false;
+        },
+        loadFormIframe: (iframeContentId, iframe) => {
+            document.getElementById(iframeContentId).innerHTML = iframe;
+        }
     },
     seccion_video: {
         database: [],
@@ -127,7 +133,6 @@ const entity = {
             insertOrUpdate: () => {
                 if (
                     entity.view.form.seccion_video_nombre.value !== "" &&
-                    entity.view.form.seccion_video_material.value !== "" &&
                     entity.view.form.seccion_video_iframe.value !== "" &&
                     entity.view.form.seccion_video_descripcion.value !== "" &&
                     entity.view.form.curso_seccion_id.value !== ""
@@ -144,47 +149,33 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Seccion_videoDao.select()
-                    .then((res) => {
-                        entity.seccion_video.database = res;
-                        entity.seccion_video.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                let formData = new FormData();
+                formData.append("curso_seccion_id", curso_seccion_id);
+                await Seccion_videoDao.selectByCurso_seccion_id(formData).then((res) => {
+                    entity.seccion_video.database = res;
+                    entity.seccion_video.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                Seccion_videoDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.seccion_video.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_videoDao.insert(new FormData(entity.view.form)).then((res) => {
+                    entity.seccion_video.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                Seccion_videoDao.update(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.seccion_video.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_videoDao.update(new FormData(entity.view.form)).then((res) => {
+                    entity.seccion_video.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("seccion_video_id", entity.seccion_video.database[entity.seccion_video.index].seccion_video_id);
-                Seccion_videoDao.delete(formData)
-                    .then((res) => {
-                        entity.seccion_video.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_videoDao.delete(formData).then((res) => {
+                    entity.seccion_video.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },
@@ -195,8 +186,8 @@ const entity = {
                 let html = `<option value="">CURSO_SECCION_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_seccion_id}">${res[i].curso_seccion_id}</option>
-`;
+                        <option value="${res[i].curso_seccion_id}">${res[i].curso_seccion_id}</option>
+                    `;
                 }
                 entity.view.form.curso_seccion_id.innerHTML = html;
             });

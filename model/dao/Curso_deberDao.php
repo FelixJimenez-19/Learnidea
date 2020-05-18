@@ -19,6 +19,10 @@ class Curso_deberDao
     {
         return $this->conn->query("SELECT * FROM curso_deber WHERE curso_deber_id = $curso_deber_id");
     }
+    public function selectByCurso_id($curso_id)
+    {
+        return $this->conn->query("SELECT * FROM curso_deber WHERE curso_id = $curso_id");
+    }
     public function insert($curso_deber_descripcion, $curso_deber_link, $curso_deber_fecha_inicio, $curso_deber_fecha_fin, $curso_id)
     {
         return $this->conn->query("INSERT INTO curso_deber SET curso_deber_descripcion='$curso_deber_descripcion', curso_deber_link='$curso_deber_link', curso_deber_fecha_inicio='$curso_deber_fecha_inicio', curso_deber_fecha_fin='$curso_deber_fecha_fin', curso_id=$curso_id ");

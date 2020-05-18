@@ -6,7 +6,7 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.curso_deber.crud.select();
-    await entity.selects.curso();
+    // await entity.selects.curso();
     entity.view.editor.summernote();
 };
 // MASTER OBJECT INI
@@ -45,7 +45,7 @@ const entity = {
             entity.view.form.curso_deber_link.value = "";
             entity.view.form.curso_deber_fecha_inicio.value = "";
             entity.view.form.curso_deber_fecha_fin.value = "";
-            entity.view.form.curso_id.value = "";
+            // entity.view.form.curso_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -84,7 +84,6 @@ const entity = {
                     <td>${register.curso_deber_fecha_fin}</td>
                     <td><img src="${register.curso_deber_foto !== null ? "view/src/files/curso_deber_foto/" + register.curso_deber_foto : "view/src/img/avatar.png"}"/></td>
                     <td>${register.curso_deber_descripcion}</td>
-                    <td>${register.curso_id}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.curso_deber.index = ${index})">
@@ -149,15 +148,15 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Curso_deberDao.select()
-                    .then((res) => {
-                        entity.curso_deber.database = res;
-                        entity.curso_deber.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                let formData = new FormData();
+                formData.append("curso_id", curso_id);
+                await Curso_deberDao.selectByCurso_id(formData).then((res) => {
+                    entity.curso_deber.database = res;
+                    entity.curso_deber.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => {
+                    entity.fun.showModalMessage("Problemas al conectar con el servidor");
+                });
             },
             insert: () => {
                 Curso_deberDao.insert(new FormData(entity.view.form))
@@ -200,8 +199,8 @@ const entity = {
                 let html = `<option value="">CURSO_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_id}">${res[i].curso_id}</option>
-`;
+                        <option value="${res[i].curso_id}">${res[i].curso_id}</option>
+                    `;
                 }
                 entity.view.form.curso_id.innerHTML = html;
             });
