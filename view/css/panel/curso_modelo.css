@@ -101,6 +101,43 @@
 
 
 
+/*SHOW HIDE FORM 1 - START*/
+.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1 {
+  display: none;
+}
+
+.idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  background: var(--secondary);
+  transition: none;
+}
+
+.idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
+  width: 100%;
+  height: 15px;
+  filter: invert(1);
+  transform: rotate(180deg);
+  transition: none;
+}
+
+.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form1 {
+  flex: 0;
+  width: 0px;
+  overflow: hidden;
+}
+
+.idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
+  transform: rotate(0);
+}
+
+/*SHOW HIDE FORM 1 - END*/
+
+
+
+
 
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
@@ -407,6 +444,41 @@
     width: 100px;
     height: auto;
   }
+  
+  /*SHOW HIDE FORM 1 - START*/
+  .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 {
+    width: 100%;
+    height: 15px;
+    transition: none;
+  }
+
+  .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
+    width: 15px;
+    height: 100%;
+    transform: rotate(-90deg);
+    transition: none;
+  }
+
+  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form1 {
+    min-height: 0px;
+    max-height: 0px;
+    height: 0px;
+  }
+  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 {
+    height: 40px;
+  }
+
+  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
+    width: 36px;
+    padding: 10px;
+    transform: rotate(90deg);
+  }
+  
+  .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form2 {
+    height: 100%;
+  }
+
+  /*SHOW HIDE FORM 1 - END*/
 }
 
 

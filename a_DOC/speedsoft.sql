@@ -341,7 +341,8 @@ CREATE TABLE seccion_leccion (
     seccion_leccion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_leccion_descripcion TEXT,
     seccion_leccion_puntaje DOUBLE,
-    seccion_leccion_intentos INT,
+    seccion_leccion_intento INT,
+    seccion_leccion_tiempo VARCHAR(10),
     curso_seccion_id INT,
     FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id)
 ) ENGINE INNODB;
@@ -349,7 +350,6 @@ CREATE TABLE seccion_leccion (
 CREATE TABLE seccion_pregunta (
     seccion_pregunta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_pregunta_descripcion TEXT,
-    seccion_pregunta_tiempo VARCHAR(10),
     seccion_pregunta_porcentaje VARCHAR(10),
     seccion_leccion_id INT,
     FOREIGN KEY (seccion_leccion_id) REFERENCES seccion_leccion (seccion_leccion_id)

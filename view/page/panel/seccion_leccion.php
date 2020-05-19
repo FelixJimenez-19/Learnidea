@@ -20,6 +20,7 @@ if (isset($viewPage)) {
                     <td>DESCRIPCION</td>
                     <td>PUNTAJE</td>
                     <td>INTENTOS</td>
+                    <td>TIEMPO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -47,7 +48,12 @@ if (isset($viewPage)) {
 
                 <div class="row">
                     <span>INTENTOS: </span>
-                    <input type="number" name="seccion_leccion_intentos" placeholder="INTENTOS">
+                    <input type="number" name="seccion_leccion_intento" placeholder="INTENTOS">
+                </div>
+
+                <div class="row">
+                    <span>TIEMPO: </span>
+                    <input type="time" name="seccion_leccion_tiempo" placeholder="TIEMPO">
                 </div>
 
             </div>

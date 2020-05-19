@@ -27,7 +27,8 @@ const entity = {
                 entity.view.form.seccion_leccion_id.value = entity.seccion_leccion.database[index].seccion_leccion_id;
                 entity.view.form.seccion_leccion_descripcion.value = entity.seccion_leccion.database[index].seccion_leccion_descripcion;
                 entity.view.form.seccion_leccion_puntaje.value = entity.seccion_leccion.database[index].seccion_leccion_puntaje;
-                entity.view.form.seccion_leccion_intentos.value = entity.seccion_leccion.database[index].seccion_leccion_intentos;
+                entity.view.form.seccion_leccion_intento.value = entity.seccion_leccion.database[index].seccion_leccion_intento;
+                entity.view.form.seccion_leccion_tiempo.value = entity.seccion_leccion.database[index].seccion_leccion_tiempo;
                 entity.view.form.curso_seccion_id.value = entity.seccion_leccion.database[index].curso_seccion_id;
             }
             entity.view.modalForm.style.top = "0%";
@@ -38,7 +39,8 @@ const entity = {
             entity.view.form.seccion_leccion_id.value = "";
             entity.view.form.seccion_leccion_descripcion.value = "";
             entity.view.form.seccion_leccion_puntaje.value = "";
-            entity.view.form.seccion_leccion_intentos.value = "";
+            entity.view.form.seccion_leccion_intento.value = "";
+            entity.view.form.seccion_leccion_tiempo.value = "";
             // entity.view.form.curso_seccion_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
@@ -75,7 +77,8 @@ const entity = {
                     <td>${register.seccion_leccion_id}</td>
                     <td>${register.seccion_leccion_descripcion}</td>
                     <td>${register.seccion_leccion_puntaje}</td>
-                    <td>${register.seccion_leccion_intentos}</td>
+                    <td>${register.seccion_leccion_intento}</td>
+                    <td>${register.seccion_leccion_tiempo}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.seccion_leccion.index = ${index})">
@@ -95,7 +98,8 @@ const entity = {
                         textSearch === entity.seccion_leccion.database[i].seccion_leccion_id.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_leccion.database[i].seccion_leccion_descripcion.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_leccion.database[i].seccion_leccion_puntaje.substring(0, textSearch.length).toLowerCase() ||
-                        textSearch === entity.seccion_leccion.database[i].seccion_leccion_intentos.substring(0, textSearch.length).toLowerCase() ||
+                        textSearch === entity.seccion_leccion.database[i].seccion_leccion_intento.substring(0, textSearch.length).toLowerCase() ||
+                        textSearch === entity.seccion_leccion.database[i].seccion_leccion_tiempo.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.seccion_leccion.database[i].curso_seccion_id.substring(0, textSearch.length).toLowerCase()
                     ) {
                         html += entity.fun.getHtmlTr(entity.seccion_leccion.database[i], i);
@@ -123,7 +127,8 @@ const entity = {
                 if (
                     entity.view.form.seccion_leccion_descripcion.value !== "" &&
                     entity.view.form.seccion_leccion_puntaje.value !== "" &&
-                    entity.view.form.seccion_leccion_intentos.value !== "" &&
+                    entity.view.form.seccion_leccion_intento.value !== "" &&
+                    entity.view.form.seccion_leccion_tiempo.value !== "" &&
                     entity.view.form.curso_seccion_id.value !== ""
                 ) {
                     if (entity.seccion_leccion.index === null) {
@@ -141,30 +146,30 @@ const entity = {
                 let formData = new FormData();
                 formData.append("curso_seccion_id", curso_seccion_id);
                 await Seccion_leccionDao.selectByCurso_seccion_id(formData).then((res) => {
-                        entity.seccion_leccion.database = res;
-                        entity.seccion_leccion.fun.select();
-                        entity.fun.hideModalForm();
-                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
+                    entity.seccion_leccion.database = res;
+                    entity.seccion_leccion.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
                 Seccion_leccionDao.insert(new FormData(entity.view.form)).then((res) => {
-                        entity.seccion_leccion.crud.select();
-                        entity.fun.hideModalForm();
-                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
+                    entity.seccion_leccion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
                 Seccion_leccionDao.update(new FormData(entity.view.form)).then((res) => {
-                        entity.seccion_leccion.crud.select();
-                        entity.fun.hideModalForm();
-                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
+                    entity.seccion_leccion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("seccion_leccion_id", entity.seccion_leccion.database[entity.seccion_leccion.index].seccion_leccion_id);
                 Seccion_leccionDao.delete(formData).then((res) => {
-                        entity.seccion_leccion.crud.select();
-                        entity.fun.hideModalForm();
-                    }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
+                    entity.seccion_leccion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },
@@ -175,8 +180,8 @@ const entity = {
                 let html = `<option value="">CURSO_SECCION_ID</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].curso_seccion_id}">${res[i].curso_seccion_id}</option>
-`;
+                        <option value="${res[i].curso_seccion_id}">${res[i].curso_seccion_id}</option>
+                    `;
                 }
                 entity.view.form.curso_seccion_id.innerHTML = html;
             });

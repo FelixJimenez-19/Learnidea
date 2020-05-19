@@ -40,6 +40,7 @@ if (isset($viewPage)) {
         <div class="content-forms">
             <span class="title">FORMULARIO</span>
             <div class="sub-content-forms">
+                <input type="checkbox" id="checkbox-content-form1">
                 <form class="content-form content-form1" id="idea_form">
                     <div class="inputs">
                         <input type="hidden" name="curso_modelo_id">
@@ -106,6 +107,7 @@ if (isset($viewPage)) {
                         </div>
                     </div>
                 </form>
+                <label class="label-content-form1" for="checkbox-content-form1"><img src="view/src/icon/in.png"></label>
                 <div class="content-form content-form2">
                     <input type="radio" name="radio-option" id="radio-option-1">
                     <input type="radio" name="radio-option" id="radio-option-2">

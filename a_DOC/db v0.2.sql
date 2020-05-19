@@ -60,7 +60,7 @@ INSERT INTO usuario_tema VALUES(0, 'Ideasoft', '#29AAE2', '#218ab8', '#222D32', 
 CREATE TABLE usuario (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     usuario_nombre VARCHAR(80),
-    usuario_cedula VARCHAR(11) UNIQUE KEY,
+    usuario_cedula VARCHAR(11),
     usuario_edad INT,
     usuario_indice VARCHAR(50),                 -- //Indice dactilar
     usuario_celular VARCHAR(15),
@@ -83,6 +83,8 @@ CREATE TABLE usuario (
     usuario_tema_mode_dark BOOLEAN,             -- //Tema modo DARK o CLEAR
     usuario_tipo_id INT,
     usuario_tema_id INT,
+    UNIQUE(usuario_email),
+    UNIQUE(usuario_cedula),
     FOREIGN KEY (usuario_tipo_id) REFERENCES usuario_tipo (usuario_tipo_id),
     FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id)
 ) ENGINE INNODB;
@@ -330,7 +332,7 @@ CREATE TABLE curso_evento (
     curso_evento_fecha VARCHAR(50),
     curso_evento_descripcion TEXT,
     curso_id INT,
-    FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+    FOREIGN KEY (curso_id) REFERENCES curso (curso_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"curso_deber_foto"}] }
@@ -342,7 +344,7 @@ CREATE TABLE curso_deber (
     curso_deber_fecha_inicio VARCHAR(20),                   -- //Formato 0000/00/00 00:00
     curso_deber_fecha_fin VARCHAR(20),                      -- //Formato 0000/00/00 00:00
     curso_id INT,
-    FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+    FOREIGN KEY (curso_id) REFERENCES curso (curso_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE curso_seccion (
@@ -351,7 +353,7 @@ CREATE TABLE curso_seccion (
     curso_seccion_descripcion TEXT,
     curso_id INT,
     UNIQUE(curso_seccion_nombre, curso_id),
-    FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+    FOREIGN KEY (curso_id) REFERENCES curso (curso_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE seccion_video (
@@ -360,7 +362,7 @@ CREATE TABLE seccion_video (
     seccion_video_iframe TEXT,
     seccion_video_descripcion TEXT,
     curso_seccion_id INT,
-    FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id)
+    FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"video_comentario_foto"}] }
@@ -370,7 +372,7 @@ CREATE TABLE video_comentario (
     video_comentario_foto VARCHAR(10),
     video_comentario_fecha VARCHAR(20),                     -- //Formato 0000/00/00 00:00
     seccion_video_id INT,
-    FOREIGN KEY (seccion_video_id) REFERENCES seccion_video (seccion_video_id)
+    FOREIGN KEY (seccion_video_id) REFERENCES seccion_video (seccion_video_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"video_respuesta_foto"}] }
@@ -380,25 +382,25 @@ CREATE TABLE video_respuesta (
     video_respuesta_foto VARCHAR(10),
     video_respuesta_fecha VARCHAR(20),                      -- //Formato 0000/00/00 00:00
     video_comentario_id INT,
-    FOREIGN KEY (video_comentario_id) REFERENCES video_comentario (video_comentario_id)
+    FOREIGN KEY (video_comentario_id) REFERENCES video_comentario (video_comentario_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 
 CREATE TABLE seccion_leccion (
     seccion_leccion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_leccion_descripcion TEXT,
     seccion_leccion_puntaje DOUBLE,
-    seccion_leccion_intentos INT,
+    seccion_leccion_intento INT,
+    seccion_leccion_tiempo VARCHAR(10),
     curso_seccion_id INT,
-    FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id)
+    FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE seccion_pregunta (
     seccion_pregunta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_pregunta_descripcion TEXT,
-    seccion_pregunta_tiempo VARCHAR(10),
     seccion_pregunta_porcentaje VARCHAR(10),
     seccion_leccion_id INT,
-    FOREIGN KEY (seccion_leccion_id) REFERENCES seccion_leccion (seccion_leccion_id)
+    FOREIGN KEY (seccion_leccion_id) REFERENCES seccion_leccion (seccion_leccion_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 CREATE TABLE seccion_alternativa (
@@ -406,7 +408,7 @@ CREATE TABLE seccion_alternativa (
     seccion_alternativa_descripcion TEXT,
     seccion_alternativa_correta BOOLEAN,
     seccion_pregunta_id INT,
-    FOREIGN KEY (seccion_pregunta_id) REFERENCES seccion_pregunta (seccion_pregunta_id)
+    FOREIGN KEY (seccion_pregunta_id) REFERENCES seccion_pregunta (seccion_pregunta_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 -- //CURSO - FIN
 
