@@ -392,6 +392,7 @@ CREATE TABLE seccion_leccion (
     seccion_leccion_intento INT,
     seccion_leccion_tiempo VARCHAR(10),
     curso_seccion_id INT,
+    UNIQUE(seccion_leccion_descripcion, curso_seccion_id),
     FOREIGN KEY (curso_seccion_id) REFERENCES curso_seccion (curso_seccion_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
@@ -400,6 +401,7 @@ CREATE TABLE seccion_pregunta (
     seccion_pregunta_descripcion TEXT,
     seccion_pregunta_porcentaje VARCHAR(10),
     seccion_leccion_id INT,
+    UNIQUE(seccion_pregunta_descripcion, seccion_leccion_id),
     FOREIGN KEY (seccion_leccion_id) REFERENCES seccion_leccion (seccion_leccion_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 

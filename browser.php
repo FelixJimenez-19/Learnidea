@@ -25,6 +25,20 @@ if (isset($_SESSION['usuario_email']) && isset($_GET['url'])) {
                 $curso_seccion_id = 0;
             }
         }
+        $seccion_leccion_id = 0;
+        if (isset($_GET['seccion_leccion_id'])) {
+            $seccion_leccion_id = $_GET['seccion_leccion_id'];
+            if($seccion_leccion_id == 0 or $seccion_leccion_id == "" or $seccion_leccion_id == null) {
+                $seccion_leccion_id = 0;
+            }
+        }
+        $seccion_pregunta_id = 0;
+        if (isset($_GET['seccion_pregunta_id'])) {
+            $seccion_pregunta_id = $_GET['seccion_pregunta_id'];
+            if($seccion_pregunta_id == 0 or $seccion_pregunta_id == "" or $seccion_pregunta_id == null) {
+                $seccion_pregunta_id = 0;
+            }
+        }
 ?>
         <!DOCTYPE html>
         <html lang="es">
@@ -49,6 +63,8 @@ if (isset($_SESSION['usuario_email']) && isset($_GET['url'])) {
             let curso_modelo_id = <?php echo $curso_modelo_id ?>;
             let curso_id = <?php echo $curso_id ?>;
             let curso_seccion_id = <?php echo $curso_seccion_id ?>;
+            let seccion_leccion_id = <?php echo $seccion_leccion_id ?>;
+            let seccion_pregunta_id = <?php echo $seccion_pregunta_id ?>;
         </script>
         <!-- SESSION JS | END -->
         <!-- THEME | START -->

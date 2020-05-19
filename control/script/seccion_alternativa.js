@@ -6,7 +6,8 @@ ________________________________________________________________________________
 // MAIN INI
 const main = async () => {
     await entity.seccion_alternativa.crud.select();
-    await entity.selects.seccion_pregunta();
+    // await entity.selects.seccion_pregunta();
+    entity.view.editor.summernote();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -19,13 +20,15 @@ const entity = {
         modalConfirm: document.getElementById("idea_modal_confirm"),
         confirm: document.getElementById("idea_confirm"),
         search: document.getElementById("idea_search"),
+        editor: $('#seccion_alternativa-editor')
     },
     fun: {
         showModalForm: (index) => {
             entity.seccion_alternativa.index = index;
             if (index !== null) {
                 entity.view.form.seccion_alternativa_id.value = entity.seccion_alternativa.database[index].seccion_alternativa_id;
-                entity.view.form.seccion_alternativa_descripcion.value = entity.seccion_alternativa.database[index].seccion_alternativa_descripcion;
+                // entity.view.form.seccion_alternativa_descripcion.value = entity.seccion_alternativa.database[index].seccion_alternativa_descripcion;
+                entity.view.editor.summernote('code', entity.seccion_alternativa.database[index].seccion_alternativa_descripcion);
                 entity.view.form.seccion_alternativa_correta.value = entity.seccion_alternativa.database[index].seccion_alternativa_correta;
                 entity.view.form.seccion_pregunta_id.value = entity.seccion_alternativa.database[index].seccion_pregunta_id;
             }
@@ -35,9 +38,10 @@ const entity = {
         hideModalForm: () => {
             entity.seccion_alternativa.index = null;
             entity.view.form.seccion_alternativa_id.value = "";
-            entity.view.form.seccion_alternativa_descripcion.value = "";
+            // entity.view.form.seccion_alternativa_descripcion.value = "";
+            entity.view.editor.summernote('code', '');
             entity.view.form.seccion_alternativa_correta.value = "";
-            entity.view.form.seccion_pregunta_id.value = "";
+            // entity.view.form.seccion_pregunta_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -72,8 +76,7 @@ const entity = {
                 <tr>
                     <td>${register.seccion_alternativa_id}</td>
                     <td>${register.seccion_alternativa_descripcion}</td>
-                    <td>${register.seccion_alternativa_correta}</td>
-                    <td>${register.seccion_pregunta_id}</td>
+                    <td>${register.seccion_alternativa_correta == 1 ? 'SI' : 'NO'}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.seccion_alternativa.index = ${index})">
@@ -130,47 +133,33 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await Seccion_alternativaDao.select()
-                    .then((res) => {
-                        entity.seccion_alternativa.database = res;
-                        entity.seccion_alternativa.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                let formData = new FormData();
+                formData.append("seccion_pregunta_id", seccion_pregunta_id);
+                await Seccion_alternativaDao.selectBySeccion_pregunta_id(formData).then((res) => {
+                    entity.seccion_alternativa.database = res;
+                    entity.seccion_alternativa.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                Seccion_alternativaDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.seccion_alternativa.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_alternativaDao.insert(new FormData(entity.view.form)).then((res) => {
+                    entity.seccion_alternativa.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                Seccion_alternativaDao.update(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.seccion_alternativa.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_alternativaDao.update(new FormData(entity.view.form)).then((res) => {
+                    entity.seccion_alternativa.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("seccion_alternativa_id", entity.seccion_alternativa.database[entity.seccion_alternativa.index].seccion_alternativa_id);
-                Seccion_alternativaDao.delete(formData)
-                    .then((res) => {
-                        entity.seccion_alternativa.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                Seccion_alternativaDao.delete(formData).then((res) => {
+                    entity.seccion_alternativa.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },
@@ -178,11 +167,11 @@ const entity = {
     selects: {
         seccion_pregunta: async () => {
             await Seccion_preguntaDao.select().then((res) => {
-                let html = `<option value="">SECCION_PREGUNTA_ID</option>`;
+                let html = `<option value="">PREGUNTA</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].seccion_pregunta_id}">${res[i].seccion_pregunta_id}</option>
-`;
+                        <option value="${res[i].seccion_pregunta_id}">${res[i].seccion_pregunta_id}</option>
+                    `;
                 }
                 entity.view.form.seccion_pregunta_id.innerHTML = html;
             });

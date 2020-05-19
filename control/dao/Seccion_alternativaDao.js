@@ -30,6 +30,19 @@ Seccion_alternativaDao = {
                 return res;
             });
     },
+    
+    selectBySeccion_pregunta_id: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/seccion_alternativa/selectBySeccion_pregunta_id.php", {
+            method: "POST",
+            headers: new Headers().append("Accept", "application/json"),
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
 
     insert: (formData) => {
         formData.append("key", config.key);

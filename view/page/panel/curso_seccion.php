@@ -33,7 +33,7 @@ if (isset($viewPage)) {
 
     <div class="idea_form idea_form-curso_modelo" id="idea_modal_form">
         <div class="content-forms">
-            <span class="title">FORMULARIO</span>
+            <!-- <span class="title">FORMULARIO</span> -->
             <div class="sub-content-forms">
                 <div class="content-form content-form2">
                     <input type="radio" name="radio-option" id="radio-option-1">

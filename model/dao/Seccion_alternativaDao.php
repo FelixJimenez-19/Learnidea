@@ -18,6 +18,10 @@ class Seccion_alternativaDao
     {
         return $this->conn->query("SELECT * FROM seccion_alternativa WHERE seccion_alternativa_id = $seccion_alternativa_id");
     }
+    public function selectBySeccion_pregunta_id($seccion_pregunta_id)
+    {
+        return $this->conn->query("SELECT * FROM seccion_alternativa WHERE seccion_pregunta_id = $seccion_pregunta_id");
+    }
     public function insert($seccion_alternativa_descripcion, $seccion_alternativa_correta, $seccion_pregunta_id)
     {
         return $this->conn->query("INSERT INTO seccion_alternativa SET seccion_alternativa_descripcion='$seccion_alternativa_descripcion', seccion_alternativa_correta=$seccion_alternativa_correta, seccion_pregunta_id=$seccion_pregunta_id ");

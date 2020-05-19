@@ -32,6 +32,7 @@ const entity = {
                 entity.view.form.curso_seccion_id.value = entity.seccion_leccion.database[index].curso_seccion_id;
             }
             entity.view.modalForm.style.top = "0%";
+            entity.fun.closeBrowserIframe();
         },
 
         hideModalForm: () => {
@@ -110,8 +111,59 @@ const entity = {
                 entity.seccion_leccion.fun.select();
             }
         },
+        loadBrowserIframe: (page, iframe_id) => {
+            const URL = "browser.php?url=view/page/panel/";
+            let iframe = document.getElementById(iframe_id);
+            let seccion_leccion_id = entity.view.form.seccion_leccion_id.value;
+            if (entity.fun.closeBrowserIframe()) {
+                document.getElementById("idea_iframes-msg").style.display = "none";
+                document.getElementById("idea_iframes-container").style.display = "flex";
+                if (iframe.src === "") {
+                    iframe.src = URL + page + ".php&seccion_leccion_id=" + seccion_leccion_id;
+                }
+            } else {
+                document.getElementById("idea_iframes-container").style.display = "none";
+                document.getElementById("idea_iframes-msg").style.display = "flex";
+            }
+        },
+        loadForm: () => {
+            document.getElementById("idea_iframes-msg").style.display = "none";
+            document.getElementById("idea_iframes-container").style.display = "flex";
+        },
+        closeBrowserIframe: () => {
+            let iframes = document.querySelectorAll(".iframe-container .sub-iframe-container .iframe");
+            let radios = document.querySelectorAll(".content-form input[name='radio-option']");
+            let seccion_leccion_id = entity.view.form.seccion_leccion_id.value;
+            if (entity.seccion_leccion.seccion_leccion_id != seccion_leccion_id && (seccion_leccion_id != 0 || seccion_leccion_id === '')) {
+                entity.seccion_leccion.seccion_leccion_id = seccion_leccion_id;
+                for (let i of iframes) {
+                    i.removeAttribute("src");
+                }
+                for (let i of radios) {
+                    i.checked = false;
+                }
+                document.getElementById("radio-option-1").checked = true;
+            }
+            if (seccion_leccion_id === '') {
+                document.getElementById("idea_form-btn-submit").innerText = "CREAR";
+                return false;
+            } else {
+                document.getElementById("idea_form-btn-submit").innerText = "GUARDAR";
+                return true;
+            }
+        },
+        existByDescripcion: (descipcion) => {
+            for (let i in entity.seccion_leccion.database) {
+                if (entity.seccion_leccion.database[i].seccion_leccion_descripcion.toLowerCase() == descipcion.toLowerCase() && entity.seccion_leccion.index != i) {
+                    return true;
+                }
+            }
+            return false;
+        }
     },
     seccion_leccion: {
+        seccion_leccion_id: 0,
+        seccion_leccion_descripcion: 0,
         database: [],
         index: null,
         fun: {
@@ -131,10 +183,14 @@ const entity = {
                     entity.view.form.seccion_leccion_tiempo.value !== "" &&
                     entity.view.form.curso_seccion_id.value !== ""
                 ) {
-                    if (entity.seccion_leccion.index === null) {
-                        entity.seccion_leccion.crud.insert();
+                    if (!entity.fun.existByDescripcion(entity.view.form.seccion_leccion_descripcion.value)) {
+                        if (entity.seccion_leccion.index === null) {
+                            entity.seccion_leccion.crud.insert();
+                        } else {
+                            entity.seccion_leccion.crud.update();
+                        }
                     } else {
-                        entity.seccion_leccion.crud.update();
+                        entity.fun.showModalMessage("Ya existe una leccion con esta descipcion!");
                     }
                 } else {
                     entity.fun.showModalMessage("Debe llenar todos los campos!");
@@ -152,9 +208,12 @@ const entity = {
                 }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                Seccion_leccionDao.insert(new FormData(entity.view.form)).then((res) => {
-                    entity.seccion_leccion.crud.select();
+                Seccion_leccionDao.insert(new FormData(entity.view.form)).then(async (res) => {
+                    entity.seccion_leccion.seccion_leccion_descripcion = entity.view.form.seccion_leccion_descripcion.value;
+                    await entity.seccion_leccion.crud.select();
                     entity.fun.hideModalForm();
+                    let index = entity.seccion_leccion.database.findIndex(element => element.seccion_leccion_descripcion === entity.seccion_leccion.seccion_leccion_descripcion);
+                    index > 0 ? entity.fun.showModalForm(index) : '';
                 }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {

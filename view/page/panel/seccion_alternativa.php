@@ -6,8 +6,10 @@ ________________________________________________________________________________
 */
 if (isset($viewPage)) {
 ?>
+    <link rel="stylesheet" href="view/css/bootstrap.css">
+    <link rel="stylesheet" href="control/lib/summernote/summernote.min.css">
     <div class="header">
-        <span>SECCION_ALTERNATIVA</span>
+        <span>ALTERNATIVA</span>
         <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
         <button onclick="entity.fun.showModalForm(null)">+</button>
     </div>
@@ -16,10 +18,9 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>SECCION_ALTERNATIVA_ID</td>
-                    <td>SECCION_ALTERNATIVA_DESCRIPCION</td>
-                    <td>SECCION_ALTERNATIVA_CORRETA</td>
-                    <td>SECCION_PREGUNTA_ID</td>
+                    <td>ID</td>
+                    <td>DESCRIPCION</td>
+                    <td>CORRETA</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -33,20 +34,19 @@ if (isset($viewPage)) {
             <span class="title">FORMULARIO</span>
             <div class="inputs">
                 <input type="hidden" name="seccion_alternativa_id">
+                <input type="hidden" name="seccion_pregunta_id" value="<?php echo $seccion_pregunta_id ?>">
 
                 <div class="row">
-                    <span>SECCION_ALTERNATIVA_DESCRIPCION: </span>
-                    <input type="text" name="seccion_alternativa_descripcion" placeholder="SECCION_ALTERNATIVA_DESCRIPCION">
+                    <span>CORRETA: </span>
+                    <div class="input-radio-container">
+                        <input type="radio" name="seccion_alternativa_correta" class="input-radio-si-no" value="1" placeholder="SI">
+                        <input type="radio" name="seccion_alternativa_correta" class="input-radio-si-no" value="0" placeholder="NO">
+                    </div>
                 </div>
 
-                <div class="row">
-                    <span>SECCION_ALTERNATIVA_CORRETA: </span>
-                    <input type="number" name="seccion_alternativa_correta" placeholder="SECCION_ALTERNATIVA_CORRETA">
-                </div>
-
-                <div class="row">
-                    <span>SECCION_PREGUNTA_ID: </span>
-                    <select name="seccion_pregunta_id"></select>
+                <div class="row-editor">
+                    <span class="row-editor-title">DESCRIPCION</span>
+                    <textarea class="row-editor-textarea" name="seccion_alternativa_descripcion" id="seccion_alternativa-editor"></textarea>
                 </div>
 
             </div>
@@ -72,6 +72,9 @@ if (isset($viewPage)) {
             </div>
         </div>
     </div>
+    <script src="control/lib/jquery.js"></script>
+    <script src="control/lib/bootstrap.js"></script>
+    <script src="control/lib/summernote/summernote.min.js"></script>
     <script src="control/script/seccion_alternativa.js"></script>
 <?php
 } else {

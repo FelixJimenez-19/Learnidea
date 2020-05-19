@@ -870,6 +870,7 @@ border-style: inset;
   height: 100%;
   overflow: hidden;
   flex: 1;
+  margin: 0px;
 }
 
 .idea_content .idea_form form .inputs .row .input-radio-container .input-radio-si-no:after, 

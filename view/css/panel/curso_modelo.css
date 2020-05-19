@@ -18,7 +18,7 @@
   width: 100%;
   max-width: 1400px;
   height: 100%;
-  max-height: 600px;
+  max-height: 700px;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #000;
 }
@@ -35,6 +35,7 @@
   width: auto;
   max-width: inherit;
   height: 100%;
+  max-height: inherit;
   background: var(--tertiary);
   overflow: auto;
   border-radius: 0px;
@@ -42,7 +43,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   border: none;
-  border: solid 4px var(--secondary);
+  border: solid 1px var(--secondary);
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
@@ -110,13 +111,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15px;
+  width: 20px;
   background: var(--secondary);
   transition: none;
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
-  width: 100%;
+  width: 15px;
   height: 15px;
   filter: invert(1);
   transform: rotate(180deg);
@@ -144,8 +145,7 @@
   display: flex;
   width: 100%;
   height: 105px;
-  box-shadow: 0 3px 5px 0 #000;
-  border-bottom: solid 5px var(--secondary_hover);
+  border-bottom: solid 1px var(--secondary_hover);
 }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .options-container {
   display: flex;
@@ -448,13 +448,13 @@
   /*SHOW HIDE FORM 1 - START*/
   .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 {
     width: 100%;
-    height: 15px;
+    height: 20px;
     transition: none;
   }
 
   .idea_content .idea_form .content-forms .sub-content-forms .label-content-form1 img {
     width: 15px;
-    height: 100%;
+    height: 15px;
     transform: rotate(-90deg);
     transition: none;
   }
@@ -469,8 +469,6 @@
   }
 
   .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
-    width: 36px;
-    padding: 10px;
     transform: rotate(90deg);
   }
   

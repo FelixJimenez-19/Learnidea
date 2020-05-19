@@ -42,7 +42,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   border: none;
-  border: solid 4px var(--secondary);
+  border: solid 1px var(--secondary);
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
@@ -70,8 +70,8 @@
 .idea_content .idea_form .content-forms .buttons {
   display: flex;
   width: 100%;
-  height: 40px;
-  min-height: 35px;
+  height: 30px;
+  min-height: 30px;
 }
 
 .idea_content .idea_form .content-forms .buttons button {
@@ -107,9 +107,7 @@
   display: flex;
   width: 100%;
   height: 40px;
-  box-shadow: 0 3px 5px 0 #000;
-  border-top: solid 5px var(--secondary);
-  border-bottom: solid 5px var(--secondary_hover);
+  border-bottom: solid 1px var(--secondary_hover);
 }
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options .options-container {
   display: flex;
@@ -316,36 +314,14 @@
     height: 100%;
   }
   
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form1 .inputs {
-/*    background: var(--secondary);*/
-  }
-  
-/*
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
-    max-width: inherit;
-    min-height: 630px;
-    max-height: 630px;
-    border-right: none;
-  }
-*/
   
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 {
     height: 100%;
     max-height: inherit;
   }
   
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2,
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container,
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
-/*    min-height: 90vh;*/
-  }
-  
-  .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .iframe-container .sub-iframe-container .iframe {
-    
-  }
-  
   .idea_content .idea_form .content-forms .sub-content-forms .content-form2 .options {
-    position: absolute;
+/*    position: absolute;*/
     top: 0;
     left: 0;
     z-index: 1000;
