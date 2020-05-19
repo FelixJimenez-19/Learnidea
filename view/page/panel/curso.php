@@ -140,7 +140,7 @@ if (isset($viewPage)) {
 
                         <div class="row">
                             <span>FOTO: </span>
-                            <input type="file" name="curso_foto" placeholder="FOTO">
+                            <input type="file" name="curso_foto" placeholder="FOTO" accept="image/*">
                         </div>
 
                     </div>

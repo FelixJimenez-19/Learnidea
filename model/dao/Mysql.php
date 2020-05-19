@@ -16,8 +16,7 @@ class Mysql
     public function conectar()
     {
         $this->conn = mysqli_connect("localhost", "root", "", "learnidea");
-        // $this->conn = mysqli_connect("192.168.0.2", "root", "", "learnidea");
-        // $this->conn = mysqli_connect("26.133.63.149", "root", "", "learnidea");
+        // $this->conn = mysqli_connect("localhost", "learnide_db", "while(!vida)", "learnide_db");
         return $this->conn;
     }
     private function desconectar()
