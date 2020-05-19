@@ -17,6 +17,7 @@ class Mysql
     {
         $this->conn = mysqli_connect("localhost", "root", "", "learnidea");
         // $this->conn = mysqli_connect("localhost", "learnide_db", "while(!vida)", "learnide_db");
+        mysqli_set_charset($this->conn,"utf8");
         return $this->conn;
     }
     private function desconectar()
