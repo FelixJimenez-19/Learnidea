@@ -15,7 +15,7 @@ if (isset($_SESSION['usuario_email'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
         <link rel="icon" href="view/src/img/logo.png">
-        <title>PANEL - LEARNIDEA</title>
+        <title>Learnidea - Panel</title>
         <link rel="stylesheet" href="view/css/config.css">
         <link rel="stylesheet" href="view/css/panel/panel.css">
     </head>
@@ -66,7 +66,7 @@ if (isset($_SESSION['usuario_email'])) {
             <img src="view/src/img/logo.png" class="logo">
             <div class="idea_options">
                 <div class="idea_option">
-                    <a href="panel.php?page=inicio">
+                    <a href="panel?page=inicio">
                         <label>
                             <span>Inicio</span>
                             <img src="view/src/icon/home.png">
@@ -83,15 +83,15 @@ if (isset($_SESSION['usuario_email'])) {
                         </label>
                     </a>
                     <div class="idea_sub_options">
-                        <a href="panel.php?page=usuario_tipo">
+                        <a href="panel?page=usuario_tipo">
                             <span>Tipos</span>
                             <img src="view/src/icon/security.png">
                         </a>
-                        <a href="panel.php?page=usuario_tema">
+                        <a href="panel?page=usuario_tema">
                             <span>Temas</span>
                             <img src="view/src/icon/theme.png">
                         </a>
-                        <a href="panel.php?page=usuario">
+                        <a href="panel?page=usuario">
                             <span>Cuentas</span>
                             <img src="view/src/icon/account.png">
                         </a>
@@ -107,17 +107,21 @@ if (isset($_SESSION['usuario_email'])) {
                         </label>
                     </a>
                     <div class="idea_sub_options">
-                        <a href="panel.php?page=informacion">
+                        <a href="panel?page=informacion">
                             <span>Informacion</span>
                             <img src="view/src/icon/information.png">
                         </a>
-                        <a href="panel.php?page=contacto">
+                        <a href="panel?page=institucion">
+                            <span>Instituciones</span>
+                            <img src="view/src/icon/company.png">
+                        </a>
+                        <a href="panel?page=contacto">
                             <span>Contactos</span>
                             <img src="view/src/icon/contact.png">
                         </a>
-                        <a href="panel.php?page=institucion">
-                            <span>Instituciones</span>
-                            <img src="view/src/icon/company.png">
+                        <a href="panel?page=slider">
+                            <span>Slider</span>
+                            <img src="view/src/icon/slider.png">
                         </a>
                     </div>
                 </div>
@@ -131,27 +135,27 @@ if (isset($_SESSION['usuario_email'])) {
                         </label>
                     </a>
                     <div class="idea_sub_options">
-                        <a href="panel.php?page=area">
+                        <a href="panel?page=area">
                             <span>Area</span>
                             <img src="view/src/icon/area.png">
                         </a>
-                        <a href="panel.php?page=especificacion">
+                        <a href="panel?page=especificacion">
                             <span>Especificacion</span>
                             <img src="view/src/icon/equal.png">
                         </a>
-                        <a href="panel.php?page=alineacion">
+                        <a href="panel?page=alineacion">
                             <span>Alineacion</span>
                             <img src="view/src/icon/alineacion.png">
                         </a>
-                        <a href="panel.php?page=participante_tipo">
+                        <a href="panel?page=participante_tipo">
                             <span>Participante</span>
                             <img src="view/src/icon/users.png">
                         </a>
-                        <a href="panel.php?page=modalidad">
+                        <a href="panel?page=modalidad">
                             <span>Modalidad</span>
                             <img src="view/src/icon/modalidad.png">
                         </a>
-                        <a href="panel.php?page=duracion">
+                        <a href="panel?page=duracion">
                             <span>Duracion</span>
                             <img src="view/src/icon/time.png">
                         </a>
@@ -167,11 +171,11 @@ if (isset($_SESSION['usuario_email'])) {
                         </label>
                     </a>
                     <div class="idea_sub_options">
-                        <a href="panel.php?page=curso_modelo">
+                        <a href="panel?page=curso_modelo">
                             <span>Modelos</span>
                             <img src="view/src/icon/model.png">
                         </a>
-                        <a href="panel.php?page=curso">
+                        <a href="panel?page=curso">
                             <span>Cursos</span>
                             <img src="view/src/icon/book.png">
                         </a>
@@ -181,7 +185,7 @@ if (isset($_SESSION['usuario_email'])) {
                 <!-- POR COMPLETAR - START -->
                 <!-- 
           <div class="idea_option">
-            <a href="panel.php?page=curso">
+            <a href="panel?page=curso">
               <label>
                 <span>Curso</span>
                 <img src="view/src/icon/in.png">
@@ -190,7 +194,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=curso_deber">
+            <a href="panel?page=curso_deber">
               <label>
                 <span>Curso_deber</span>
                 <img src="view/src/icon/in.png">
@@ -199,7 +203,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=curso_seccion">
+            <a href="panel?page=curso_seccion">
               <label>
                 <span>Curso_seccion</span>
                 <img src="view/src/icon/in.png">
@@ -208,7 +212,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=seccion_video">
+            <a href="panel?page=seccion_video">
               <label>
                 <span>Seccion_video</span>
                 <img src="view/src/icon/in.png">
@@ -217,7 +221,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=video_comentario">
+            <a href="panel?page=video_comentario">
               <label>
                 <span>Video_comentario</span>
                 <img src="view/src/icon/in.png">
@@ -226,7 +230,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=video_respuesta">
+            <a href="panel?page=video_respuesta">
               <label>
                 <span>Video_respuesta</span>
                 <img src="view/src/icon/in.png">
@@ -235,7 +239,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=seccion_leccion">
+            <a href="panel?page=seccion_leccion">
               <label>
                 <span>Seccion_leccion</span>
                 <img src="view/src/icon/in.png">
@@ -244,7 +248,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=seccion_pregunta">
+            <a href="panel?page=seccion_pregunta">
               <label>
                 <span>Seccion_pregunta</span>
                 <img src="view/src/icon/in.png">
@@ -253,7 +257,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=seccion_alternativa">
+            <a href="panel?page=seccion_alternativa">
               <label>
                 <span>Seccion_alternativa</span>
                 <img src="view/src/icon/in.png">
@@ -262,7 +266,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=inscripcion">
+            <a href="panel?page=inscripcion">
               <label>
                 <span>Inscripcion</span>
                 <img src="view/src/icon/in.png">
@@ -271,7 +275,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=inscripcion_leccion">
+            <a href="panel?page=inscripcion_leccion">
               <label>
                 <span>Inscripcion_leccion</span>
                 <img src="view/src/icon/in.png">
@@ -280,7 +284,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=inscripcion_pregunta">
+            <a href="panel?page=inscripcion_pregunta">
               <label>
                 <span>Inscripcion_pregunta</span>
                 <img src="view/src/icon/in.png">
@@ -289,7 +293,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=inscripcion_alternativa">
+            <a href="panel?page=inscripcion_alternativa">
               <label>
                 <span>Inscripcion_alternativa</span>
                 <img src="view/src/icon/in.png">
@@ -298,7 +302,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=certificado_tipo">
+            <a href="panel?page=certificado_tipo">
               <label>
                 <span>Certificado_tipo</span>
                 <img src="view/src/icon/in.png">
@@ -307,7 +311,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=certificado">
+            <a href="panel?page=certificado">
               <label>
                 <span>Certificado</span>
                 <img src="view/src/icon/in.png">
@@ -316,7 +320,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=deber_entrega">
+            <a href="panel?page=deber_entrega">
               <label>
                 <span>Deber_entrega</span>
                 <img src="view/src/icon/in.png">
@@ -325,7 +329,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=publicacion">
+            <a href="panel?page=publicacion">
               <label>
                 <span>Publicacion</span>
                 <img src="view/src/icon/in.png">
@@ -334,7 +338,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=publicacion_comentario">
+            <a href="panel?page=publicacion_comentario">
               <label>
                 <span>Publicacion_comentario</span>
                 <img src="view/src/icon/in.png">
@@ -343,7 +347,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=publicacion_respuesta">
+            <a href="panel?page=publicacion_respuesta">
               <label>
                 <span>Publicacion_respuesta</span>
                 <img src="view/src/icon/in.png">
@@ -352,7 +356,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=buzon">
+            <a href="panel?page=buzon">
               <label>
                 <span>Buzon</span>
                 <img src="view/src/icon/in.png">
@@ -361,7 +365,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=transaccion_tipo">
+            <a href="panel?page=transaccion_tipo">
               <label>
                 <span>Transaccion_tipo</span>
                 <img src="view/src/icon/in.png">
@@ -370,7 +374,7 @@ if (isset($_SESSION['usuario_email'])) {
           </div>
   
           <div class="idea_option">
-            <a href="panel.php?page=transaccion">
+            <a href="panel?page=transaccion">
               <label>
                 <span>Transaccion</span>
                 <img src="view/src/icon/in.png">
@@ -389,6 +393,7 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/MensajeDao.js"></script>
         <script src="control/dao/InformacionDao.js"></script>
         <script src="control/dao/ContactoDao.js"></script>
+        <script src="control/dao/SliderDao.js"></script>
         <script src="control/dao/InstitucionDao.js"></script>
         <script src="control/dao/AreaDao.js"></script>
         <script src="control/dao/EspecificacionDao.js"></script>

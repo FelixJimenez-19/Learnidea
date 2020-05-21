@@ -89,6 +89,8 @@ CREATE TABLE usuario (
     FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id)
 ) ENGINE INNODB;
 
+-- ADD NACIONALIDAD
+
 INSERT INTO usuario VALUES(0, 'Super Administrador', '', 0, '', '', '', 'admin', 'admin', null, null, null, '', '', 0, '', '', '', '', '', '', '', 0, 1, 1);
 
 -- @@@@options:{ "files": [{"type":"png", "name":"mensaje_foto"}] }
@@ -111,16 +113,16 @@ CREATE TABLE informacion (
     informacion_empresa_nombre VARCHAR(30),
     informacion_empresa_siglas VARCHAR(10),
     informacion_empresa_ciudad VARCHAR(30),
-    informacion_empresa_mision VARCHAR(30),
-    informacion_empresa_vision VARCHAR(30),
+    informacion_empresa_mision TEXT,
+    informacion_empresa_vision TEXT,
     informacion_empresa_logo VARCHAR(10),
     informacion_gerente_nombre VARCHAR(80),
     informacion_gerente_celular VARCHAR(10),
     informacion_gerente_nivel_nombre VARCHAR(80),
     informacion_gerente_nivel_siglas VARCHAR(10),
     informacion_pagina_nombre VARCHAR(30),
-    informacion_pagina_mision VARCHAR(30),
-    informacion_pagina_vision VARCHAR(30),
+    informacion_pagina_mision TEXT,
+    informacion_pagina_vision TEXT,
     informacion_pagina_logo VARCHAR(30),
     informacion_pagina_copyright LONGTEXT,
     informacion_ubicacion TEXT,
@@ -143,7 +145,15 @@ CREATE TABLE institucion (
     institucion_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     institucion_nombre VARCHAR(150),
     institucion_siglas VARCHAR(50),
+    institucion_link TEXT,
     institucion_logo VARCHAR(10)
+) ENGINE INNODB;
+
+-- @@@@options:{ "files": [{"type":"png", "name":"slider_foto"}] }
+CREATE TABLE slider (
+    slider_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    slider_frase VARCHAR(150),
+    slider_foto VARCHAR(10)
 ) ENGINE INNODB;
 -- //PAGINA - FIN
 
@@ -346,6 +356,8 @@ CREATE TABLE curso_deber (
     curso_id INT,
     FOREIGN KEY (curso_id) REFERENCES curso (curso_id) ON DELETE CASCADE
 ) ENGINE INNODB;
+-- CURSO: AUMENTAR FECHAS DE ENTREGA INDIVIDUALES
+
 
 CREATE TABLE curso_seccion (
     curso_seccion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

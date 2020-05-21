@@ -1,0 +1,187 @@
+@font-face{
+  font-family: AdventPro-Light;
+  src: url(fonts/AdventPro-Light.ttf);
+}
+@font-face{
+  font-family: AdventPro-Medium;
+  src: url(fonts/AdventPro-Medium.ttf);
+}
+.sections {
+  display: flex; flex-direction: column;
+}
+.sections .section {
+  background: #ffffff; color: #1B2428;
+  display: flex; flex-wrap: wrap;
+  justify-content: center;
+}
+.sections .section .title {
+  background: #1B2428; color: #ffffff;
+  display: flex; justify-content: center;
+  width: 100%;
+  padding: 75px 0;
+  font-family: AdventPro-Light; font-size: 2.5em; font-weight: ;
+}
+.sections .section .items {
+  display: flex; justify-content: center; align-items: center;
+  width: 100%; height: auto;
+  background: #111415;
+  padding: 70px 0;
+  overflow-x: hidden;
+}
+.sections .section .items .item {
+  position: relative;
+  width: 100%; max-width: 200px;
+  height: 100%; min-height: 400px; max-height: none;
+  margin: 0 20px;
+  background: #EEEEEE;
+  box-shadow: 0 0 2px 0.1px #000000;
+  border-radius: 4px;
+}
+.sections .section .items .item .popular {
+  position: absolute; top: -60px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  width: 100%;
+  animation: move 0.5s linear infinite alternate;
+}
+@keyframes move {
+  0%{ top: -70px; }
+  100%{ top: -50px; }
+}
+.sections .section .items .item .popular span {
+  font-family: AdventPro-light; font-size: 2em; font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #4D7DE1,
+               -2px 2px 2px #4D7DE1,
+               2px -2px 2px #4D7DE1,
+               -2px -2px 2px #4D7DE1;
+}
+.sections .section .items .item .popular img {
+  width: 50px; height: 50px;
+  filter: invert(1);
+}
+.sections .section .items .item .header {
+  background: #4D7DE1;
+  padding: 20px 20px 5px 20px;
+  border-radius: 4px 4px 0 0;
+}
+.sections .section .items .item .header h3 ,
+.sections .section .items .item .header h4 {
+  font-family: AdventPro-light; font-size: 2em; font-weight: 100;
+  color: #ffffff;
+  text-align: center;
+}
+.sections .section .items .item .header h4 {
+  font-size: 3em; font-weight: 600;
+}
+.sections .section .items .item .header span {
+  font-family: sans-serif; font-size: 1em;
+  text-align: center;
+  display: block;
+  color: #ffffff;
+}
+.sections .section .items .item .body {
+  border-radius: 0 0 4px 4px;
+  padding: 5px 20px 10px 20px;
+}
+.sections .section .items .item .body h5 {
+  font-family: sans-serif; font-size: 1.3em; font-weight: normal;
+  text-align: center;
+  margin: 5px 0;
+}
+.sections .section .items .item .body p {
+  font-family: sans-serif; font-size: 1.1em; font-weight: normal;
+  text-align: center;
+  margin: 20px 0;
+  min-height: 75px;
+}
+.sections .section .items .item .body a {
+  display: flex; justify-content: center; align-items: center;
+  font-family: AdventPro-light; font-size: 1.6em; font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  background: #1B2428; color: #ffffff;
+  text-decoration: none;
+  width: 100%;
+}
+.sections .section .items .item .body a:hover {
+  background: #000000;
+}
+
+/* SECTIONS > SECTION > FORM */
+.sections .section form {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  width: 100%; max-width: 1000px;
+  margin: 20px 0;
+}
+.sections .section form .campo {
+  display: flex; flex-direction: column;
+  width: 100%; max-width: 400px;
+  margin: 10px;
+}
+.sections .section form .campo span {
+  font-family: AdventPro-light; font-size: 1.3em; font-weight: bold;
+  color: #666666;
+}
+.sections .section form .campo span b {
+  color: #DD5145;
+}
+.sections .section form .campo input{}
+.sections .section form .campo input,
+.sections .section form .campo select,
+.sections .section form .textarea textarea {
+  font-family: sans-serif; font-size: 1.1em;
+  color: #000000;
+  padding: 5px;
+  outline: none;
+}
+.sections .section form .campo select {}
+.sections .section form .textarea {
+  width: 100%; max-width: none;
+  margin: 0;
+}
+.sections .section form .textarea textarea {
+  width: 100%; min-width: 100%; max-width: 100%;
+  height: 150px; min-height: 150px; max-height: 200px;
+}
+.sections .section form .textarea input[type="submit"] {
+  background: #1B2428; color: #ffffff;
+  font-family: AdventPro-Medium; font-size: 1.5em; font-weight: 1000;
+  border-style: none;
+  margin: 50px 0;
+  border-radius: 5px;
+}
+.sections .section form .textarea input[type="submit"]:hover {
+  background: #090c0d; color: #c0c0c0;
+}
+
+/* MEDIA QUERYS */
+@media (max-width: 800px) {
+  .sections .section .items {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+  .sections .section .items .item {
+    margin: 50px 0;
+    max-width: 500px;
+    width: 100%;
+  }
+}
+@media (max-width: 860px) {
+  .sections .section form {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: nowrap; flex-direction: column; align-items: center;
+  }
+  .sections .section form .campo,
+  .sections .section form .textarea {
+    width: 100%; max-width: 600px;
+  }
+}
+@media (max-width: 800px) {
+  .sections .section form .campo,
+  .sections .section form .textarea {
+    max-width: 500px;
+  }
+}

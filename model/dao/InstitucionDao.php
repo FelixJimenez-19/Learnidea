@@ -18,22 +18,22 @@ class InstitucionDao
     {
         return $this->conn->query("SELECT * FROM institucion WHERE institucion_id = $institucion_id");
     }
-    public function insert($institucion_nombre, $institucion_siglas)
+    public function insert($institucion_nombre, $institucion_siglas,$institucion_link)
     {
-        return $this->conn->query("INSERT INTO institucion SET institucion_nombre='$institucion_nombre', institucion_siglas='$institucion_siglas' ");
+        return $this->conn->query("INSERT INTO institucion SET institucion_nombre='$institucion_nombre', institucion_siglas='$institucion_siglas', institucion_link='$institucion_link' ");
     }
-    public function update($institucion_nombre, $institucion_siglas, $institucion_id)
+    public function update($institucion_nombre, $institucion_siglas, $institucion_link, $institucion_id)
     {
-        return $this->conn->query("UPDATE institucion SET institucion_nombre='$institucion_nombre', institucion_siglas='$institucion_siglas' WHERE institucion_id = $institucion_id ");
+        return $this->conn->query("UPDATE institucion SET institucion_nombre='$institucion_nombre', institucion_siglas='$institucion_siglas', institucion_link='$institucion_link' WHERE institucion_id = $institucion_id ");
     }
     public function delete($institucion_id)
     {
         return $this->conn->query("DELETE FROM institucion WHERE institucion_id = $institucion_id ");
     }
 
-    public function selectByAll($institucion_nombre, $institucion_siglas)
+    public function selectByAll($institucion_nombre, $institucion_siglas, $institucion_link)
     {
-        return $this->conn->query("SELECT * FROM institucion WHERE institucion_nombre='$institucion_nombre' AND institucion_siglas='$institucion_siglas' ");
+        return $this->conn->query("SELECT * FROM institucion WHERE institucion_nombre='$institucion_nombre' AND institucion_siglas='$institucion_siglas' AND institucion_link='$institucion_link' ");
     }
 
     public function updateInstitucion_logo($institucion_logo, $institucion_id)

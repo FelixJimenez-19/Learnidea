@@ -1,4 +1,5 @@
 const usuario = {
+    MAX_PRINT: 50,
     fun: {
         // index in ChatCrud.usuario.database[thisIndex]
         // queryConnected 'true' devuelve solo usuarios conectados o 'false' solo desconectados
@@ -20,7 +21,7 @@ const usuario = {
                     </div>
                 `;
             } else {
-                return ``;
+                return "";
             }
         },
         isConnected: (index) => {
@@ -59,11 +60,28 @@ const usuario = {
     },
     printContacts: () => {
         let html = ``;
+        let cont = 0;
         for (let i in ChatCrud.usuario.database) {
-            html += usuario.fun.getHtml(i, true);
+            let html_temp = usuario.fun.getHtml(i, true);
+            if (cont <= usuario.MAX_PRINT) {
+                if (html_temp !== "") {
+                    cont++;
+                    html += html_temp;
+                }
+            } else {
+                i = ChatCrud.usuario.database.length;
+            }
         }
         for (let i in ChatCrud.usuario.database) {
-            html += usuario.fun.getHtml(i, false);
+            let html_temp = usuario.fun.getHtml(i, false);
+            if (cont <= usuario.MAX_PRINT) {
+                if (html_temp !== "") {
+                    cont++;
+                    html += html_temp;
+                }
+            } else {
+                i = ChatCrud.usuario.database.length;
+            }
         }
         ChatView.contactContainer.innerHTML = html;
     }

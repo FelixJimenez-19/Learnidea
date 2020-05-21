@@ -26,6 +26,7 @@ const entity = {
                 entity.view.form.institucion_id.value = entity.institucion.database[index].institucion_id;
                 entity.view.form.institucion_nombre.value = entity.institucion.database[index].institucion_nombre;
                 entity.view.form.institucion_siglas.value = entity.institucion.database[index].institucion_siglas;
+                entity.view.form.institucion_link.value = entity.institucion.database[index].institucion_link;
             }
             entity.view.modalForm.style.top = "0%";
         },
@@ -35,6 +36,7 @@ const entity = {
             entity.view.form.institucion_id.value = "";
             entity.view.form.institucion_nombre.value = "";
             entity.view.form.institucion_siglas.value = "";
+            entity.view.form.institucion_link.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -70,6 +72,11 @@ const entity = {
                     <td>${register.institucion_id}</td>
                     <td>${register.institucion_nombre}</td>
                     <td>${register.institucion_siglas}</td>
+                    <td>
+                        <a target="_blank" ${register.institucion_link !== null ? 'href="' + register.institucion_link + '"' : ""}">
+                            <img src='view/src/icon/link.png' />
+                        </a>
+                    </td>
                     <td>
                         <img 
                         onclick="viewscreen.show('${register.institucion_logo !== null ? "view/src/files/institucion_logo/" + register.institucion_logo : "view/src/img/avatar.png"}')" 
@@ -118,7 +125,11 @@ const entity = {
             },
 
             insertOrUpdate: () => {
-                if (entity.view.form.institucion_nombre.value !== "" && entity.view.form.institucion_siglas.value !== "") {
+                if (
+                    entity.view.form.institucion_nombre.value !== "" &&
+                    entity.view.form.institucion_siglas.value !== "" &&
+                    entity.view.form.institucion_link.value !== ""
+                ) {
                     if (entity.institucion.index === null) {
                         entity.institucion.crud.insert();
                     } else {

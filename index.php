@@ -1,7 +1,7 @@
-<?php
-/*
-_____________________________________________________________________________________________
-- CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
-- RUTA: proyect/index.php
-*/
-header('location: login.php');
+<?php $viewPage = 0 ?>
+<!DOCTYPE html>
+<html lang="es">
+<?php include 'view/page/public/header.php' ?>
+<?php include 'view/page/public/footer.php' ?>
+
+</html>

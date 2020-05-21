@@ -1,0 +1,26 @@
+@font-face{
+  font-family: AdventPro-Light;
+  src: url(fonts/AdventPro-Light.ttf);
+}
+@font-face{
+  font-family: AdventPro-Medium;
+  src: url(fonts/AdventPro-Medium.ttf);
+}
+.sections {
+  display: flex; flex-direction: column;
+}
+.sections .section {
+  background: #ffffff; color: #1B2428;
+  display: flex; flex-wrap: wrap;
+  justify-content: center;
+}
+.sections .section .title {
+  background: #1B2428; color: #ffffff;
+  display: flex; justify-content: center;
+  width: 100%;
+  padding: 75px 0;
+  font-family: AdventPro-Light; font-size: 2.5em; font-weight: ;
+}
+.sections .section img {
+  width: 100%; max-width: 900px;
+}

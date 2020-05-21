@@ -36,6 +36,6 @@ if (empty($_SESSION['usuario_email'])) {
     </html>
 <?php
 } else {
-    header("location: panel.php");
+    header("location: panel");
 }
 ?>

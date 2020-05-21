@@ -443,7 +443,7 @@
 
 .chat-container .item-container input[type="checkbox"]:checked ~ .item .contact-container {
   height: auto;
-  max-height: 600px;
+  max-height: 60vh;
   min-height: 220px;
 }
 

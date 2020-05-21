@@ -16,11 +16,11 @@ if (isset($viewPage)) {
         <table class="idea_table">
             <thead>
                 <tr>
-                    <td>INSTITUCION_ID</td>
-                    <td>INSTITUCION_NOMBRE</td>
-                    <td>INSTITUCION_SIGLAS</td>
-                    <td>INSTITUCION_LOGO</td>
-
+                    <td>ID</td>
+                    <td>NOMBRE</td>
+                    <td>SIGLAS</td>
+                    <td>LINK</td>
+                    <td>LOGO</td>
                     <td>ACCION</td>
                 </tr>
             </thead>
@@ -36,18 +36,23 @@ if (isset($viewPage)) {
                 <input type="hidden" name="institucion_id">
 
                 <div class="row">
-                    <span>INSTITUCION_NOMBRE: </span>
-                    <input type="text" name="institucion_nombre" placeholder="INSTITUCION_NOMBRE">
+                    <span>NOMBRE: </span>
+                    <input type="text" name="institucion_nombre" placeholder="NOMBRE">
                 </div>
 
                 <div class="row">
-                    <span>INSTITUCION_SIGLAS: </span>
-                    <input type="text" name="institucion_siglas" placeholder="INSTITUCION_SIGLAS">
+                    <span>SIGLAS: </span>
+                    <input type="text" name="institucion_siglas" placeholder="SIGLAS">
+                </div>
+                
+                <div class="row">
+                    <span>LINK: </span>
+                    <input type="text" name="institucion_link" placeholder="LINK">
                 </div>
 
                 <div class="row">
-                    <span>INSTITUCION_LOGO: </span>
-                    <input type="file" name="institucion_logo" placeholder="INSTITUCION_LOGO">
+                    <span>LOGO: </span>
+                    <input type="file" name="institucion_logo" placeholder="LOGO">
                 </div>
 
             </div>

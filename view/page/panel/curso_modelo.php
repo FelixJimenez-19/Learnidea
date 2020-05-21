@@ -59,49 +59,49 @@ if (isset($viewPage)) {
                         <div class="row">
                             <span>AREA: </span>
                             <select name="area_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=area" class="inline-3-button">
+                            <a target="_blank" href="panel?page=area" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>ESPECIFICACION: </span>
                             <select name="especificacion_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=especificacion" class="inline-3-button">
+                            <a target="_blank" href="panel?page=especificacion" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>ALINEACION: </span>
                             <select name="alineacion_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=alineacion" class="inline-3-button">
+                            <a target="_blank" href="panel?page=alineacion" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>PARTICIPANTE: </span>
                             <select name="participante_tipo_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=participante_tipo" class="inline-3-button">
+                            <a target="_blank" href="panel?page=participante_tipo" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>MODALIDAD: </span>
                             <select name="modalidad_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=modalidad" class="inline-3-button">
+                            <a target="_blank" href="panel?page=modalidad" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>DURACION: </span>
                             <select name="duracion_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=duracion" class="inline-3-button">
+                            <a target="_blank" href="panel?page=duracion" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
                         <div class="row">
                             <span>USUARIO: </span>
                             <select name="usuario_id" class="inline-3"></select>
-                            <a target="_blank" href="panel.php?page=usuario" class="inline-3-button">
+                            <a target="_blank" href="panel?page=usuario" class="inline-3-button">
                                 <img src="view/src/icon/link.png">
                             </a>
                         </div>
