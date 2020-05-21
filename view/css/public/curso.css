@@ -1,0 +1,348 @@
+@font-face {
+  font-family: AdventPro-Light;
+  src: url(../fonts/AdventPro-Light.ttf);
+}
+
+@font-face {
+  font-family: AdventPro-Medium;
+  src: url(../fonts/AdventPro-Medium.ttf);
+}
+
+.curso-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 400px;
+  background: #FFFFFF;
+  padding: 15px 40px;
+}
+
+.curso-container .nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  width: 35px;
+  height: 35px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.curso-container .nav:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.curso-container .nav img {
+  width: 100%;
+  height: 100%;
+  padding: 8px 6px;
+}
+
+.curso-container .previous {
+  left: 20px;
+  padding: 0 3px 0 0;
+}
+
+.curso-container .previous img {
+  transform: rotate(180deg);
+}
+
+.curso-container .next {
+  right: 20px;
+  padding: 0 0 0 3px;
+}
+
+.curso-container .container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 15px 0;
+}
+
+.curso-container .container .curso-item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-width: 300px;
+  height: 100%;
+  border: solid 1px #d1cfcf;
+  border-radius: 5px;
+  background: #FFFFFF;
+  margin: 0 4px;
+}
+
+.curso-container .container .curso-item .curso-foto {
+  position: relative;
+  flex: 1;
+  display: block;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  /*  background-image: url('../../src/files/curso_foto/4.png');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7);
+}
+
+.curso-container .container .curso-item:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  margin: -4px 4px 0 4px;
+}
+
+.curso-container .container .curso-item:hover .curso-foto {
+  filter: brightness(0.9);
+}
+
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos,
+.curso-container .container .curso-item .curso-foto .curso-gratis,
+.curso-container .container .curso-item .curso-foto .curso-precio {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+  height: 45px;
+  position: absolute;
+  bottom: -20px;
+  left: -5px;
+  margin: auto;
+  background: var(--primary);
+  color: var(--tertiary);
+  font-weight: bold;
+  border-radius: 5px 0 0 0;
+  box-shadow: -3px 3px 6px -3px rgba(0, 0, 0, 0.5);
+}
+
+.curso-container .container .curso-item .curso-foto .curso-gratis {
+  font-family: AdventPro-light;
+  text-shadow: 0px 1px 2px black,
+    1px 0px 2px black;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+}
+
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos {
+  background: rgba(0, 0, 0, 0);
+}
+
+.curso-container .container .curso-item .curso-foto .curso-gratis:before,
+.curso-container .container .curso-item .curso-foto .curso-precio:before {
+  position: absolute;
+  content: '';
+  display: flex;
+  width: 5px;
+  height: 5px;
+  background: var(--primary_hover);
+  left: 0;
+  bottom: -5px;
+  border-radius: 0 0 0 5px;
+}
+
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos:before,
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos:after {
+  position: absolute;
+  content: '';
+  display: flex;
+  width: 25px;
+  height: 25px;
+  left: 100%;
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0) 50%, var(--primary) 0%);
+}
+
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos:before {
+  top: 0;
+}
+
+.curso-container .container .curso-item .curso-foto .curso-precio-pseudos:after {
+  background-image: linear-gradient(to top right, var(--primary) 50%, rgba(0, 0, 0, 0) 0%);
+  bottom: 0px;
+}
+
+
+.curso-container .container .curso-item .curso-descripcion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.curso-container .container .curso-item .curso-descripcion .text {
+  display: flex;
+}
+
+.curso-container .container .curso-item .curso-descripcion .text span {
+  font-family: AdventPro-Medium;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.curso-container .container .curso-item .curso-descripcion .text p {
+  font-family: AdventPro-medium;
+  font-size: 1.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.curso-container .container .curso-item .curso-descripcion .curso-name {
+  display: block;
+  text-align: center;
+  margin: 15px 0 5px 0;
+  padding: 5px 0;
+  font-family: AdventPro-medium;
+  font-size: 1.3em;
+  /*  font-weight: bold;*/
+  letter-spacing: 0.07em;
+  color: var(--primary);
+  text-shadow: 0 0 1px #000000,
+    1px 0 1px #000000,
+    0 1px 1px #000000;
+  border-bottom: solid 1px #d1cfcf;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.curso-container .container .curso-item .curso-descripcion .curso-docente {}
+
+.curso-container .container .curso-item .curso-descripcion .curso-inicio {}
+
+.curso-container .container .curso-item .curso-descripcion .curso-cupos {}
+
+.curso-container .container .curso-item .curso-descripcion a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: auto;
+  min-width: 140px;
+  height: 40px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: var(--primary);
+  border: solid 2px var(--primary);
+  border-radius: 40px;
+  margin: 5px auto;
+  font-size: 1.25em;
+  font-family: AdventPro-medium;
+}
+
+.curso-container .container .curso-item .curso-descripcion a:hover {
+  background: var(--primary);
+  color: var(--tertiary);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+
+
+
+
+.curso-container .container .ver-mas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.curso-container .container .ver-mas:hover {
+  text-decoration: underline;
+}
+
+.curso-container .container .ver-mas img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 10px 0;
+}
+
+.curso-container .container .ver-mas span {
+  color: #000000;
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 700px) {
+  .curso-container {
+    padding: 5px 30px;
+  }
+
+  .curso-container .previous {
+    left: 15px;
+  }
+
+  .curso-container .next {
+    right: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .curso-container {
+    padding: 5px 20px;
+  }
+
+  .curso-container .container {
+    padding: 5px 0;
+  }
+
+  .curso-container .previous {
+    left: 5px;
+  }
+
+  .curso-container .next {
+    right: 5px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _____________ SCROLL _ STYLES ________________ */
+.curso-container .container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.curso-container .container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 7px;
+}
+
+.curso-container .container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary_hover);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.curso-container .container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}

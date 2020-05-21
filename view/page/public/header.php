@@ -6,7 +6,7 @@ if (isset($viewPage)) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title></title>
-        <link rel="icon" id="head-favicon" href="">
+        <link rel="icon" id="head-favicon" href="view/src/img/logo.png">
         <!-- STYLES -->
         <link rel="stylesheet" href="view/css/config.css">
         <link rel="stylesheet" href="view/css/public/index.css">
@@ -34,8 +34,8 @@ if (isset($viewPage)) {
                     <div class="btn">
                         <a href="cursos">Cursos</a>
                         <div class="buttons_sub">
+                            <a href="cursos#live">En Vivo</a>
                             <a href="cursos#record">Virtuales</a>
-                            <a href="cursos#live">En vivo</a>
                         </div>
                     </div>
 
