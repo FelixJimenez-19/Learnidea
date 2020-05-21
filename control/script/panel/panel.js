@@ -24,7 +24,7 @@ let interface = {
 let interactions = {
     logout: () => {
         UsuarioDao.logout().then((res) => {
-            window.location.href = "login.php";
+            window.location.href = "login";
         });
     },
 };

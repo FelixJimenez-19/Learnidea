@@ -312,7 +312,11 @@
   }
 }
 
-
+@media (max-width: 400px) {
+  .curso-container .container .curso-item {
+    width: 100%;
+  }
+}
 
 
 

@@ -4,7 +4,8 @@ ________________________________________________________________________________
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
 - RUTA: proyect/view/page/video_respuesta.php
 */
-if (isset($viewPage)) {
+if (isset($_SESSION)) {
+    if (isset($viewPage)) {
 ?>
     <div class="header">
         <span>VIDEO_RESPUESTA</span>
@@ -82,6 +83,9 @@ if (isset($viewPage)) {
     <script src="control/script/video_respuesta.js"></script>
 <?php
 } else {
-    header("location: ../../panel.php");
+        header("location: ../../../panel?page=video_respuesta");
+    }
+} else {
+    header("location: login");
 }
 ?>

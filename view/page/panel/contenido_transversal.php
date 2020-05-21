@@ -4,7 +4,8 @@ ________________________________________________________________________________
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
 - RUTA: proyect/view/page/contenido_transversal.php
 */
-if (isset($viewPage)) {
+if (isset($_SESSION)) {
+    if (isset($viewPage)) {
 ?>
     <div class="header">
         <span>CONTENIDO TRANSVERSAL</span>
@@ -64,6 +65,9 @@ if (isset($viewPage)) {
     <script src="control/script/contenido_transversal.js"></script>
 <?php
 } else {
-    header("location: ../../panel.php");
+        header("location: ../../../panel?page=contenido_transversal");
+    }
+} else {
+    header("location: login");
 }
 ?>

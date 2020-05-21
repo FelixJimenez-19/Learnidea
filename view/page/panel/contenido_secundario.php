@@ -4,7 +4,8 @@ ________________________________________________________________________________
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
 - RUTA: proyect/view/page/contenido_secundario.php
 */
-if (isset($viewPage)) {
+if (isset($_SESSION)) {
+    if (isset($viewPage)) {
 ?>
     <div class="header">
         <span>CONTENIDO SECUNDARIO</span>
@@ -63,7 +64,11 @@ if (isset($viewPage)) {
     </div>
     <script src="control/script/contenido_secundario.js"></script>
 <?php
+
 } else {
-    header("location: ../../panel.php");
+    header("location: ../../../panel?page=contenido_secundario");
+}
+} else {
+header("location: login");
 }
 ?>
