@@ -16,7 +16,7 @@
 <div class="content_buttons_header">
     <span>INICIO</span>
     <a href="#live"><img src="view/src/icon/live.png">En Vivo</a>
-    <a href="#virtual"><img src="view/src/icon/online.png">Viruales</a>
+    <a href="#virtual"><img src="view/src/icon/online.png">Virtuales</a>
 </div>
 
 <!--  CONTENEDOR SECCIONES  -->

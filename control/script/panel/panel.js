@@ -45,15 +45,41 @@ let interactions = {
     saveTool: (evt) => {
         localStorage.setItem("header-tool-open", evt.srcElement.checked);
     },
-    hideShowTool: () => {
-        let checked = !interface.checkboxTool.checked;
-        interface.checkboxTool.checked = checked;
-        let evt = {
-            srcElement: {
-                checked: checked
+    hideShowTool: (evt) => {
+        if (evt.keyCode == 66 && evt.ctrlKey) {
+            let checked = !interface.checkboxTool.checked;
+            interface.checkboxTool.checked = checked;
+            let evt = {
+                srcElement: {
+                    checked: checked
+                }
             }
+            interactions.saveTool(evt);
         }
-        interactions.saveTool(evt);
+        if (evt.keyCode == 188 && evt.ctrlKey) {
+            let checks = document.querySelectorAll("input[type='checkbox']");
+            for (let i of checks) {
+                i.id !== interface.checkboxModeDark.id ? i.checked = false : '';
+            }
+            interface.checkboxTool.checked = true;
+        }
+        if (evt.keyCode == 190 && evt.ctrlKey) {
+            let checks = document.querySelectorAll("input[type='checkbox']");
+            for (let i of checks) {
+                i.id !== interface.checkboxModeDark.id ? i.checked = true : '';
+            }
+            interface.checkboxTool.checked = false;
+        }
+        if (evt.keyCode == 222 && evt.ctrlKey) {
+            let checked = !interface.checkboxModeDark.checked;
+            let evt = {
+                srcElement: {
+                    checked: checked
+                }
+            }
+            interface.checkboxModeDark.checked = checked;
+            interactions.changeModeDark(evt);
+        }
     }
 }
 
@@ -62,5 +88,5 @@ interface.btn_logout.onclick = () => interactions.logout();
 interface.checkboxModeDark.onchange = (evt) => interactions.changeModeDark(evt);
 interface.checkboxTool.onchange = (evt) => interactions.saveTool(evt);
 // CTRL + B Cierra o abre la barra de herramientas
-window.onkeydown = (evt) => (evt.keyCode == 66 && evt.ctrlKey) ? interactions.hideShowTool() : '';
+window.onkeydown = (evt) => interactions.hideShowTool(evt);
 interactions.loadTool();
