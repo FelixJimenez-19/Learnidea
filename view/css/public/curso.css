@@ -280,6 +280,43 @@
 
 
 
+/*ADAPTACION DE ANCHO POR ITEM - INICIO*/
+/*EN CASO DE NO AGRADAR COMENTAR ESTE BLOQUE*/
+@media (max-width: 1600px) {
+  .curso-container .container .curso-item {
+    min-width: 19.5%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .curso-container .container .curso-item {
+    min-width: 24.5%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .curso-container .container .curso-item {
+    min-width: 32%;
+  }
+}
+
+@media (max-width: 850px) {
+  .curso-container .container .curso-item {
+    min-width: 49%;
+  }
+}
+
+@media (max-width: 500px) {
+  .curso-container .container .curso-item {
+    min-width: 100%;
+  }
+}
+
+/*ADAPTACION DE ANCHO POR ITEM - FIN*/
+
+
+
+
 @media (max-width: 700px) {
   .curso-container {
     padding: 5px 30px;
@@ -311,13 +348,6 @@
     right: 5px;
   }
 }
-
-@media (max-width: 400px) {
-  .curso-container .container .curso-item {
-    width: 100%;
-  }
-}
-
 
 
 

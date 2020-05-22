@@ -20,6 +20,8 @@ const entity = {
         modalConfirm: document.getElementById("idea_modal_confirm"),
         confirm: document.getElementById("idea_confirm"),
         search: document.getElementById("idea_search"),
+        headerDataTablesShowEntries: document.getElementById('header-datatables-show-entries'),
+        dataTable: loadDataTable('datatable'),
     },
     fun: {
         showModalForm: (index) => {
@@ -155,6 +157,46 @@ const entity = {
             `;
         },
 
+        getRowDataTable: (register, index) => {
+            return [
+                register.usuario_id,
+                register.usuario_nombre,
+                `<img 
+                    src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}"
+                    onclick="viewscreen.show('${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}')" 
+                />`,
+                `<img 
+                    src="${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}"
+                    onclick="viewscreen.show('${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}')"    
+                />`,
+                `<a target="_blank" ${register.usuario_curriculum !== null ? 'href="view/src/files/usuario_curriculum/' + register.usuario_curriculum + '"' : ""}">
+                    <img src='view/src/icon/link.png' />
+                </a>`,
+                `<img src='view/src/icon/star_${register.usuario_calificacion}.png' class="stars" />`,
+                register.usuario_cedula,
+                register.usuario_edad,
+                register.usuario_indice,
+                register.usuario_celular,
+                register.usuario_telefono,
+                register.usuario_email,
+                // register.usuario_direccion,
+                // register.usuario_descripcion,
+                register.usuario_sexo,
+                register.usuario_nivel,
+                register.usuario_tipo_nombre,
+                register.usuario_tema_nombre,
+                register.usuario_tema_mode_dark == 1 ? "DARK" : "CLEAR",
+                // register.usuario_empresa_nombre,
+                // register.usuario_empresa_actividad,
+                // register.usuario_empresa_direccion,
+                // register.usuario_empresa_telefono,
+                `<button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
+                    <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.usuario.index = ${index}) ">
+                    <img src="view/src/icon/delete.png">
+                </button>`
+            ];
+        },
+
         search: (evt) => {
             let textSearch = evt.srcElement.value.toLowerCase();
             if (textSearch !== "") {
@@ -195,11 +237,14 @@ const entity = {
         index: null,
         fun: {
             select: () => {
-                let html = "";
+                // let html = "";
+                let array = [];
                 for (let i = 0; i < entity.usuario.database.length; i++) {
-                    html += entity.fun.getHtmlTr(entity.usuario.database[i], i);
+                    // html += entity.fun.getHtmlTr(entity.usuario.database[i], i);
+                    array.push(entity.fun.getRowDataTable(entity.usuario.database[i], i));
                 }
-                entity.view.table.innerHTML = html;
+                entity.view.dataTable.clear().draw();
+                entity.view.dataTable.rows.add(array).draw();
             },
 
             insertOrUpdate: () => {
@@ -308,6 +353,9 @@ const entity = {
 };
 // EVENTS
 entity.view.form.onsubmit = (evt) => entity.fun.submitForm(evt);
-entity.view.search.onkeyup = (evt) => entity.fun.search(evt);
+// entity.view.search.onkeyup = (evt) => entity.fun.search(evt);
+entity.view.search.onkeyup = (evt) => entity.view.dataTable.search(evt.srcElement.value).draw();
+entity.view.headerDataTablesShowEntries.onchange = (evt) => entity.view.dataTable.page.len(evt.srcElement.value).draw();
+
 // MAIN CALL
 main();

@@ -1,5 +1,10 @@
-$(document).ready( function () {
-  $('#datatable').DataTable( {
+$(document).ready(function () {
+
+});
+
+
+let loadDataTable = (id) => {
+  return $("#"+id).DataTable({
     "ordering": true, //Ordenado de los datos de la tabla
     language: {
       "sProcessing": "Procesando ...",
@@ -29,5 +34,5 @@ $(document).ready( function () {
         "colvis": "Visibilidad"
       }
     }
-  } );
-} );
+  });
+}

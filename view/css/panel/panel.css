@@ -260,14 +260,77 @@ body {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3), -2px 4px 6px 0 rgba(0, 0, 0, 0.3), 2px 4px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
+.idea_header .idea_profile .idea_profile_options .option-darkmode {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode span {
+  margin: 0px;
+  width: auto;
+  height: 15px;
+  color: var(--tertiary_hover);
+  font-size: 0.8em;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input {
+  position: relative;
+  display: block;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:before,
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  z-index: 1;
+  transition: all 0.2s ease;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:before {
+  right: 50%;
+  transform: translateX(50%);
+  width: 30px;
+  height: 13px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: solid 1px #000000;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:after {
+  left: -75%;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #909090;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:checked:before {
+  background: #000000;
+  border: solid 1px #FFFFFF;
+}
+
+.idea_header .idea_profile .idea_profile_options .option-darkmode input:checked:after {
+  left: 40%;
+  background: #FFFFFF;
+}
+
+
+
 .idea_header .idea_profile .idea_profile_options img {
   display: flex;
-  width: 100px;
-  min-width: 100px;
-  max-width: 100px;
-  height: 100px;
-  min-height: 100px;
-  max-height: 100px;
+/*  width: 100px;*/
+  min-width: 90px;
+/*  max-width: 100px;*/
+/*  height: 100px;*/
+  min-height: 90px;
+/*  max-height: 100px;*/
   margin: 10px 0;
 }
 
@@ -478,6 +541,7 @@ body {
   border-radius: 50%;
 }
 
+.idea_content .header .search-container,
 .idea_content .header .idea_search {
   width: 100%;
   max-width: 600px;
@@ -489,6 +553,7 @@ body {
   color: var(--secondary);
 }
 
+.idea_content .header .search-container:hover,
 .idea_content .header .idea_search:hover,
 .idea_content .header .idea_search:focus {
   box-shadow: 0 0 3px 2px var(--primary);
@@ -498,6 +563,9 @@ body {
 .idea_content .header button:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
+
+
 
 /* TABLE */
 
@@ -515,6 +583,7 @@ body {
   font-size: 0.8em;
 }
 
+.idea_content .idea_table tr th,
 .idea_content .idea_table tr td {
   border-bottom: 1px solid var(--quaternary_hover);
   color: var(--tertiary_hover);
@@ -523,8 +592,10 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: normal;
 }
 
+.idea_content .idea_table tr th .theme_color,
 .idea_content .idea_table tr td .theme_color {
   display: flex;
   width: 30px;
@@ -535,6 +606,7 @@ body {
   box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.3);
 }
 
+.idea_content .idea_table tr th .long-text,
 .idea_content .idea_table tr td .long-text {
   display: flex;
   text-align: start;
@@ -644,22 +716,27 @@ border-style: inset;
   background: rgba(0, 0, 0, 0);
   margin: 3px 0;
   border-radius: 5px;
+  border: solid 1px var(--primary);
 }
 
 .idea_content .idea_table tr td:last-child button:hover {
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+/*  background: rgba(0, 0, 0, 0.2);*/
+/*  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);*/
+  background: var(--primary);
 }
 
 .idea_content .idea_table tr td:last-child button:hover img {
-  filter: invert(0);
+/*  filter: invert(0);*/
+  filter: invert(1);
+  border: none;
 }
 
 .idea_content .idea_table tr td:last-child button img {
   width: 100%;
   height: 100%;
   padding: 5px;
-  filter: invert(0.15);
+/*  filter: invert(0.15);*/
+  filter: invert(0.3);
 }
 
 .idea_content .idea_table thead {
@@ -668,6 +745,7 @@ border-style: inset;
 
 .idea_content .idea_table thead tr {}
 
+.idea_content .idea_table thead tr th,
 .idea_content .idea_table thead tr td {
   color: var(--tertiary);
   padding: 0 8px;
@@ -1125,7 +1203,6 @@ border-style: inset;
 
 
 
-
 @media (max-width: 600px) {
   .idea_content .header {
     flex-wrap: wrap;
@@ -1142,7 +1219,7 @@ border-style: inset;
     width: 30px;
     margin: 5px 0 0 0;
   }
-
+  
   .idea_content .header .idea_search {
     width: 85%;
     margin: 5px 0 0 0;

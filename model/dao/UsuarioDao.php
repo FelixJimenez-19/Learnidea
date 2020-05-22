@@ -35,6 +35,10 @@ class UsuarioDao
     {
         return $this->conn->query("UPDATE usuario SET usuario_nombre='$usuario_nombre', usuario_cedula='$usuario_cedula', usuario_edad=$usuario_edad, usuario_indice='$usuario_indice', usuario_celular='$usuario_celular', usuario_telefono='$usuario_telefono', usuario_email='$usuario_email', usuario_pass='$usuario_pass', usuario_sexo='$usuario_sexo', usuario_nivel='$usuario_nivel', usuario_calificacion='$usuario_calificacion', usuario_direccion='$usuario_direccion', usuario_descripcion='$usuario_descripcion', usuario_empresa_nombre='$usuario_empresa_nombre', usuario_empresa_actividad='$usuario_empresa_actividad', usuario_empresa_direccion='$usuario_empresa_direccion', usuario_empresa_telefono='$usuario_empresa_telefono', usuario_tema_mode_dark=$usuario_tema_mode_dark, usuario_tipo_id=$usuario_tipo_id, usuario_tema_id=$usuario_tema_id WHERE usuario_id = $usuario_id ");
     }
+    public function updateTema_mode_dark($usuario_tema_mode_dark, $usuario_id)
+    {
+        return $this->conn->query("UPDATE usuario SET usuario_tema_mode_dark=$usuario_tema_mode_dark WHERE usuario_id = $usuario_id ");
+    }
     public function delete($usuario_id)
     {
         return $this->conn->query("DELETE FROM usuario WHERE usuario_id = $usuario_id ");

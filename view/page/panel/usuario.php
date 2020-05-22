@@ -7,48 +7,59 @@ ________________________________________________________________________________
 if (isset($_SESSION)) {
     if (isset($viewPage)) {
 ?>
+        <link rel="stylesheet" href="view/css/datatable.css" />
         <div class="header">
             <span>USUARIO</span>
-            <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
+            <div class="search-container">
+                <div class="select-container">
+                    <select id="header-datatables-show-entries">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
+            </div>
             <button onclick="entity.fun.showModalForm(null)">+</button>
         </div>
 
         <div class="idea_content_table">
-            <table class="idea_table">
+            <table class="idea_table" id="datatable">
                 <thead>
+                    <!-- <tr>
+                        <th colspan="20">INFORMACION PERSONAL</th>
+                        <th colspan="5">INFORMACION LABORAL</th>
+                    </tr> -->
                     <tr>
-                        <td colspan="20">INFORMACION PERSONAL</td>
-                        <td colspan="5">INFORMACION LABORAL</td>
-                    </tr>
-                    <tr>
-                        <td>ID</td>
-                        <td>NOMBRE</td>
-                        <td>FOTO</td>
-                        <td>FIRMA</td>
-                        <td>CURRICULUM</td>
-                        <td>CALIFICACION</td>
-                        <td>CEDULA</td>
-                        <td>EDAD</td>
-                        <td>INDICE</td>
-                        <td>CELULAR</td>
-                        <td>TELEFONO</td>
-                        <td>EMAIL</td>
-                        <td>DIRECCION</td>
-                        <td>DESCRIPCION</td>
-                        <td>SEXO</td>
-                        <td>NIVEL</td>
-                        <td>TIPO</td>
-                        <td>TEMA</td>
-                        <td>MODO</td>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>FOTO</th>
+                        <th>FIRMA</th>
+                        <th>CURRICULUM</th>
+                        <th>CALIFICACION</th>
+                        <th>CEDULA</th>
+                        <th>EDAD</th>
+                        <th>INDICE</th>
+                        <th>CELULAR</th>
+                        <th>TELEFONO</th>
+                        <th>EMAIL</th>
+                        <!-- <th>DIRECCION</th> -->
+                        <!-- <th>DESCRIPCION</th> -->
+                        <th>SEXO</th>
+                        <th>NIVEL</th>
+                        <th>TIPO</th>
+                        <th>TEMA</th>
+                        <th>MODO</th>
                         <!--EMPRESA EN LA QUE LABORA-->
-                        <td>EMPRESA</td>
+                        <!-- <th>EMPRESA</th> -->
                         <!--EMPRESA EN LA QUE LABORA-->
-                        <td>ACTIVIDAD</td>
+                        <!-- <th>ACTIVIDAD</th> -->
                         <!--EMPRESA EN LA QUE LABORA-->
-                        <td>DIRECCION</td>
+                        <!-- <th>DIRECCION</th> -->
                         <!--EMPRESA EN LA QUE LABORA-->
-                        <td>TELEFONO</td>
-                        <td>ACCION</td>
+                        <!-- <th>TELEFONO</th> -->
+                        <th>ACCION</th>
                     </tr>
                 </thead>
                 <tbody id="idea_table"></tbody>
@@ -211,6 +222,8 @@ if (isset($_SESSION)) {
                 </div>
             </div>
         </div>
+        <script src="control/lib/data_tables/datatables.js"></script>
+        <script src="control/lib/data_tables/datatables_config.js"></script>
         <script src="control/script/usuario.js"></script>
 <?php
     } else {

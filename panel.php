@@ -55,6 +55,10 @@ if (isset($_SESSION['usuario_email'])) {
                 <span><?php echo $_SESSION['usuario_nombre'] ?></span>
                 <img src="view/src/<?php echo ($_SESSION['usuario_foto'] !== null) ? 'files/usuario_foto/' . $_SESSION['usuario_foto'] : 'img/avatar.png' ?>">
                 <div class="idea_profile_options">
+                    <label class="option-darkmode" for="header-options-profile-darkmode">
+                        <span>Modo oscuro</span>
+                        <input type="checkbox" id="header-options-profile-darkmode" <?php echo $_SESSION['usuario_tema_mode_dark'] == 1 ? 'checked' : '' ?>>
+                    </label>
                     <img src="view/src/<?php echo ($_SESSION['usuario_foto'] !== null) ? 'files/usuario_foto/' . $_SESSION['usuario_foto'] : 'img/avatar.png' ?>">
                     <span><?php echo $_SESSION['usuario_nombre'] ?></span>
                     <button id="idea_btn_logount">CERRAR SESION</button>
