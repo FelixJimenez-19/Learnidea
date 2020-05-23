@@ -209,7 +209,11 @@
 .chat-container .item-container .item .chat .to img,
 .chat-container .item-container .item .chat .contact img {
   width: 30px;
+  min-width: 30px;
+  max-width: 30px;
   height: 30px;
+  min-height: 30px;
+  max-height: 30px;
   border-radius: 50%;
   background: var(--quaternary);
   margin: 0 5px 0 0;
