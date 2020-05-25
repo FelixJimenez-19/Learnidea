@@ -1,3 +1,10 @@
+const IndexMain = () => {
+    load_resize();
+}
+
+
+
+
 let load_resize = () => {
     let $win = $(window);
     if ($win.scrollTop() > 700) {
@@ -21,4 +28,4 @@ $(function () {
     });
 });
 
-load_resize();
+IndexMain();

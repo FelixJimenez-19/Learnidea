@@ -126,10 +126,12 @@ CREATE TABLE informacion (
     informacion_pagina_logo VARCHAR(30),
     informacion_pagina_copyright LONGTEXT,
     informacion_ubicacion TEXT,
-    informacion_api_key TEXT
+    informacion_api_key TEXT,
+    usuario_tema_id INT,
+    FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id)
 ) ENGINE INNODB;
 
-INSERT INTO informacion VALUES(0, 'Ideasoft', 'I. S.', 'Macas', 'S/N', 'S/N', '', 'Ideasoft', '', '', '', '', 'Learnidea', '', '', '', '', '#tXCGuR8.UEy""p');
+INSERT INTO informacion VALUES(0, 'Ideasoft', 'I. S.', 'Macas', 'S/N', 'S/N', null, '', '', '', '', '', 'Learnidea', '', '', '', '', '#tXCGuR8.UEy""p', 1);
 
 -- @@@@options:{ "files": [{"type":"png", "name":"contacto_icon"}] }
 CREATE TABLE contacto (

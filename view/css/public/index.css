@@ -335,7 +335,7 @@ content .content_buttons_header a {
 }
 
 content .content_buttons_header a:hover {
-  background: rgb(27, 36, 40);
+  background: var(--secondary);
   box-shadow: 0 1px 3px 1px #000000;
 }
 
@@ -530,6 +530,7 @@ footer .fil .col .mision-vision p {
   padding: 15px;
   background: var(--secondary_hover);
   animation: warn 0.4s infinite alternate;
+  z-index: 10000;
 }
 
 @keyframes warn {

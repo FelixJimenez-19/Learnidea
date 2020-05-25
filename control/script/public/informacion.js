@@ -4,6 +4,7 @@ const Informacion = {
     crud: {
         select: async () => {
             await InformacionDao.select().then(res => {
+                Informacion.fun.loadTheme(res[0]);
                 Informacion.database = res[0];
                 Informacion.fun.select();
             }).catch(res => console.log("INFORMACION => QUERY DENIED"));
@@ -23,6 +24,9 @@ const Informacion = {
                 <a href="copyright" target="_blank" class="copyrigth">${Informacion.database.informacion_pagina_nombre}</a>. 
                 Todos los derechos reservados.
             `;
+        },
+        loadTheme: (json) => {
+            theme.main(json);
         }
     }
 }

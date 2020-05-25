@@ -11,6 +11,8 @@ if (isset($viewPage)) {
         <link rel="stylesheet" href="view/css/config.css">
         <link rel="stylesheet" href="view/css/public/index.css">
         <!-- SCRIPTS -->
+        <script src="control/dao/config.js"></script>
+        <script src="control/dao/CursoDao.js"></script>
     </head>
 
     <body>

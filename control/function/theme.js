@@ -1,6 +1,6 @@
 const theme = {
-    main: () => {
-        let session = Session.getSession();
+    main: (json) => {
+        let session = json;
         if(session.usuario_tema_mode_dark == true) {
             document.querySelector("html").style.setProperty('--primary', session.usuario_tema_dark_primary);
             document.querySelector("html").style.setProperty('--primary_hover', session.usuario_tema_dark_primary_hover);
@@ -30,4 +30,3 @@ const theme = {
         }
     }
 }
-theme.main();

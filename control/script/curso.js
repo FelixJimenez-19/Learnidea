@@ -98,8 +98,8 @@ const entity = {
                 <tr>
                     <td>${register.curso_id}</td>
                     <td>${register.curso_nombre}</td>
-                    <td>${register.curso_fecha_inicio}</td>
-                    <td>${register.curso_fecha_fin}</td>
+                    <td>${Fecha.getString(Fecha.getDate(register.curso_fecha_inicio), 0)}</td>
+                    <td>${Fecha.getString(Fecha.getDate(register.curso_fecha_fin), 0)}</td>
                     <td>${register.curso_cupos}</td>
                     <td>${register.curso_whatsapp}</td>
                     <td>

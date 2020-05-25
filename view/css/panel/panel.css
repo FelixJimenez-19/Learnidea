@@ -616,6 +616,10 @@ body {
   overflow: hidden;
 }
 
+.idea_content .idea_table tbody tr td {
+  padding: 0 5px;
+}
+
 .idea_content .idea_table tbody tr td a,
 .idea_content .idea_table tbody tr td img {
   height: 30px;

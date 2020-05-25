@@ -35,7 +35,7 @@ let interactions = {
         formData.append("usuario_tema_mode_dark", evt.srcElement.checked ? 1 : 0);
         UsuarioDao.updateTema_mode_dark(formData).then(res => console.log("Mode changed")).catch(res => console.log("Error to changed mode"));
         Session.session.usuario_tema_mode_dark = evt.srcElement.checked ? 1 : 0;
-        theme.main();
+        theme.main(Session.getSession());
     },
     loadTool: () => {
         if (localStorage.getItem("header-tool-open")) {

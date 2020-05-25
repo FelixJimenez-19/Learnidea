@@ -17,15 +17,7 @@ $row_informacion = mysqli_fetch_assoc($_informacion->select());
 
 <body>
     <div class="fondo"></div>
-    <div class="content">
-        <!--    CONTENT / INICIO-->
-        <?php echo $row_informacion['informacion_pagina_copyright'] ?>
-        <!--    CONTENT / FIN-->
-        <br><br><br>
-        <p class="creditos">
-            Programarte
-        </p>
-    </div>
+    <div class="content"><?php echo $row_informacion['informacion_pagina_copyright'] ?></div>
 </body>
 
 </html>

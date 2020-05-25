@@ -164,11 +164,11 @@
   bottom: 0px;
 }
 
-
 .curso-container .container .curso-item .curso-descripcion {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 5px;
 }
 
@@ -180,6 +180,7 @@
   font-family: AdventPro-Medium;
   font-weight: bold;
   font-size: 1.1em;
+  margin: 0 3px 0 0;
 }
 
 .curso-container .container .curso-item .curso-descripcion .text p {
@@ -193,11 +194,11 @@
 .curso-container .container .curso-item .curso-descripcion .curso-name {
   display: block;
   text-align: center;
-  margin: 15px 0 5px 0;
+  margin: 10px 0 2px 0;
   padding: 5px 0;
   font-family: AdventPro-medium;
   font-size: 1.3em;
-  /*  font-weight: bold;*/
+  /*    font-weight: bold;*/
   letter-spacing: 0.07em;
   color: var(--primary);
   text-shadow: 0 0 1px #000000,
@@ -209,26 +210,20 @@
   text-overflow: ellipsis;
 }
 
-.curso-container .container .curso-item .curso-descripcion .curso-docente {}
-
-.curso-container .container .curso-item .curso-descripcion .curso-inicio {}
-
-.curso-container .container .curso-item .curso-descripcion .curso-cupos {}
-
 .curso-container .container .curso-item .curso-descripcion a {
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   width: auto;
-  min-width: 140px;
-  height: 40px;
+  min-width: 120px;
+  height: 35px;
   padding: 0 10px;
   text-decoration: none;
   color: var(--primary);
   border: solid 2px var(--primary);
   border-radius: 40px;
-  margin: 5px auto;
+  margin: 0 auto 5px auto;
   font-size: 1.25em;
   font-family: AdventPro-medium;
 }
@@ -236,11 +231,122 @@
 .curso-container .container .curso-item .curso-descripcion a:hover {
   background: var(--primary);
   color: var(--tertiary);
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container {
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid 1px #d1cfcf;
+  padding: 4px 2px 0 2px;
+}
 
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container a {
+  display: flex;
+  height: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  color: #000000;
+  border-radius: 0px;
+  transition: all 0s ease;
+  letter-spacing: 0.3px;
+  margin: 0 auto 0 0;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container a:hover {
+  background: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  color: var(--primary);
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container a .docente-foto {
+  display: flex;
+  width: 23px;
+  min-width: 23px;
+  max-width: 23px;
+  height: 23px;
+  min-height: 23px;
+  max-height: 23px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container a p {
+  font-size: 0.9em;
+  padding: 0 5px;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-calificacion {
+  display: flex;
+  width: 75px;
+  height: 20px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate {
+  position: relative;
+  display: flex;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:hover:before,
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:hover:after {
+  display: flex;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:before,
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:after {
+  position: absolute;
+  display: none;
+  background: #FFFFFF;
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:before {
+  content: attr(placeholder);
+  bottom: 110%;
+  right: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+  height: auto;
+  padding: 5px 5px 11px 0;
+  color: #000000;
+  transform: translate(5px);
+  border-radius: 5px;
+  border: solid 1px var(--primary_hover);
+  font-family: AdventPro-medium;
+  color: var(--primary_hover);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.curso-container .container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:after {
+  content: '';
+  right: 0;
+  left: 0;
+  bottom: 85%;
+  margin: 0 auto;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-right: solid 1px var(--primary_hover);
+  border-bottom: solid 1px var(--primary_hover);
+  /*  border: solid 1px var(--primary);*/
+}
 
 
 
@@ -282,6 +388,7 @@
 
 /*ADAPTACION DE ANCHO POR ITEM - INICIO*/
 /*EN CASO DE NO AGRADAR COMENTAR ESTE BLOQUE*/
+/*
 @media (max-width: 1600px) {
   .curso-container .container .curso-item {
     min-width: 19.5%;
@@ -311,6 +418,7 @@
     min-width: 100%;
   }
 }
+*/
 
 /*ADAPTACION DE ANCHO POR ITEM - FIN*/
 

@@ -7,49 +7,16 @@ ________________________________________________________________________________
 if (isset($_SESSION)) {
     if (isset($viewPage)) {
 ?>
+        <link rel="stylesheet" href="view/css/bootstrap.css">
+        <link rel="stylesheet" href="control/lib/summernote/summernote.min.css">
+        <link rel="stylesheet" href="view/css/panel/informacion.css" />
         <div class="header">
             <span>INFORMACION</span>
             <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search" style="display:none;">
             <button onclick="entity.fun.showModalForm(null)" style="display:none;">+</button>
+            <button onclick="" id="idea_header-btn-edit"><img src="view/src/icon/edit.png"></button>
         </div>
-
-        <div class="idea_content_table">
-            <table class="idea_table">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td colspan="7">EMPRESA</td>
-                        <td colspan="6">PAGINA</td>
-                        <td colspan="4">GERENTE</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>ID</td>
-                        <td>NOMBRE</td>
-                        <td>SIGLAS</td>
-                        <td>CIUDAD</td>
-                        <td>MISION</td>
-                        <td>VISION</td>
-                        <td>UBICACION</td>
-                        <td>LOGO</td>
-
-                        <td>NOMBRE</td>
-                        <td>MISION</td>
-                        <td>VISION</td>
-                        <td>COPYRIGHT</td>
-                        <td>LOGO</td>
-
-                        <td>NOMBRE</td>
-                        <td>CELULAR</td>
-                        <td>NIVEL NOMBRE</td>
-                        <td>NIVEL SIGLAS</td>
-
-                        <td>ACCION</td>
-                    </tr>
-                </thead>
-                <tbody id="idea_table"></tbody>
-            </table>
-        </div>
+        <div class="container" id="idea-view-container"></div>
 
 
         <div class="idea_form" id="idea_modal_form">
@@ -57,6 +24,45 @@ if (isset($_SESSION)) {
                 <span class="title">FORMULARIO</span>
                 <div class="inputs">
                     <input type="hidden" name="informacion_id">
+
+                    <div class="row">
+                        <div class="section">PAGINA</div>
+                    </div>
+
+                    <div class="row">
+                        <span>NOMBRE: </span>
+                        <input type="text" name="informacion_pagina_nombre" placeholder="NOMBRE">
+                    </div>
+
+                    <div class="row-editor">
+                        <span class="row-editor-title">MISIÓN</span>
+                        <textarea class="row-editor-textarea" name="informacion_pagina_mision" id="editor-informacion_pagina_mision"></textarea>
+                    </div>
+                    
+                    <div class="row-editor">
+                        <span class="row-editor-title">VISIÓN</span>
+                        <textarea class="row-editor-textarea" name="informacion_pagina_vision" id="editor-informacion_pagina_vision"></textarea>
+                    </div>
+                    
+                    <div class="row-editor">
+                        <span class="row-editor-title">COPYRIGHT</span>
+                        <textarea class="row-editor-textarea" name="informacion_pagina_copyright" id="editor-informacion_pagina_copyright"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <span>API KEY: </span>
+                        <input type="text" name="informacion_api_key" placeholder="API KEY">
+                    </div>
+
+                    <div class="row">
+                        <span>LOGO: </span>
+                        <input type="file" name="informacion_pagina_logo" placeholder="LOGO">
+                    </div>
+
+                    <div class="row">
+                        <span>TEMA: </span>
+                        <select name="usuario_tema_id"></select>
+                    </div>
 
                     <div class="row">
                         <div class="section">EMPRESA</div>
@@ -77,58 +83,24 @@ if (isset($_SESSION)) {
                         <input type="text" name="informacion_empresa_ciudad" placeholder="CIUDAD">
                     </div>
 
-                    <div class="row">
-                        <span>MISION: </span>
-                        <input type="text" name="informacion_empresa_mision" placeholder="MISION">
+                    <div class="row-editor">
+                        <span class="row-editor-title">MISIÓN</span>
+                        <textarea class="row-editor-textarea" name="informacion_empresa_mision" id="editor-informacion_empresa_mision"></textarea>
                     </div>
 
-                    <div class="row">
-                        <span>VISION: </span>
-                        <input type="text" name="informacion_empresa_vision" placeholder="VISION">
+                    <div class="row-editor">
+                        <span class="row-editor-title">VISIÓN</span>
+                        <textarea class="row-editor-textarea" name="informacion_empresa_vision" id="editor-informacion_empresa_vision"></textarea>
                     </div>
 
                     <div class="row">
                         <span>UBICACION: </span>
-                        <input type="text" name="informacion_ubicacion" placeholder="UBICACION">
+                        <input type="text" name="informacion_ubicacion" placeholder="IFRAME">
                     </div>
 
                     <div class="row">
                         <span>LOGO: </span>
                         <input type="file" name="informacion_empresa_logo" placeholder="LOGO">
-                    </div>
-
-                    <div class="row">
-                        <div class="section">PAGINA</div>
-                    </div>
-
-                    <div class="row">
-                        <span>NOMBRE: </span>
-                        <input type="text" name="informacion_pagina_nombre" placeholder="NOMBRE">
-                    </div>
-
-                    <div class="row">
-                        <span>MISION: </span>
-                        <input type="text" name="informacion_pagina_mision" placeholder="MISION">
-                    </div>
-
-                    <div class="row">
-                        <span>VISION: </span>
-                        <input type="text" name="informacion_pagina_vision" placeholder="VISION">
-                    </div>
-
-                    <div class="row">
-                        <span>COPYRIGHT: </span>
-                        <input type="text" name="informacion_pagina_copyright" placeholder="COPYRIGHT">
-                    </div>
-
-                    <div class="row">
-                        <span>API KEY: </span>
-                        <input type="text" name="informacion_api_key" placeholder="API KEY">
-                    </div>
-
-                    <div class="row">
-                        <span>LOGO: </span>
-                        <input type="file" name="informacion_pagina_logo" placeholder="LOGO">
                     </div>
 
                     <div class="row">
@@ -178,6 +150,9 @@ if (isset($_SESSION)) {
                 </div>
             </div>
         </div>
+        <script src="control/lib/jquery.js"></script>
+        <script src="control/lib/bootstrap.js"></script>
+        <script src="control/lib/summernote/summernote.min.js"></script>
         <script src="control/script/informacion.js"></script>
 <?php
     } else {

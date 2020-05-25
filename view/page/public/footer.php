@@ -33,7 +33,6 @@ if (isset($viewPage)) {
     <!--  SCRIPTS -->
     <script src="control/lib/jquery.js"></script>
 
-    <script src="control/dao/config.js"></script>
     <script src="control/dao/InformacionDao.js"></script>
     <script src="control/dao/SliderDao.js"></script>
     <script src="control/dao/InstitucionDao.js"></script>
@@ -44,8 +43,8 @@ if (isset($viewPage)) {
     <script src="control/script/public/institucion.js"></script>
     <script src="control/script/public/contacto.js"></script>
     
+    <script src="control/function/theme.js"></script>
     <script src="control/script/public/index.js"></script>
-    <script src="control/script/public/curso.js"></script>
 
     <script src="control/lib/particles/particles.js"></script>
     <script src="control/lib/particles/particles_config.js"></script>

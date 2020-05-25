@@ -12,11 +12,20 @@ class CursoDao
     }
     public function select()
     {
-        return $this->conn->query("SELECT * FROM curso");
+        return $this->conn->query("
+            SELECT * FROM curso
+                INNER JOIN curso_modelo ON curso_modelo.curso_modelo_id = curso.curso_modelo_id
+                INNER JOIN usuario ON usuario.usuario_id = curso.usuario_id
+        ");
     }
     public function selectById($curso_id)
     {
-        return $this->conn->query("SELECT * FROM curso WHERE curso_id = $curso_id");
+        return $this->conn->query("
+            SELECT * FROM curso
+                INNER JOIN curso_modelo ON curso_modelo.curso_modelo_id = curso.curso_modelo_id
+                INNER JOIN usuario ON usuario.usuario_id = curso.usuario_id
+            WHERE curso_id = $curso_id
+        ");
     }
     public function insert($curso_nombre, $curso_fecha_inicio, $curso_fecha_fin, $curso_cupos, $curso_whatsapp, $curso_calificacion, $curso_proximo, $curso_visible, $curso_precio_live, $curso_precio_record, $curso_certificado_live, $curso_certificado_record, $curso_certificacion_live, $curso_modelo_id, $usuario_id)
     {
@@ -41,5 +50,3 @@ class CursoDao
         return $this->conn->query("UPDATE curso SET curso_foto='$curso_foto' WHERE curso_id = $curso_id ");
     }
 }
-?>
-

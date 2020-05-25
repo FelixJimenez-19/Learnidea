@@ -20,16 +20,14 @@ if (isset($_SESSION['usuario_email'])) {
         <link rel="stylesheet" href="view/css/panel/panel.css">
     </head>
 
-    <!-- SESSION JS | START -->
+    <!-- SCRIPT | START -->
     <script src="./control/function/session.js"></script>
+    <script src="./control/function/theme.js"></script>
     <script>
         Session.setSession('<?php echo json_encode($_SESSION) ?>');
+        theme.main(Session.getSession());
     </script>
-    <!-- SESSION JS | END -->
-
-    <!-- THEME | START -->
-    <script src="./control/function/theme.js"></script>
-    <!-- THEME | END -->
+    <!-- SCRIPT | END -->
 
     <body>
 
