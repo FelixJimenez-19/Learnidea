@@ -3,11 +3,13 @@ SET
 
 DROP TABLE usuario_tipo,
 usuario_tema,
+usuario_pais,
 usuario,
 mensaje,
 informacion,
 contacto,
 institucion,
+slider,
 area,
 especificacion,
 alineacion,

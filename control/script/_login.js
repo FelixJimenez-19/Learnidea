@@ -15,7 +15,7 @@ form.onsubmit = (evt) => {
     if (form.usuario_email.value !== "" && form.usuario_pass.value !== "") {
         UsuarioDao.login(new FormData(form)).then((res) => {
             if (res[0] !== null) {
-                window.location.href = "panel.php";
+                window.location.href = "panel";
             } else {
                 showMsg("Credenciales incorrectos");
             }

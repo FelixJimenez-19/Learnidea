@@ -8,6 +8,8 @@ const main = async () => {
     await entity.usuario.crud.select();
     await entity.selects.usuario_tipo();
     await entity.selects.usuario_tema();
+    await entity.selects.usuario_pais();
+    await entity.selects.usuario_nacimiento();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -30,7 +32,7 @@ const entity = {
                 entity.view.form.usuario_id.value = entity.usuario.database[index].usuario_id;
                 entity.view.form.usuario_nombre.value = entity.usuario.database[index].usuario_nombre;
                 entity.view.form.usuario_cedula.value = entity.usuario.database[index].usuario_cedula;
-                entity.view.form.usuario_edad.value = entity.usuario.database[index].usuario_edad;
+                entity.view.form.usuario_nacimiento.value = entity.usuario.database[index].usuario_nacimiento;
                 entity.view.form.usuario_indice.value = entity.usuario.database[index].usuario_indice;
                 entity.view.form.usuario_celular.value = entity.usuario.database[index].usuario_celular;
                 entity.view.form.usuario_telefono.value = entity.usuario.database[index].usuario_telefono;
@@ -48,6 +50,7 @@ const entity = {
                 entity.view.form.usuario_tema_mode_dark.value = entity.usuario.database[index].usuario_tema_mode_dark;
                 entity.view.form.usuario_tipo_id.value = entity.usuario.database[index].usuario_tipo_id;
                 entity.view.form.usuario_tema_id.value = entity.usuario.database[index].usuario_tema_id;
+                entity.view.form.usuario_pais_id.value = entity.usuario.database[index].usuario_pais_id;
             }
             entity.view.modalForm.style.top = "0%";
         },
@@ -57,7 +60,7 @@ const entity = {
             entity.view.form.usuario_id.value = "";
             entity.view.form.usuario_nombre.value = "";
             entity.view.form.usuario_cedula.value = "";
-            entity.view.form.usuario_edad.value = "";
+            entity.view.form.usuario_nacimiento.value = "";
             entity.view.form.usuario_indice.value = "";
             entity.view.form.usuario_celular.value = "";
             entity.view.form.usuario_telefono.value = "";
@@ -75,6 +78,7 @@ const entity = {
             entity.view.form.usuario_tema_mode_dark.value = "";
             entity.view.form.usuario_tipo_id.value = "";
             entity.view.form.usuario_tema_id.value = "";
+            entity.view.form.usuario_pais_id.value = "";
             entity.view.form.usuario_foto.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
@@ -131,7 +135,7 @@ const entity = {
                         <img src='view/src/icon/star_${register.usuario_calificacion}.png' class="stars" />
                     </td>
                     <td>${register.usuario_cedula}</td>
-                    <td>${register.usuario_edad}</td>
+                    <td>${Fecha.getDiffYear(Fecha.getDate(register.usuario_nacimiento+"-00-00"), Fecha.getDate(new Date()))}</td>
                     <td>${register.usuario_indice}</td>
                     <td>${register.usuario_celular}</td>
                     <td>${register.usuario_telefono}</td>
@@ -172,9 +176,13 @@ const entity = {
                 `<a target="_blank" ${register.usuario_curriculum !== null ? 'href="view/src/files/usuario_curriculum/' + register.usuario_curriculum + '"' : ""}">
                     <img src='view/src/icon/link.png' />
                 </a>`,
+                `<img 
+                    src="${register.usuario_pais_bandera !== null ? "view/src/files/usuario_pais_bandera/" + register.usuario_pais_bandera : "view/src/img/avatar.png"}"
+                    onclick="viewscreen.show('${register.usuario_pais_bandera !== null ? "view/src/files/usuario_pais_bandera/" + register.usuario_pais_bandera : "view/src/img/avatar.png"}')"    
+                />`,
                 `<img src='view/src/icon/star_${register.usuario_calificacion}.png' class="stars" />`,
                 register.usuario_cedula,
-                register.usuario_edad,
+                Fecha.getAge(register.usuario_nacimiento),
                 register.usuario_indice,
                 register.usuario_celular,
                 register.usuario_telefono,
@@ -206,7 +214,7 @@ const entity = {
                         textSearch === entity.usuario.database[i].usuario_id.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_nombre.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_cedula.substring(0, textSearch.length).toLowerCase() ||
-                        textSearch === entity.usuario.database[i].usuario_edad.substring(0, textSearch.length).toLowerCase() ||
+                        textSearch === entity.usuario.database[i].usuario_nacimiento.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_indice.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_celular.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_telefono.substring(0, textSearch.length).toLowerCase() ||
@@ -221,7 +229,8 @@ const entity = {
                         textSearch === entity.usuario.database[i].usuario_empresa_direccion.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_empresa_telefono.substring(0, textSearch.length).toLowerCase() ||
                         textSearch === entity.usuario.database[i].usuario_tipo_nombre.substring(0, textSearch.length).toLowerCase() ||
-                        textSearch === entity.usuario.database[i].usuario_tema_nombre.substring(0, textSearch.length).toLowerCase()
+                        textSearch === entity.usuario.database[i].usuario_tema_nombre.substring(0, textSearch.length).toLowerCase() ||
+                        textSearch === entity.usuario.database[i].usuario_pais_nombre.substring(0, textSearch.length).toLowerCase()
                     ) {
                         html += entity.fun.getHtmlTr(entity.usuario.database[i], i);
                     }
@@ -251,7 +260,7 @@ const entity = {
                 if (
                     entity.view.form.usuario_nombre.value !== "" &&
                     entity.view.form.usuario_cedula.value !== "" &&
-                    entity.view.form.usuario_edad.value !== "" &&
+                    entity.view.form.usuario_nacimiento.value !== "" &&
                     entity.view.form.usuario_indice.value !== "" &&
                     entity.view.form.usuario_celular.value !== "" &&
                     entity.view.form.usuario_telefono.value !== "" &&
@@ -281,47 +290,31 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await UsuarioDao.select()
-                    .then((res) => {
-                        entity.usuario.database = res;
-                        entity.usuario.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                await UsuarioDao.select().then((res) => {
+                    entity.usuario.database = res;
+                    entity.usuario.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                UsuarioDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.usuario.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                UsuarioDao.insert(new FormData(entity.view.form)).then((res) => {
+                    entity.usuario.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                UsuarioDao.update(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.usuario.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                UsuarioDao.update(new FormData(entity.view.form)).then((res) => {
+                    entity.usuario.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("usuario_id", entity.usuario.database[entity.usuario.index].usuario_id);
-                UsuarioDao.delete(formData)
-                    .then((res) => {
-                        entity.usuario.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                UsuarioDao.delete(formData).then((res) => {
+                    entity.usuario.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },
@@ -348,6 +341,27 @@ const entity = {
                 }
                 entity.view.form.usuario_tema_id.innerHTML = html;
             });
+        },
+        usuario_pais: async () => {
+            await Usuario_paisDao.select().then((res) => {
+                let html = `<option value="">PAIS</option>`;
+                for (let i = 0; i < res.length; i++) {
+                    html += `
+                        <option value="${res[i].usuario_pais_id}">${res[i].usuario_pais_nombre}</option>
+                    `;
+                }
+                entity.view.form.usuario_pais_id.innerHTML = html;
+            });
+        },
+        usuario_nacimiento: async () => {
+            let html = `<option value="">AÑO NACIMIENTO</option>`;
+            let array = Fecha.getOptionYear();
+            for (let i of array) {
+                html += `
+                    <option value="${ i }">${ i }</option>
+                `;
+            }
+            entity.view.form.usuario_nacimiento.innerHTML = html;
         },
     },
 };

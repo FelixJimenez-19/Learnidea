@@ -1,0 +1,450 @@
+.sections .section {
+  background: var(--quaternary_hover);
+}
+
+.sections .section .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: 450px;
+  margin: 50px 0 0 0;
+  background: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+
+
+.sections .section .container .tittle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 10px 50px 0 50px;
+}
+
+
+.sections .section .container .tittle span {
+  display: block;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--primary);
+  letter-spacing: 2px;
+  font-family: AdventPro-Medium;
+  margin: 0 0 5px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+
+.sections .section .container .tittle a {
+  display: block;
+  text-align: center;
+  font-family: AdventPro-Medium;
+  text-decoration: none;
+  padding: 4px 0;
+  font-size: 1em;
+  border-radius: 30px;
+}
+
+.sections .section .container .tittle .login {
+  min-width: 105px;
+  max-width: 105px;
+  background: var(--primary);
+  color: var(--tertiary);
+  margin: 0 0 0 5px;
+}
+
+.sections .section .container .tittle .recuperar {
+  min-width: 100px;
+  max-width: 100px;
+  background: rgba(0, 0, 0, 0);
+  color: var(--primary);
+  border: solid 1px var(--primary);
+}
+
+.sections .section .container .tittle .login:hover {
+  background: var(--primary_hover);
+}
+
+.sections .section .container .tittle a:hover {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.sections .section .container .nav {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  min-height: 30px;
+  /*  background: blue;*/
+}
+
+
+
+.sections .section .container .nav label {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  min-height: 15px;
+  border-radius: 50%;
+  color: var(--primary);
+  border: solid 1px var(--primary);
+  font-size: 0.8em;
+  font-weight: bold;
+  font-family: AdventPro-Medium;
+}
+
+.sections .section .container form {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0 0 0;
+}
+
+.sections .section .container form .page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 10px 50px;
+}
+
+.sections .section .container form .page .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+
+.sections .section .container form .page .row {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 60px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin: 20px 0 0 0;
+}
+
+.sections .section .container form .page .row-code .code,
+.sections .section .container form .page .row-select .select,
+.sections .section .container form .page .row-radio .radio,
+.sections .section .container form .page .row select,
+.sections .section .container form .page .row input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: #FFFFFF;
+  border: solid 1px var(--primary);
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.sections .section .container form .page .row span {
+  position: absolute;
+  top: -12px;
+  background: #FFFFFF;
+  padding: 0 5px;
+  margin: 0 0 0 10px;
+  color: var(--primary);
+  font-size: 0.95em;
+  font-family: AdventPro-Medium;
+}
+
+.sections .section .container form .page .error input {
+  border: solid 1px var(--error);
+}
+
+.sections .section .container form .page .error span {
+  color: var(--error);
+}
+
+.sections .section .container form .page .row .msg {
+  display: block;
+  /*  display: none;*/
+  font-size: 0.85em;
+  color: var(--error);
+  margin: 3px 0 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+.sections .section .container form .page .row-radio {}
+
+.sections .section .container form .page .row-radio .radio {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.sections .section .container form .page .row-radio .radio input {
+  position: relative;
+  display: flex;
+  /*  justify-content: center;*/
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sections .section .container form .page .row-radio .radio input:before,
+.sections .section .container form .page .row-radio .radio input:after {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  content: '';
+  transition: all 0.3s ease;
+}
+
+.sections .section .container form .page .row-radio .radio input:before {
+  content: attr(placeholder);
+  background: #FFFFFF;
+  color: var(--primary);
+  padding: 0 0 0 25px;
+}
+
+.sections .section .container form .page .row-radio .radio input:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 1px var(--primary);
+  background-image: radial-gradient(var(--primary) 0%, rgba(0, 0, 0, 0) 0);
+}
+
+.sections .section .container form .page .row-radio .radio input:hover:before {
+  /*  background: var(--primary);*/
+
+}
+
+.sections .section .container form .page .row-radio .radio input:checked:after {
+  background-image: radial-gradient(var(--primary) 30%, rgba(0, 0, 0, 0) 0);
+}
+
+.sections .section .container form .page .row-radio .radio input:hover:after {
+  background-image: radial-gradient(var(--primary_hover) 30%, rgba(0, 0, 0, 0) 0);
+}
+
+
+
+
+
+
+
+
+
+.sections .section .container form .page .row-code .code,
+.sections .section .container form .page .row-select .select {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding: 0 5px;
+}
+
+.sections .section .container form .page .row-code .code input,
+.sections .section .container form .page .row-select .select select {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code,
+.sections .section .container form .page .row-select .select .bandera {
+  /*  position: absolute;*/
+  top: 5px;
+  left: 100%;
+  display: block;
+  width: 30px;
+  height: 20px;
+  margin: 0 0 0 5px;
+  background-image: url(../../src/icon/world.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code {
+  /*  position: relative;*/
+  background-image: url(../../src/icon/load.png);
+  height: 30px;
+  background-size: 60%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code:hover:before,
+.sections .section .container form .page .row-code .code .btn-reload-code:hover:after {
+  display: flex;
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code:before,
+.sections .section .container form .page .row-code .code .btn-reload-code:after {
+  position: absolute;
+  /*  display: flex;*/
+  display: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background: #FFFFFF;
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code:before {
+  content: attr(placeholder);
+  top: -20px;
+  right: 3px;
+  width: auto;
+  max-width: 100px;
+  height: auto;
+  padding: 2px 5px 5px 5px;
+  border: solid 1px var(--primary);
+  color: var(--primary);
+  font-family: AdventPro-Medium;
+  font-size: 1.1em;
+  border-radius: 3px;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.15), 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.sections .section .container form .page .row-code .code .btn-reload-code:after {
+  content: '';
+  top: -0px;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-right: solid 1px var(--primary);
+  border-bottom: solid 1px var(--primary);
+}
+
+
+
+.sections .section .container form .page .row-msg {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.sections .section .container form .page .row-msg .msg {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0 10px;
+}
+
+.sections .section .container form .page .row-msg .msg p {
+  position: inherit;
+  margin: 0px;
+  padding: 0px;
+  font-size: 1.3em;
+  color: var(--tertiary_hover);
+  font-family: AdventPro-Medium;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+
+.sections .section .container form .page .page-nav {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  min-height: 30px;
+  /*  background: red;*/
+}
+
+.sections .section .container form .page .page-nav label,
+.sections .section .container form .page .page-nav button,
+.sections .section .container form .page .page-nav input {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 5px;
+  font-family: AdventPro-Medium;
+  font-size: 1em;
+  border: solid 1px var(--primary);
+  border-radius: 5px;
+  background: var(--primary);
+  color: var(--tertiary);
+}
+
+.sections .section .container form .page .page-nav label:hover,
+.sections .section .container form .page .page-nav button:hover,
+.sections .section .container form .page .page-nav input:hover {
+  background: var(--primary_hover);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.sections .section .container form .page .page-nav .validate,
+.sections .section .container form .page .page-nav input {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  content {
+    padding: 0px;
+  }
+
+  .sections .section .title {
+    height: 100px;
+    padding: 50px 0 0 0;
+  }
+
+  .sections .section .container {
+    margin: 0px;
+    max-width: inherit;
+    height: 500px;
+  }
+
+  .sections .section .container form .page {
+    padding: 10px 20px;
+  }
+
+  .sections .section .container .tittle {
+    padding: 30px 20px 0 20px
+  }
+}

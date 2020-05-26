@@ -37,6 +37,7 @@ if (isset($_SESSION)) {
                         <th>FOTO</th>
                         <th>FIRMA</th>
                         <th>CURRICULUM</th>
+                        <th>PAIS</th>
                         <th>CALIFICACION</th>
                         <th>CEDULA</th>
                         <th>EDAD</th>
@@ -102,8 +103,8 @@ if (isset($_SESSION)) {
                     </div>
 
                     <div class="row">
-                        <span>EDAD: </span>
-                        <input type="number" name="usuario_edad" placeholder="EDAD">
+                        <span>AÑO NACIMIENTO: </span>
+                        <select name="usuario_nacimiento"></select>
                     </div>
 
                     <div class="row">
@@ -169,6 +170,11 @@ if (isset($_SESSION)) {
                     </div>
 
                     <div class="row">
+                        <span>PAIS: </span>
+                        <select name="usuario_pais_id"></select>
+                    </div>
+
+                    <div class="row">
                         <span>MODO: </span>
                         <div class="input-radio-container">
                             <input type="radio" name="usuario_tema_mode_dark" class="input-radio-si-no" value="0" placeholder="CLEAR">
@@ -224,6 +230,7 @@ if (isset($_SESSION)) {
         </div>
         <script src="control/lib/data_tables/datatables.js"></script>
         <script src="control/lib/data_tables/datatables_config.js"></script>
+        <script src="control/function/fecha.js"></script>
         <script src="control/script/usuario.js"></script>
 <?php
     } else {

@@ -1,3 +1,15 @@
+@font-face {
+  font-family: AdventPro-Light;
+  src: url(../fonts/AdventPro-Light.ttf);
+}
+
+@font-face {
+  font-family: AdventPro-Medium;
+  src: url(../fonts/AdventPro-Medium.ttf);
+}
+
+
+
 /*HEADER*/
 header {
   width: 100%;
@@ -47,6 +59,8 @@ header .menu .logo img {
 header .menu .logo span {
   color: var(--tertiary);
   font-size: 1.3em;
+  font-family: AdventPro-Medium;
+  letter-spacing: 2px;
 }
 
 header .menu a img {
@@ -73,8 +87,10 @@ header .menu .buttons .btn a {
   text-decoration: none;
   color: var(--tertiary);
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: 1.em;
   font-weight: bold;
+  letter-spacing: 1.1px;
+  font-family: AdventPro-Medium;
 }
 
 header .menu .buttons .btn {
@@ -113,6 +129,9 @@ header .menu .buttons .btn .buttons_sub a {
   padding: 8px 0;
   border-radius: 5px;
   font-size: 0.9em;
+  font-weight: normal;
+  font-family: AdventPro-Medium;
+  letter-spacing: 1px;
 }
 
 header .menu .buttons .btn .buttons_sub a:hover {

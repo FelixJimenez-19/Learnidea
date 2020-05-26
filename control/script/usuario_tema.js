@@ -49,6 +49,7 @@ const entity = {
                 entity.view.form.usuario_tema_dark_info.value = entity.usuario_tema.database[index].usuario_tema_dark_info;
                 entity.view.form.usuario_tema_dark_warning.value = entity.usuario_tema.database[index].usuario_tema_dark_warning;
                 entity.view.form.usuario_tema_dark_error.value = entity.usuario_tema.database[index].usuario_tema_dark_error;
+                entity.view.form.usuario_tema_default.value = entity.usuario_tema.database[index].usuario_tema_default;
             }
             entity.view.modalForm.style.top = "0%";
         },
@@ -81,6 +82,7 @@ const entity = {
             entity.view.form.usuario_tema_dark_info.value = "";
             entity.view.form.usuario_tema_dark_warning.value = "";
             entity.view.form.usuario_tema_dark_error.value = "";
+            entity.view.form.usuario_tema_default.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -118,6 +120,7 @@ const entity = {
             return `
                 <tr>
                     <td>${register.usuario_tema_id}</td>
+                    <td>${register.usuario_tema_default==1 ? 'SI' : 'NO'}</td>
                     <td>${register.usuario_tema_nombre}</td>
                     <td><span class="theme_color" style="background:${register.usuario_tema_primary}"></span></td>
                     <td><span class="theme_color" style="background:${register.usuario_tema_primary_hover}"></span></td>
@@ -211,7 +214,8 @@ const entity = {
                     entity.view.form.usuario_tema_dark_success.value !== "" &&
                     entity.view.form.usuario_tema_dark_info.value !== "" &&
                     entity.view.form.usuario_tema_dark_warning.value !== "" &&
-                    entity.view.form.usuario_tema_dark_error.value !== ""
+                    entity.view.form.usuario_tema_dark_error.value !== "" &&
+                    entity.view.form.usuario_tema_default.value !== ""
                 ) {
                     if (entity.usuario_tema.index === null) {
                         entity.usuario_tema.crud.insert();

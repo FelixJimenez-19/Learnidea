@@ -22,6 +22,7 @@ let load_resize = () => {
         $('.btnToHeader').css('right', '-50px');
     }
 }
+
 $(function () {
     $(window).scroll(function () {
         load_resize();   

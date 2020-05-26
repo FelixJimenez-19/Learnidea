@@ -20,7 +20,7 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
             $_SESSION['usuario_id'] = $rs['usuario_id'];
             $_SESSION['usuario_nombre'] = $rs['usuario_nombre'];
             $_SESSION['usuario_cedula'] = $rs['usuario_cedula'];
-            $_SESSION['usuario_edad'] = $rs['usuario_edad'];
+            $_SESSION['usuario_nacimiento'] = $rs['usuario_nacimiento'];
             $_SESSION['usuario_indice'] = $rs['usuario_indice'];
             $_SESSION['usuario_celular'] = $rs['usuario_celular'];
             $_SESSION['usuario_telefono'] = $rs['usuario_telefono'];
@@ -72,6 +72,11 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
             $_SESSION['usuario_tema_dark_info'] = $rs['usuario_tema_dark_info'];
             $_SESSION['usuario_tema_dark_warning'] = $rs['usuario_tema_dark_warning'];
             $_SESSION['usuario_tema_dark_error'] = $rs['usuario_tema_dark_error'];
+
+            $_SESSION['usuario_pais_id'] = $rs['usuario_pais_id'];
+            $_SESSION['usuario_pais_nombre'] = $rs['usuario_pais_nombre'];
+            $_SESSION['usuario_pais_bandera'] = $rs['usuario_pais_bandera'];
+            $_SESSION['usuario_pais_descripcion'] = $rs['usuario_pais_descripcion'];
             
             $_SESSION['usuario_chat'] = '';
 

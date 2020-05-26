@@ -11,7 +11,7 @@
         <?php include 'view/page/public/header.php' ?>
     </header>
     <content>
-        <?php include 'view/page/public/login.php' ?>
+        <?php include 'view/page/public/recuperacion.php' ?>
     </content>
     <footer>
         <?php include 'view/page/public/footer.php' ?>

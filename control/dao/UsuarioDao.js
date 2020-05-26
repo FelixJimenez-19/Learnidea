@@ -44,6 +44,19 @@ UsuarioDao = {
             });
     },
 
+    sendEmailCode: (formData) => {
+        formData.append("key", config.key);
+        return fetch(config.getUrl() + "model/script/usuario/sendEmailCode.php", {
+                method: "POST",
+                headers: new Headers().append("Accept", "application/json"),
+                body: formData,
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                return res;
+            });
+    },
+
     update: (formData) => {
         formData.append("key", config.key);
         return fetch(config.getUrl() + "model/script/usuario/update.php", {

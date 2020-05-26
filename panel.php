@@ -93,6 +93,10 @@ if (isset($_SESSION['usuario_email'])) {
                             <span>Temas</span>
                             <img src="view/src/icon/theme.png">
                         </a>
+                        <a href="panel?page=usuario_pais">
+                            <span>Paises</span>
+                            <img src="view/src/icon/world.png">
+                        </a>
                         <a href="panel?page=usuario">
                             <span>Cuentas</span>
                             <img src="view/src/icon/account.png">
@@ -391,6 +395,7 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/config.js"></script>
         <script src="control/dao/Usuario_tipoDao.js"></script>
         <script src="control/dao/Usuario_temaDao.js"></script>
+        <script src="control/dao/Usuario_paisDao.js"></script>
         <script src="control/dao/UsuarioDao.js"></script>
         <script src="control/dao/MensajeDao.js"></script>
         <script src="control/dao/InformacionDao.js"></script>
@@ -445,9 +450,13 @@ if (isset($_SESSION['usuario_email'])) {
             <?php
             $viewPage = 'view/page/panel/';
             if (isset($_GET['page'])) {
-                include $viewPage . $_GET['page'] . '.php';
+                if (file_exists($viewPage . $_GET['page'] . ".php")) {
+                    include $viewPage . $_GET['page'] . ".php";
+                } else {
+                    include $viewPage . 'inicio' . ".php";
+                }
             } else {
-                include $viewPage . 'inicio.php';
+                include $viewPage . 'inicio' . ".php";
             }
             ?>
         </div>

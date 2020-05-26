@@ -51,17 +51,28 @@ CREATE TABLE usuario_tema (
     usuario_tema_dark_success VARCHAR(30),
     usuario_tema_dark_info VARCHAR(30),
     usuario_tema_dark_warning VARCHAR(30),
-    usuario_tema_dark_error VARCHAR(30)
+    usuario_tema_dark_error VARCHAR(30),
+    usuario_tema_default BOOLEAN
 ) ENGINE INNODB;
 
-INSERT INTO usuario_tema VALUES(0, 'Ideasoft', '#29AAE2', '#218ab8', '#222D32', '#1d262a', '#FFFFFF', '#dddddd', '#FFFFFF', '#c2c2c2', '#19A15F', '#427ad5', '#FFCD42', '#DD5145', '#222d32', '#1d262a', '#222d32', '#1d262a', '#ffffff', '#939393', '#222d32', '#1d262a', '#19a15f', '#427ad5', '#ffcd42', '#dd5145');
+INSERT INTO usuario_tema VALUES(0, 'Ideasoft', '#29AAE2', '#218ab8', '#222D32', '#1d262a', '#FFFFFF', '#dddddd', '#FFFFFF', '#c2c2c2', '#19A15F', '#427ad5', '#FFCD42', '#DD5145', '#222d32', '#1d262a', '#222d32', '#1d262a', '#ffffff', '#939393', '#222d32', '#1d262a', '#19a15f', '#427ad5', '#ffcd42', '#dd5145', 1);
+
+-- @@@@options:{ "files": [{"type":"png", "name":"usuario_pais_bandera"}] }
+CREATE TABLE usuario_pais (
+    usuario_pais_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    usuario_pais_nombre VARCHAR(50),
+    usuario_pais_bandera VARCHAR(50),
+    usuario_pais_descripcion TEXT
+) ENGINE INNODB;
+
+INSERT INTO usuario_pais SET usuario_pais_nombre="Ecuador";
 
 -- @@@@options:{ "account": {"user":"usuario_email","pass":"usuario_pass"}, "files": [{"type":"png", "name":"usuario_foto"}, {"type":"png", "name":"usuario_firma"}, {"type":"pdf", "name":"usuario_curriculum"}] }
 CREATE TABLE usuario (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     usuario_nombre VARCHAR(80),
     usuario_cedula VARCHAR(11),
-    usuario_edad INT,
+    usuario_nacimiento INT,
     usuario_indice VARCHAR(50),                 -- //Indice dactilar
     usuario_celular VARCHAR(15),
     usuario_telefono VARCHAR(15),
@@ -83,15 +94,14 @@ CREATE TABLE usuario (
     usuario_tema_mode_dark BOOLEAN,             -- //Tema modo DARK o CLEAR
     usuario_tipo_id INT,
     usuario_tema_id INT,
+    usuario_pais_id INT,
     UNIQUE(usuario_email),
-    UNIQUE(usuario_cedula),
     FOREIGN KEY (usuario_tipo_id) REFERENCES usuario_tipo (usuario_tipo_id),
-    FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id)
+    FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id),
+    FOREIGN KEY (usuario_pais_id) REFERENCES usuario_pais (usuario_pais_id)
 ) ENGINE INNODB;
 
--- ADD NACIONALIDAD
-
-INSERT INTO usuario VALUES(0, 'Super Administrador', '', 0, '', '', '', 'admin', 'admin', null, null, null, '', '', 0, '', '', '', '', '', '', '', 0, 1, 1);
+INSERT INTO usuario VALUES(0, 'Super Administrador', '', 0, '', '', '', 'admin', 'admin', null, null, null, '', '', 0, '', '', '', '', '', '', '', 0, 1, 1, 1);
 
 -- @@@@options:{ "files": [{"type":"png", "name":"mensaje_foto"}] }
 CREATE TABLE mensaje (

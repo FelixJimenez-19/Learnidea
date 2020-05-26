@@ -1,0 +1,64 @@
+content {
+  background: var(--quaternary_hover);
+}
+
+header {
+  height: auto;
+}
+
+header .filter,
+header .slider {
+  display: none;
+}
+
+
+
+.sections .section .span-deshabilitado {
+  display: block;
+  text-align: center;
+  padding: 100px 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  font-family: AdventPro-Medium;
+  color: var(--info);
+}
+
+.sections .section .container form {
+  width: 300%;
+  min-width: 300%;
+  max-width: 300%;
+}
+
+
+.sections .section .container input {
+  display: none;
+}
+
+
+.sections .section .container #radio-page-1:checked ~ .nav label[for="radio-page-noNav-1"] {
+  background: var(--primary);
+  color: var(--tertiary);
+}
+
+.sections .section .container #radio-page-2:checked ~ .nav label[for="radio-page-noNav-2"] {
+  background: var(--primary);
+  color: var(--tertiary);
+}
+
+.sections .section .container #radio-page-3:checked ~ .nav label[for="radio-page-noNav-3"] {
+  background: var(--primary);
+  color: var(--tertiary);
+}
+
+.sections .section .container #radio-page-1:checked ~ form {
+  margin-left: 0%;
+}
+
+.sections .section .container #radio-page-2:checked ~ form {
+  margin-left: -100%;
+}
+
+.sections .section .container #radio-page-3:checked ~ form {
+  margin-left: -200%;
+}

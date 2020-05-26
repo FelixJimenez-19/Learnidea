@@ -1,0 +1,89 @@
+content {
+  background: var(--quaternary_hover);
+}
+
+header {
+  height: auto;
+}
+
+header .filter,
+header .slider {
+  display: none;
+}
+
+
+
+.sections .section .span-deshabilitado {
+  display: block;
+  text-align: center;
+  padding: 100px 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  font-family: AdventPro-Medium;
+  color: var(--info);
+}
+
+.sections .section .container .tittle span {
+  margin: 0;
+}
+
+.sections .section .container .tittle img {
+  width: 40px;
+  margin: 0 5px 0 0;
+}
+
+.sections .section .container form {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.sections .section .container form .page .page-nav {
+  margin: 0 0 40px 0;
+}
+
+.sections .section .container form .page .page-nav input {
+  margin: 0;
+}
+
+
+.sections .section .container input {
+  display: none;
+}
+
+.sections .section .container form .page .page-nav,
+.sections .section .container form .page .row {
+  padding: 0 20px;
+}
+
+.sections .section .container form .page .row-img {
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  margin: 10px 0 20px 0;
+}
+
+.sections .section .container form .page .row-img .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sections .section .container form .page .row-img img {
+  height: 100%;
+}
+
+
+
+@media (max-width: 600px) {
+  .sections .section .container .tittle img {
+    display: none;
+  }
+
+  .sections .section .container form .page .page-nav,
+  .sections .section .container form .page .row {
+    padding: 0;
+  }
+}

@@ -5,6 +5,7 @@
 */
 class Mysql
 {
+    public $root_page = "https://www.learnidea.net/";
     private $conn;
     public function query($sql)
     {
