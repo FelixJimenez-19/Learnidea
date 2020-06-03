@@ -89,6 +89,14 @@ let interactions = {
             interface.checkboxModeDark.checked = checked;
             interactions.changeModeDark(evt);
         }
+
+        if (evt.keyCode === 27) {
+            if (typeof (viewscreen) !== "undefined") {
+                if (viewscreen.CONTAINER.style.display === "flex") {
+                    viewscreen.hide();
+                }
+            } else {}
+        }
     }
 }
 
