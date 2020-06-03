@@ -23,10 +23,10 @@ CREATE TABLE usuario_tipo (
     usuario_tipo_descripcion VARCHAR(100)
 ) ENGINE INNODB;
 
-INSERT INTO usuario_tipo VALUES (0, 'SUPER ADMINISTRADOR', true, true, true, true, 'ACCESO TOTAL'), 
-                                (0, 'ADMINISTRADOR', false, true, false, false, 'ADMINISTRADOR'), 
-                                (0, 'ESTUDIANTE', false, false, false, true, 'DOCENTE'), 
-                                (0, 'DOCENTE', false, false, true, false, 'DOCENTE');
+INSERT INTO usuario_tipo VALUES (1, 'SUPER ADMINISTRADOR', true, false, false, false, 'ACCESO TOTAL'), 
+                                (2, 'ADMINISTRADOR', false, true, false, false, 'ADMINISTRADOR'), 
+                                (3, 'ESTUDIANTE', false, false, false, true, 'DOCENTE'), 
+                                (4, 'DOCENTE', false, false, true, false, 'DOCENTE');
 
 CREATE TABLE usuario_tema (
     usuario_tema_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
