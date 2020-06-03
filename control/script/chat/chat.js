@@ -85,6 +85,7 @@ const chat = {
                 open: true,
                 index: index,
                 contact: contact,
+                MAX: 10,
                 msg: []
             });
             chat.fun.print();

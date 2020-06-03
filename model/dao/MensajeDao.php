@@ -33,7 +33,7 @@ class MensajeDao
                 INNER JOIN usuario AS usuario1 ON usuario1.usuario_id = mensaje.usuario_id1
                 INNER JOIN usuario AS usuario2 ON usuario2.usuario_id = mensaje.usuario_id2
             WHERE (mensaje.usuario_id1=$usuario_id1 AND mensaje.usuario_id2=$usuario_id2) OR (mensaje.usuario_id1=$usuario_id2 AND mensaje.usuario_id2=$usuario_id1)
-                ORDER BY mensaje.mensaje_fecha ASC;
+                ORDER BY mensaje.mensaje_fecha DESC;
         ");
     }
     public function selectByUsuario_idMensaje_visto($usuario_id, $mensaje_visto)

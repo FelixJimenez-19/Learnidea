@@ -68,19 +68,72 @@ const mensaje = {
             synth.speak(new SpeechSynthesisUtterance(msg));
         }
     },
-    print: (indexChat) => {
+    print: async (indexChat) => {
+        // POR SI FALLA ALGO CON EL VER MAS, COMENTAR TODO LO QUE RESTA DE ESTA FUNCION Y DESCOMENTAR LO DE ABAJO DE ESTE COMENTARIO
+        // let chat = ChatCrud.chat.database[indexChat] || null;
+        // if (chat !== null) {
+        //     let indexContact = chat.index;
+        //     let msg_container = document.getElementById(`message-contact-container-${indexContact}`);
+        //     let html = ``;
+        //     await ChatCrud.mensaje.select(indexChat, async () => {
+        //         for (let i in ChatCrud.chat.database[indexChat].msg) {
+        //             html += mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i));
+        //         }
+        //         let top = (msg_container.scrollTop + msg_container.clientHeight) < msg_container.scrollHeight;
+
+        //         await (() => (msg_container.innerHTML = html))();
+
+        //         !top ? (msg_container.scrollTop = msg_container.scrollHeight) : "";
+        //     });
+        // }
         let chat = ChatCrud.chat.database[indexChat] || null;
         if (chat !== null) {
             let indexContact = chat.index;
             let msg_container = document.getElementById(`message-contact-container-${indexContact}`);
-            let html = ``;
-            ChatCrud.mensaje.select(indexChat, () => {
+
+            let cont = 0;
+            let cont2 = 0;
+            let html = "";
+            let html_tmp = "";
+            let array = [];
+
+
+
+
+            await ChatCrud.mensaje.select(indexChat, async () => {
                 for (let i in ChatCrud.chat.database[indexChat].msg) {
-                    html += mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i));
+                    if (cont < ChatCrud.chat.database[indexChat].MAX) {
+                        array.push(mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i)));
+                        cont++;
+                        // html += mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i));
+                    }
+                    cont2++;
                 }
-                let top = (msg_container.scrollTop + msg_container.clientHeight) < msg_container.scrollHeight;
-                msg_container.innerHTML = html;
-                !top ? (msg_container.scrollTop = msg_container.scrollHeight) : "";
+
+                for (let i = array.length - 1; i >= 0; i--) {
+                // for (let i in array) {
+                    html_tmp += array[i];
+                }
+
+                if (cont > 0) {
+                    if (cont2 > cont) {
+                        html += `
+                            <div class="msg ver-mas">
+                                <button onclick="mensaje.verMas(${ indexChat })">
+                                    <img src="view/src/icon/in.png">
+                                    <span>Ver mas...</span>
+                                </button>
+                            </div>
+                        `;
+                    }
+                    html += html_tmp;
+
+                    let top = (msg_container.scrollTop + msg_container.clientHeight) < msg_container.scrollHeight;
+
+                    await (() => (msg_container.innerHTML = html))();
+
+                    !top ? (msg_container.scrollTop = msg_container.scrollHeight) : "";
+                }
             });
         }
     },
@@ -113,6 +166,10 @@ const mensaje = {
         }
         document.getElementById(`message-txt-${indexContact}`).focus();
         document.getElementById(`checkbox-new-msg-${indexContact}`).checked = false;
+    },
+    verMas: (indexChat) => {
+        ChatCrud.chat.database[indexChat].MAX += ChatCrud.chat.database[indexChat].MAX;
+        mensaje.print(indexChat);
     },
     notificacion: (first) => {
         ChatCrud.mensaje.notificacion(first, (res) => {

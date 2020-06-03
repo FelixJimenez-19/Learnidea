@@ -21,6 +21,7 @@ if (isset($_SESSION['usuario_email'])) {
     </head>
 
     <!-- SCRIPT | START -->
+    <script src="control/function/fecha.js"></script>
     <script src="./control/function/session.js"></script>
     <script src="./control/function/theme.js"></script>
     <script>

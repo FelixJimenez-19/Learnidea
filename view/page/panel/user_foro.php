@@ -145,7 +145,6 @@ if (isset($viewPage)) {
 
 
     <script src="control/lib/jquery.js"></script>
-    <script src="control/function/fecha.js"></script>
     <script src="control/script/foro/foro.js"></script>
     <script src="control/script/foro/inscripcion.js"></script>
     <script src="control/script/foro/curso.js"></script>
