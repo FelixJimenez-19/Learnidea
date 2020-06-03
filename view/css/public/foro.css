@@ -1,0 +1,25 @@
+content {
+  background: var(--quaternary_hover) !important;
+}
+
+header {
+  height: auto;
+}
+
+header .filter,
+header .slider {
+  display: none;
+}
+
+.sections {
+  
+}
+
+.sections .section {
+/*  display: none;*/
+}
+
+.idea_message,
+.idea_confirm {
+  display: none;
+}

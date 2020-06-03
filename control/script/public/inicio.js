@@ -37,7 +37,10 @@ const InicioCurso = {
                             `url('view/src/files/curso_foto/${ register.curso_foto }')`
                         }">
                         <span class="text curso-precio-pseudos"></span>
-                        <span class="text curso-precio">$${ register.curso_precio_live }</span>
+                        ${ register.curso_precio_live == 0 ? 
+                            `<span class="text curso-gratis">Gratis</span>` :
+                            `<span class="text curso-precio">$${ register.curso_precio_live }</span>`
+                        }
                     </div>
                     <div class="curso-descripcion">
                         <span class="text curso-name">${ register.curso_nombre }</span>
@@ -48,9 +51,9 @@ const InicioCurso = {
                             <p>${ register.curso_cupos }</p>
                         </div>
                         <div class="text"><span>HORAS: </span>
-                            <p>${ Fecha.getDiffHour(Fecha.getDate(register.curso_fecha_inicio), Fecha.getDate(register.curso_fecha_fin)) }</p>
+                            <p>${ parseInt(register.curso_modelo_hora_practica) + parseInt(register.curso_modelo_hora_teorica) }</p>
                         </div>
-                        <a href="">Subscribirse</a>
+                        <a href="registro?curso_id=${ register.curso_id }">Subscribirse</a>
                         <div class="text docente-foto-container">
                             <a href="">
                                 <div class="docente-foto" style="background-image: 
@@ -78,11 +81,14 @@ const InicioCurso = {
                             `url('view/src/files/curso_foto/${ register.curso_foto }')`
                         }">
                         <span class="text curso-precio-pseudos"></span>
-                        <span class="text curso-precio">$${ register.curso_precio_record }</span>
+                        ${ register.curso_precio_record == 0 ? 
+                            `<span class="text curso-gratis">Gratis</span>` :
+                            `<span class="text curso-precio">$${ register.curso_precio_record }</span>`
+                        }
                     </div>
                     <div class="curso-descripcion">
                         <span class="text curso-name">${ register.curso_nombre }</span>
-                        <a href="">Subscribirse</a>
+                        <a href="registro?curso_id=${ register.curso_id }">Subscribirse</a>
                         <div class="text docente-foto-container">
                             <a href="">
                                 <div class="docente-foto" style="background-image: 
@@ -110,7 +116,10 @@ const InicioCurso = {
                             `url('view/src/files/curso_foto/${ register.curso_foto }')`
                         }">
                         <span class="text curso-precio-pseudos"></span>
-                        <span class="text curso-precio">$${ register.curso_precio_live }</span>
+                        ${ register.curso_precio_live == 0 ? 
+                            `<span class="text curso-gratis">Gratis</span>` :
+                            `<span class="text curso-precio">$${ register.curso_precio_live }</span>`
+                        }
                     </div>
                     <div class="curso-descripcion">
                         <span class="text curso-name">${ register.curso_nombre }</span>
@@ -121,7 +130,7 @@ const InicioCurso = {
                             <p>${ register.curso_cupos }</p>
                         </div>
                         <div class="text"><span>HORAS: </span>
-                            <p>${ Fecha.getDiffHour(Fecha.getDate(register.curso_fecha_inicio), Fecha.getDate(register.curso_fecha_fin)) }</p>
+                        <p>${ parseInt(register.curso_modelo_hora_practica) + parseInt(register.curso_modelo_hora_teorica) }</p>
                         </div>
                         <div class="text docente-foto-container">
                             <a href="">
@@ -162,7 +171,7 @@ const InicioCurso = {
                         cont++;
                     }
                     cont2++;
-                };
+                }
             }
             if (cont > 0) {
                 if (cont2 > cont) {

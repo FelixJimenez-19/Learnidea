@@ -22,6 +22,14 @@ if (isset($viewPage)) {
                 </div>
             </div>
 
+            <div class="btn"><a href="profesores">Profesores</a>
+                <div class="buttons_sub"></div>
+            </div>
+
+            <div class="btn"><a href="foro">Foro</a>
+                <div class="buttons_sub"></div>
+            </div>
+
             <div class="btn">
                 <a href="login">Plataforma</a>
                 <div class="buttons_sub">
@@ -30,7 +38,7 @@ if (isset($viewPage)) {
                     <a href="recuperacion">Recuperacion</a>
                 </div>
             </div>
-<!-- 
+            <!-- 
             <div class="btn"><a href="login">Login</a>
                 <div class="buttons_sub"></div>
             </div>

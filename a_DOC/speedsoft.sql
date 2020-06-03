@@ -337,16 +337,6 @@ CREATE TABLE video_comentario (
     FOREIGN KEY (seccion_video_id) REFERENCES seccion_video (seccion_video_id)
 ) ENGINE INNODB;
 
--- @@@@options:{ "files": [{"type":"png", "name":"video_respuesta_foto"}] }
-CREATE TABLE video_respuesta (
-    video_respuesta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    video_respuesta_descripcion TEXT,
-    video_respuesta_foto VARCHAR(10),
-    video_respuesta_fecha VARCHAR(20),
-    video_comentario_id INT,
-    FOREIGN KEY (video_comentario_id) REFERENCES video_comentario (video_comentario_id)
-) ENGINE INNODB;
-
 CREATE TABLE seccion_leccion (
     seccion_leccion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_leccion_descripcion TEXT,
@@ -461,10 +451,8 @@ CREATE TABLE publicacion (
     publicacion_foto VARCHAR(10),
     publicacion_fecha VARCHAR(20),
     usuario_id INT,
-    inscripcion_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-    FOREIGN KEY (inscripcion_id) REFERENCES inscripcion (inscripcion_id)
-) ENGINE INNODB;
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
+)  ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"publicacion_comentario_foto"}] }
 CREATE TABLE publicacion_comentario (
@@ -473,18 +461,10 @@ CREATE TABLE publicacion_comentario (
     publicacion_comentario_foto VARCHAR(10),
     publicacion_comentario_fecha VARCHAR(20),
     publicacion_id INT,
-    FOREIGN KEY (publicacion_id) REFERENCES publicacion (publicacion_id)
-) ENGINE INNODB;
-
--- @@@@options:{ "files": [{"type":"png", "name":"publicacion_respuesta_foto"}] }
-CREATE TABLE publicacion_respuesta (
-    publicacion_respuesta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    publicacion_respuesta_descripcion TEXT,
-    publicacion_respuesta_foto VARCHAR(10),
-    publicacion_respuesta_fecha VARCHAR(20),
-    publicacion_comentario_id INT,
-    FOREIGN KEY (publicacion_comentario_id) REFERENCES publicacion_comentario (publicacion_comentario_id)
-) ENGINE INNODB;
+    usuario_id INT,
+    FOREIGN KEY (publicacion_id) REFERENCES publicacion (publicacion_id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
+)  ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"buzon_foto"}] }
 CREATE TABLE buzon (

@@ -16,11 +16,10 @@ if (isset($_POST['publicacion_id']) and isset($_POST['key'])) {
         if (file_exists("../../../view/src/files/publicacion_foto/" . $publicacion_id . ".png")) {
             unlink("../../../view/src/files/publicacion_foto/" . $publicacion_id . ".png");
         }
-
-        echo json_encode(["Success"]);
+        echo json_encode(['Success']);
     } else {
         echo json_encode(['DENIED']);
     }
 } else {
-    echo json_encode([null]);
+    echo json_encode(['NULL']);
 }

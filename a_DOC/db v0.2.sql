@@ -23,7 +23,10 @@ CREATE TABLE usuario_tipo (
     usuario_tipo_descripcion VARCHAR(100)
 ) ENGINE INNODB;
 
-INSERT INTO usuario_tipo VALUES (0, 'SUPER ADMINISTRADOR', true, true, true, true, 'ACCESO TOTAL');
+INSERT INTO usuario_tipo VALUES (0, 'SUPER ADMINISTRADOR', true, true, true, true, 'ACCESO TOTAL'), 
+                                (0, 'ADMINISTRADOR', false, true, false, false, 'ADMINISTRADOR'), 
+                                (0, 'ESTUDIANTE', false, false, false, true, 'DOCENTE'), 
+                                (0, 'DOCENTE', false, false, true, false, 'DOCENTE');
 
 CREATE TABLE usuario_tema (
     usuario_tema_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -101,7 +104,7 @@ CREATE TABLE usuario (
     FOREIGN KEY (usuario_pais_id) REFERENCES usuario_pais (usuario_pais_id)
 ) ENGINE INNODB;
 
-INSERT INTO usuario VALUES(0, 'Super Administrador', '', 0, '', '', '', 'admin', 'admin', null, null, null, '', '', 0, '', '', '', '', '', '', '', 0, 1, 1, 1);
+INSERT INTO usuario VALUES(0, 'Super Administrador', '', 0, '', '', '', 'admin@email.com', 'while(!vida)', null, null, null, '', '', 0, '', '', '', '', '', '', '', 0, 1, 1, 1);
 
 -- @@@@options:{ "files": [{"type":"png", "name":"mensaje_foto"}] }
 CREATE TABLE mensaje (
@@ -113,8 +116,8 @@ CREATE TABLE mensaje (
     mensaje_key TEXT,
     usuario_id1 INT,
     usuario_id2 INT,
-    FOREIGN KEY (usuario_id1) REFERENCES usuario (usuario_id),
-    FOREIGN KEY (usuario_id2) REFERENCES usuario (usuario_id)
+    FOREIGN KEY (usuario_id1) REFERENCES usuario (usuario_id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id2) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"informacion_empresa_logo"}, {"type":"png", "name":"informacion_pagina_logo"}] }
@@ -399,16 +402,6 @@ CREATE TABLE video_comentario (
     FOREIGN KEY (seccion_video_id) REFERENCES seccion_video (seccion_video_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 
--- @@@@options:{ "files": [{"type":"png", "name":"video_respuesta_foto"}] }
-CREATE TABLE video_respuesta (
-    video_respuesta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    video_respuesta_descripcion TEXT,
-    video_respuesta_foto VARCHAR(10),
-    video_respuesta_fecha VARCHAR(20),                      -- //Formato 0000/00/00 00:00
-    video_comentario_id INT,
-    FOREIGN KEY (video_comentario_id) REFERENCES video_comentario (video_comentario_id) ON DELETE CASCADE
-)  ENGINE INNODB;
-
 CREATE TABLE seccion_leccion (
     seccion_leccion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     seccion_leccion_descripcion TEXT,
@@ -516,7 +509,7 @@ CREATE TABLE deber_entrega (
     deber_entrega_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     deber_entrega_descripcion TEXT,
     deber_entrega_link TEXT,
-    deber_entrega_foto VARCHAR(50),
+    deber_entrega_foto VARCHAR(10),
     deber_entrega_pdf VARCHAR(50),
     deber_entrega_fecha_inicio VARCHAR(20),                   -- //Formato 0000/00/00 00:00
     deber_entrega_fecha_fin VARCHAR(20),                      -- //Formato 0000/00/00 00:00
@@ -532,16 +525,16 @@ CREATE TABLE deber_entrega (
 
 
 -- //FORO - INICIO
+
 -- @@@@options:{ "files": [{"type":"png", "name":"publicacion_foto"}] }
 CREATE TABLE publicacion (
     publicacion_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     publicacion_descripcion TEXT,
     publicacion_foto VARCHAR(10),
     publicacion_fecha VARCHAR(20),                              -- //Formato 0000/00/00 00:00
+    publicacion_key TEXT,
     usuario_id INT,
-    inscripcion_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-    FOREIGN KEY (inscripcion_id) REFERENCES inscripcion (inscripcion_id)
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"publicacion_comentario_foto"}] }
@@ -550,18 +543,11 @@ CREATE TABLE publicacion_comentario (
     publicacion_comentario_descripcion TEXT,
     publicacion_comentario_foto VARCHAR(10),
     publicacion_comentario_fecha VARCHAR(20),                   -- //Formato 0000/00/00 00:00
+    publicacion_comentario_key TEXT,
     publicacion_id INT,
-    FOREIGN KEY (publicacion_id) REFERENCES publicacion (publicacion_id)
-)  ENGINE INNODB;
-
--- @@@@options:{ "files": [{"type":"png", "name":"publicacion_respuesta_foto"}] }
-CREATE TABLE publicacion_respuesta (
-    publicacion_respuesta_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    publicacion_respuesta_descripcion TEXT,
-    publicacion_respuesta_foto VARCHAR(10),
-    publicacion_respuesta_fecha VARCHAR(20),                    -- //Formato 0000/00/00 00:00
-    publicacion_comentario_id INT,
-    FOREIGN KEY (publicacion_comentario_id) REFERENCES publicacion_comentario (publicacion_comentario_id)
+    usuario_id INT,
+    FOREIGN KEY (publicacion_id) REFERENCES publicacion (publicacion_id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 )  ENGINE INNODB;
 -- //FORO - FIN
 

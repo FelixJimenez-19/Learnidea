@@ -46,33 +46,30 @@ const Login = {
                 if (Login.fun.isEmail(Login.view.form.usuario_email.value)) {
                     Login.fun.setError(Login.view.form.usuario_email, "", false, 1);
                     let index = Login.usuario_database.findIndex(element => element.usuario_email === Login.view.form.usuario_email.value);
-                    if (index > 0) {
+                    if (index >= 0) {
                         validate = true;
                         Login.fun.setError(Login.view.form.usuario_email, "", false, 1);
                         Login.usuario_index = index;
                     } else {
                         validate = false;
                         Login.fun.setError(Login.view.form.usuario_email, "Este email no esta registrado", true, 1);
-                        Login.usuario_index = 0;
+                        Login.usuario_index = -1;
                     }
                 } else {
                     validate = false;
                     Login.fun.setError(Login.view.form.usuario_email, "Este no es un email", true, 1);
-                    Login.usuario_index = 0;
+                    Login.usuario_index = -1;
                 }
             }
             if (!validate) {
-                Login.usuario_index = 0;
+                Login.usuario_index = -1;
                 Login.view.form.usuario_email.focus();
             }
             return validate;
         },
         validatePass: () => {
             let validate = false;
-            if (Login.usuario_index === 0) {
-                Login.fun.setError(Login.view.form.usuario_pass, "Ingrese un correo electronico válido", true, 1);
-                validate = false;
-            } else {
+            if (Login.usuario_index >= 0) {
                 if (Login.fun.validateText(Login.view.form.usuario_pass, "Debe llenar este campo", Login.view.radioPage1, 1)) {
                     let register = Login.usuario_database[Login.usuario_index];
                     if (register.usuario_pass !== Login.view.form.usuario_pass.value) {
@@ -86,6 +83,9 @@ const Login = {
                     Login.view.form.usuario_pass.focus();
                     validate = false;
                 }
+            } else {
+                Login.fun.setError(Login.view.form.usuario_pass, "Ingrese un correo electronico válido", true, 1);
+                validate = false;
             }
             return validate;
         },
@@ -95,7 +95,11 @@ const Login = {
                 register.usuario_email.toLowerCase() === Login.view.form.usuario_email.value.toLowerCase() &&
                 register.usuario_pass === Login.view.form.usuario_pass.value
             ) {
-                UsuarioDao.login(new FormData(Login.view.form)).then(res => window.location.href = "panel");
+                UsuarioDao.login(new FormData(Login.view.form)).then(res => {
+                    curso_id !== "" ?
+                        window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
+                        window.location.href = "panel";
+                });
             } else {
                 Login.fun.setError(Login.view.form.usuario_pass, "Contraseña incorrecta", true, 1);
             }

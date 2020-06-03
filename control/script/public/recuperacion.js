@@ -59,6 +59,10 @@ const Recuperacion = {
             const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
         },
+        isPass: (input) => {
+            var paswd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+            return (input.value.match(paswd));
+        },
         validateText: (input, msg, radio, parents) => {
             if (input.value === "") {
                 Recuperacion.fun.setError(input, msg, true, parents);
@@ -105,6 +109,30 @@ const Recuperacion = {
             }
             return validate;
         },
+        validatePass: () => {
+            if (Recuperacion.fun.validateText(Recuperacion.view.form.usuario_pass, "Debe llenar este campo", Recuperacion.view.radioPage3, 1)) {
+                let index = Recuperacion.usuario_database.findIndex(element => element.usuario_email === Recuperacion.view.form.usuario_email.value);
+                let register = Recuperacion.usuario_database[index];
+                if (register.usuario_pass === Recuperacion.view.form.usuario_pass.value) {
+                    Recuperacion.fun.setError(Recuperacion.view.form.usuario_pass, "Debe ser diferente a la anterior", true, 1);
+                    Recuperacion.view.radioPage3.checked = true;
+                    Recuperacion.view.form.usuario_pass.focus();
+                    return false;
+                } else {
+                    if (Recuperacion.fun.isPass(Recuperacion.view.form.usuario_pass)) {
+                        Recuperacion.fun.setError(Recuperacion.view.form.usuario_pass, "", false, 1);
+                        return true;
+                    } else {
+                        Recuperacion.fun.setError(Recuperacion.view.form.usuario_pass, "6 - 20 Caracteres, una Mayúscula y una Minúscula", true, 1);
+                        Recuperacion.view.radioPage3.checked = true;
+                        Recuperacion.view.form.usuario_pass.focus();
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        },
         validatePassConfirm: () => {
             let validate = false;
             if (Recuperacion.fun.validateText(Recuperacion.view.form.usuario_pass_confirm, "Debe llenar este campo", Recuperacion.view.radioPage3, 1)) {
@@ -148,13 +176,17 @@ const Recuperacion = {
                 Recuperacion.fun.validateCodeEmail();
             } else if (Recuperacion.view.radioPage3.checked) {
                 if (
-                    Recuperacion.fun.validateText(Recuperacion.view.form.usuario_pass, "Debe llenar este campo", Recuperacion.view.radioPage3, 1) &&
+                    Recuperacion.fun.validatePass() &&
                     Recuperacion.fun.validatePassConfirm()
                 ) {
                     let formData = new FormData(Recuperacion.view.form);
                     UsuarioDao.update(formData).then(res => {
-                        UsuarioDao.login(formData).then(res => window.location.href = "panel");
-                    }).catch(res => console.log("QUERY DENIED => insert usuario"));
+                        UsuarioDao.login(formData).then(res => {
+                            curso_id !== "" ?
+                                window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
+                                window.location.href = "panel?page=private_perfil";
+                        });
+                    }).catch(res => console.log("QUERY DENIED => updated usuario"));
                 }
             }
         },
@@ -168,7 +200,7 @@ const Recuperacion = {
 Recuperacion.view.form.onsubmit = (evt) => Recuperacion.fun.submit(evt);
 
 Recuperacion.view.form.usuario_email.onkeyup = (evt) => Recuperacion.fun.validateEmail();
-Recuperacion.view.form.usuario_pass.onkeyup = (evt) => Recuperacion.fun.validateText(Recuperacion.view.form.usuario_pass, "Debe llenar este campo", Recuperacion.view.radioPage3, 1);
+Recuperacion.view.form.usuario_pass.onkeyup = (evt) => Recuperacion.fun.validatePass();
 Recuperacion.view.form.usuario_pass_confirm.onkeyup = (evt) => Recuperacion.fun.validatePassConfirm();
 
 Recuperacion.view.form.usuario_email_code.onkeyup = (evt) => Recuperacion.fun.validateForm();

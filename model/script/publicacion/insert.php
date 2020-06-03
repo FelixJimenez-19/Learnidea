@@ -10,13 +10,14 @@ include './../../dao/Mysql.php';
 include './../../dao/PublicacionDao.php';
 include './../../function/validation.php';
 $_entity = new PublicacionDao();
-if (isset($_POST['publicacion_descripcion']) and isset($_POST['publicacion_fecha']) and isset($_POST['usuario_id']) and isset($_POST['inscripcion_id']) and isset($_POST['key'])) {
+if (isset($_POST['publicacion_descripcion']) and isset($_POST['usuario_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $publicacion_descripcion = $_POST['publicacion_descripcion'];
-        $publicacion_fecha = $_POST['publicacion_fecha'];
+        date_default_timezone_set('America/Guayaquil');
+        $publicacion_fecha = date('Y-m-d H:i:s');
         $usuario_id = $_POST['usuario_id'];
-        $inscripcion_id = $_POST['inscripcion_id'];
-        $_entity->insert($publicacion_descripcion, $publicacion_fecha, $usuario_id, $inscripcion_id);
+        $publicacion_key = uniqid($usuario_id . uniqid($publicacion_fecha . uniqid($usuario_id . uniqid($publicacion_fecha))));
+        $_entity->insert($publicacion_descripcion, $publicacion_fecha, $usuario_id, $publicacion_key);
 
         if (isset($_FILES['publicacion_foto'])) {
             $publicacion_foto = $_FILES['publicacion_foto'];
@@ -25,7 +26,7 @@ if (isset($_POST['publicacion_descripcion']) and isset($_POST['publicacion_fecha
                     mkdir("../../../view/src/files/publicacion_foto", 0700);
                 }
 
-                $publicacion_id = mysqli_fetch_assoc($_entity->selectByAll($publicacion_descripcion, $publicacion_fecha, $usuario_id, $inscripcion_id))['publicacion_id'];
+                $publicacion_id = mysqli_fetch_assoc($_entity->selectByAll($publicacion_descripcion, $publicacion_fecha, $usuario_id, $publicacion_key))['publicacion_id'];
 
                 $desde = $publicacion_foto['tmp_name'];
                 $hasta = "../../../view/src/files/publicacion_foto/" . $publicacion_id . ".png";

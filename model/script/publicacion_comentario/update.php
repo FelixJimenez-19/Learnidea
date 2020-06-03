@@ -10,13 +10,15 @@ include './../../dao/Mysql.php';
 include './../../dao/Publicacion_comentarioDao.php';
 include './../../function/validation.php';
 $_entity = new Publicacion_comentarioDao();
-if (isset($_POST['publicacion_comentario_descripcion']) and isset($_POST['publicacion_comentario_fecha']) and isset($_POST['publicacion_id']) and  isset($_POST['publicacion_comentario_id']) and isset($_POST['key'])) {
+if (isset($_POST['publicacion_comentario_descripcion']) and isset($_POST['publicacion_id']) and isset($_POST['usuario_id']) and  isset($_POST['publicacion_comentario_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $publicacion_comentario_descripcion = $_POST['publicacion_comentario_descripcion'];
-        $publicacion_comentario_fecha = $_POST['publicacion_comentario_fecha'];
+        date_default_timezone_set('America/Guayaquil');
+        $publicacion_comentario_fecha = date('Y-m-d H:i:s');
         $publicacion_id = $_POST['publicacion_id'];
+        $usuario_id = $_POST['usuario_id'];
         $publicacion_comentario_id = $_POST['publicacion_comentario_id'];
-        $_entity->update($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id, $publicacion_comentario_id);
+        $_entity->update($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id, $usuario_id, $publicacion_comentario_id);
 
         if (isset($_FILES['publicacion_comentario_foto'])) {
             $publicacion_comentario_foto = $_FILES['publicacion_comentario_foto'];

@@ -10,12 +10,15 @@ include './../../dao/Mysql.php';
 include './../../dao/Publicacion_comentarioDao.php';
 include './../../function/validation.php';
 $_entity = new Publicacion_comentarioDao();
-if (isset($_POST['publicacion_comentario_descripcion']) and isset($_POST['publicacion_comentario_fecha']) and isset($_POST['publicacion_id']) and isset($_POST['key'])) {
+if (isset($_POST['publicacion_comentario_descripcion']) and isset($_POST['publicacion_id']) and isset($_POST['usuario_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $publicacion_comentario_descripcion = $_POST['publicacion_comentario_descripcion'];
-        $publicacion_comentario_fecha = $_POST['publicacion_comentario_fecha'];
+        date_default_timezone_set('America/Guayaquil');
+        $publicacion_comentario_fecha = date('Y-m-d H:i:s');
         $publicacion_id = $_POST['publicacion_id'];
-        $_entity->insert($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id);
+        $usuario_id = $_POST['usuario_id'];
+        $publicacion_comentario_key = uniqid($usuario_id . uniqid($publicacion_comentario_fecha . uniqid($usuario_id . uniqid($publicacion_comentario_fecha))));
+        $_entity->insert($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id, $usuario_id, $publicacion_comentario_key);
 
         if (isset($_FILES['publicacion_comentario_foto'])) {
             $publicacion_comentario_foto = $_FILES['publicacion_comentario_foto'];
@@ -24,7 +27,7 @@ if (isset($_POST['publicacion_comentario_descripcion']) and isset($_POST['public
                     mkdir("../../../view/src/files/publicacion_comentario_foto", 0700);
                 }
 
-                $publicacion_comentario_id = mysqli_fetch_assoc($_entity->selectByAll($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id))['publicacion_comentario_id'];
+                $publicacion_comentario_id = mysqli_fetch_assoc($_entity->selectByAll($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id, $usuario_id, $publicacion_comentario_key))['publicacion_comentario_id'];
 
                 $desde = $publicacion_comentario_foto['tmp_name'];
                 $hasta = "../../../view/src/files/publicacion_comentario_foto/" . $publicacion_comentario_id . ".png";

@@ -18,6 +18,7 @@ if (isset($viewPage)) {
     <script src="control/dao/Usuario_tipoDao.js"></script>
     <script src="control/dao/Usuario_temaDao.js"></script>
     <script src="control/dao/Usuario_paisDao.js"></script>
+    <script src="control/dao/PublicacionDao.js"></script>
 
 <?php
 } else {

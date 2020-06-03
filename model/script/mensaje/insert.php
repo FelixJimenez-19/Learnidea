@@ -10,7 +10,7 @@ include './../../dao/Mysql.php';
 include './../../dao/MensajeDao.php';
 include './../../function/validation.php';
 $_entity = new MensajeDao();
-if (isset($_POST['mensaje_texto']) and isset($_POST['usuario_id1']) and isset($_POST['usuario_id2'])) {
+if (isset($_POST['mensaje_texto']) and isset($_POST['usuario_id1']) and isset($_POST['usuario_id2']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $mensaje_texto = $_POST['mensaje_texto'];
         $usuario_id1 = $_POST['usuario_id1'];

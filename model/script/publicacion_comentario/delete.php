@@ -16,7 +16,6 @@ if (isset($_POST['publicacion_comentario_id']) and isset($_POST['key'])) {
         if (file_exists("../../../view/src/files/publicacion_comentario_foto/" . $publicacion_comentario_id . ".png")) {
             unlink("../../../view/src/files/publicacion_comentario_foto/" . $publicacion_comentario_id . ".png");
         }
-
         echo json_encode(["Success"]);
     } else {
         echo json_encode(['DENIED']);

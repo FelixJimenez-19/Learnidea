@@ -104,6 +104,10 @@ const Registro = {
             const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
         },
+        isPass: (input) => {
+            var paswd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+            return (input.value.match(paswd));
+        },
         validateText: (input, msg, radio, parents) => {
             if (input.value === "") {
                 Registro.fun.setError(input, msg, true, parents);
@@ -152,6 +156,21 @@ const Registro = {
             }
             return validate;
         },
+        validatePass: () => {
+            if (Registro.fun.validateText(Registro.view.form.usuario_pass, "Debe llenar este campo", Registro.view.radioPage1, 1)) {
+                if (Registro.fun.isPass(Registro.view.form.usuario_pass)) {
+                    Registro.fun.setError(Registro.view.form.usuario_pass, "", false, 1);
+                    return true;
+                } else {
+                    Registro.fun.setError(Registro.view.form.usuario_pass, "6 - 20 Caracteres, una Mayúscula y una Minúscula", true, 1);
+                    Registro.view.radioPage1.checked = true;
+                    Registro.view.form.usuario_pass.focus();
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        },
         validatePassConfirm: () => {
             let validate = false;
             if (Registro.fun.validateText(Registro.view.form.usuario_pass_confirm, "Debe llenar este campo", Registro.view.radioPage1, 1)) {
@@ -186,7 +205,9 @@ const Registro = {
                     let formData = new FormData(Registro.view.form);
                     UsuarioDao.insert(formData).then(res => {
                         UsuarioDao.login(formData).then(res => {
-                            query_curso_id !== "" ? window.location.href = `panel?page=user_curso&curso_id=${ query_curso_id }` : window.location.href = "panel?page=user_perfil";
+                            curso_id !== "" ?
+                                window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
+                                window.location.href = "panel?page=private_perfil";
                         });
                     }).catch(res => console.log("QUERY DENIED => insert usuario"));
                 } else {
@@ -198,7 +219,7 @@ const Registro = {
             if (
                 Registro.fun.validateText(Registro.view.form.usuario_nombre, "Debe llenar este campo", Registro.view.radioPage1, 1) &&
                 Registro.fun.validateEmail() &&
-                Registro.fun.validateText(Registro.view.form.usuario_pass, "Debe llenar este campo", Registro.view.radioPage1, 1) &&
+                Registro.fun.validatePass() &&
                 Registro.fun.validatePassConfirm() &&
                 Registro.fun.validateText(Registro.view.form.usuario_pais_id, "Debe llenar este campo", Registro.view.radioPage2, 2) &&
                 Registro.fun.validateText(Registro.view.form.usuario_direccion, "Debe llenar este campo", Registro.view.radioPage2, 1) &&
@@ -237,7 +258,7 @@ const Registro = {
 Registro.view.form.onsubmit = (evt) => Registro.fun.submit(evt);
 Registro.view.form.usuario_nombre.onkeyup = (evt) => Registro.fun.validateText(Registro.view.form.usuario_nombre, "Debe llenar este campo", Registro.view.radioPage1, 1);
 Registro.view.form.usuario_email.onkeyup = (evt) => Registro.fun.validateEmail();
-Registro.view.form.usuario_pass.onkeyup = (evt) => Registro.fun.validateText(Registro.view.form.usuario_pass, "Debe llenar este campo", Registro.view.radioPage1, 1);
+Registro.view.form.usuario_pass.onkeyup = (evt) => Registro.fun.validatePass();
 Registro.view.form.usuario_pass_confirm.onkeyup = (evt) => Registro.fun.validatePassConfirm();
 Registro.view.form.usuario_direccion.onkeyup = (evt) => Registro.fun.validateText(Registro.view.form.usuario_direccion, "Debe llenar este campo", Registro.view.radioPage2, 1);
 Registro.view.form.usuario_celular.onkeyup = (evt) => Registro.fun.validateText(Registro.view.form.usuario_celular, "Debe llenar este campo", Registro.view.radioPage2, 1);

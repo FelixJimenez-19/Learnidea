@@ -37,6 +37,7 @@
   height: auto;
   box-shadow: -0.5px -0.5px 4px 0 rgba(0, 0, 0, 0.6), 0.5px -0.5px 4px 0 rgba(0, 0, 0, 0.6);
   border-radius: 5px 5px 0 0;
+  z-index: 101 !important;
 }
 
 .chat-container .item-container .item .head-contact {}

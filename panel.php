@@ -426,7 +426,6 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/Curso_seccionDao.js"></script>
         <script src="control/dao/Seccion_videoDao.js"></script>
         <script src="control/dao/Video_comentarioDao.js"></script>
-        <script src="control/dao/Video_respuestaDao.js"></script>
         <script src="control/dao/Seccion_leccionDao.js"></script>
         <script src="control/dao/Seccion_preguntaDao.js"></script>
         <script src="control/dao/Seccion_alternativaDao.js"></script>
@@ -439,14 +438,13 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/Deber_entregaDao.js"></script>
         <script src="control/dao/PublicacionDao.js"></script>
         <script src="control/dao/Publicacion_comentarioDao.js"></script>
-        <script src="control/dao/Publicacion_respuestaDao.js"></script>
         <script src="control/dao/BuzonDao.js"></script>
         <script src="control/dao/Transaccion_tipoDao.js"></script>
         <script src="control/dao/TransaccionDao.js"></script>
         <!--  PANEL-->
         <script src="control/script/panel/panel.js"></script>
         <!-- SCRIPTS | END -->
-        <div class="idea_content">
+        <div class="idea_content" id="idea_content">
             <?php
             $viewPage = 'view/page/panel/';
             if (isset($_GET['page'])) {

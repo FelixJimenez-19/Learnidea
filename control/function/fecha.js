@@ -18,6 +18,7 @@ const Fecha = {
         switch (type) {
             case 0: conf = { year: 'numeric', month: 'long', day: 'numeric' }; break;
             case 1: conf = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; break;
+            case 2: conf = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }; break;
         }
         return date.toLocaleDateString("es-ES", conf);
     },

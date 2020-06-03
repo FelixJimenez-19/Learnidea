@@ -44,6 +44,15 @@ let interactions = {
     },
     saveTool: (evt) => {
         localStorage.setItem("header-tool-open", evt.srcElement.checked);
+
+        // Manejamos los widht de las 3 columnas del foro
+        if (typeof (Foro) !== "undefined") {
+            (async () => {
+                for (let i = 0; i < 100; i++) {
+                    await new Promise((resolve) => setTimeout(() => resolve(Foro.fun.ideaContentOnScroll()), 1));
+                }
+            })();
+        }
     },
     hideShowTool: (evt) => {
         if (evt.keyCode == 66 && evt.ctrlKey) {

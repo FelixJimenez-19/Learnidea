@@ -10,14 +10,14 @@ include './../../dao/Mysql.php';
 include './../../dao/PublicacionDao.php';
 include './../../function/validation.php';
 $_entity = new PublicacionDao();
-if (isset($_POST['publicacion_descripcion']) and isset($_POST['publicacion_fecha']) and isset($_POST['usuario_id']) and isset($_POST['inscripcion_id']) and  isset($_POST['publicacion_id']) and isset($_POST['key'])) {
+if (isset($_POST['publicacion_descripcion']) and isset($_POST['usuario_id']) and  isset($_POST['publicacion_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $publicacion_descripcion = $_POST['publicacion_descripcion'];
-        $publicacion_fecha = $_POST['publicacion_fecha'];
+        date_default_timezone_set('America/Guayaquil');
+        $publicacion_fecha = date('Y-m-d H:i:s');
         $usuario_id = $_POST['usuario_id'];
-        $inscripcion_id = $_POST['inscripcion_id'];
         $publicacion_id = $_POST['publicacion_id'];
-        $_entity->update($publicacion_descripcion, $publicacion_fecha, $usuario_id, $inscripcion_id, $publicacion_id);
+        $_entity->update($publicacion_descripcion, $publicacion_fecha, $usuario_id, $publicacion_id);
 
         if (isset($_FILES['publicacion_foto'])) {
             $publicacion_foto = $_FILES['publicacion_foto'];
