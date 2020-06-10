@@ -17,6 +17,10 @@ if (isset($_POST['usuario_id']) and isset($_POST['key'])) {
             unlink("../../../view/src/files/usuario_foto/" . $usuario_id . ".png");
         }
 
+        if (file_exists("../../../view/src/files/usuario_portada/" . $usuario_id . ".png")) {
+            unlink("../../../view/src/files/usuario_portada/" . $usuario_id . ".png");
+        }
+
         if (file_exists("../../../view/src/files/usuario_firma/" . $usuario_id . ".png")) {
             unlink("../../../view/src/files/usuario_firma/" . $usuario_id . ".png");
         }

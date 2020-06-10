@@ -1,4 +1,7 @@
-<?php $viewPage = 0 ?>
+<?php 
+$viewPage = 0;
+include "view/page/public/access.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 

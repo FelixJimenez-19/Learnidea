@@ -15,6 +15,6 @@ if (isset($viewPage)) {
     </div>
 <?php
 } else {
-    header("location: ../../../panel.php");
+    header("location: ../../../panel");
 }
 ?>

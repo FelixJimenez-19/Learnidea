@@ -282,47 +282,31 @@ const entity = {
         },
         crud: {
             select: async () => {
-                await InformacionDao.select()
-                    .then((res) => {
-                        entity.informacion.database = res;
-                        entity.informacion.fun.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                await InformacionDao.select().then((res) => {
+                    entity.informacion.database = res;
+                    entity.informacion.fun.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             insert: () => {
-                InformacionDao.insert(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.informacion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                InformacionDao.insert(new FormData(entity.view.form)).then((res) => {
+                    entity.informacion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             update: () => {
-                InformacionDao.update(new FormData(entity.view.form))
-                    .then((res) => {
-                        entity.informacion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                InformacionDao.update(new FormData(entity.view.form)).then((res) => {
+                    entity.informacion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
             delete: () => {
                 let formData = new FormData();
                 formData.append("informacion_id", entity.informacion.database[entity.informacion.index].informacion_id);
-                InformacionDao.delete(formData)
-                    .then((res) => {
-                        entity.informacion.crud.select();
-                        entity.fun.hideModalForm();
-                    })
-                    .catch((res) => {
-                        entity.fun.showModalMessage("Problemas al conectar con el servidor");
-                    });
+                InformacionDao.delete(formData).then((res) => {
+                    entity.informacion.crud.select();
+                    entity.fun.hideModalForm();
+                }).catch((res) => entity.fun.showModalMessage("Problemas al conectar con el servidor"));
             },
         },
     },

@@ -39,18 +39,19 @@ CREATE TABLE usuario_tema (
     usuario_tema_dark_error VARCHAR(30)
 ) ENGINE INNODB;
 
--- @@@@options:{ "account": {"user":"usuario_email","pass":"usuario_pass"}, "files": [{"type":"png", "name":"usuario_foto"}, {"type":"png", "name":"usuario_firma"}, {"type":"pdf", "name":"usuario_curriculum"}] }
+-- @@@@options:{ "account": {"user":"usuario_email","pass":"usuario_pass"}, "files": [{"type":"png", "name":"usuario_foto"},{"type":"png", "name":"usuario_portada"}, {"type":"png", "name":"usuario_firma"}, {"type":"pdf", "name":"usuario_curriculum"}] }
 CREATE TABLE usuario (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     usuario_nombre VARCHAR(80),
     usuario_cedula VARCHAR(11) UNIQUE KEY,
-    usuario_edad INT,
+    usuario_nacimiento INT,
     usuario_indice VARCHAR(50),
     usuario_celular VARCHAR(15),
     usuario_telefono VARCHAR(15),
     usuario_email VARCHAR(50),
     usuario_pass VARCHAR(50),
     usuario_foto VARCHAR(10),
+    usuario_portada VARCHAR(10),
     usuario_firma VARCHAR(10),
     usuario_curriculum VARCHAR(10),
     usuario_sexo VARCHAR(10),
@@ -65,8 +66,10 @@ CREATE TABLE usuario (
     usuario_tema_mode_dark BOOLEAN,
     usuario_tipo_id INT,
     usuario_tema_id INT,
+    usuario_pais_id INT,
     FOREIGN KEY (usuario_tipo_id) REFERENCES usuario_tipo (usuario_tipo_id),
-    FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id)
+    FOREIGN KEY (usuario_tema_id) REFERENCES usuario_tema (usuario_tema_id),
+    FOREIGN KEY (usuario_pais_id) REFERENCES usuario_pais (usuario_pais_id)
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"mensaje_foto"}] }
@@ -452,7 +455,7 @@ CREATE TABLE publicacion (
     publicacion_fecha VARCHAR(20),
     usuario_id INT,
     FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
-)  ENGINE INNODB;
+) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"publicacion_comentario_foto"}] }
 CREATE TABLE publicacion_comentario (
@@ -464,7 +467,7 @@ CREATE TABLE publicacion_comentario (
     usuario_id INT,
     FOREIGN KEY (publicacion_id) REFERENCES publicacion (publicacion_id) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
-)  ENGINE INNODB;
+) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"buzon_foto"}] }
 CREATE TABLE buzon (
@@ -494,4 +497,4 @@ CREATE TABLE transaccion (
     transaccion_fecha VARCHAR(20),
     transaccion_tipo_id INT,
     FOREIGN KEY (transaccion_tipo_id) REFERENCES transaccion_tipo (transaccion_tipo_id)
-)  ENGINE INNODB;
+) ENGINE INNODB;

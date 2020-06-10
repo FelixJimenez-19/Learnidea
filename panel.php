@@ -14,8 +14,8 @@ if (isset($_SESSION['usuario_email'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
-        <link rel="icon" href="view/src/img/logo.png">
-        <title>Learnidea - Panel</title>
+        <link rel="icon" href="view/src/img/logo.png" id="head-favicon">
+        <title>Learnidea</title>
         <link rel="stylesheet" href="view/css/config.css">
         <link rel="stylesheet" href="view/css/panel/panel.css">
     </head>
@@ -35,19 +35,21 @@ if (isset($_SESSION['usuario_email'])) {
         <input type="checkbox" id="idea_input_check_header_tool">
         <div class="idea_header">
             <div class="idea_title">
-                <span class="idea_title1">LEARNIDEA</span>
-                <span class="idea_title2">L. <p> I.</p></span>
+                <span class="idea_title1" id="informacion-panel-tool-tittle-1">LEARNIDEA</span>
+                <span class="idea_title2" id="informacion-panel-tool-tittle-2"></span>
             </div>
             <label for="idea_input_check_header_tool" class="idea_menu">
                 <img src="view/src/icon/menu.png" class="idea_header_label_tool_img">
             </label>
 
-            <!--      Implement chat notification - start       -->
+            <!--      Implement ChatNotification, ForoNotificacion - start       -->
             <!-- CSS -->
+            <link rel="stylesheet" href="view/css/foro/notification.css">
             <link rel="stylesheet" href="view/css/chat/notification.css">
             <!-- PHP -->
+            <?php include 'view/page/foro/notification.php' ?>
             <?php include 'view/page/chat/notification.php' ?>
-            <!--      Implement chat notification - end         -->
+            <!--      Implement ChatNotification, ForoNotificacion - end         -->
 
             <input type="checkbox" id="idea_input_check_profile">
             <label for="idea_input_check_profile" class="idea_profile">
@@ -60,13 +62,16 @@ if (isset($_SESSION['usuario_email'])) {
                     </label>
                     <img src="view/src/<?php echo ($_SESSION['usuario_foto'] !== null) ? 'files/usuario_foto/' . $_SESSION['usuario_foto'] : 'img/avatar.png' ?>">
                     <span><?php echo $_SESSION['usuario_nombre'] ?></span>
-                    <button id="idea_btn_logount">CERRAR SESION</button>
+                    <div class="row buttons">
+                        <a class="icon" href="panel?page=user_profile"><img src="view/src/icon/edit.png"></a>
+                        <button id="idea_btn_logount">CERRAR SESION</button>
+                    </div>
                 </div>
             </label>
         </div>
 
         <div class="idea_tool">
-            <img src="view/src/img/logo.png" class="logo">
+            <img src="view/src/img/logo.png" class="logo" id="informacion-panel-tool-logo">
             <div class="idea_options">
                 <div class="idea_option">
                     <a href="panel?page=inicio">
@@ -444,6 +449,7 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/TransaccionDao.js"></script>
         <!--  PANEL-->
         <script src="control/script/panel/panel.js"></script>
+        <script src="control/function/informacion.js"></script>
         <!-- SCRIPTS | END -->
         <div class="idea_content" id="idea_content">
             <?php
@@ -474,6 +480,7 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/script/chat/mensaje.js"></script>
         <script src="control/script/chat/chat.js"></script>
         <script src="control/script/chat/ChatThread.js"></script>
+        <script src="control/script/foro/notification.js"></script>
         <!--    Implement Chat - end        -->
 
         <!--    Implement ViewScreen - start      -->
@@ -490,6 +497,6 @@ if (isset($_SESSION['usuario_email'])) {
     </html>
 <?php
 } else {
-    header("location: login.php");
+    header("location: login");
 }
 ?>

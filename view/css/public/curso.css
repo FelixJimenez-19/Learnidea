@@ -1,13 +1,3 @@
-@font-face {
-  font-family: AdventPro-Light;
-  src: url(../fonts/AdventPro-Light.ttf);
-}
-
-@font-face {
-  font-family: AdventPro-Medium;
-  src: url(../fonts/AdventPro-Medium.ttf);
-}
-
 .curso-container {
   position: relative;
   display: flex;

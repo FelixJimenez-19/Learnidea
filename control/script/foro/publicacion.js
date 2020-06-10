@@ -47,9 +47,9 @@ const ForoPublicacion = {
             return `
                 <div class="item_publicacion">
                     <div class="header">
-                        <a class="usuario_foto" style="background-image: url(view/src/files/usuario_foto/${ register.usuario_foto })" href=""></a>
+                        <a class="usuario_foto" style="background-image: url(view/src/files/usuario_foto/${ register.usuario_foto })" href="?page=user_profile&usuario_id=${ register.usuario_id }"></a>
                         <div class="description__container">
-                            <a class="text usuario_nombre" href="">${ register.usuario_nombre }</a>
+                            <a class="text usuario_nombre" href="?page=user_profile&usuario_id=${ register.usuario_id }">${ register.usuario_nombre }</a>
                             <span class="text publicacion_fecha">${ Fecha.getString(new Date(register.publicacion_fecha), 2) }</span>
                         </div>
                         ${ register.usuario_id === Session.getSession().usuario_id ? `
@@ -114,11 +114,18 @@ const ForoPublicacion = {
             let html = "";
             for (let i in ForoPublicacion.database) {
                 let register = ForoPublicacion.database[i];
-                if (cont < ForoPublicacion.MAX) {
-                    html += ForoPublicacion.fun.getHtmlItem(i);
-                    cont++;
+                // Validar para obtener publicaciones unicamente de cierto usuario
+                let validate_user = 0;
+                if (typeof (global_usuario_id) !== "undefined") {
+                    validate_user = global_usuario_id;
                 }
-                cont2++;
+                if ((validate_user === 0 || validate_user == register.usuario_id)) {
+                    if (cont < ForoPublicacion.MAX) {
+                        html += ForoPublicacion.fun.getHtmlItem(i);
+                        cont++;
+                    }
+                    cont2++;
+                }
             }
             if (cont > 0) {
                 if (cont2 > cont) {
@@ -132,13 +139,20 @@ const ForoPublicacion = {
                     `;
                 }
                 ForoPublicacion.view.container.innerHTML = html + "<br>";
+            } else {
+                ForoPublicacion.view.container.innerHTML = `
+                    <div class="item_publicacion not-found">
+                        <span>Sin publicaciones actualmente..</span>
+                        <img src="view/src/files/informacion_pagina_logo/${ Informacion.getInformacion().informacion_pagina_logo }" />
+                    </div><br>
+                `;
             }
         },
         update: (form_id) => {
             let form = document.getElementById(form_id);
             if (form.publicacion_descripcion.value.trim() !== "" || form.publicacion_foto.value !== "") {
                 ForoPublicacion.crud.update(new FormData(form));
-                Foro.fun.hideModalForm( ()=>{} );
+                Foro.fun.hideModalForm(() => {});
             } else {
                 Foro.fun.showModalMessage("Debe escribir una descripción o agregar una imagen en la publicación");
             }

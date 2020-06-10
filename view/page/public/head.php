@@ -4,7 +4,7 @@ if (isset($viewPage)) {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title></title>
+    <title>Learnidea</title>
     <link rel="icon" id="head-favicon" href="view/src/img/logo.png">
     <!-- STYLES -->
     <link rel="stylesheet" href="view/css/config.css">

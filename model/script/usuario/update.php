@@ -42,10 +42,25 @@ if (isset($_POST['usuario_nombre']) and isset($_POST['usuario_cedula']) and isse
                 if (!file_exists('../../../view/src/files/usuario_foto')) {
                     mkdir("../../../view/src/files/usuario_foto", 0700);
                 }
+
                 $desde = $usuario_foto['tmp_name'];
                 $hasta = "../../../view/src/files/usuario_foto/" . $usuario_id . ".png";
                 copy($desde, $hasta);
                 $_entity->updateUsuario_foto($usuario_id . ".png", $usuario_id);
+            }
+        }
+
+        if (isset($_FILES['usuario_portada'])) {
+            $usuario_portada = $_FILES['usuario_portada'];
+            if ($usuario_portada['tmp_name'] != "" or $usuario_portada['tmp_name'] != null) {
+                if (!file_exists('../../../view/src/files/usuario_portada')) {
+                    mkdir("../../../view/src/files/usuario_portada", 0700);
+                }
+
+                $desde = $usuario_portada['tmp_name'];
+                $hasta = "../../../view/src/files/usuario_portada/" . $usuario_id . ".png";
+                copy($desde, $hasta);
+                $_entity->updateUsuario_portada($usuario_id . ".png", $usuario_id);
             }
         }
 
@@ -55,6 +70,7 @@ if (isset($_POST['usuario_nombre']) and isset($_POST['usuario_cedula']) and isse
                 if (!file_exists('../../../view/src/files/usuario_firma')) {
                     mkdir("../../../view/src/files/usuario_firma", 0700);
                 }
+
                 $desde = $usuario_firma['tmp_name'];
                 $hasta = "../../../view/src/files/usuario_firma/" . $usuario_id . ".png";
                 copy($desde, $hasta);
@@ -68,6 +84,7 @@ if (isset($_POST['usuario_nombre']) and isset($_POST['usuario_cedula']) and isse
                 if (!file_exists('../../../view/src/files/usuario_curriculum')) {
                     mkdir("../../../view/src/files/usuario_curriculum", 0700);
                 }
+
                 $desde = $usuario_curriculum['tmp_name'];
                 $hasta = "../../../view/src/files/usuario_curriculum/" . $usuario_id . ".pdf";
                 copy($desde, $hasta);

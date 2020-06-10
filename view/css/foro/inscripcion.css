@@ -1,0 +1,148 @@
+.foro-container .foro-col-1 button.ver-mas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  margin: 5px 0 0 0;
+  background: rgba(0, 0, 0, 0);
+}
+
+.foro-container .foro-col-1 button.ver-mas:hover {
+  text-decoration: underline;
+}
+
+.foro-container .foro-col-1 button.ver-mas img {
+  width: 15px;
+  height: 15px;
+  padding: 3px 2px;
+  transform: rotate(90deg);
+  filter: invert(0.3);
+}
+
+.foro-container .foro-col-1 button.ver-mas span {
+  color: var(--tertiary_hover);
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0 0 2px;
+}
+
+.foro-container .foro-col-1 a.section__curso {
+  display: flex;
+  width: 100%;
+  height: 55px;
+  margin: 10px 0 0 0;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  background: var(--quaternary);
+  color: var(--tertiary_hover);
+}
+
+.foro-container .foro-col-1 a.section__curso:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: underline;
+}
+
+.foro-container .foro-col-1 a.section__curso .img {
+  flex: 1;
+  display: block;
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  height: 100%;
+  border-radius: 5px;
+  margin: 0 5px 0 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.foro-container .foro-col-1 a.section__curso:hover .img {
+  background-size: 110%;
+}
+
+
+.foro-container .foro-col-1 a.section__curso .description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.foro-container .foro-col-1 a.section__curso .description span {
+  flex: 1;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 13px;
+  color: var(--tertiary_hover);
+}
+
+
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container {
+  flex: 1;
+  display: flex;
+}
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate {
+  position: relative;
+  display: flex;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  min-height: 18px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:hover:before,
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:hover:after {
+  display: flex;
+}
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:before,
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:after {
+  position: absolute;
+  display: none;
+  background: #FFFFFF;
+}
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:before {
+  content: attr(placeholder);
+  bottom: 110%;
+  right: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+  height: auto;
+  padding: 5px 5px 11px 0;
+  color: #000000;
+  transform: translate(5px);
+  border-radius: 5px;
+  border: solid 1px var(--primary_hover);
+  color: var(--primary_hover);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.foro-container .foro-col-1 a.section__curso .description .certificados__container .curso-certificate:after {
+  content: '';
+  right: 0;
+  left: 0;
+  bottom: 80%;
+  margin: 0 auto;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-right: solid 1px var(--primary_hover);
+  border-bottom: solid 1px var(--primary_hover);
+  /*  border: solid 1px var(--primary);*/
+}

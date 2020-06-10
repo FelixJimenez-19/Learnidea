@@ -205,9 +205,10 @@ const Registro = {
                     let formData = new FormData(Registro.view.form);
                     UsuarioDao.insert(formData).then(res => {
                         UsuarioDao.login(formData).then(res => {
-                            curso_id !== "" ?
-                                window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
-                                window.location.href = "panel?page=private_perfil";
+                            // curso_id !== "" ?
+                            //     window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
+                            //     window.location.href = "panel?page=private_perfil";
+                            window.location.href = "panel";
                         });
                     }).catch(res => console.log("QUERY DENIED => insert usuario"));
                 } else {

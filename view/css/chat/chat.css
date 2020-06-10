@@ -156,6 +156,11 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.chat-container .item-container .item .label-title-name a:hover {
+  text-decoration: underline;
 }
 
 .chat-container .item-container .item .head-chat .label-chat-button .close {

@@ -22,7 +22,7 @@ const chat = {
                             <label class="label-title-name" for="checkbox-chat-item-${chat.index}" onclick="chat.fun.saveOpen(${chat.index},${ indexChat })">
                                 <input type="checkbox" id="checkbox-new-msg-${chat.index}">
                                 <i class="${connected == true ? "connect" : "disconnect"}"></i>
-                                <div class="title-name"><span>${chat.contact.usuario_nombre}</span></div>
+                                <a href="?page=user_profile&usuario_id=${ chat.contact.usuario_id }" class="title-name"><span>${chat.contact.usuario_nombre}</span></a>
                             </label>
                             <label class="label-chat-button" onclick="chat.close(${ indexChat })">
                                 <i class="close"><img src="view/src/icon/close.png" ></i>

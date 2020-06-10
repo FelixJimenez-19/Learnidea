@@ -35,6 +35,7 @@ if (isset($_SESSION)) {
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>FOTO</th>
+                        <th>PORTADA</th>
                         <th>FIRMA</th>
                         <th>CURRICULUM</th>
                         <th>PAIS</th>
@@ -80,6 +81,11 @@ if (isset($_SESSION)) {
                     <div class="row">
                         <span>FOTO: </span>
                         <input type="file" name="usuario_foto" placeholder="PNG" accept="image/*">
+                    </div>
+                    
+                    <div class="row">
+                        <span>PORTADA: </span>
+                        <input type="file" name="usuario_portada" placeholder="PNG" accept="image/*">
                     </div>
 
                     <div class="row">
@@ -230,7 +236,6 @@ if (isset($_SESSION)) {
         </div>
         <script src="control/lib/data_tables/datatables.js"></script>
         <script src="control/lib/data_tables/datatables_config.js"></script>
-        <script src="control/function/fecha.js"></script>
         <script src="control/script/usuario.js"></script>
 <?php
     } else {

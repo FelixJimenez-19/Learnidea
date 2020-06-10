@@ -82,6 +82,7 @@ CREATE TABLE usuario (
     usuario_email VARCHAR(50),                  -- //Usuario de acceso
     usuario_pass VARCHAR(50),                   -- //Contrtaseña de acceso
     usuario_foto VARCHAR(10),                   -- //PNG
+    usuario_portada VARCHAR(10),                   -- //PNG
     usuario_firma VARCHAR(10),                  -- //PNG
     usuario_curriculum VARCHAR(10),             -- //PDF
     usuario_sexo VARCHAR(10),                   -- //Checklist

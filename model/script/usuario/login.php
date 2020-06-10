@@ -27,6 +27,7 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
             $_SESSION['usuario_email'] = $rs['usuario_email'];
             $_SESSION['usuario_pass'] = $rs['usuario_pass'];
             $_SESSION['usuario_foto'] = $rs['usuario_foto'];
+            $_SESSION['usuario_portada'] = $rs['usuario_portada'];
             $_SESSION['usuario_firma'] = $rs['usuario_firma'];
             $_SESSION['usuario_curriculum'] = $rs['usuario_curriculum'];
             $_SESSION['usuario_sexo'] = $rs['usuario_sexo'];
@@ -39,6 +40,7 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
             $_SESSION['usuario_empresa_direccion'] = $rs['usuario_empresa_direccion'];
             $_SESSION['usuario_empresa_telefono'] = $rs['usuario_empresa_telefono'];
             $_SESSION['usuario_tema_mode_dark'] = $rs['usuario_tema_mode_dark'];
+
             $_SESSION['usuario_tipo_id'] = $rs['usuario_tipo_id'];
             $_SESSION['usuario_tipo_nombre'] = $rs['usuario_tipo_nombre'];
             $_SESSION['usuario_tipo_super'] = $rs['usuario_tipo_super'];
@@ -46,6 +48,7 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
             $_SESSION['usuario_tipo_coach'] = $rs['usuario_tipo_coach'];
             $_SESSION['usuario_tipo_user'] = $rs['usuario_tipo_user'];
             $_SESSION['usuario_tipo_descripcion'] = $rs['usuario_tipo_descripcion'];
+            
             $_SESSION['usuario_tema_id'] = $rs['usuario_tema_id'];
             $_SESSION['usuario_tema_nombre'] = $rs['usuario_tema_nombre'];
             $_SESSION['usuario_tema_primary'] = $rs['usuario_tema_primary'];

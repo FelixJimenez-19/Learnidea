@@ -79,7 +79,12 @@ const entity = {
             entity.view.form.usuario_tipo_id.value = "";
             entity.view.form.usuario_tema_id.value = "";
             entity.view.form.usuario_pais_id.value = "";
+
             entity.view.form.usuario_foto.value = "";
+            entity.view.form.usuario_portada.value = "";
+            entity.view.form.usuario_firma.value = "";
+            entity.view.form.usuario_curriculum.value = "";
+            
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -118,6 +123,12 @@ const entity = {
                         <img 
                             src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}"
                             onclick="viewscreen.show('${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}')"    
+                        />
+                    </td>
+                    <td>
+                        <img 
+                            src="${register.usuario_portada !== null ? "view/src/files/usuario_portada/" + register.usuario_portada : "view/src/img/avatar.png"}"
+                            onclick="viewscreen.show('${register.usuario_portada !== null ? "view/src/files/usuario_portada/" + register.usuario_portada : "view/src/img/avatar.png"}')"    
                         />
                     </td>
                     <td>
@@ -168,6 +179,10 @@ const entity = {
                 `<img 
                     src="${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}"
                     onclick="viewscreen.show('${register.usuario_foto !== null ? "view/src/files/usuario_foto/" + register.usuario_foto : "view/src/img/avatar.png"}')" 
+                />`,
+                `<img 
+                    src="${register.usuario_portada !== null ? "view/src/files/usuario_portada/" + register.usuario_portada : "view/src/img/avatar.png"}"
+                    onclick="viewscreen.show('${register.usuario_portada !== null ? "view/src/files/usuario_portada/" + register.usuario_portada : "view/src/img/avatar.png"}')" 
                 />`,
                 `<img 
                     src="${register.usuario_firma !== null ? "view/src/files/usuario_firma/" + register.usuario_firma : "view/src/img/avatar.png"}"

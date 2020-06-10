@@ -1,3 +1,4 @@
+
 <?php
 /* 
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
@@ -41,16 +42,6 @@ class UsuarioDao
     {
         return $this->conn->query("UPDATE usuario SET usuario_tema_mode_dark=$usuario_tema_mode_dark WHERE usuario_id = $usuario_id ");
     }
-    public function delete($usuario_id)
-    {
-        return $this->conn->query("DELETE FROM usuario WHERE usuario_id = $usuario_id ");
-    }
-
-    public function selectByAll($usuario_nombre, $usuario_cedula, $usuario_nacimiento, $usuario_indice, $usuario_celular, $usuario_telefono, $usuario_email, $usuario_pass, $usuario_sexo, $usuario_nivel, $usuario_calificacion, $usuario_direccion, $usuario_descripcion, $usuario_empresa_nombre, $usuario_empresa_actividad, $usuario_empresa_direccion, $usuario_empresa_telefono, $usuario_tema_mode_dark, $usuario_tipo_id, $usuario_tema_id, $usuario_pais_id)
-    {
-        return $this->conn->query("SELECT * FROM usuario WHERE usuario_nombre='$usuario_nombre' AND usuario_cedula='$usuario_cedula' AND usuario_nacimiento=$usuario_nacimiento AND usuario_indice='$usuario_indice' AND usuario_celular='$usuario_celular' AND usuario_telefono='$usuario_telefono' AND usuario_email='$usuario_email' AND usuario_pass='$usuario_pass' AND usuario_sexo='$usuario_sexo' AND usuario_nivel='$usuario_nivel' AND usuario_calificacion='$usuario_calificacion' AND usuario_direccion='$usuario_direccion' AND usuario_descripcion='$usuario_descripcion' AND usuario_empresa_nombre='$usuario_empresa_nombre' AND usuario_empresa_actividad='$usuario_empresa_actividad' AND usuario_empresa_direccion='$usuario_empresa_direccion' AND usuario_empresa_telefono='$usuario_empresa_telefono' AND usuario_tema_mode_dark=$usuario_tema_mode_dark AND usuario_tipo_id=$usuario_tipo_id AND usuario_tema_id=$usuario_tema_id AND usuario_pais_id=$usuario_pais_id ");
-    }
-
     public function updateFechaConexion($usuario_id)
     {
         date_default_timezone_set('America/Guayaquil');
@@ -58,10 +49,22 @@ class UsuarioDao
         $this->conn->query("UPDATE usuario SET usuario_fecha_conexion='$fecha' WHERE usuario_id = $usuario_id ");
         return $fecha;
     }
-
+    public function delete($usuario_id)
+    {
+        return $this->conn->query("DELETE FROM usuario WHERE usuario_id = $usuario_id ");
+    }
+    public function selectByAll($usuario_nombre, $usuario_cedula, $usuario_nacimiento, $usuario_indice, $usuario_celular, $usuario_telefono, $usuario_email, $usuario_pass, $usuario_sexo, $usuario_nivel, $usuario_calificacion, $usuario_direccion, $usuario_descripcion, $usuario_empresa_nombre, $usuario_empresa_actividad, $usuario_empresa_direccion, $usuario_empresa_telefono, $usuario_tema_mode_dark, $usuario_tipo_id, $usuario_tema_id, $usuario_pais_id)
+    {
+        return $this->conn->query("SELECT * FROM usuario WHERE usuario_nombre='$usuario_nombre' AND usuario_cedula='$usuario_cedula' AND usuario_nacimiento=$usuario_nacimiento AND usuario_indice='$usuario_indice' AND usuario_celular='$usuario_celular' AND usuario_telefono='$usuario_telefono' AND usuario_email='$usuario_email' AND usuario_pass='$usuario_pass' AND usuario_sexo='$usuario_sexo' AND usuario_nivel='$usuario_nivel' AND usuario_calificacion='$usuario_calificacion' AND usuario_direccion='$usuario_direccion' AND usuario_descripcion='$usuario_descripcion' AND usuario_empresa_nombre='$usuario_empresa_nombre' AND usuario_empresa_actividad='$usuario_empresa_actividad' AND usuario_empresa_direccion='$usuario_empresa_direccion' AND usuario_empresa_telefono='$usuario_empresa_telefono' AND usuario_tema_mode_dark=$usuario_tema_mode_dark AND usuario_tipo_id=$usuario_tipo_id AND usuario_tema_id=$usuario_tema_id AND usuario_pais_id=$usuario_pais_id ");
+    }
     public function updateUsuario_foto($usuario_foto, $usuario_id)
     {
         return $this->conn->query("UPDATE usuario SET usuario_foto='$usuario_foto' WHERE usuario_id = $usuario_id ");
+    }
+
+    public function updateUsuario_portada($usuario_portada, $usuario_id)
+    {
+        return $this->conn->query("UPDATE usuario SET usuario_portada='$usuario_portada' WHERE usuario_id = $usuario_id ");
     }
 
     public function updateUsuario_firma($usuario_firma, $usuario_id)
@@ -86,3 +89,5 @@ class UsuarioDao
         ");
     }
 }
+?>
+

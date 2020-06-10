@@ -34,18 +34,36 @@ if (isset($_POST['usuario_nombre']) and isset($_POST['usuario_cedula']) and isse
         $usuario_tema_id = $_POST['usuario_tema_id'];
         $usuario_pais_id = $_POST['usuario_pais_id'];
         $_entity->insert($usuario_nombre, $usuario_cedula, $usuario_nacimiento, $usuario_indice, $usuario_celular, $usuario_telefono, $usuario_email, $usuario_pass, $usuario_sexo, $usuario_nivel, $usuario_calificacion, $usuario_direccion, $usuario_descripcion, $usuario_empresa_nombre, $usuario_empresa_actividad, $usuario_empresa_direccion, $usuario_empresa_telefono, $usuario_tema_mode_dark, $usuario_tipo_id, $usuario_tema_id, $usuario_pais_id);
+
         if (isset($_FILES['usuario_foto'])) {
             $usuario_foto = $_FILES['usuario_foto'];
             if ($usuario_foto['tmp_name'] != "" or $usuario_foto['tmp_name'] != null) {
                 if (!file_exists('../../../view/src/files/usuario_foto')) {
                     mkdir("../../../view/src/files/usuario_foto", 0700);
                 }
+
                 $usuario_id = mysqli_fetch_assoc($_entity->selectByAll($usuario_nombre, $usuario_cedula, $usuario_nacimiento, $usuario_indice, $usuario_celular, $usuario_telefono, $usuario_email, $usuario_pass, $usuario_sexo, $usuario_nivel, $usuario_calificacion, $usuario_direccion, $usuario_descripcion, $usuario_empresa_nombre, $usuario_empresa_actividad, $usuario_empresa_direccion, $usuario_empresa_telefono, $usuario_tema_mode_dark, $usuario_tipo_id, $usuario_tema_id, $usuario_pais_id))['usuario_id'];
 
                 $desde = $usuario_foto['tmp_name'];
                 $hasta = "../../../view/src/files/usuario_foto/" . $usuario_id . ".png";
                 copy($desde, $hasta);
                 $_entity->updateUsuario_foto($usuario_id . ".png", $usuario_id);
+            }
+        }
+
+        if (isset($_FILES['usuario_portada'])) {
+            $usuario_portada = $_FILES['usuario_portada'];
+            if ($usuario_portada['tmp_name'] != "" or $usuario_portada['tmp_name'] != null) {
+                if (!file_exists('../../../view/src/files/usuario_portada')) {
+                    mkdir("../../../view/src/files/usuario_portada", 0700);
+                }
+
+                $usuario_id = mysqli_fetch_assoc($_entity->selectByAll($usuario_nombre, $usuario_cedula, $usuario_nacimiento, $usuario_indice, $usuario_celular, $usuario_telefono, $usuario_email, $usuario_pass, $usuario_sexo, $usuario_nivel, $usuario_calificacion, $usuario_direccion, $usuario_descripcion, $usuario_empresa_nombre, $usuario_empresa_actividad, $usuario_empresa_direccion, $usuario_empresa_telefono, $usuario_tema_mode_dark, $usuario_tipo_id, $usuario_tema_id, $usuario_pais_id))['usuario_id'];
+
+                $desde = $usuario_portada['tmp_name'];
+                $hasta = "../../../view/src/files/usuario_portada/" . $usuario_id . ".png";
+                copy($desde, $hasta);
+                $_entity->updateUsuario_portada($usuario_id . ".png", $usuario_id);
             }
         }
 

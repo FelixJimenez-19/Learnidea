@@ -1,0 +1,244 @@
+/*NOTIFICACION DE MENSAJES*/
+.idea_header #checkbox-foro-notification-container,
+.idea_header #checkbox-foro-notification-new {
+  display: none;
+}
+
+.idea_header #checkbox-foro-notification-container:checked ~ .foro-notification-container .div-container {
+  padding: 4px;
+  min-height: 210px;
+  max-height: 280px;
+  animation: open_profile_options 0.3s;
+}
+
+.idea_header #checkbox-foro-notification-container:checked ~ .foro-notification-container:before {
+  display: flex;
+}
+
+.idea_header #checkbox-foro-notification-new:checked ~ .foro-notification-container .label-button-container label:before {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  content: '';
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background-image: url(../../src/icon/new-msg.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+}
+
+.idea_header .foro-notification-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 100%;
+}
+
+.idea_header .foro-notification-container .label-button-container {
+  display: flex;
+  width: 25px;
+  height: 25px;
+}
+
+.idea_header .foro-notification-container .label-button-container label {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.idea_header .foro-notification-container .label-button-container label:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.idea_header .foro-notification-container .label-button-container label img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+  padding: 5px;
+}
+
+
+
+.idea_header .foro-notification-container:before {
+  position: absolute;
+  top: 25px;
+  right: 7px;
+  content: '';
+  display: none;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  background: var(--secondary);
+}
+
+.idea_header .foro-notification-container .div-container {
+  position: absolute;
+  top: 32px;
+  right: -35px;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  max-width: 240px;
+  height: auto;
+  min-height: 0;
+  max-height: 0;
+  padding: 0;
+  background: var(--secondary);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3), -2px 4px 6px 0 rgba(0, 0, 0, 0.3), 2px 4px 6px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 1px 1px 3px 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.idea_header .foro-notification-container .div-container .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 4px;
+  margin: 2px 0;
+  border-radius: 3px;
+  background: #FFF;
+  text-decoration: none;
+}
+
+.idea_header .foro-notification-container .div-container .item:hover {
+  background: #ececec;
+}
+
+.idea_header .foro-notification-container .div-container .item img {
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+  height: 35px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 50%;
+  margin: 0 3px 0 0;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.idea_header .foro-notification-container .div-container .item .col1 {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  max-width: 130px;
+}
+
+.idea_header .foro-notification-container .div-container .item .col1 .msg-user,
+.idea_header .foro-notification-container .div-container .item .col1 .msg-text {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.idea_header .foro-notification-container .div-container .item .col1 .msg-user {
+  font-size: 0.8em;
+  color: #000000;
+}
+
+.idea_header .foro-notification-container .div-container .item .col1 .msg-text {
+  font-size: 0.7em;
+  color: #7a7a7a;
+}
+
+.idea_header .foro-notification-container .div-container .item .col2 {
+  display: flex;
+  width: 59px;
+  margin: 0 0 0 auto;
+}
+
+.idea_header .foro-notification-container .div-container .item .col2 .msg-date {
+  text-align: end;
+  width: 100%;
+  height: 100%;
+  font-size: 0.65em;
+  color: #7a7a7a;
+}
+
+/*NOTIFICACION DE MENSAJES*/
+
+
+
+
+.idea_header .foro-notification-container .div-container .item.ver-mas {
+  background: rgba(0, 0, 0, 0);
+  padding: 0;
+  height: auto;
+}
+
+.idea_header .foro-notification-container .div-container .item.ver-mas button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+
+.idea_header .foro-notification-container .div-container .item.ver-mas button:hover span {
+  text-decoration: underline;
+}
+
+.idea_header .foro-notification-container .div-container .item.ver-mas button img {
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  min-height: 15px;
+  padding: 2px;
+  margin: 0;
+  transform: rotate(90deg);
+  filter: invert(1);
+  box-shadow: none;
+}
+
+.idea_header .foro-notification-container .div-container .item.ver-mas button span {
+  color: var(--tertiary);
+  font-size: 12px;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _____________ SCROLL _ STYLES ________________ */
+.idea_header .foro-notification-container .div-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.idea_header .foro-notification-container .div-container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 7px;
+}
+
+.idea_header .foro-notification-container .div-container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary_hover);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.idea_header .foro-notification-container .div-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}

@@ -25,6 +25,21 @@ class Publicacion_comentarioDao
             WHERE publicacion_comentario_id = $publicacion_comentario_id ORDER BY publicacion_comentario.publicacion_comentario_id DESC
         ");
     }
+    public function selectByUsuario_id_notification($usuario_id)
+    {
+        return $this->conn->query("
+            SELECT * FROM publicacion_comentario 
+                INNER JOIN usuario ON usuario.usuario_id = publicacion_comentario.usuario_id
+            WHERE publicacion_comentario_id IN (
+                SELECT MAX(publicacion_comentario_id) FROM publicacion_comentario
+                WHERE publicacion_id IN (
+                    SELECT publicacion.publicacion_id FROM publicacion_comentario
+                        INNER JOIN publicacion ON publicacion.publicacion_id = publicacion_comentario.publicacion_id
+                    WHERE publicacion_comentario.usuario_id = $usuario_id OR publicacion.usuario_id = $usuario_id
+                ) GROUP BY publicacion_id
+            ) ORDER BY publicacion_comentario_id DESC;
+        ");
+    }
     public function insert($publicacion_comentario_descripcion, $publicacion_comentario_fecha, $publicacion_id, $usuario_id, $publicacion_comentario_key)
     {
         return $this->conn->query("INSERT INTO publicacion_comentario SET publicacion_comentario_descripcion='$publicacion_comentario_descripcion', publicacion_comentario_fecha='$publicacion_comentario_fecha', publicacion_id=$publicacion_id, usuario_id=$usuario_id, publicacion_comentario_key='$publicacion_comentario_key' ");
@@ -48,5 +63,3 @@ class Publicacion_comentarioDao
         return $this->conn->query("UPDATE publicacion_comentario SET publicacion_comentario_foto='$publicacion_comentario_foto' WHERE publicacion_comentario_id = $publicacion_comentario_id ");
     }
 }
-?>
-
