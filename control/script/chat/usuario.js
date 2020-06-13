@@ -1,5 +1,5 @@
 const usuario = {
-    MAX_PRINT: 50,
+    MAX_PRINT: 20,
     fun: {
         // index in ChatCrud.usuario.database[thisIndex]
         // queryConnected 'true' devuelve solo usuarios conectados o 'false' solo desconectados

@@ -23,7 +23,26 @@ const UserCursoOne = {
         formativaContainer: document.getElementById("container__curso__formativa"),
         finalContainer: document.getElementById("container__curso__final"),
         aprendizajeContainer: document.getElementById("container__curso__aprendizaje"),
-        bibliografiaContainer: document.getElementById("container__curso__bibliografia")
+        bibliografiaContainer: document.getElementById("container__curso__bibliografia"),
+        declare: () => {
+            UserCursoOne.view.masterContainerCurso = document.getElementById("container__curso");
+            UserCursoOne.view.headerContainer = document.getElementById("container__curso__header");
+            UserCursoOne.view.usuarioContainer = document.getElementById("container__curso__usuario");
+            UserCursoOne.view.temarioContainer = document.getElementById("container__curso__temario");
+            UserCursoOne.view.extrasContainer = document.getElementById("container__curso__extras");
+            UserCursoOne.view.descripcionContainer = document.getElementById("container__curso__descripcion");
+            UserCursoOne.view.requisitosContainer = document.getElementById("container__curso__requisitos");
+            UserCursoOne.view.objetivosContainer = document.getElementById("container__curso__objetivos");
+            UserCursoOne.view.primarioContainer = document.getElementById("container__curso__primario");
+            UserCursoOne.view.secundarioContainer = document.getElementById("container__curso__secundario");
+            UserCursoOne.view.transversalContainer = document.getElementById("container__curso__transversal");
+            UserCursoOne.view.estrategiaContainer = document.getElementById("container__curso__estrategia");
+            UserCursoOne.view.diagnosticaContainer = document.getElementById("container__curso__diagnostica");
+            UserCursoOne.view.formativaContainer = document.getElementById("container__curso__formativa");
+            UserCursoOne.view.finalContainer = document.getElementById("container__curso__final");
+            UserCursoOne.view.aprendizajeContainer = document.getElementById("container__curso__aprendizaje");
+            UserCursoOne.view.bibliografiaContainer = document.getElementById("container__curso__bibliografia");
+        }
     },
     crud: {
         selectCursoById: (master_curso_id) => {
@@ -159,7 +178,7 @@ const UserCursoOne = {
     },
     fun: {
         selectExtras: (register) => {
-            if(register.curso_certificado_live == 1) {
+            if (register.curso_certificado_live == 1) {
                 UserCursoOne.view.extrasContainer.innerHTML = `
                     <div class="tittle"><span>CERTIFICADO DE APROBACIÓN</span></div>
                         <div class="descripcion__container">
@@ -249,6 +268,7 @@ const UserCursoOne = {
                             </div>
                         </div>
                 `;
+                UserCursoOne.view.declare();
             }
         },
         getHtmlHeader: (register) => {
@@ -312,8 +332,20 @@ const UserCursoOne = {
                         <img src="view/src/icon/dollar.png">
                         <b>PRECIO: </b>
                         <span>
-                            <b class="precio-before">$${ ((parseFloat(register.curso_precio_live) * 0.40) + parseFloat(register.curso_precio_live)) }</b>
-                            <b class="precio-after">$${ register.curso_precio_live }</b>
+                        ${
+                            // LIVE
+                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio))) > 0 && register.curso_visible == 1 && register.curso_proximo == 0) && register.curso_precio_live != 0 ? `
+                                <b class="precio-before">$${ ((parseFloat(register.curso_precio_live) * 0.40) + parseFloat(register.curso_precio_live)) }</b>
+                                <b class="precio-after">$${ register.curso_precio_live }</b>
+                            `: 
+                            // RECORD
+                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) && register.curso_precio_record != 0 ? `
+                                <b class="precio-before">$${ ((parseFloat(register.curso_precio_record) * 0.40) + parseFloat(register.curso_precio_record)) }</b>
+                                <b class="precio-after">$${ register.curso_precio_record }</b>
+                            ` : `
+                                <b class="precio-gratis">GRATIS</b>
+                            `
+                        }
                         </span>
                     </div>
                     ${ register.curso_certificacion_live == 1 ? `

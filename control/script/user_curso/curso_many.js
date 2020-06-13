@@ -4,7 +4,7 @@ const UserCursoManyMain = () => {
 }
 const UserCursoMany = {
     database: [],
-    MAX: 5,
+    MAX: 10,
     view: {
         masterContainerCursos: document.getElementById("container__cursos"),
         containerCursos: document.getElementById("sub-container-cursos"),
