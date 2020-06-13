@@ -15,7 +15,9 @@ class CursoDao
         return $this->conn->query("
             SELECT * FROM curso
                 INNER JOIN curso_modelo ON curso_modelo.curso_modelo_id = curso.curso_modelo_id
+
                 INNER JOIN usuario ON usuario.usuario_id = curso.usuario_id
+                INNER JOIN usuario_pais ON usuario_pais.usuario_pais_id = usuario.usuario_pais_id
         ");
     }
     public function selectById($curso_id)
@@ -23,7 +25,15 @@ class CursoDao
         return $this->conn->query("
             SELECT * FROM curso
                 INNER JOIN curso_modelo ON curso_modelo.curso_modelo_id = curso.curso_modelo_id
+                INNER JOIN area ON curso_modelo.area_id = area.area_id
+                INNER JOIN especificacion ON curso_modelo.especificacion_id = especificacion.especificacion_id
+                INNER JOIN alineacion ON curso_modelo.alineacion_id = alineacion.alineacion_id
+                INNER JOIN participante_tipo ON curso_modelo.participante_tipo_id = participante_tipo.participante_tipo_id
+                INNER JOIN modalidad ON curso_modelo.modalidad_id = modalidad.modalidad_id
+                INNER JOIN duracion ON curso_modelo.duracion_id = duracion.duracion_id
+
                 INNER JOIN usuario ON usuario.usuario_id = curso.usuario_id
+                INNER JOIN usuario_pais ON usuario_pais.usuario_pais_id = usuario.usuario_pais_id
             WHERE curso_id = $curso_id
         ");
     }

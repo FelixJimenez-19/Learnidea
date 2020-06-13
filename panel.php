@@ -63,7 +63,10 @@ if (isset($_SESSION['usuario_email'])) {
                     <img src="view/src/<?php echo ($_SESSION['usuario_foto'] !== null) ? 'files/usuario_foto/' . $_SESSION['usuario_foto'] : 'img/avatar.png' ?>">
                     <span><?php echo $_SESSION['usuario_nombre'] ?></span>
                     <div class="row buttons">
-                        <a class="icon" href="panel?page=user_profile"><img src="view/src/icon/edit.png"></a>
+                        <a class="icon" href="panel?page=user_profile">
+                          <img src="view/src/icon/edit.png">
+                          <span>PERFIL</span>
+                        </a>
                         <button id="idea_btn_logount">CERRAR SESION</button>
                     </div>
                 </div>

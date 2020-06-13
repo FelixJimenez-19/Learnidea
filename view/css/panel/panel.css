@@ -381,13 +381,14 @@ body {
   border: solid 1px var(--primary);
   color: var(--primary);
   border-radius: 3px;
+  text-decoration: none;
 }
 
 
 .idea_header .idea_profile .idea_profile_options a.icon,
 .idea_header .idea_profile .idea_profile_options button.icon {
   display: flex;
-  max-width: 25px;
+/*  max-width: 25px;*/
   background: transparent;
   margin: 0 3px 0 0;
 }
@@ -400,6 +401,11 @@ body {
   color: var(--tertiary);
 }
 
+.idea_header .idea_profile .idea_profile_options a:hover span,
+.idea_header .idea_profile .idea_profile_options button:hover span {
+  color: var(--tertiary);
+}
+
 .idea_header .idea_profile .idea_profile_options a.icon:hover img,
 .idea_header .idea_profile .idea_profile_options button.icon:hover img {
   filter: invert(1);
@@ -408,15 +414,27 @@ body {
 .idea_header .idea_profile .idea_profile_options a img,
 .idea_header .idea_profile .idea_profile_options button img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 15px;
+  min-width: 10px;
+  max-width: 10px;
+  height: 10px;
+  min-height: 10px;
+  max-height: 10px;
   margin: 0;
-  padding: 6px;
+  padding: 0;
   min-width: unset;
   min-height: unset;
   border-radius: 0;
   background: transparent;
   filter: invert(0.8);
+}
+
+.idea_header .idea_profile .idea_profile_options a span {
+  color: var(--primary);
+  font-size: 11px;
+  margin: 0 0 0 5px;
+  padding: 0;
+  width: auto;
 }
 
 
