@@ -183,8 +183,8 @@ const Recuperacion = {
                     UsuarioDao.update(formData).then(res => {
                         UsuarioDao.login(formData).then(res => {
                             curso_id !== "" ?
-                                window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
-                                window.location.href = "panel?page=private_perfil";
+                                window.location.href = `panel?page=user_curso&curso_id=${ curso_id }` :
+                                window.location.href = "panel?page=user_profile";
                         });
                     }).catch(res => console.log("QUERY DENIED => updated usuario"));
                 }

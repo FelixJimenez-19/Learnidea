@@ -8,7 +8,7 @@ if (isset($viewPage)) {
 
 
     <link rel="stylesheet" href="view/css/panel/user_foro.css" />
-    <link rel="stylesheet" href="view/css/foro/publicacion.css" />
+    <link rel="stylesheet" href="view/css/user_foro/publicacion.css" />
     <link rel="stylesheet" href="view/css/panel/user_profile.css" />
     <div class="profile__container">
         <div class="portada__container">
@@ -44,7 +44,7 @@ if (isset($viewPage)) {
                         <div class="foro-col foro-col-2">
                             <div class="content" id="foro-col-2__content">
                                 <div style="display: <?= ($global_usuario_id == $_SESSION['usuario_id']) ? 'block' : 'none' ?>;">
-                                    <?php include "view/page/foro/publicacion_create.php" ?>
+                                    <?php include "view/page/user_foro/publicacion_create.php" ?>
                                 </div>
                                 <div class="container__publicaciones" id="col2-publicacion_container"></div>
                             </div>
@@ -79,10 +79,10 @@ if (isset($viewPage)) {
         </div>
     </div>
 
-    <script src="control/script/profile/usuario.js"></script>
-    <script src="control/script/profile/foro.js"></script>
-    <script src="control/script/foro/comentario.js"></script>
-    <script src="control/script/foro/publicacion.js"></script>
+    <script src="control/script/user_profile/usuario.js"></script>
+    <script src="control/script/user_profile/foro.js"></script>
+    <script src="control/script/user_foro/comentario.js"></script>
+    <script src="control/script/user_foro/publicacion.js"></script>
 
 
 <?php

@@ -2,10 +2,10 @@
 if (isset($viewPage)) {
 ?>
     <link rel="stylesheet" href="view/css/panel/user_foro.css" />
-    <link rel="stylesheet" href="view/css/foro/inscripcion.css" />
-    <link rel="stylesheet" href="view/css/foro/publicacion.css" />
-    <link rel="stylesheet" href="view/css/foro/curso.css" />
-    <link rel="stylesheet" href="view/css/foro/calendario.css" />
+    <link rel="stylesheet" href="view/css/user_foro/inscripcion.css" />
+    <link rel="stylesheet" href="view/css/user_foro/publicacion.css" />
+    <link rel="stylesheet" href="view/css/user_foro/curso.css" />
+    <link rel="stylesheet" href="view/css/user_foro/calendario.css" />
 
 
     <div class="foro-container">
@@ -33,8 +33,8 @@ if (isset($viewPage)) {
             <div class="foro-col foro-col-2" id="foro-col-2">
                 <div class="content" id="foro-col-2__content">
                     <span class="section__tittle">FORO</span>
-                    <?php include "view/page/foro/publicacion_create.php" ?>
-                    <?php include "view/page/foro/curso.php" ?>
+                    <?php include "view/page/user_foro/publicacion_create.php" ?>
+                    <?php include "view/page/user_foro/curso.php" ?>
                     <div class="container__publicaciones" id="col2-publicacion_container"></div>
                 </div>
                 <br>
@@ -43,7 +43,7 @@ if (isset($viewPage)) {
             <div class="foro-col foro-col-3" id="foro-col-3">
                 <div class="content" id="foro-col-3__content">
                     <span class="section__tittle">CALENDARIO</span>
-                    <?php include "view/page/foro/calendario.php" ?>
+                    <?php include "view/page/user_foro/calendario.php" ?>
                     <br>
                 </div>
             </div>
@@ -75,11 +75,11 @@ if (isset($viewPage)) {
 
 
     <script src="control/lib/jquery.js"></script>
-    <script src="control/script/foro/foro.js"></script>
-    <script src="control/script/foro/inscripcion.js"></script>
-    <script src="control/script/foro/curso.js"></script>
-    <script src="control/script/foro/comentario.js"></script>
-    <script src="control/script/foro/publicacion.js"></script>
+    <script src="control/script/user_foro/foro.js"></script>
+    <script src="control/script/user_foro/inscripcion.js"></script>
+    <script src="control/script/user_foro/curso.js"></script>
+    <script src="control/script/user_foro/comentario.js"></script>
+    <script src="control/script/user_foro/publicacion.js"></script>
 <?php
 } else {
     header("location: ../../../panel?page=user_foro");

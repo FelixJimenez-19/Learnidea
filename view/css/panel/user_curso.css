@@ -1,0 +1,631 @@
+/*----------------------------CURSOS-----------------------------*/
+#container__cursos .header {
+  margin: 0 0 10px 0;
+}
+
+.curso-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.curso-container .curso-item {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 300px;
+  border: solid 1px #d1cfcf;
+  border-radius: 5px;
+  background: #FFFFFF;
+  margin: 0 10px;
+}
+
+.curso-container .curso-item .curso-foto {
+  position: relative;
+  flex: 1;
+  display: block;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  /*  background-image: url('../../src/files/curso_foto/4.png');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7);
+}
+
+.curso-container .curso-item:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  margin: -4px 10px 0 10px;
+}
+
+.curso-container .curso-item:hover .curso-foto {
+  filter: brightness(0.9);
+}
+
+.curso-container .curso-item .curso-foto .curso-tipo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  border-radius: 0 5px 0 5px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  margin: 0 0 0 auto;
+  padding: 2px 0;
+}
+
+.curso-container .curso-item .curso-foto .curso-tipo img {
+  width: 15px;
+  filter: invert(0.8);
+}
+
+.curso-container .curso-item .curso-foto .curso-tipo span {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0 0 0 5px;
+  color: #bababa;
+  font-family: AdventPro-medium, sans-serif;
+}
+
+.curso-container .curso-item:hover .curso-foto .curso-tipo {
+  background: rgba(0, 0, 0, 1);
+  padding: 5px 0;
+}
+
+.curso-container .curso-item:hover .curso-foto .curso-tipo span {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.curso-container .curso-item:hover .curso-foto .curso-tipo img {
+  filter: invert(1);
+  width: 17px;
+}
+
+.curso-container .curso-item .curso-foto .curso-precio-pseudos,
+.curso-container .curso-item .curso-foto .curso-gratis,
+.curso-container .curso-item .curso-foto .curso-precio {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 80px;
+  height: 35px;
+  position: absolute;
+  bottom: -17px;
+  left: -5px;
+  margin: auto;
+  background: var(--primary);
+  color: var(--tertiary);
+  font-weight: bold;
+  border-radius: 5px 0 0 0;
+  box-shadow: -3px 3px 6px -3px rgba(0, 0, 0, 0.5);
+}
+
+.curso-container .curso-item .curso-foto .curso-gratis {
+  font-family: AdventPro-light, sans-serif;
+  text-shadow: 0px 1px 2px black,
+    1px 0px 2px black;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+}
+
+.curso-container .curso-item .curso-foto .curso-precio-pseudos {
+  background: rgba(0, 0, 0, 0);
+}
+
+.curso-container .curso-item .curso-foto .curso-gratis:before,
+.curso-container .curso-item .curso-foto .curso-precio:before {
+  position: absolute;
+  content: '';
+  display: flex;
+  width: 5px;
+  height: 5px;
+  background: var(--primary_hover);
+  left: 0;
+  bottom: -5px;
+  border-radius: 0 0 0 5px;
+}
+
+.curso-container .curso-item .curso-foto .curso-precio-pseudos:before,
+.curso-container .curso-item .curso-foto .curso-precio-pseudos:after {
+  position: absolute;
+  content: '';
+  display: flex;
+  width: 25px;
+  height: 25px;
+  left: 100%;
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0) 50%, var(--primary) 0%);
+}
+
+.curso-container .curso-item .curso-foto .curso-precio-pseudos:before {
+  top: 0;
+}
+
+.curso-container .curso-item .curso-foto .curso-precio-pseudos:after {
+  background-image: linear-gradient(to top right, var(--primary) 50%, rgba(0, 0, 0, 0) 0%);
+  bottom: 0px;
+}
+
+.curso-container .curso-item .curso-descripcion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.curso-container .curso-item .curso-descripcion .text {
+  display: flex;
+}
+
+.curso-container .curso-item .curso-descripcion .proximo {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: AdventPro-Medium, sans-serif;
+  letter-spacing: 1px;
+  margin: 7px auto;
+  color: var(--primary);
+}
+
+
+.curso-container .curso-item .curso-descripcion .text span {
+  font-family: AdventPro-Medium, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0 3px 0 0;
+}
+
+.curso-container .curso-item .curso-descripcion .text p {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.curso-container .curso-item .curso-descripcion .curso-name {
+  display: block;
+  text-align: center;
+  margin: 10px 0 2px 0;
+  padding: 5px 0;
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+  text-shadow: 0 0 1px #000000,
+    1px 0 1px #000000,
+    0 1px 1px #000000;
+  border-bottom: solid 1px #d1cfcf;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.curso-container .curso-item .curso-descripcion a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: auto;
+  min-width: 120px;
+  height: 30px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: var(--primary);
+  border: solid 2px var(--primary);
+  border-radius: 40px;
+  margin: 0 auto 5px auto;
+  font-size: 1.25em;
+  font-family: AdventPro-medium, sans-serif;
+}
+
+.curso-container .curso-item .curso-descripcion a:hover {
+  background: var(--primary);
+  color: var(--tertiary);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container {
+  justify-content: space-between;
+  align-items: center;
+  border-top: solid 1px #d1cfcf;
+  padding: 4px 2px 0 2px;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container a {
+  display: flex;
+  height: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  color: #000000;
+  border-radius: 0px;
+  transition: all 0s ease;
+  letter-spacing: 0.3px;
+  margin: 0 auto 0 0;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container a:hover {
+  background: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  color: var(--primary);
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container a .docente-foto {
+  display: flex;
+  width: 23px;
+  min-width: 23px;
+  max-width: 23px;
+  height: 23px;
+  min-height: 23px;
+  max-height: 23px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container a p {
+  font-size: 0.9em;
+  padding: 0 5px;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-calificacion {
+  display: flex;
+  width: 75px;
+  height: 20px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate {
+  position: relative;
+  display: flex;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:hover:before,
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:hover:after {
+  display: flex;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:before,
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:after {
+  position: absolute;
+  display: none;
+  background: #FFFFFF;
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:before {
+  content: attr(placeholder);
+  bottom: 110%;
+  right: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+  height: auto;
+  padding: 5px 5px 11px 0;
+  color: #000000;
+  transform: translate(5px);
+  border-radius: 5px;
+  border: solid 1px var(--primary_hover);
+  font-family: AdventPro-medium, sans-serif;
+  color: var(--primary_hover);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+}
+
+.curso-container .curso-item .curso-descripcion .docente-foto-container .curso-certificate:after {
+  content: '';
+  right: 0;
+  left: 0;
+  bottom: 85%;
+  margin: 0 auto;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  border-right: solid 1px var(--primary_hover);
+  border-bottom: solid 1px var(--primary_hover);
+  /*  border: solid 1px var(--primary);*/
+}
+
+
+
+
+
+.curso-container .ver-mas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  /*  background: transparent;*/
+  margin: 0 20px;
+  /*  border: none;*/
+}
+
+.curso-container .ver-mas:hover {
+  text-decoration: underline;
+  box-shadow: none;
+  margin: 0 20px;
+}
+
+.curso-container .ver-mas img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  transform: rotate(90deg);
+}
+
+.curso-container .ver-mas span {
+  color: #000000;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.curso-container .not-found {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  margin: 0 20px;
+}
+
+.curso-container .not-found span {
+  display: block;
+  text-align: center;
+  line-height: 15px;
+  font-size: 15px;
+  font-family: AdventPro-Medium, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--tertiary_hover);
+  padding: 10px 0;
+  border-radius: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.curso-container .not-found img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------CURSO-----------------------------*/
+#container__curso {
+  width: 100%;
+  height: auto;
+  background: var(--secondary);
+}
+
+#container__curso .container {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 10px;
+}
+
+#container__curso .container .col {
+  flex: 1;
+}
+
+#container__curso .container .col.col-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+#container__curso .container .col.col-1 .tittle {
+  margin: 0 0 10px 0;
+}
+
+#container__curso .container .col.col-1 .tittle span {
+  font-family: AdventPro-Medium, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--tertiary);
+}
+
+#container__curso .container .col.col-1 .row {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  margin: 0 0 0 5px;
+}
+
+#container__curso .container .col.col-1 .row img {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  filter: invert(1);
+}
+
+#container__curso .container .col.col-1 .row img.calificacion {
+  filter: invert(0);
+  width: 70px;
+  min-width: 70px;
+  height: 15px;
+  min-height: 15px;
+}
+
+#container__curso .container .col.col-1 .row img.type {
+  margin: 0 0 0 5px;
+}
+
+#container__curso .container .col.col-1 .row img.no-filter {
+  filter: invert(0);
+}
+
+#container__curso .container .col.col-1 .row b {
+  color: var(--tertiary);
+  font-size: 17px;
+  font-family: AdventPro-Medium, sans-serif;
+  font-weight: normal;
+  margin: 0 5px;
+}
+
+#container__curso .container .col.col-1 .row span {
+  font-family: AdventPro-Medium, sans-serif;
+  font-size: 17px;
+  color: var(--tertiary);
+  user-select: text;
+}
+
+#container__curso .container .col.col-1 .row span b.precio-before,
+#container__curso .container .col.col-1 .row span b.precio-after {
+  margin: 0;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+#container__curso .container .col.col-1 .row span b.precio-after {
+  color: var(--success);
+}
+
+#container__curso .container .col.col-1 .row span b.precio-before {
+  color: var(--error);
+  text-decoration: line-through;
+  margin: 0 5px;
+}
+
+#container__curso .container .col.col-1 .row a {
+  display: block;
+  max-width: 50%;
+  font-family: AdventPro-Medium, sans-serif;
+  font-size: 15px;
+  color: var(--tertiary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+#container__curso .container .col.col-1 .row a:hover {
+  text-decoration: underline;
+}
+
+#container__curso .container .col.col-1 .row a.a-docente {
+  display: flex;
+  align-items: center;
+}
+
+#container__curso .container .col.col-1 .row a.a-docente img {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  filter: invert(0);
+  border-radius: 50%;
+}
+
+#container__curso .container .col.col-1 .row a.a-docente span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 0 0 5px;
+}
+
+#container__curso .container .col.col-1 .row a img {
+  margin: 0 0 0 5px;
+  filter: invert(0);
+}
+
+#container__curso .container .col.col-1 .medall b {
+  font-size: 18px;
+  margin: 0 0 0 5px;
+}
+
+
+#container__curso .container .col.col-2 {}
+
+#container__curso .container .col.col-2 img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  pointer-events: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _____________ SCROLL _ STYLES ________________ */
+.curso-container .container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.curso-container .container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 7px;
+}
+
+.curso-container .container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary_hover);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.curso-container .container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}

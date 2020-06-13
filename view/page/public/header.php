@@ -26,10 +26,6 @@ if (isset($viewPage)) {
                 <div class="buttons_sub"></div>
             </div>
 
-            <div class="btn"><a href="foro">Foro</a>
-                <div class="buttons_sub"></div>
-            </div>
-
             <div class="btn">
                 <a href="login">Plataforma</a>
                 <div class="buttons_sub">

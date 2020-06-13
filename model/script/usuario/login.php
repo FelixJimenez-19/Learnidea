@@ -4,6 +4,7 @@ ________________________________________________________________________________
 - CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
 - RUTA: proyect/model/script/usuario/login.php
 */
+session_start();
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 include './../../dao/Mysql.php';
@@ -16,7 +17,6 @@ if (isset($_POST['usuario_email']) and isset($_POST['usuario_pass']) and isset($
         $usuario_pass = $_POST['usuario_pass'];
         $rs = mysqli_fetch_assoc($_entity->login($usuario_email, $usuario_pass));
         if ($rs['usuario_email'] == $usuario_email and $rs['usuario_pass'] == $usuario_pass) {
-            session_start();
             $_SESSION['usuario_id'] = $rs['usuario_id'];
             $_SESSION['usuario_nombre'] = $rs['usuario_nombre'];
             $_SESSION['usuario_cedula'] = $rs['usuario_cedula'];

@@ -97,7 +97,7 @@ const Login = {
             ) {
                 UsuarioDao.login(new FormData(Login.view.form)).then(res => {
                     curso_id !== "" ?
-                        window.location.href = `panel?page=private_curso&curso_id=${ curso_id }` :
+                        window.location.href = `panel?page=user_curso&curso_id=${ curso_id }` :
                         window.location.href = "panel";
                 });
             } else {

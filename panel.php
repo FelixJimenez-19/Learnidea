@@ -44,10 +44,10 @@ if (isset($_SESSION['usuario_email'])) {
 
             <!--      Implement ChatNotification, ForoNotificacion - start       -->
             <!-- CSS -->
-            <link rel="stylesheet" href="view/css/foro/notification.css">
+            <link rel="stylesheet" href="view/css/user_foro/notification.css">
             <link rel="stylesheet" href="view/css/chat/notification.css">
             <!-- PHP -->
-            <?php include 'view/page/foro/notification.php' ?>
+            <?php include 'view/page/user_foro/notification.php' ?>
             <?php include 'view/page/chat/notification.php' ?>
             <!--      Implement ChatNotification, ForoNotificacion - end         -->
 
@@ -480,7 +480,7 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/script/chat/mensaje.js"></script>
         <script src="control/script/chat/chat.js"></script>
         <script src="control/script/chat/ChatThread.js"></script>
-        <script src="control/script/foro/notification.js"></script>
+        <script src="control/script/user_foro/notification.js"></script>
         <!--    Implement Chat - end        -->
 
         <!--    Implement ViewScreen - start      -->

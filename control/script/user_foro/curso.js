@@ -22,9 +22,13 @@ const ForoCurso = {
             let register = ForoCurso.database[index];
             return `
                 <div class="curso-item">
-                    <div class="curso-foto" style="background-image: ${ register.curso_foto !== null ?  
-                        `url(view/src/files/curso_foto/${ register.curso_foto })` : 
-                        `url(view/src/img/course.png` }">
+                    <div 
+                        class="curso-foto" 
+                        onclick="viewscreen.show('${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/course.png"}')"
+                        style="background-image: ${ register.curso_foto !== null ?  
+                            `url(view/src/files/curso_foto/${ register.curso_foto })` : 
+                            `url(view/src/img/course.png` }"
+                        >
                         ${ register.curso_precio_live === 0 ? `
                                 <span class="text curso-gratis">Gratis</span>
                         ` : `
@@ -37,9 +41,9 @@ const ForoCurso = {
                         <div class="text"><span>FECHA: </span>
                             <p>${ Fecha.getString(Fecha.getDate(register.curso_fecha_inicio), 0) }</p>
                         </div>
-                        <a href="">Subscribirse</a>
+                        <a href="?page=user_curso&curso_id=${ register.curso_id }">Subscribirse</a>
                         <div class="text docente-foto-container">
-                            <a href="">
+                            <a href="?page=user_profile&usuario_id=${ register.usuario_id }">
                                 <div class="docente-foto" style="background-image: 
                                     ${ register.usuario_foto == null ?`
                                         url('view/src/img/avatar.png')
@@ -56,11 +60,50 @@ const ForoCurso = {
                 </div>
             `;
         },
+        getHtmlCol2Record: (index) => {
+            let register = ForoCurso.database[index];
+            return `
+                <div class="curso-item">
+                    <div 
+                        class="curso-foto" 
+                        onclick="viewscreen.show('${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/course.png"}')"
+                        style="background-image: 
+                        ${ register.curso_foto == null ?
+                            `url('view/src/img/course.png')` :
+                            `url('view/src/files/curso_foto/${ register.curso_foto }')`
+                        }">
+                        <span class="text curso-precio-pseudos"></span>
+                        ${ register.curso_precio_record == 0 ? 
+                            `<span class="text curso-gratis">Gratis</span>` :
+                            `<span class="text curso-precio">$${ register.curso_precio_record }</span>`
+                        }
+                    </div>
+                    <div class="curso-descripcion">
+                        <span class="text curso-name">${ register.curso_nombre }</span>
+                        <a href="?page=user_curso&curso_id=${ register.curso_id }">Subscribirse</a>
+                        <div class="text docente-foto-container">
+                            <a href="?page=user_profile&usuario_id=${ register.usuario_id }">
+                                <div class="docente-foto" style="background-image: 
+                                ${ register.usuario_foto == null ?
+                                    `url('view/src/img/avatar.png')` :
+                                    `url('view/src/files/usuario_foto/${ register.usuario_foto }')`
+                                }"></div>
+                                <p>${ register.usuario_nombre }</p>
+                            </a>
+                            <div placeholder="Certificado de Participacion" class="curso-certificate" style="background-image: url('view/src/icon/curso_certificate_bronce.png')"></div>
+                            ${ register.curso_certificado_record == 1 ? `<div placeholder="Certificado de Aprobacion" class="curso-certificate" style="background-image: url('view/src/icon/curso_certificate_plata.png')"></div>` : ''}
+                            <div class="curso-calificacion" style="background-image: url('view/src/icon/star_${ register.curso_calificacion }.png')"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        },
         getHtmlCol2Proximo: (index) => {
             let register = ForoCurso.database[index];
             return `
                 <div class="curso-item">
                     <div 
+                        onclick="viewscreen.show('${register.curso_foto !== null ? "view/src/files/curso_foto/" + register.curso_foto : "view/src/img/course.png"}')"
                         class="curso-foto" style="background-image: 
                         ${ register.curso_foto == null ?
                             `url('view/src/img/course.png')` :
@@ -79,7 +122,7 @@ const ForoCurso = {
                         </div>
                         <span class="proximo">PROXIMAMENTE</span>
                         <div class="text docente-foto-container">
-                            <a href="">
+                            <a href="?page=user_profile&usuario_id=${ register.usuario_id }">
                                 <div class="docente-foto" style="background-image: 
                                 ${ register.usuario_foto == null ?
                                     `url('view/src/img/avatar.png')` :
@@ -99,6 +142,7 @@ const ForoCurso = {
             let cont = 0;
             let cont2 = 0;
             let html = "";
+            // LIVES
             for (let i in ForoCurso.database) {
                 let register = ForoCurso.database[i];
                 let diff = Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio));
@@ -110,10 +154,22 @@ const ForoCurso = {
                     cont2++;
                 }
             }
-
+            // RECORDS
             for (let i in ForoCurso.database) {
                 let register = ForoCurso.database[i];
-                let diff = Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio));
+                let diff = Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin));
+                if (diff < 0 && register.curso_visible == 1 && register.curso_proximo == 0) {
+                    if (cont < ForoCurso.MAX_COL2) {
+                        html += ForoCurso.fun.getHtmlCol2Record(i);
+                        cont++;
+                    }
+                    cont2++;
+                }
+            }
+            // PROXIMOS
+            for (let i in ForoCurso.database) {
+                let register = ForoCurso.database[i];
+                // let diff = Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio));
                 if (register.curso_visible == 1 && register.curso_proximo == 1) {
                     if (cont < ForoCurso.MAX_COL2) {
                         html += ForoCurso.fun.getHtmlCol2Proximo(i);
@@ -125,7 +181,7 @@ const ForoCurso = {
             if (cont > 0) {
                 if (cont2 > cont) {
                     html += `
-                        <a class="curso-item ver-mas" href="">
+                        <a class="curso-item ver-mas" href="?page=user_curso">
                             <img src="view/src/icon/box.png">
                             <span>Ver todos los cursos</span>
                         </a>

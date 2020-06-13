@@ -211,7 +211,6 @@ if (isset($_SESSION)) {
                 </div>
             </div>
         </div>
-        <script src="control/function/fecha.js"></script>
         <script src="control/script/curso.js"></script>
 <?php
     } else {
