@@ -142,8 +142,8 @@ const ForoPublicacion = {
             } else {
                 ForoPublicacion.view.container.innerHTML = `
                     <div class="item_publicacion not-found">
-                        <span>Sin publicaciones actualmente..</span>
-                        <img src="view/src/files/informacion_pagina_logo/${ Informacion.getInformacion().informacion_pagina_logo }" />
+                    <img src="view/src/files/informacion_pagina_logo/${ Informacion.getInformacion().informacion_pagina_logo }" />
+                    <span>Sin publicaciones actualmente..</span>
                     </div><br>
                 `;
             }

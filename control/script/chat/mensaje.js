@@ -90,31 +90,23 @@ const mensaje = {
         if (chat !== null) {
             let indexContact = chat.index;
             let msg_container = document.getElementById(`message-contact-container-${indexContact}`);
-
             let cont = 0;
             let cont2 = 0;
             let html = "";
             let html_tmp = "";
             let array = [];
-
-
-
-
             await ChatCrud.mensaje.select(indexChat, async () => {
                 for (let i in ChatCrud.chat.database[indexChat].msg) {
                     if (cont < ChatCrud.chat.database[indexChat].MAX) {
                         array.push(mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i)));
                         cont++;
-                        // html += mensaje.fun.getHtml(indexChat, i, ((ChatCrud.chat.database[indexChat].msg.length - 1) == i));
                     }
                     cont2++;
                 }
-
                 for (let i = array.length - 1; i >= 0; i--) {
                 // for (let i in array) {
                     html_tmp += array[i];
                 }
-
                 if (cont > 0) {
                     if (cont2 > cont) {
                         html += `
@@ -127,11 +119,8 @@ const mensaje = {
                         `;
                     }
                     html += html_tmp;
-
                     let top = (msg_container.scrollTop + msg_container.clientHeight) < msg_container.scrollHeight;
-
                     await (() => (msg_container.innerHTML = html))();
-
                     !top ? (msg_container.scrollTop = msg_container.scrollHeight) : "";
                 }
             });
