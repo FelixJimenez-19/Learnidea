@@ -1,5 +1,5 @@
 const UserCursoOneMain = () => {
-    UserCursoOne.crud.selectCursoById(master_curso_id);
+    UserCursoOne.crud.selectCursoById(master_curso_id, () => {});
 }
 
 const UserCursoOne = {
@@ -45,7 +45,7 @@ const UserCursoOne = {
         }
     },
     crud: {
-        selectCursoById: (master_curso_id) => {
+        selectCursoById: (master_curso_id, action) => {
             let formData = new FormData();
             formData.append("curso_id", master_curso_id);
             CursoDao.selectById(formData).then(res => {
@@ -57,6 +57,7 @@ const UserCursoOne = {
                     UserCursoOne.fun.selectUsuario(res[0]);
                     UserCursoOne.fun.selectExtras(res[0]);
                     UserCursoOne.crud.selectSeccionesByCurso_id();
+                    action();
                 } else {
                     UserCursoOne.view.masterContainerCurso.innerHTML = `
                         <div class="not-found">
@@ -278,25 +279,23 @@ const UserCursoOne = {
                     <div class="row">
                         <img src="view/src/icon/graduation_cap.png">
                         <b>MODALIDAD: </b>
-                        ${ 
-                            // LIVE
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio))) > 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `
+                        ${
+                            FunctionCurso.fun.isProximo(register) ? `
+                                <span>Próximo</span>
+                                <img class="type" src="view/src/icon/next.png">
+                            ` : FunctionCurso.fun.isLive(register) ? `
                                 <span>En Vivo</span>
                                 <img class="type" src="view/src/icon/live.png">
-                            `:
-                            // RECORD
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `
-                                <img src="view/src/icon/online.png">
+                            ` : FunctionCurso.fun.isRecord(register) ? `
                                 <span>Virtual</span>
-                            ` :
-                            // PROXIMO
-                            (register.curso_visible == 1 && register.curso_proximo == 1) ? `
-                                <img src="view/src/icon/next.png">
-                                <span>Próximo</span>
+                                <img class="type" src="view/src/icon/online.png">
+                            ` : FunctionCurso.fun.isProcess(register) ? `
+                                <span>Proceso</span>
+                                <img class="type" src="view/src/icon/time.png">
                             ` : ``
                         }
                     </div>
-                    ${ ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `` : `
+                    ${ !FunctionCurso.fun.isRecord(register) ? `
                         <div class="row">
                             <img src="view/src/icon/time.png">
                             <b>DESDE: </b>
@@ -310,9 +309,13 @@ const UserCursoOne = {
                         <div class="row">
                             <img src="view/src/icon/information.png">
                             <b>CUPOS: </b>
-                            <span>${ register.curso_cupos }</span>
+                            ${ FunctionCurso.fun.getCupos(register, UserCursoInscripcion.database) > 0 ? `
+                                <span>${ FunctionCurso.fun.getCupos(register, UserCursoInscripcion.database) }</span>
+                            ` : `
+                                <span class="cupos-agotados">Cupos Agotados</span>
+                            `}
                         </div>
-                    ` }
+                    ` : `` }
                     <div class="row">
                         <img src="view/src/icon/whatsapp.png">
                         <b>GRUPO: </b>
@@ -321,33 +324,30 @@ const UserCursoOne = {
                             <img src="view/src/icon/link.png">
                         </a>
                     </div>
-                    ${ ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `` : `
+                    ${ FunctionCurso.fun.isRecord(register) ? `
                         <div class="row">
                             <img src="view/src/icon/star.png">
                             <b>CALIFICACIÓN: </b>
                             <img src="view/src/icon/star_${ register.curso_calificacion }.png" class="calificacion">
                         </div>
-                    ` }
-                    <div class="row">
-                        <img src="view/src/icon/dollar.png">
-                        <b>PRECIO: </b>
-                        <span>
-                        ${
-                            // LIVE
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio))) > 0 && register.curso_visible == 1 && register.curso_proximo == 0) && register.curso_precio_live != 0 ? `
-                                <b class="precio-before">$${ ((parseFloat(register.curso_precio_live) * 0.40) + parseFloat(register.curso_precio_live)) }</b>
-                                <b class="precio-after">$${ register.curso_precio_live }</b>
-                            `: 
-                            // RECORD
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) && register.curso_precio_record != 0 ? `
-                                <b class="precio-before">$${ ((parseFloat(register.curso_precio_record) * 0.40) + parseFloat(register.curso_precio_record)) }</b>
-                                <b class="precio-after">$${ register.curso_precio_record }</b>
-                            ` : `
-                                <b class="precio-gratis">GRATIS</b>
-                            `
-                        }
-                        </span>
-                    </div>
+                    ` : `` }
+                    ${ !FunctionCurso.fun.isProximo(register) ? `
+                        <div class="row">
+                            <img src="view/src/icon/dollar.png">
+                            <b>PRECIO: </b>
+                            <span>
+                            ${ FunctionCurso.fun.isLive(register) && register.curso_precio_live != 0 ? `
+                                    <b class="precio-before">$${ ((parseFloat(register.curso_precio_live) * 0.40) + parseFloat(register.curso_precio_live)) }</b>
+                                    <b class="precio-after">$${ register.curso_precio_live }</b>
+                                `: FunctionCurso.fun.isRecord(register) && register.curso_precio_record != 0 ? `
+                                    <b class="precio-before">$${ ((parseFloat(register.curso_precio_record) * 0.40) + parseFloat(register.curso_precio_record)) }</b>
+                                    <b class="precio-after">$${ register.curso_precio_record }</b>
+                                ` : `
+                                    <b class="precio-gratis">GRATIS</b>
+                                ` }
+                            </span>
+                        </div>
+                    ` : `` }
                     ${ register.curso_certificacion_live == 1 ? `
                         <div class="row medall">
                             <img class="no-filter" src="view/src/icon/curso_certificate_oro.png">
@@ -364,12 +364,14 @@ const UserCursoOne = {
                         <img class="no-filter" src="view/src/icon/curso_certificate_bronce.png">
                         <b>Certificado de Participación</b>
                     </div>
-                    <div class="row button">
-                        <button>
-                            <span>INSCRIBIRSE</span>
-                            <img src="view/src/icon/viewed.png">
-                        </button>
-                    </div>
+                    ${ !FunctionCurso.fun.isProximo(register) && !FunctionCurso.fun.isProcess(register) && FunctionCurso.fun.getCupos(register, UserCursoInscripcion.database) > 0 ? `
+                        <div class="row button">
+                            <button onclick="UserCursoInscripcion.fun.insert()">
+                                <span>SUBSCRIBIRSE</span>
+                                <img src="view/src/icon/viewed.png">
+                            </button>
+                        </div>
+                    ` : `` }
                 </div>
                 <div class="col col-2">
                     <div class="tittle tittle-2"><span>${ register.curso_nombre }</span></div>

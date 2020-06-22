@@ -8,7 +8,7 @@ if (isset($_SESSION)) {
     if (isset($viewPage)) {
 ?>
         <div class="header">
-            <span>TRANSACCION</span>
+            <span>TRANSACCIONES</span>
             <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
             <button onclick="entity.fun.showModalForm(null)">+</button>
         </div>
@@ -17,13 +17,13 @@ if (isset($_SESSION)) {
             <table class="idea_table">
                 <thead>
                     <tr>
-                        <td>TRANSACCION_ID</td>
-                        <td>TRANSACCION_DESCRIPCION</td>
-                        <td>TRANSACCION_VALOR</td>
-                        <td>TRANSACCION_FECHA</td>
-                        <td>TRANSACCION_TIPO_ID</td>
-                        <td>TRANSACCION_FOTO</td>
-
+                        <td>ID</td>
+                        <td>DESCRIPCION</td>
+                        <td>VALOR</td>
+                        <td>FECHA</td>
+                        <td>FOTO</td>
+                        <td>TIPO</td>
+                        <td>USUARIO</td>
                         <td>ACCION</td>
                     </tr>
                 </thead>
@@ -39,28 +39,33 @@ if (isset($_SESSION)) {
                     <input type="hidden" name="transaccion_id">
 
                     <div class="row">
-                        <span>TRANSACCION_DESCRIPCION: </span>
-                        <input type="text" name="transaccion_descripcion" placeholder="TRANSACCION_DESCRIPCION">
+                        <span>DESCRIPCION: </span>
+                        <input type="text" name="transaccion_descripcion" placeholder="DESCRIPCION">
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_VALOR: </span>
-                        <input type="number" name="transaccion_valor" placeholder="TRANSACCION_VALOR">
+                        <span>VALOR: </span>
+                        <input type="number" name="transaccion_valor" placeholder="VALOR">
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_FECHA: </span>
-                        <input type="text" name="transaccion_fecha" placeholder="TRANSACCION_FECHA">
+                        <span>FECHA: </span>
+                        <input type="datetime-local" name="transaccion_fecha" placeholder="FECHA">
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_TIPO_ID: </span>
+                        <span>FOTO: </span>
+                        <input type="file" name="transaccion_foto" placeholder="FOTO">
+                    </div>
+
+                    <div class="row">
+                        <span>TIPO: </span>
                         <select name="transaccion_tipo_id"></select>
                     </div>
-
+                    
                     <div class="row">
-                        <span>TRANSACCION_FOTO: </span>
-                        <input type="file" name="transaccion_foto" placeholder="TRANSACCION_FOTO">
+                        <span>USUARIO: </span>
+                        <select name="usuario_id"></select>
                     </div>
 
                 </div>

@@ -64,8 +64,8 @@ if (isset($_SESSION['usuario_email'])) {
                     <span><?php echo $_SESSION['usuario_nombre'] ?></span>
                     <div class="row buttons">
                         <a class="icon" href="panel?page=user_profile">
-                          <img src="view/src/icon/edit.png">
-                          <span>PERFIL</span>
+                            <img src="view/src/icon/edit.png">
+                            <span>PERFIL</span>
                         </a>
                         <button id="idea_btn_logount">CERRAR SESION</button>
                     </div>
@@ -181,7 +181,7 @@ if (isset($_SESSION['usuario_email'])) {
                     <input type="checkbox" id="idea_check_option_4">
                     <a>
                         <label for="idea_check_option_4">
-                            <span>Educacion</span>
+                            <span>Educación</span>
                             <img src="view/src/icon/in.png">
                         </label>
                     </a>
@@ -197,206 +197,25 @@ if (isset($_SESSION['usuario_email'])) {
                     </div>
                 </div>
 
-                <!-- POR COMPLETAR - START -->
-                <!-- 
-          <div class="idea_option">
-            <a href="panel?page=curso">
-              <label>
-                <span>Curso</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=curso_deber">
-              <label>
-                <span>Curso_deber</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=curso_seccion">
-              <label>
-                <span>Curso_seccion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=seccion_video">
-              <label>
-                <span>Seccion_video</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=video_comentario">
-              <label>
-                <span>Video_comentario</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=video_respuesta">
-              <label>
-                <span>Video_respuesta</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=seccion_leccion">
-              <label>
-                <span>Seccion_leccion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=seccion_pregunta">
-              <label>
-                <span>Seccion_pregunta</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=seccion_alternativa">
-              <label>
-                <span>Seccion_alternativa</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=inscripcion">
-              <label>
-                <span>Inscripcion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=inscripcion_leccion">
-              <label>
-                <span>Inscripcion_leccion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=inscripcion_pregunta">
-              <label>
-                <span>Inscripcion_pregunta</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=inscripcion_alternativa">
-              <label>
-                <span>Inscripcion_alternativa</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=certificado_tipo">
-              <label>
-                <span>Certificado_tipo</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=certificado">
-              <label>
-                <span>Certificado</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=deber_entrega">
-              <label>
-                <span>Deber_entrega</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=publicacion">
-              <label>
-                <span>Publicacion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=publicacion_comentario">
-              <label>
-                <span>Publicacion_comentario</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=publicacion_respuesta">
-              <label>
-                <span>Publicacion_respuesta</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=buzon">
-              <label>
-                <span>Buzon</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=transaccion_tipo">
-              <label>
-                <span>Transaccion_tipo</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div>
-  
-          <div class="idea_option">
-            <a href="panel?page=transaccion">
-              <label>
-                <span>Transaccion</span>
-                <img src="view/src/icon/in.png">
-              </label>
-            </a>
-          </div> -->
-                <!-- POR COMPLETAR - END -->
+                <div class="idea_option">
+                    <input type="checkbox" id="idea_check_option_5">
+                    <a>
+                        <label for="idea_check_option_5">
+                            <span>Contabilidad</span>
+                            <img src="view/src/icon/in.png">
+                        </label>
+                    </a>
+                    <div class="idea_sub_options">
+                        <a href="panel?page=transaccion_tipo">
+                            <span>Tipos</span>
+                            <img src="view/src/icon/security.png">
+                        </a>
+                        <a href="panel?page=transaccion">
+                            <span>Movimientos</span>
+                            <img src="view/src/icon/dollar2.png">
+                        </a>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -450,6 +269,8 @@ if (isset($_SESSION['usuario_email'])) {
         <script src="control/dao/BuzonDao.js"></script>
         <script src="control/dao/Transaccion_tipoDao.js"></script>
         <script src="control/dao/TransaccionDao.js"></script>
+
+        <script src="control/dao/StripeDao.js"></script>
         <!--  PANEL-->
         <script src="control/script/panel/panel.js"></script>
         <script src="control/function/informacion.js"></script>

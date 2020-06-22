@@ -30,28 +30,28 @@ const UserCursoMany = {
                             `url('view/src/img/course.png')` :
                             `url('view/src/files/curso_foto/${ register.curso_foto }')`
                         }">
-                        ${ 
-                            // LIVE
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_inicio))) > 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `
-                                <div class="curso-tipo">
-                                    <img src="view/src/icon/live.png">
-                                    <span>En Vivo</span>
-                                </div>
-                            ` : 
-                            // RECORD
-                            ((Fecha.getDiffDay(new Date(), Fecha.getDate(register.curso_fecha_fin))) < 0 && register.curso_visible == 1 && register.curso_proximo == 0) ? `
-                                <div class="curso-tipo">
-                                    <img src="view/src/icon/online.png">
-                                    <span>Virtual</span>
-                                </div>
-                            ` : 
-                            // PROXIMO
-                            (register.curso_visible == 1 && register.curso_proximo == 1) ? `
+                        ${
+                            FunctionCurso.fun.isProximo(register) ? `
                                 <div class="curso-tipo">
                                     <img src="view/src/icon/next.png">
                                     <span>Próximo</span>
                                 </div>
-                            ` :``
+                            ` : FunctionCurso.fun.isLive(register) ? `
+                                <div class="curso-tipo">
+                                    <img src="view/src/icon/live.png">
+                                    <span>En Vivo</span>
+                                </div>
+                            ` : FunctionCurso.fun.isRecord(register) ? `
+                                <div class="curso-tipo">
+                                    <img src="view/src/icon/online.png">
+                                    <span>Virtual</span>
+                                </div>
+                            ` : FunctionCurso.fun.isProcess(register) ? `
+                                <div class="curso-tipo">
+                                    <img src="view/src/icon/time.png">
+                                    <span>Proceso</span>
+                                </div>
+                            ` : ``
                         }
                         <span class="text curso-precio-pseudos"></span>
                         ${ register.curso_precio_record == 0 ? 
@@ -72,11 +72,11 @@ const UserCursoMany = {
                                 <p>${ parseInt(register.curso_modelo_hora_practica) + parseInt(register.curso_modelo_hora_teorica) }</p>
                             </div>
                         ` }
-                        ${ (register.curso_visible == 1 && register.curso_proximo == 1) ? `
-                            <span class="proximo">PROXIMAMENTE</span>
-                        ` : `
+                        ${ FunctionCurso.fun.isProximo(register) || FunctionCurso.fun.isProcess(register) ? `
+                            <a href="?page=user_curso&curso_id=${ register.curso_id }">Detalles</a>
+                        ` : FunctionCurso.fun.isLive(register) || FunctionCurso.fun.isRecord(register) ? `
                             <a href="?page=user_curso&curso_id=${ register.curso_id }">Subscribirse</a>
-                        ` }
+                        ` : ``}
                         <div class="text docente-foto-container">
                             <a href="?page=user_profile&usuario_id=${ register.usuario_id }">
                                 <div class="docente-foto" style="background-image: 

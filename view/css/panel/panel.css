@@ -388,7 +388,7 @@ body {
 .idea_header .idea_profile .idea_profile_options a.icon,
 .idea_header .idea_profile .idea_profile_options button.icon {
   display: flex;
-/*  max-width: 25px;*/
+  /*  max-width: 25px;*/
   background: transparent;
   margin: 0 3px 0 0;
 }
@@ -1205,6 +1205,7 @@ border-style: inset;
 
 /* MESSAGE */
 /* CONFIRM */
+.idea_content .idea_progress,
 .idea_content .idea_confirm,
 .idea_content .idea_message {
   position: absolute;
@@ -1219,6 +1220,7 @@ border-style: inset;
   background: rgba(0, 0, 0, 0.5);
 }
 
+.idea_content .idea_progress .window,
 .idea_content .idea_confirm .confirm,
 .idea_content .idea_message .message {
   display: flex;
@@ -1227,7 +1229,7 @@ border-style: inset;
   max-width: 400px;
   height: 100%;
   max-height: 120px;
-  background: var(--tertiary);
+  background: var(--quaternary);
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #000;
 }
@@ -1287,6 +1289,59 @@ border-style: inset;
   letter-spacing: 0.1em;
   border-radius: 0 0 4px 4px;
 }
+
+
+.idea_content .idea_progress {
+/*  top: 0;*/
+}
+
+.idea_content .idea_progress .window {
+  background: var(--secondary);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.idea_content .idea_progress .window span {
+  display: block;
+  width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--tertiary);
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  animation: progress_text 1s linear infinite;  
+}
+
+@keyframes progress_text {
+  to {
+    width: 150px;
+  }
+}
+
+.idea_content .idea_progress .window .progress {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 30px;
+  border: solid 1px var(--tertiary);
+  border-radius: 5px;
+  background: repeating-linear-gradient(-45deg,
+      var(--secondary) 0px,
+      var(--secondary) 20px,
+      var(--secondary_hover) 20px,
+      var(--secondary_hover) 40px) 0 / 200%;
+  animation: progress_bar 5s linear infinite;
+  margin: 10px 0 0 0;
+}
+
+@keyframes progress_bar {
+  to {
+    background-position: 100% 0;
+  }
+}
+
 
 
 

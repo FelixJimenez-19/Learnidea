@@ -26,7 +26,10 @@
 .idea_content .idea_form .content-forms .sub-content-forms {
   display: flex;
   width: 100%;
-  height: 100%;
+  
+  flex-grow: 1;
+  background: var(--secondary);
+  overflow-y: hidden;
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form {
@@ -34,8 +37,13 @@
   flex-direction: column;
   width: auto;
   max-width: inherit;
-  height: 100%;
+  /*  height: 100%;*/
+
+  flex-grow: 1;
+  height: auto;
+  min-height: inherit;
   max-height: inherit;
+
   background: var(--tertiary);
   overflow: auto;
   border-radius: 0px;
@@ -49,10 +57,14 @@
 .idea_content .idea_form .content-forms .sub-content-forms .content-form1 {
   flex: 1;
   max-width: 500px;
+  
+/*  max-height: 90%;*/
 }
 
 .idea_content .idea_form .content-forms .sub-content-forms .content-form2 {
   flex: 1;
+  
+/*  max-height: 90%;*/
 }
 
 .idea_content .idea_form .content-forms .title {
@@ -60,8 +72,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 30px;
+
+  flex-grow: 1;
   min-height: 30px;
+  max-height: 30px;
+
   background: var(--primary);
   color: var(--tertiary);
   font-size: 1.1em;
@@ -71,8 +86,10 @@
 .idea_content .idea_form .content-forms .buttons {
   display: flex;
   width: 100%;
-  height: 40px;
-  min-height: 35px;
+
+  flex-grow: 1;
+  min-height: 30px;
+  max-height: 30px;
 }
 
 .idea_content .idea_form .content-forms .buttons button {
@@ -418,6 +435,7 @@
     max-height: 0px;
     height: 0px;
   }
+
   .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 {
     height: 40px;
   }
@@ -425,7 +443,7 @@
   .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .label-content-form1 img {
     transform: rotate(90deg);
   }
-  
+
   .idea_content .idea_form .content-forms .sub-content-forms #checkbox-content-form1:checked ~ .content-form2 {
     height: 100%;
   }

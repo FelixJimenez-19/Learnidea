@@ -8,7 +8,7 @@ if (isset($_SESSION)) {
     if (isset($viewPage)) {
 ?>
         <div class="header">
-            <span>TRANSACCION_TIPO</span>
+            <span>TIPOS DE TRANSACCIÓN</span>
             <input type="search" placeholder="Buscar registros.." class="idea_search" id="idea_search">
             <button onclick="entity.fun.showModalForm(null)">+</button>
         </div>
@@ -17,14 +17,12 @@ if (isset($_SESSION)) {
             <table class="idea_table">
                 <thead>
                     <tr>
-                        <td>TRANSACCION_TIPO_ID</td>
-                        <td>TRANSACCION_TIPO_NOMBRE</td>
-                        <td>TRANSACCION_TIPO_DESCRIPCION</td>
-                        <td>TRANSACCION_TIPO_CREDIDO</td>
-                        <td>TRANSACCION_TIPO_PAGO</td>
-                        <td>TRANSACCION_TIPO_ENTRADA</td>
-                        <td>TRANSACCION_TIPO_LOGO</td>
-
+                        <td>ID</td>
+                        <td>NOMBRE</td>
+                        <td>NÚMERO</td>
+                        <td>TIPO</td>
+                        <td>DESCRIPCION</td>
+                        <td>LOGO</td>
                         <td>ACCION</td>
                     </tr>
                 </thead>
@@ -40,33 +38,32 @@ if (isset($_SESSION)) {
                     <input type="hidden" name="transaccion_tipo_id">
 
                     <div class="row">
-                        <span>TRANSACCION_TIPO_NOMBRE: </span>
-                        <input type="text" name="transaccion_tipo_nombre" placeholder="TRANSACCION_TIPO_NOMBRE">
+                        <span>NOMBRE: </span>
+                        <input type="text" name="transaccion_tipo_nombre" placeholder="NOMBRE">
+                    </div>
+                   
+                    <div class="row">
+                        <span>NÚMERO: </span>
+                        <input type="text" name="transaccion_tipo_numero" placeholder="NÚMERO">
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_TIPO_DESCRIPCION: </span>
-                        <input type="text" name="transaccion_tipo_descripcion" placeholder="TRANSACCION_TIPO_DESCRIPCION">
+                        <span>DESCRIPCION: </span>
+                        <input type="text" name="transaccion_tipo_descripcion" placeholder="DESCRIPCION">
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_TIPO_CREDIDO: </span>
-                        <input type="number" name="transaccion_tipo_credido" placeholder="TRANSACCION_TIPO_CREDIDO">
+                        <span>TIPO: </span>
+                        <div class="input-radio-container">
+                            <input type="radio" name="transaccion_tipo_tipo" class="input-radio-si-no" value="1" placeholder="CREDITO">
+                            <input type="radio" name="transaccion_tipo_tipo" class="input-radio-si-no" value="2" placeholder="ENTRADA">
+                            <input type="radio" name="transaccion_tipo_tipo" class="input-radio-si-no" value="3" placeholder="SALIDA">
+                        </div>
                     </div>
 
                     <div class="row">
-                        <span>TRANSACCION_TIPO_PAGO: </span>
-                        <input type="number" name="transaccion_tipo_pago" placeholder="TRANSACCION_TIPO_PAGO">
-                    </div>
-
-                    <div class="row">
-                        <span>TRANSACCION_TIPO_ENTRADA: </span>
-                        <input type="number" name="transaccion_tipo_entrada" placeholder="TRANSACCION_TIPO_ENTRADA">
-                    </div>
-
-                    <div class="row">
-                        <span>TRANSACCION_TIPO_LOGO: </span>
-                        <input type="file" name="transaccion_tipo_logo" placeholder="TRANSACCION_TIPO_LOGO">
+                        <span>LOGO: </span>
+                        <input type="file" name="transaccion_tipo_logo" placeholder="LOGO">
                     </div>
 
                 </div>

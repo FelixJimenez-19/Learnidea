@@ -10,13 +10,14 @@ include './../../dao/Mysql.php';
 include './../../dao/TransaccionDao.php';
 include './../../function/validation.php';
 $_entity = new TransaccionDao();
-if (isset($_POST['transaccion_descripcion']) and isset($_POST['transaccion_valor']) and isset($_POST['transaccion_fecha']) and isset($_POST['transaccion_tipo_id']) and isset($_POST['key'])) {
+if (isset($_POST['transaccion_descripcion']) and isset($_POST['transaccion_valor']) and isset($_POST['transaccion_fecha']) and isset($_POST['transaccion_tipo_id']) and isset($_POST['usuario_id']) and isset($_POST['key'])) {
     if (validation($_POST['key'])) {
         $transaccion_descripcion = $_POST['transaccion_descripcion'];
         $transaccion_valor = $_POST['transaccion_valor'];
         $transaccion_fecha = $_POST['transaccion_fecha'];
         $transaccion_tipo_id = $_POST['transaccion_tipo_id'];
-        $_entity->insert($transaccion_descripcion, $transaccion_valor, $transaccion_fecha, $transaccion_tipo_id);
+        $usuario_id = $_POST['usuario_id'];
+        $_entity->insert($transaccion_descripcion, $transaccion_valor, $transaccion_fecha, $transaccion_tipo_id, $usuario_id);
 
         if (isset($_FILES['transaccion_foto'])) {
             $transaccion_foto = $_FILES['transaccion_foto'];
@@ -25,7 +26,7 @@ if (isset($_POST['transaccion_descripcion']) and isset($_POST['transaccion_valor
                     mkdir("../../../view/src/files/transaccion_foto", 0700);
                 }
 
-                $transaccion_id = mysqli_fetch_assoc($_entity->selectByAll($transaccion_descripcion, $transaccion_valor, $transaccion_fecha, $transaccion_tipo_id))['transaccion_id'];
+                $transaccion_id = mysqli_fetch_assoc($_entity->selectByAll($transaccion_descripcion, $transaccion_valor, $transaccion_fecha, $transaccion_tipo_id, $usuario_id))['transaccion_id'];
 
                 $desde = $transaccion_foto['tmp_name'];
                 $hasta = "../../../view/src/files/transaccion_foto/" . $transaccion_id . ".png";

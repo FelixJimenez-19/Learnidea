@@ -38,7 +38,51 @@ if (isset($_SESSION)) {
             </div>
         </div>
 
+        <div class="idea_message" id="idea_modal_message">
+            <div class="message">
+                <span id="idea_message"></span>
+                <button onclick="UserCurso.fun.hideModalMessage()">ACEPTAR</button>
+            </div>
+        </div>
 
+        <div class="idea_confirm" id="idea_modal_confirm">
+            <div class="confirm">
+                <span id="idea_confirm"></span>
+                <div class="buttons">
+                    <button onclick="entity.fun.pressYesModalConfirm(() => entity.area.crud.delete())">SI</button>
+                    <button onclick="entity.fun.hideModalConfirm()">NO</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="idea_progress" id="idea_modal_progress">
+            <div class="window">
+                <span>PROCESANDO . . . </span>
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <div class="idea_payment">
+            <div class="window">
+                <div class="row tittle"><span>REALIZAR PAGO</span></div>
+                <div class="row chooser">
+                    <span>Elige un método de pago: </span>
+                    <select id="select-payment-method"></select>
+                </div>
+                <div class="row forms" id="container-forms-payment">
+                    <form method="POST" onsubmit="return false" id="payment-form"></form>
+                    <form method="POST" onsubmit="return false" id="form-payment-method-debito"></form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="control/script/stripe/payment.js"></script>
+
+        <script src="control/function/curso.js"></script>
+        <script src="control/script/user_curso/curso_inscripcion.js"></script>
+        <script src="control/script/user_curso/transaccion_tipo.js"></script>
+        <script src="control/script/user_curso/transaccion.js"></script>
         <script src="control/script/user_curso/curso_many.js"></script>
         <script src="control/script/user_curso/curso_one.js"></script>
         <script src="control/script/user_curso/curso.js"></script>

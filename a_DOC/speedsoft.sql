@@ -481,11 +481,12 @@ CREATE TABLE buzon (
 CREATE TABLE transaccion_tipo (
     transaccion_tipo_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     transaccion_tipo_nombre VARCHAR(50),
+    transaccion_tipo_numero VARCHAR(30),
     transaccion_tipo_descripcion TEXT,
     transaccion_tipo_logo VARCHAR(10),
-    transaccion_tipo_credido BOOLEAN,
-    transaccion_tipo_pago BOOLEAN,
-    transaccion_tipo_entrada BOOLEAN
+    transaccion_tipo_credito BOOLEAN,
+    transaccion_tipo_entrada BOOLEAN,
+    transaccion_tipo_salida BOOLEAN
 ) ENGINE INNODB;
 
 -- @@@@options:{ "files": [{"type":"png", "name":"transaccion_foto"}] }
@@ -496,5 +497,7 @@ CREATE TABLE transaccion (
     transaccion_foto VARCHAR(10),
     transaccion_fecha VARCHAR(20),
     transaccion_tipo_id INT,
-    FOREIGN KEY (transaccion_tipo_id) REFERENCES transaccion_tipo (transaccion_tipo_id)
+    usuario_id INT,
+    FOREIGN KEY (transaccion_tipo_id) REFERENCES transaccion_tipo (transaccion_tipo_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
 ) ENGINE INNODB;

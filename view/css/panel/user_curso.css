@@ -527,10 +527,13 @@
   font-weight: normal;
   letter-spacing: 0px;
   color: var(--tertiary);
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#container__curso .header .col .row span.cupos-agotados {
+  color: var(--error);
 }
 
 #container__curso .header .col .row span b.precio-before {
@@ -645,6 +648,13 @@
   max-height: 0;
   margin: 0 0 0 5px;
 }
+
+/*
+
+#container__curso .header .col .row#button-subscripcion-container {
+  display: none;
+}
+*/
 
 
 
@@ -992,6 +1002,223 @@
 
 
 
+
+
+/*modal payment*/
+.idea_content .idea_payment {
+  position: absolute;
+  /*  top: -100%;*/
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.idea_content .idea_payment .window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  background: var(--quaternary);
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 #000;
+  overflow-x: hidden;
+}
+
+.idea_content .idea_payment .window .row {
+  display: flex;
+}
+
+.idea_content .idea_payment .window .row.tittle {
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 30px;
+  background: var(--secondary);
+  border-radius: 5px 5px 0 0;
+}
+
+.idea_content .idea_payment .window .row.tittle span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--tertiary);
+}
+
+.idea_content .idea_payment .window .row.chooser {
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.idea_content .idea_payment .window .row.chooser span {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 18px;
+  color: var(--tertiary_hover);
+  margin: 5px 0 0 0;
+}
+
+.idea_content .idea_payment .window .row.chooser select {
+  border: solid 1px var(--secondary);
+  margin: 5px 0 10px 0;
+  height: 30px;
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.idea_content .idea_payment .window .row.chooser select option {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 19px;
+}
+
+.idea_content .idea_payment .window .row.forms {
+  display: flex;
+  width: 200%;
+  height: 0;
+  overflow-y: hidden;
+}
+
+.idea_content .idea_payment .window .row.forms form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 0 10px 0;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 5px 0 0 0;
+  padding: 0 10px;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row.row-img {
+  justify-content: center;
+  margin: 0;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row.row-img img {
+  height: 50px;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row.row-descripcion {}
+
+.idea_content .idea_payment .window .row.forms form .sub-row.row-descripcion span {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  color: var(--tertiary_hover);
+  margin: 0;
+  user-select: none;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row b {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  color: var(--tertiary_hover);
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row span {
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  margin: 0 0 0 5px;
+  user-select: text;
+  color: var(--tertiary_hover);
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="file"] {
+  position: relative;
+  border: solid 1px var(--tertiary_hover);
+  margin: 0 0 0 5px;
+  width: 100%;
+  max-width: 123px;
+  height: 25px;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="file"]:hover:before {
+  background: var(--tertiary_hover);
+  color: var(--tertiary);
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="file"]:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: attr(placeholder);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--quaternary);
+  padding: 0 0 0 5px;
+  color: var(--tertiary_hover);
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="submit"],
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="button"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /*  max-width: 200px;*/
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 30px;
+  font-family: AdventPro-medium, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--tertiary_hover);
+  border: solid 1px var(--tertiary_hover);
+  background: transparent;
+  margin: 10px auto 0 auto;
+}
+
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="submit"]:hover,
+.idea_content .idea_payment .window .row.forms form .sub-row input[type="button"]:hover {
+  background: var(--tertiary_hover);
+  color: var(--tertiary);
+}
+
+.idea_content .idea_payment .window .row.forms form .card-label,
+.idea_content .idea_payment .window .row.forms form .card-element,
+.idea_content .idea_payment .window .row.forms form .card-errors {
+  padding: 0 10px;
+  font-family: AdventPro-medium, sans-serif;
+}
+
+.idea_content .idea_payment .window .row.forms form .card-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
+.idea_content .idea_payment .window .row.forms form .card-element {
+  margin: 10px 0;
+}
+
+.idea_content .idea_payment .window .row.forms form .card-errors {
+  margin: 10px 0;
+}
 
 
 

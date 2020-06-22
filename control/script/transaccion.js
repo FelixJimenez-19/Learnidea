@@ -7,6 +7,7 @@ ________________________________________________________________________________
 const main = async () => {
     await entity.transaccion.crud.select();
     await entity.selects.transaccion_tipo();
+    await entity.selects.usuario();
 };
 // MASTER OBJECT INI
 const entity = {
@@ -29,6 +30,7 @@ const entity = {
                 entity.view.form.transaccion_valor.value = entity.transaccion.database[index].transaccion_valor;
                 entity.view.form.transaccion_fecha.value = entity.transaccion.database[index].transaccion_fecha;
                 entity.view.form.transaccion_tipo_id.value = entity.transaccion.database[index].transaccion_tipo_id;
+                entity.view.form.usuario_id.value = entity.transaccion.database[index].usuario_id;
             }
             entity.view.modalForm.style.top = "0%";
         },
@@ -40,6 +42,7 @@ const entity = {
             entity.view.form.transaccion_valor.value = "";
             entity.view.form.transaccion_fecha.value = "";
             entity.view.form.transaccion_tipo_id.value = "";
+            entity.view.form.usuario_id.value = "";
             entity.view.modalForm.style.top = "-100%";
         },
 
@@ -75,9 +78,14 @@ const entity = {
                     <td>${register.transaccion_id}</td>
                     <td>${register.transaccion_descripcion}</td>
                     <td>${register.transaccion_valor}</td>
-                    <td>${register.transaccion_fecha}</td>
-                    <td>${register.transaccion_tipo_id}</td>
-                    <td><img src="${register.transaccion_foto !== null ? "view/src/files/transaccion_foto/" + register.transaccion_foto : "view/src/img/avatar.png"}"/></td>
+                    <td>${Fecha.getString(new Date(register.transaccion_fecha), 2)}</td>
+                    <td>
+                        <img
+                        onclick="viewscreen.show('${register.transaccion_foto !== null ? "view/src/files/transaccion_foto/" + register.transaccion_foto : "view/src/img/avatar.png"}')" 
+                            src="${register.transaccion_foto !== null ? "view/src/files/transaccion_foto/" + register.transaccion_foto : "view/src/img/avatar.png"}"/>
+                    </td>
+                    <td>${register.transaccion_tipo_nombre}</td>
+                    <td>${register.usuario_nombre}</td>
                     <td>
                         <button onclick="entity.fun.showModalForm(${index})"><img src="view/src/icon/edit.png"></button>
                         <button onclick="entity.fun.showModalConfirm('¿Esta seguro de eliminar este registro?', () => entity.transaccion.index = ${index})">
@@ -188,13 +196,24 @@ const entity = {
     selects: {
         transaccion_tipo: async () => {
             await Transaccion_tipoDao.select().then((res) => {
-                let html = `<option value="">TRANSACCION_TIPO_ID</option>`;
+                let html = `<option value="">TIPO</option>`;
                 for (let i = 0; i < res.length; i++) {
                     html += `
-<option value="${res[i].transaccion_tipo_id}">${res[i].transaccion_tipo_id}</option>
-`;
+                        <option value="${res[i].transaccion_tipo_id}">${res[i].transaccion_tipo_nombre}</option>
+                    `;
                 }
                 entity.view.form.transaccion_tipo_id.innerHTML = html;
+            });
+        },
+        usuario: async () => {
+            await UsuarioDao.select().then((res) => {
+                let html = `<option value="">USUARIO</option>`;
+                for (let i = 0; i < res.length; i++) {
+                    html += `
+                        <option value="${res[i].usuario_id}">${res[i].usuario_nombre}</option>
+                    `;
+                }
+                entity.view.form.usuario_id.innerHTML = html;
             });
         },
     },

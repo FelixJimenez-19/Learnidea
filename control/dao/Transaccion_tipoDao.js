@@ -11,11 +11,9 @@ Transaccion_tipoDao = {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
             body: formData,
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                return res;
-            });
+        }).then((res) => res.json()).then((res) => {
+            return res;
+        });
     },
 
     selectById: (formData) => {
@@ -24,11 +22,9 @@ Transaccion_tipoDao = {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
             body: formData,
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                return res;
-            });
+        }).then((res) => res.json()).then((res) => {
+            return res;
+        });
     },
 
     insert: (formData) => {
@@ -37,11 +33,9 @@ Transaccion_tipoDao = {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
             body: formData,
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                return res;
-            });
+        }).then((res) => res.json()).then((res) => {
+            return res;
+        });
     },
 
     update: (formData) => {
@@ -50,11 +44,9 @@ Transaccion_tipoDao = {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
             body: formData,
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                return res;
-            });
+        }).then((res) => res.json()).then((res) => {
+            return res;
+        });
     },
 
     delete: (formData) => {
@@ -63,10 +55,8 @@ Transaccion_tipoDao = {
             method: "POST",
             headers: new Headers().append("Accept", "application/json"),
             body: formData,
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                return res;
-            });
+        }).then((res) => res.json()).then((res) => {
+            return res;
+        });
     },
 };
