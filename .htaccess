@@ -24,4 +24,4 @@ RewriteRule ^(.*)$ $1.php
 
 
 #ErrorDocument 404 https://www.learnidea.net
-ErrorDocument 404 http://192.168.0.2/learnidea
+ErrorDocument 404 http://193.145.110.2/learnidea

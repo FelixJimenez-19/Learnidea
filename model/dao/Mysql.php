@@ -1,11 +1,8 @@
 <?php
-/* 
-- CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
-- RUTA: proyect/model/dao/Mysql.php
-*/
+
 class Mysql
 {
-    public $root_page = "https://www.learnidea.net/";
+    public $root_page = "http://193.145.110.2/learnidea/";
     private $conn;
     public function query($sql)
     {
@@ -16,8 +13,7 @@ class Mysql
     }
     public function conectar()
     {
-        $this->conn = mysqli_connect("localhost", "root", "", "learnidea");
-        // $this->conn = mysqli_connect("localhost", "learnide_db", "while(!vida)", "learnide_db");
+        $this->conn = mysqli_connect("localhost", "root", "while(!vida)", "learnidea");
         mysqli_set_charset($this->conn,"utf8");
         return $this->conn;
     }
@@ -26,3 +22,5 @@ class Mysql
         mysqli_close($this->conn);
     }
 }
+
+// $this->conn = mysqli_connect("localhost", "learnide_db", "while(!vida)", "learnide_db");

@@ -1,9 +1,6 @@
 
 <?php
-/* 
-- CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
-- RUTA: proyect/model/dao/Curso_deberDao.php
-*/
+
 class Curso_deberDao
 {
     private $conn;

@@ -1,8 +1,5 @@
 <?php
-/* 
-- CREA UN ARCHIVO CON EL NOMBRE Y EXTENSION INDICADA.
-- RUTA: proyect/model/dao/Certificado_tipoDao.php
-*/
+
 class Certificado_tipoDao
 {
     private $conn;
